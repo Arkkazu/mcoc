@@ -1,0 +1,1357 @@
+{
+  "champion-spotlight-wave": {
+    "jp": "ウェイブ",
+    "en": "WAVE",
+    "binary_id": "wave"
+  },
+  "champion-spotlight-blade-stellar-forged": {
+    "jp": "ブレイド（ステラ・フォージド）",
+    "en": "BLADE (STJERNESKAPT)",
+    "binary_id": "blade_stellar"
+  },
+  "champion-spotlight-ruby-thursday": {
+    "jp": "ルビー・サーズデイ",
+    "en": "RUBY THURSDAY",
+    "binary_id": "rubythursday"
+  },
+  "champion-spotlight-doctor-bong": {
+    "jp": "ドクター・ボン",
+    "en": "DOKTOR BONG",
+    "binary_id": "doctorbong"
+  },
+  "champion-spotlight-madelyne-pryor": {
+    "jp": "マデリン・プライアー",
+    "en": "MADELYNE PRYOR",
+    "binary_id": "madelynepryor"
+  },
+  "champion-spotlight-pixie": {
+    "jp": "ピクシー",
+    "en": "PIXIE",
+    "binary_id": "pixie"
+  },
+  "champion-spotlight-blue-marvel": {
+    "jp": "ブルーマーベル",
+    "en": "BLUE MARVEL",
+    "binary_id": "bluemarvel"
+  },
+  "champion-spotlight-mbaku": {
+    "jp": "エムバク",
+    "en": "M'BAKU",
+    "binary_id": "mbaku"
+  },
+  "champion-spotlight-star-lord-stellar-forged": {
+    "jp": "スター・ロード（ステラ・フォージド）",
+    "en": "STAR-LORD (STJERNESKAPT)",
+    "binary_id": "starlord_stellar"
+  },
+  "champion-spotlight-spider-slayer-j-jonah-jameson": {
+    "jp": "スパイダー・スレイヤー（J. ジョナ・ジェイムソン）",
+    "en": "SPIDER-SLAYER (J. JONAH JAMESON)",
+    "binary_id": "jjj_spiderslayer"
+  },
+  "champion-spotlight-spider-man-pavitr-prabhakar": {
+    "jp": "スパイダーマン(クラシック)",
+    "en": "SPIDER-MAN (KLASSISK)",
+    "binary_id": "spiderman"
+  },
+  "champion-spotlight-lizard": {
+    "jp": "リザード",
+    "en": "LIZARD",
+    "binary_id": "lizard"
+  },
+  "champion-spotlight-franken-castle": {
+    "jp": "フランケンキャッスル",
+    "en": "FRANKEN-CASTLE",
+    "binary_id": "frankencastle"
+  },
+  "champion-spotlight-dracula": {
+    "jp": "ドラキュラ",
+    "en": "DRACULA",
+    "binary_id": "dracula"
+  },
+  "champion-spotlight-silver-samurai": {
+    "jp": "シルバーサムライ",
+    "en": "SILVER SAMURAI",
+    "binary_id": "silversamurai"
+  },
+  "champion-spotlight-cassandra-nova": {
+    "jp": "カサンドラ・ノヴァ",
+    "en": "CASSANDRA NOVA",
+    "binary_id": "cassandranova"
+  },
+  "champion-spotlight-solvarch": {
+    "jp": "ソルヴァーク",
+    "en": "SOLVARCH",
+    "binary_id": "solvarch"
+  },
+  "champion-spotlight-high-evolutionary": {
+    "jp": "ハイ・エボリューショナリー",
+    "en": "HIGH EVOLUTIONARY",
+    "binary_id": "highevolutionary"
+  },
+  "champion-spotlight-the-maker": {
+    "jp": "メーカー",
+    "en": "MAKER",
+    "binary_id": "maker"
+  },
+  "champion-spotlight-karolina-dean": {
+    "jp": "カロリーナ・ディーン",
+    "en": "KAROLINA DEAN",
+    "binary_id": "karolinadean"
+  },
+  "champion-spotlight-nico-minoru": {
+    "jp": "ニコ・ミノル",
+    "en": "NICO MINORU",
+    "binary_id": "nicominoru"
+  },
+  "champion-spotlight-yelena-belova": {
+    "jp": "エレナ・ベロワ",
+    "en": "YELENA BELOVA",
+    "binary_id": "yelenabelova"
+  },
+  "champion-spotlight-dark-phoenix": {
+    "jp": "ダーク・フェニックス",
+    "en": "DARK PHOENIX",
+    "binary_id": "phoenix_dark"
+  },
+  "champion-spotlight-lumatrix": {
+    "jp": "ルーマトリックス",
+    "en": "LUMATRIX",
+    "binary_id": "lumatrix"
+  },
+  "champion-spotlight-spider-woman": {
+    "jp": "スパイダーウーマン (ジェシカ・ドリュー)",
+    "en": "SPIDER-WOMAN (JESSICA DREW)",
+    "binary_id": "spiderwoman"
+  },
+  "champion-spotlight-bastion": {
+    "jp": "バスティオン",
+    "en": "BASTION",
+    "binary_id": "bastion"
+  },
+  "champion-spotlight-jean-grey": {
+    "jp": "ジーン・グレイ",
+    "en": "JEAN GREY",
+    "binary_id": "jeangrey_current"
+  },
+  "champion-spotlight-falcon-joaquin-torres": {
+    "jp": "ファルコン",
+    "en": "FALCON",
+    "binary_id": "falcon"
+  },
+  "champion-spotlight-arnim-zola": {
+    "jp": "アーニム・ゾラ",
+    "en": "ARNIM ZOLA",
+    "binary_id": "arnimzola"
+  },
+  "champion-spotlight-gentle": {
+    "jp": "隊長",
+    "en": "GENTLE",
+    "binary_id": "gentle"
+  },
+  "champion-spotlight-okoye": {
+    "jp": "オコエ",
+    "en": "OKOYE",
+    "binary_id": "okoye"
+  },
+  "champion-spotlight-thanos-deathless": {
+    "jp": "サノス",
+    "en": "THANOS",
+    "binary_id": "thanos"
+  },
+  "champion-spotlight-isophyne": {
+    "jp": "イソフィン",
+    "en": "ISOPHYNE",
+    "binary_id": "isophyne"
+  },
+  "champion-spotlight-dazzler": {
+    "jp": "ダズラー",
+    "en": "DAZZLER",
+    "binary_id": "dazzler"
+  },
+  "champion-spotlight-spiral": {
+    "jp": "スパイラル",
+    "en": "SPIRAL",
+    "binary_id": "spiral"
+  },
+  "champion-spotlight-she-hulk-deathless": {
+    "jp": "シー・ハルク",
+    "en": "SHE-HULK",
+    "binary_id": "shehulk"
+  },
+  "champion-spotlight-jack-o-lantern": {
+    "jp": "ジャック・オ・ランタン",
+    "en": "JACK O'LANTERN",
+    "binary_id": "jackolantern"
+  },
+  "champion-spotlight-scream": {
+    "jp": "スクリーム",
+    "en": "SCREAM",
+    "binary_id": "scream"
+  },
+  "champion-spotlight-shathra": {
+    "jp": "シャスラ",
+    "en": "SHATHRA",
+    "binary_id": "shathra"
+  },
+  "champion-spotlight-count-nefaria": {
+    "jp": "ネファリア伯爵",
+    "en": "COUNT NEFARIA",
+    "binary_id": "countnefaria"
+  },
+  "champion-spotlight-enchantress": {
+    "jp": "エンチャントレス",
+    "en": "ENCHANTRESS",
+    "binary_id": "enchantress"
+  },
+  "champion-spotlight-beta-ray-bill": {
+    "jp": "ベータ・レイ・ビル",
+    "en": "BETA RAY BILL",
+    "binary_id": "betaraybill"
+  },
+  "champion-spotlight-vision-deathless": {
+    "jp": "ビジョン",
+    "en": "VISION",
+    "binary_id": "vision"
+  },
+  "champion-spotlight-patriot": {
+    "jp": "パトリオット",
+    "en": "PATRIOT",
+    "binary_id": "patriot"
+  },
+  "champion-spotlight-northstar": {
+    "jp": "ノーススター",
+    "en": "NORTHSTAR",
+    "binary_id": "northstar"
+  },
+  "champion-spotlight-arcade": {
+    "jp": "アーケード",
+    "en": "ARCADE",
+    "binary_id": "arcade"
+  },
+  "champion-spotlight-silver-sable": {
+    "jp": "シルバーセーブル",
+    "en": "SILVER SABLE",
+    "binary_id": "silversable"
+  },
+  "champion-spotlight-negasonic-teenage-warhead": {
+    "jp": "ネガソニック・ティーンエイジ・ウォーヘッド",
+    "en": "NEGASONIC TEENAGE WARHEAD",
+    "binary_id": "negasonicteenagewarhead"
+  },
+  "champion-spotlight-prowler": {
+    "jp": "プラウラー",
+    "en": "PROWLER",
+    "binary_id": "prowler"
+  },
+  "champion-spotlight-spider-punk": {
+    "jp": "スパイダーパンク",
+    "en": "SPIDER-PUNK",
+    "binary_id": "spiderpunk"
+  },
+  "champion-spotlight-dust": {
+    "jp": "ダスト",
+    "en": "DUST",
+    "binary_id": "dust"
+  },
+  "champion-spotlight-ironheart": {
+    "jp": "アイアンハート",
+    "en": "IRONHEART",
+    "binary_id": "ironheart"
+  },
+  "champion-spotlight-white-tiger": {
+    "jp": "ホワイトタイガー",
+    "en": "WHITE TIGER",
+    "binary_id": "whitetiger"
+  },
+  "champion-spotlight-bullseye": {
+    "jp": "ブルズアイ",
+    "en": "BULLSEYE",
+    "binary_id": "bullseye"
+  },
+  "champion-spotlight-guillotine-deathless": {
+    "jp": "ギロチン",
+    "en": "GUILLOTINE",
+    "binary_id": "guillotine"
+  },
+  "champion-spotlight-onslaught": {
+    "jp": "オンスロート",
+    "en": "ONSLAUGHT",
+    "binary_id": "onslaught"
+  },
+  "champion-spotlight-maestro": {
+    "jp": "マエストロ",
+    "en": "MAESTRO",
+    "binary_id": "maestro"
+  },
+  "champion-spotlight-cheeilth": {
+    "jp": "チールス",
+    "en": "CHEE’ILTH",
+    "binary_id": "cheeilth"
+  },
+  "champion-spotlight-kushala": {
+    "jp": "クシャラ",
+    "en": "KUSHALA",
+    "binary_id": "kushala"
+  },
+  "champion-spotlight-werewolf-by-night": {
+    "jp": "ウェアウルフ・バイ・ナイト",
+    "en": "WEREWOLF BY NIGHT",
+    "binary_id": "werewolfbynight"
+  },
+  "champion-spotlight-morbius": {
+    "jp": "モービウス",
+    "en": "MORBIUS",
+    "binary_id": "morbius"
+  },
+  "champion-spotlight-gladiator": {
+    "jp": "グラディエーター",
+    "en": "GLADIATOR",
+    "binary_id": "gladiator"
+  },
+  "champion-spotlight-photon": {
+    "jp": "フォトン",
+    "en": "PHOTON",
+    "binary_id": "photon"
+  },
+  "champion-spotlight-vox": {
+    "jp": "ヴォックス",
+    "en": "VOX",
+    "binary_id": "vox"
+  },
+  "champion-spotlight-kindred": {
+    "jp": "キンドレッド",
+    "en": "KINDRED",
+    "binary_id": "kindred"
+  },
+  "champion-spotlight-silk": {
+    "jp": "シルク",
+    "en": "SILK",
+    "binary_id": "silk"
+  },
+  "champion-spotlight-lady-deathstrike": {
+    "jp": "レディ・デスストライク",
+    "en": "LADY DEATHSTRIKE",
+    "binary_id": "ladydeathstrike"
+  },
+  "champion-spotlight-dani-moonstar": {
+    "jp": "ダニー・ムーンスター",
+    "en": "DANI MOONSTAR",
+    "binary_id": "danimoonstar"
+  },
+  "champion-spotlight-moondragon": {
+    "jp": "ムーンドラゴン",
+    "en": "MOONDRAGON",
+    "binary_id": "moondragon"
+  },
+  "champion-spotlight-adam-warlock": {
+    "jp": "アダム・ウォーロック",
+    "en": "ADAM WARLOCK",
+    "binary_id": "adamwarlock"
+  },
+  "champion-spotlight-shocker": {
+    "jp": "ショッカー",
+    "en": "SHOCKER",
+    "binary_id": "shocker"
+  },
+  "champion-spotlight-sandman": {
+    "jp": "サンドマン",
+    "en": "SANDMAN",
+    "binary_id": "sandman"
+  },
+  "champion-spotlight-viv-vision": {
+    "jp": "ヴィヴ・ヴィジョン",
+    "en": "VIV VISION",
+    "binary_id": "vivvision"
+  },
+  "champion-spotlight-kate-bishop": {
+    "jp": "ケイト・ビショップ",
+    "en": "KATE BISHOP",
+    "binary_id": "katebishop"
+  },
+  "champion-spotlight-cassie-lang": {
+    "jp": "キャシー・ラング",
+    "en": "CASSIE LANG",
+    "binary_id": "cassielang"
+  },
+  "champion-spotlight-ant-man-future": {
+    "jp": "アントマン",
+    "en": "ANT-MAN",
+    "binary_id": "antman"
+  },
+  "champion-spotlight-absorbing-man": {
+    "jp": "アブソービングマン",
+    "en": "ABSORBING MAN",
+    "binary_id": "absorbingman"
+  },
+  "champion-spotlight-baron-zemo": {
+    "jp": "バロン・ジーモ",
+    "en": "BARON ZEMO",
+    "binary_id": "baronzemo"
+  },
+  "champion-spotlight-mantis": {
+    "jp": "マンティス",
+    "en": "MANTIS",
+    "binary_id": "mantis"
+  },
+  "champion-spotlight-jessica-jones": {
+    "jp": "ジェシカ・ジョーンズ",
+    "en": "JESSICA JONES",
+    "binary_id": "jessicajones"
+  },
+  "champion-spotlight-shuri": {
+    "jp": "シュリ",
+    "en": "SHURI",
+    "binary_id": "shuri"
+  },
+  "champion-spotlight-attuma": {
+    "jp": "アットゥマ",
+    "en": "ATTUMA",
+    "binary_id": "attuma"
+  },
+  "champion-spotlight-spider-man-supreme": {
+    "jp": "スパイダーマン(クラシック)",
+    "en": "SPIDER-MAN (KLASSISK)",
+    "binary_id": "spiderman"
+  },
+  "champion-spotlight-spot": {
+    "jp": "スポット",
+    "en": "SPOT",
+    "binary_id": "spot"
+  },
+  "champion-spotlight-titania": {
+    "jp": "ティターニア",
+    "en": "TITANIA",
+    "binary_id": "titania"
+  },
+  "champion-spotlight-iron-man-infamous": {
+    "jp": "アイアンマン（インファマス）",
+    "en": "IRON MAN (INFAMOUS)",
+    "binary_id": "ironman_infamous"
+  },
+  "champion-spotlight-galan": {
+    "jp": "ギャラン",
+    "en": "GALAN",
+    "binary_id": "galan"
+  },
+  "champion-spotlight-quicksilver": {
+    "jp": "クイックシルバー",
+    "en": "QUICKSILVER",
+    "binary_id": "quicksilver"
+  },
+  "champion-spotlight-valkyrie": {
+    "jp": "ヴァルキリー",
+    "en": "VALKYRIE",
+    "binary_id": "valkyrie"
+  },
+  "champion-spotlight-hulkling": {
+    "jp": "ハルクリング",
+    "en": "HULKLING",
+    "binary_id": "hulkling"
+  },
+  "champion-spotlight-wiccan": {
+    "jp": "ウィッカン",
+    "en": "WICCAN",
+    "binary_id": "wiccan"
+  },
+  "champion-spotlight-rintrah": {
+    "jp": "リントラ",
+    "en": "RINTRAH",
+    "binary_id": "rintrah"
+  },
+  "champion-spotlight-wong": {
+    "jp": "ウォン",
+    "en": "WONG",
+    "binary_id": "wong"
+  },
+  "champion-spotlight-storm": {
+    "jp": "ストーム",
+    "en": "STORM",
+    "binary_id": "storm"
+  },
+  "champion-spotlight-scorpion": {
+    "jp": "スコーピオン",
+    "en": "SCORPION",
+    "binary_id": "scorpion"
+  },
+  "champion-spotlight-black-cat": {
+    "jp": "ブラックキャット",
+    "en": "BLACK CAT",
+    "binary_id": "blackcat"
+  },
+  "champion-spotlight-omega-sentinel": {
+    "jp": "オメガ・センチネル",
+    "en": "OMEGA SENTINEL",
+    "binary_id": "omegasentinel"
+  },
+  "champion-spotlight-captain-britain": {
+    "jp": "キャプテン・ブリテン",
+    "en": "CAPTAIN BRITAIN",
+    "binary_id": "captainbritain"
+  },
+  "champion-spotlight-psycho-man": {
+    "jp": "サイコマン",
+    "en": "PSYCHO-MAN",
+    "binary_id": "psychoman"
+  },
+  "champion-spotlight-misty-knight": {
+    "jp": "ミスティ・ナイト",
+    "en": "MISTY KNIGHT",
+    "binary_id": "mistyknight"
+  },
+  "champion-spotlight-captain-america-sam-wilson": {
+    "jp": "キャプテン・アメリカ",
+    "en": "CAPTAIN AMERICA",
+    "binary_id": "captainamerica"
+  },
+  "champion-spotlight-toad": {
+    "jp": "トード",
+    "en": "TOAD",
+    "binary_id": "toad"
+  },
+  "champion-spotlight-sauron": {
+    "jp": "サウロン",
+    "en": "SAURON",
+    "binary_id": "sauron"
+  },
+  "champion-spotlight-kraven": {
+    "jp": "クレイヴン",
+    "en": "KRAVEN",
+    "binary_id": "kraven"
+  },
+  "champion-spotlight-hawkeye": {
+    "jp": "ホークアイ",
+    "en": "HAWKEYE",
+    "binary_id": "hawkeye"
+  },
+  "champion-spotlight-joe-fixit": {
+    "jp": "ジョー・フィクジット",
+    "en": "JOE FIXIT",
+    "binary_id": "joefixit"
+  },
+  "champion-spotlight-ikaris": {
+    "jp": "イカリス",
+    "en": "IKARIS",
+    "binary_id": "ikaris"
+  },
+  "champion-spotlight-sersi": {
+    "jp": "セルシー",
+    "en": "SERSI",
+    "binary_id": "sersi"
+  },
+  "champion-spotlight-karnak": {
+    "jp": "カーナック",
+    "en": "KARNAK",
+    "binary_id": "karnak"
+  },
+  "champion-spotlight-nebula": {
+    "jp": "ネビュラ",
+    "en": "NEBULA",
+    "binary_id": "nebula"
+  },
+  "champion-spotlight-knull": {
+    "jp": "ヌル",
+    "en": "KNULL",
+    "binary_id": "knull"
+  },
+  "champion-spotlight-anti-venom": {
+    "jp": "アンチヴェノム",
+    "en": "ANTI-VENOM",
+    "binary_id": "antivenom"
+  },
+  "champion-spotlight-guillotine": {
+    "jp": "ギロチン",
+    "en": "GUILLOTINE",
+    "binary_id": "guillotine"
+  },
+  "champion-spotlight-kitty-pryde": {
+    "jp": "キティ・プライド",
+    "en": "KITTY PRYDE",
+    "binary_id": "kittypryde"
+  },
+  "champion-spotlight-nimrod": {
+    "jp": "ニムロッド",
+    "en": "NIMROD",
+    "binary_id": "nimrod"
+  },
+  "champion-spotlight-gamora": {
+    "jp": "ガモーラ",
+    "en": "GAMORA",
+    "binary_id": "gamora"
+  },
+  "champion-spotlight-spider-man-miles-morales": {
+    "jp": "スパイダーマン(マイルズ・モラレス)",
+    "en": "SPIDER-MAN (MILES MORALES)",
+    "binary_id": "spiderman_morales"
+  },
+  "champion-spotlight-peni-parker": {
+    "jp": "ペニー・パーカー",
+    "en": "PENI PARKER",
+    "binary_id": "peniparker"
+  },
+  "champion-spotlight-spider-man-2099": {
+    "jp": "スパイダーマン2099",
+    "en": "SPIDER-MAN 2099",
+    "binary_id": "spiderman_2099"
+  },
+  "champion-spotlight-venompool": {
+    "jp": "ヴェノムプール",
+    "en": "VENOMPOOL",
+    "binary_id": "venompool"
+  },
+  "champion-spotlight-king-groot": {
+    "jp": "キング・グルート",
+    "en": "KONG GROOT",
+    "binary_id": "groot_king"
+  },
+  "champion-spotlight-america-chavez": {
+    "jp": "アメリカ・チャベス",
+    "en": "AMERICA CHAVEZ",
+    "binary_id": "americachavez"
+  },
+  "champion-spotlight-hercules": {
+    "jp": "ハーキュリーズ",
+    "en": "HERCULES",
+    "binary_id": "hercules"
+  },
+  "champion-spotlight-bishop": {
+    "jp": "ビショップ",
+    "en": "BISHOP",
+    "binary_id": "bishop"
+  },
+  "champion-spotlight-ronin": {
+    "jp": "ローニン",
+    "en": "RONIN",
+    "binary_id": "ronin"
+  },
+  "champion-spotlight-diablo": {
+    "jp": "ディアブロ",
+    "en": "DIABLO",
+    "binary_id": "diablo"
+  },
+  "champion-spotlight-scarlet-witch": {
+    "jp": "スカーレットウィッチ（クラシック）",
+    "en": "SCARLET WITCH (KLASSISK)",
+    "binary_id": "scarletwitch"
+  },
+  "champion-spotlight-purgatory": {
+    "jp": "パーガトリー",
+    "en": "PURGATORY",
+    "binary_id": "purgatory"
+  },
+  "champion-spotlight-war-machine": {
+    "jp": "ウォーマシン",
+    "en": "WAR MACHINE",
+    "binary_id": "warmachine"
+  },
+  "champion-spotlight-ultron": {
+    "jp": "ウルトロン（クラシック）",
+    "en": "ULTRON (KLASSISK)",
+    "binary_id": "ultron"
+  },
+  "champion-spotlight-shang-chi": {
+    "jp": "シャン・チー",
+    "en": "SHANG-CHI",
+    "binary_id": "shangchi"
+  },
+  "champion-spotlight-mister-negative": {
+    "jp": "Mr. ネガティブ",
+    "en": "MISTER NEGATIVE",
+    "binary_id": "misternegative"
+  },
+  "champion-spotlight-black-panther": {
+    "jp": "ブラックパンサー",
+    "en": "BLACK PANTHER",
+    "binary_id": "blackpanther"
+  },
+  "champion-spotlight-vulture": {
+    "jp": "ヴァルチャー",
+    "en": "VULTURE",
+    "binary_id": "vulture_movie"
+  },
+  "champion-spotlight-odin": {
+    "jp": "オーディン",
+    "en": "ODIN",
+    "binary_id": "odin"
+  },
+  "champion-spotlight-jabari-panther": {
+    "jp": "ジャバリ・パンサー",
+    "en": "JABARI PANTHER",
+    "binary_id": "blackpanther_realm"
+  },
+  "champion-spotlight-nova": {
+    "jp": "ノヴァ",
+    "en": "NOVA",
+    "binary_id": "nova"
+  },
+  "champion-spotlight-crossbones": {
+    "jp": "クロスボーンズ",
+    "en": "CROSSBONES",
+    "binary_id": "crossbones"
+  },
+  "champion-spotlight-civil-warrior": {
+    "jp": "シビル・ウォリアー",
+    "en": "CIVIL WARRIOR",
+    "binary_id": "civilwarrior"
+  },
+  "champion-spotlight-angela": {
+    "jp": "アンジェラ",
+    "en": "ANGELA",
+    "binary_id": "angela"
+  },
+  "champion-spotlight-masacre": {
+    "jp": "マサカー",
+    "en": "MASACRE",
+    "binary_id": "masacre"
+  },
+  "champion-spotlight-mangog": {
+    "jp": "マンゴグ",
+    "en": "MANGOG",
+    "binary_id": "mangog"
+  },
+  "champion-spotlight-kingpin": {
+    "jp": "キングピン",
+    "en": "KINGPIN",
+    "binary_id": "kingpin"
+  },
+  "champion-spotlight-super-skrull": {
+    "jp": "スーパースクラル",
+    "en": "SUPER-SKRULL",
+    "binary_id": "skrull_super"
+  },
+  "champion-spotlight-yellowjacket": {
+    "jp": "イエロージャケット",
+    "en": "YELLOWJACKET",
+    "binary_id": "yellowjacket"
+  },
+  "champion-spotlight-stryfe": {
+    "jp": "ストライフ",
+    "en": "STRYFE",
+    "binary_id": "stryfe"
+  },
+  "champion-spotlight-jubilee": {
+    "jp": "ジュビリー",
+    "en": "JUBILEE",
+    "binary_id": "jubilee"
+  },
+  "champion-spotlight-spider-ham": {
+    "jp": "スパイダー・ハム",
+    "en": "SPIDER-HAM",
+    "binary_id": "spiderham"
+  },
+  "champion-spotlight-daredevil-hells-kitchen": {
+    "jp": "デアデビル（クラシック）",
+    "en": "DAREDEVIL (KLASSISK)",
+    "binary_id": "daredevil"
+  },
+  "champion-spotlight-abomination-immortal": {
+    "jp": "アボミネーション（イモータル）",
+    "en": "ABOMINATION (UDØDELIG)",
+    "binary_id": "abomination_immortal"
+  },
+  "champion-spotlight-cosmic-ghost-rider": {
+    "jp": "コズミック",
+    "en": "Kosmisk",
+    "binary_id": "cosmic"
+  },
+  "champion-spotlight-apocalypse": {
+    "jp": "アポカリプス",
+    "en": "APOCALYPSE",
+    "binary_id": "apocalypse"
+  },
+  "champion-spotlight-professor-x": {
+    "jp": "プロフェッサーX",
+    "en": "PROFESSOR X",
+    "binary_id": "professorx"
+  },
+  "champion-spotlight-magneto": {
+    "jp": "マグニートー",
+    "en": "MAGNETO",
+    "binary_id": "magneto"
+  },
+  "champion-spotlight-magneto-house-of-x": {
+    "jp": "マグニートー（ハウス・オブ・X）",
+    "en": "MAGNETO (HOUSE OF X)",
+    "binary_id": "magneto_marvelnow"
+  },
+  "champion-spotlight-air-walker": {
+    "jp": "エア・ウォーカー",
+    "en": "AIR-WALKER",
+    "binary_id": "airwalker"
+  },
+  "champion-spotlight-dragon-man": {
+    "jp": "ドラゴンマン",
+    "en": "DRAGON MAN",
+    "binary_id": "dragonman"
+  },
+  "champion-spotlight-sasquatch": {
+    "jp": "サスカッチ",
+    "en": "SASQUATCH",
+    "binary_id": "sasquatch"
+  },
+  "champion-spotlight-hulkbuster": {
+    "jp": "ハルクバスター",
+    "en": "HULKBUSTER",
+    "binary_id": "hulkbuster_movie"
+  },
+  "champion-spotlight-guardian": {
+    "jp": "ガーディアン",
+    "en": "GUARDIAN",
+    "binary_id": "guardian"
+  },
+  "champion-spotlight-hit-monkey": {
+    "jp": "ヒットモンキー",
+    "en": "HIT-MONKEY",
+    "binary_id": "hitmonkey"
+  },
+  "champion-spotlight-tigra": {
+    "jp": "ティグラ",
+    "en": "TIGRA",
+    "binary_id": "tigra"
+  },
+  "champion-spotlight-red-guardian": {
+    "jp": "レッド・ガーディアン",
+    "en": "RED GUARDIAN",
+    "binary_id": "redguardian"
+  },
+  "champion-spotlight-black-widow-deadly-origin": {
+    "jp": "ブラック・ウィドウ（デッドリー・オリジン）",
+    "en": "BLACK WIDOW (DEADLY ORIGIN)",
+    "binary_id": "blackwidow_movie"
+  },
+  "champion-spotlight-storm-pyramid-x": {
+    "jp": "ストーム（ピラミッドX）",
+    "en": "STORM (PYRAMIDE X)",
+    "binary_id": "storm_realm"
+  },
+  "champion-spotlight-sorcerer-supreme": {
+    "jp": "ソーサラー・スプリーム",
+    "en": "SORCERER SUPREME",
+    "binary_id": "drstrange_realm"
+  },
+  "champion-spotlight-wolverine-weapon-x": {
+    "jp": "ウルヴァリン(ウェポンX)",
+    "en": "WOLVERINE (WEAPON X)",
+    "binary_id": "wolverine_weaponx"
+  },
+  "champion-spotlight-mole-man": {
+    "jp": "モールマン",
+    "en": "MOLE MAN",
+    "binary_id": "moleman"
+  },
+  "champion-spotlight-terrax": {
+    "jp": "テラックス",
+    "en": "TERRAX",
+    "binary_id": "terrax"
+  },
+  "champion-spotlight-mojo": {
+    "jp": "モジョ―",
+    "en": "MOJO",
+    "binary_id": "mojo"
+  },
+  "champion-spotlight-longshot": {
+    "jp": "ロングショット",
+    "en": "LONGSHOT",
+    "binary_id": "longshot"
+  },
+  "champion-spotlight-squirrel-girl": {
+    "jp": "スクイレル・ガール",
+    "en": "SQUIRREL GIRL",
+    "binary_id": "squirrelgirl"
+  },
+  "champion-spotlight-silver-surfer": {
+    "jp": "シルバーサーファー",
+    "en": "SILVER SURFER",
+    "binary_id": "silversurfer"
+  },
+  "champion-spotlight-doctor-doom": {
+    "jp": "ドクター・ドゥーム",
+    "en": "DOCTOR DOOM",
+    "binary_id": "doctordoom"
+  },
+  "champion-spotlight-guillotine-2099": {
+    "jp": "ギロチン",
+    "en": "GUILLOTINE",
+    "binary_id": "guillotine"
+  },
+  "champion-spotlight-man-thing": {
+    "jp": "マンシング",
+    "en": "MAN-THING",
+    "binary_id": "manthing"
+  },
+  "champion-spotlight-elsa-bloodstone": {
+    "jp": "エルサ・ブラッドストーン",
+    "en": "ELSA BLOODSTONE",
+    "binary_id": "elsabloodstone"
+  },
+  "champion-spotlight-vision-aarkus": {
+    "jp": "ビジョン",
+    "en": "VISION",
+    "binary_id": "vision"
+  },
+  "champion-spotlight-black-widow-claire-voyant": {
+    "jp": "ブラック・ウィドウ（クレア・ヴォヤン）",
+    "en": "BLACK WIDOW (CLAIRE VOYANT)",
+    "binary_id": "blackwidow_timely"
+  },
+  "champion-spotlight-warlock": {
+    "jp": "ウォーロック",
+    "en": "WARLOCK",
+    "binary_id": "warlock"
+  },
+  "champion-spotlight-sunspot": {
+    "jp": "サンスポット",
+    "en": "SUNSPOT",
+    "binary_id": "sunspot"
+  },
+  "champion-spotlight-mysterio": {
+    "jp": "ミステリオ",
+    "en": "MYSTERIO",
+    "binary_id": "mysterio"
+  },
+  "champion-spotlight-spider-man-stealth-suit": {
+    "jp": "スパイダーマン(クラシック)",
+    "en": "SPIDER-MAN (KLASSISK)",
+    "binary_id": "spiderman"
+  },
+  "champion-spotlight-invisible-woman": {
+    "jp": "インビジブルウーマン",
+    "en": "INVISIBLE WOMAN",
+    "binary_id": "invisiblewoman"
+  },
+  "champion-spotlight-namor": {
+    "jp": "ネイモア",
+    "en": "NAMOR",
+    "binary_id": "namor"
+  },
+  "champion-spotlight-ebony-maw": {
+    "jp": "エボニー・マウ",
+    "en": "EBONY MAW",
+    "binary_id": "ebonymaw"
+  },
+  "champion-spotlight-cull-obsidian": {
+    "jp": "カル・オブシディアン",
+    "en": "CULL OBSIDIAN",
+    "binary_id": "cullobsidian"
+  },
+  "champion-spotlight-human-torch": {
+    "jp": "ヒューマン・トーチ",
+    "en": "HUMAN TORCH",
+    "binary_id": "humantorch"
+  },
+  "champion-spotlight-annihilus": {
+    "jp": "アニヒラス",
+    "en": "ANNIHILUS",
+    "binary_id": "annihilus"
+  },
+  "champion-spotlight-nick-fury": {
+    "jp": "ニック・フューリー",
+    "en": "NICK FURY",
+    "binary_id": "nickfury"
+  },
+  "champion-spotlight-captain-marvel": {
+    "jp": "キャプテン・マーベル（クラシック）",
+    "en": "CAPTAIN MARVEL (KLASSISK)",
+    "binary_id": "captainmarvel"
+  },
+  "champion-spotlight-havok": {
+    "jp": "ハボック",
+    "en": "HAVOK",
+    "binary_id": "havok"
+  },
+  "champion-spotlight-mister-sinister": {
+    "jp": "ミスター・シニスター",
+    "en": "MISTER SINISTER",
+    "binary_id": "mistersinister"
+  },
+  "champion-spotlight-thing": {
+    "jp": "シング",
+    "en": "THING",
+    "binary_id": "thing"
+  },
+  "champion-spotlight-darkhawk": {
+    "jp": "ダークホーク",
+    "en": "DARKHAWK",
+    "binary_id": "darkhawk"
+  },
+  "champion-spotlight-night-thrasher": {
+    "jp": "ナイト・スラッシャー",
+    "en": "NIGHT THRASHER",
+    "binary_id": "nightthrasher"
+  },
+  "champion-spotlight-aegon": {
+    "jp": "エイゴン",
+    "en": "ÆGON",
+    "binary_id": "aegon"
+  },
+  "champion-spotlight-venom-the-duck": {
+    "jp": "ヴェノム・ザ・ダック",
+    "en": "VENOM THE DUCK",
+    "binary_id": "venomtheduck"
+  },
+  "champion-spotlight-symbiote-supreme": {
+    "jp": "シンビオート・スプリーム",
+    "en": "SYMBIOTE SUPREME",
+    "binary_id": "symbiotesupreme"
+  },
+  "champion-spotlight-emma-frost": {
+    "jp": "エマ・フロスト",
+    "en": "EMMA FROST",
+    "binary_id": "emmafrost"
+  },
+  "champion-spotlight-omega-red": {
+    "jp": "オメガ・レッド",
+    "en": "OMEGA RED",
+    "binary_id": "omegared"
+  },
+  "champion-spotlight-korg": {
+    "jp": "コーグ",
+    "en": "KORG",
+    "binary_id": "korg"
+  },
+  "champion-spotlight-heimdall": {
+    "jp": "ヘイムダル",
+    "en": "HEIMDALL",
+    "binary_id": "heimdall"
+  },
+  "champion-spotlight-red-skull": {
+    "jp": "レッドスカル",
+    "en": "RED SKULL",
+    "binary_id": "redskull"
+  },
+  "champion-spotlight-ghost": {
+    "jp": "ゴースト",
+    "en": "GHOST",
+    "binary_id": "ghost"
+  },
+  "champion-spotlight-wasp": {
+    "jp": "ワスプ",
+    "en": "WASP",
+    "binary_id": "wasp"
+  },
+  "champion-spotlight-domino": {
+    "jp": "ドミノ",
+    "en": "DOMINO",
+    "binary_id": "domino"
+  },
+  "champion-spotlight-iron-man-infinity-war": {
+    "jp": "アイアンマン",
+    "en": "IRON MAN",
+    "binary_id": "ironman"
+  },
+  "champion-spotlight-captain-america-infinity-war": {
+    "jp": "キャプテン・アメリカ",
+    "en": "CAPTAIN AMERICA",
+    "binary_id": "captainamerica"
+  },
+  "champion-spotlight-corvus-glaive": {
+    "jp": "コーヴァス・グレイヴ",
+    "en": "CORVUS GLAIVE",
+    "binary_id": "corvusglaive"
+  },
+  "champion-spotlight-proxima-midnight": {
+    "jp": "プロキシマ・ ミッドナイト",
+    "en": "PROXIMA MIDNIGHT",
+    "binary_id": "proximamidnight"
+  },
+  "champion-spotlight-sabretooth": {
+    "jp": "セイバートゥース",
+    "en": "SABRETOOTH",
+    "binary_id": "sabretooth"
+  },
+  "champion-spotlight-sentinel": {
+    "jp": "センチネル",
+    "en": "SENTINEL",
+    "binary_id": "sentinel"
+  },
+  "champion-spotlight-killmonger": {
+    "jp": "キルモンガー",
+    "en": "KILLMONGER",
+    "binary_id": "killmonger"
+  },
+  "champion-spotlight-void": {
+    "jp": "ボイド",
+    "en": "VOID",
+    "binary_id": "void"
+  },
+  "champion-spotlight-sentry": {
+    "jp": "セントリー",
+    "en": "SENTRY",
+    "binary_id": "sentry"
+  },
+  "champion-spotlight-m-o-d-o-k": {
+    "jp": "モードック",
+    "en": "M.O.D.O.K.",
+    "binary_id": "modok"
+  },
+  "champion-spotlight-taskmaster": {
+    "jp": "タスクマスター",
+    "en": "TASKMASTER",
+    "binary_id": "taskmaster"
+  },
+  "champion-spotlight-thanos": {
+    "jp": "サノス",
+    "en": "THANOS",
+    "binary_id": "thanos"
+  },
+  "champion-spotlight-ultron-classic": {
+    "jp": "ウルトロン（クラシック）",
+    "en": "ULTRON (KLASSISK)",
+    "binary_id": "ultron"
+  },
+  "champion-spotlight-doctor-strange": {
+    "jp": "ドクター・ストレンジ",
+    "en": "DOKTOR STRANGE",
+    "binary_id": "drstrange"
+  },
+  "champion-spotlight-hela": {
+    "jp": "ヘラ",
+    "en": "HELA",
+    "binary_id": "hela"
+  },
+  "champion-spotlight-morningstar": {
+    "jp": "モーニングスター",
+    "en": "MORNINGSTAR",
+    "binary_id": "morningstar"
+  },
+  "champion-spotlight-blade": {
+    "jp": "ブレイド",
+    "en": "BLADE",
+    "binary_id": "blade"
+  },
+  "champion-spotlight-mephisto": {
+    "jp": "メフィスト",
+    "en": "MEPHISTO",
+    "binary_id": "mephisto"
+  },
+  "champion-spotlight-medusa": {
+    "jp": "メデューサ",
+    "en": "MEDUSA",
+    "binary_id": "medusa"
+  },
+  "champion-spotlight-spider-man-stark-enhanced": {
+    "jp": "スパイダーマン(クラシック)",
+    "en": "SPIDER-MAN (KLASSISK)",
+    "binary_id": "spiderman"
+  },
+  "champion-spotlight-punisher-2099": {
+    "jp": "パニッシャー2099",
+    "en": "PUNISHER 2099",
+    "binary_id": "punisher_2099"
+  },
+  "champion-spotlight-carnage": {
+    "jp": "カーネージ",
+    "en": "CARNAGE",
+    "binary_id": "carnage"
+  },
+  "champion-spotlight-iceman": {
+    "jp": "アイスマン",
+    "en": "ICEMAN",
+    "binary_id": "iceman"
+  },
+  "champion-spotlight-yondu": {
+    "jp": "ヨンドゥ",
+    "en": "YONDU",
+    "binary_id": "yondu"
+  },
+  "champion-spotlight-psylocke": {
+    "jp": "サイロック",
+    "en": "PSYLOCKE",
+    "binary_id": "psylocke"
+  },
+  "champion-spotlight-archangel": {
+    "jp": "アークエンジェル",
+    "en": "ARCHANGEL",
+    "binary_id": "archangel"
+  },
+  "champion-spotlight-dormammu": {
+    "jp": "ドーマムゥ",
+    "en": "DORMAMMU",
+    "binary_id": "dormammu"
+  },
+  "champion-spotlight-cable": {
+    "jp": "ケーブル",
+    "en": "CABLE",
+    "binary_id": "cable"
+  },
+  "champion-spotlight-gwenpool": {
+    "jp": "グウェンプール",
+    "en": "GWENPOOL",
+    "binary_id": "gwenpool"
+  },
+  "champion-spotlight-hyperion": {
+    "jp": "ハイペリオン",
+    "en": "HYPERION",
+    "binary_id": "hyperion"
+  },
+  "champion-spotlight-ghost-rider": {
+    "jp": "ゴーストライダー",
+    "en": "GHOST RIDER",
+    "binary_id": "ghostrider"
+  },
+  "champion-spotlight-phoenix": {
+    "jp": "フェニックス",
+    "en": "PHOENIX",
+    "binary_id": "phoenix"
+  },
+  "champion-spotlight-quake": {
+    "jp": "クェイク",
+    "en": "QUAKE",
+    "binary_id": "quake"
+  },
+  "champion-spotlight-rogue": {
+    "jp": "ローグ",
+    "en": "ROGUE",
+    "binary_id": "rogue"
+  },
+  "champion-spotlight-gambit": {
+    "jp": "ガンビット",
+    "en": "GAMBIT",
+    "binary_id": "gambit"
+  },
+  "champion-spotlight-loki": {
+    "jp": "ロキ",
+    "en": "LOKE",
+    "binary_id": "loki"
+  },
+  "champion-spotlight-beast": {
+    "jp": "ビースト",
+    "en": "BEAST",
+    "binary_id": "beast"
+  },
+  "champion-spotlight-nightcrawler": {
+    "jp": "ナイトクローラー",
+    "en": "NIGHTCRAWLER",
+    "binary_id": "nightcrawler"
+  },
+  "champion-spotlight-falcon": {
+    "jp": "ファルコン",
+    "en": "FALCON",
+    "binary_id": "falcon"
+  },
+  "champion-spotlight-black-widow": {
+    "jp": "ブラック・ウィドウ",
+    "en": "BLACK WIDOW",
+    "binary_id": "blackwidow"
+  },
+  "champion-spotlight-magik": {
+    "jp": "マジック",
+    "en": "MAGIK",
+    "binary_id": "magik"
+  },
+  "champion-spotlight-the-leader": {
+    "jp": "リーダー",
+    "en": "LEADER",
+    "binary_id": "leader"
+  },
+  "champion-spotlight-king-groot-deathless": {
+    "jp": "キング・グルート（不死）",
+    "en": "KONG GROOT (UFORGJENGELIGE)",
+    "binary_id": "groot_king_deathless"
+  },
+  "champion-spotlight-the-destroyer": {
+    "jp": "デストロイヤー",
+    "en": "THE DESTROYER",
+    "binary_id": "destroyer"
+  },
+  "champion-spotlight-the-serpent": {
+    "jp": "サーペント",
+    "en": "SERPENT",
+    "binary_id": "serpent"
+  },
+  "champion-spotlight-gorr-the-god-butcher": {
+    "jp": "ゴア",
+    "en": "GORR",
+    "binary_id": "gorr"
+  },
+  "champion-spotlight-mordo": {
+    "jp": "モルド",
+    "en": "MORDO",
+    "binary_id": "karlmordo"
+  },
+  "champion-spotlight-thor-ragnarok": {
+    "jp": "ソー（ラグナロク）",
+    "en": "TOR (RAGNAROK)",
+    "binary_id": "thor_ragnarok"
+  },
+  "champion-spotlight-the-overseer": {
+    "jp": "監督者",
+    "en": "THE OVERSEER",
+    "binary_id": "maestro_overseer"
+  },
+  "champion-spotlight-mister-fantastic": {
+    "jp": "ミスター・ファンタスティック",
+    "en": "MISTER FANTASTIC",
+    "binary_id": "mrfantastic"
+  },
+  "champion-spotlight-howard-the-duck": {
+    "jp": "ハワード・ザ・ダック",
+    "en": "HOWARD THE DUCK",
+    "binary_id": "howardmech"
+  },
+  "champion-spotlight-silver-centurion": {
+    "jp": "シルバー・センチュリオン",
+    "en": "SILVER CENTURION",
+    "binary_id": "ironman_silvercenturion"
+  },
+  "champion-spotlight-hulk-immortal": {
+    "jp": "ハルク（イモータル）",
+    "en": "HULK (UDØDELIG)",
+    "binary_id": "hulk_immortal"
+  },
+  "champion-spotlight-red-goblin": {
+    "jp": "レッドゴブリン",
+    "en": "RED GOBLIN",
+    "binary_id": "red_goblin"
+  },
+  "champion-spotlight-platinumpool": {
+    "jp": "プラチナプール",
+    "en": "PLATINUMPOOL",
+    "binary_id": "deadpool_platinum"
+  },
+  "champion-spotlight-the-champion": {
+    "jp": "ザ・チャンピオン",
+    "en": "THE CHAMPION",
+    "binary_id": "champion"
+  },
+  "champion-spotlight-goldpool": {
+    "jp": "ゴールドプール",
+    "en": "GOLDPOOL",
+    "binary_id": "deadpool_gold"
+  },
+  "champion-spotlight-hulk-ragnarok": {
+    "jp": "ハルク（ラグナロク）",
+    "en": "HULK (RAGNAROK)",
+    "binary_id": "hulk_ragnarok"
+  },
+  "champion-spotlight-green-goblin": {
+    "jp": "グリーンゴブリン",
+    "en": "GREEN GOBLIN",
+    "binary_id": "green_goblin"
+  },
+  "champion-spotlight-the-hood": {
+    "jp": "フッド",
+    "en": "THE HOOD",
+    "binary_id": "hood"
+  },
+  "champion-spotlight-doctor-voodoo": {
+    "jp": "ドクター・ヴードゥー",
+    "en": "DOKTOR VOODOO",
+    "binary_id": "brothervoodoo"
+  },
+  "champion-spotlight-mr-knight": {
+    "jp": "ミスター・ナイト",
+    "en": "",
+    "binary_id": "misterknight"
+  },
+  "champion-spotlight-doctor-octopus": {
+    "jp": "ドクター・オクトパス",
+    "en": "",
+    "binary_id": "doctoroct"
+  },
+  "champion-spotlight-imperiosa": {
+    "jp": "インペリオーサ",
+    "en": "",
+    "binary_id": "imperiosa"
+  }
+}

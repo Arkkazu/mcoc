@@ -1,0 +1,647 @@
+﻿================================================================================
+Marvel Contest of Champions - チャンピオン一覧 (642グループ)
+================================================================================
+チャンピオン名                                IDプレフィックス     エントリー数
+--------------------------------------------------------------------------------
+Tutorial Data                                a1                  142
+Abomination (Immortal)                       abim                78
+(不明)                                         abm                 1
+(不明)                                         abmntn              5
+(不明)                                         abrk                1
+Adam Warlock                                 adam                191
+(不明)                                         adph                12
+Aegon                                        aeg                 149
+Agent Venom                                  agv                 23
+America Chavez                               amcha               132
+Amra                                         amra                252
+(不明)                                         ang                 49
+Annihilus                                    anni                63
+Ant-Man (Future Variant)                     antfu               131
+(不明)                                         anti                1
+Anti-Venom                                   antisbt             160
+(不明)                                         antivnm             117
+(不明)                                         antm                19
+(不明)                                         antu                47
+Act of Legacy (Content)                      aol                 3253
+(不明)                                         apfoo               70
+Apocalypse                                   apo                 135
+(不明)                                         aq                  455
+Arcade                                       arc                 167
+(不明)                                         archa               45
+Ares                                         ares                209
+Archangel                                    atma                214
+White Tiger (Ava Ayala)                      ava                 463
+Avengers (Synergy/Content)                   ave                 431
+(不明)                                         avs                 1
+Alliance vs X-Men (Content)                  avx                 1271
+Alliance War (Content)                       aw                  324
+(不明)                                         awes                74
+(不明)                                         awlk                142
+Bast                                         bast                154
+(不明)                                         bc                  6
+(不明)                                         bcar                44
+Beast                                        beast               5
+(不明)                                         bg                  32
+Black Hammer (Boss)                          bhmt                280
+(不明)                                         biggame             4
+(不明)                                         bish                31
+Bishop                                       bishn               123
+Blade                                        blade               46
+(不明)                                         bladesf             73
+(不明)                                         blct                135
+(不明)                                         blkblt              20
+(不明)                                         blkpanther          55
+(不明)                                         blkpnthr            10
+(不明)                                         blkwidw             11
+(不明)                                         block               1
+Blue Marvel                                  blumrvl             140
+Bong (Boss)                                  bong                128
+(不明)                                         boost               5
+(不明)                                         bpu                 87
+(不明)                                         bst                 57
+(不明)                                         btrbll              117
+Bullseye                                     bull                167
+(不明)                                         bv                  66
+(不明)                                         bwmcu               86
+Captain Britain                              capb                106
+(不明)                                         capiw               68
+Captain America (Sam Wilson)                 capsw               147
+(不明)                                         car                 34
+Carl (Boss)                                  carl                166
+Serpent (Car Boss)                           carserp             348
+(不明)                                         cass                20
+Cassie Lang                                  cassie              122
+(不明)                                         cbl                 49
+Ceras (Boss)                                 ceras               293
+(不明)                                         cf                  23
+(不明)                                         cgr                 70
+(不明)                                         champ               6
+(不明)                                         cheat               5
+(不明)                                         chlth               104
+(不明)                                         clb                 3
+(不明)                                         clclps              6
+(不明)                                         close               12
+(不明)                                         clsun               18
+(不明)                                         clsus               10
+Count Nefaria                                cnef                145
+Nova (Captain)                               cnova               156
+Colossus                                     col                 279
+(不明)                                         coldf               9
+(不明)                                         colos               51
+(不明)                                         combat              1
+(不明)                                         corvus              69
+(不明)                                         count               3
+(不明)                                         cpam                4
+(不明)                                         cpmrv               8
+(不明)                                         cptbbb              50
+(不明)                                         cptmcu              110
+(不明)                                         cptnmrca            2
+(不明)                                         cptnmrcawwii        1
+(不明)                                         cpww2               4
+(不明)                                         crbu                43
+(不明)                                         cs                  53
+(不明)                                         ctw                 13
+(不明)                                         cul                 90
+Black Widow (Civil War)                      cvbw                67
+(不明)                                         cvw                 42
+(不明)                                         cw                  4
+(不明)                                         cwu                 38
+Cyclops (90s)                                cyc90               93
+Cyclops                                      cyclops             1
+(不明)                                         cyclps              6
+Dani Moonstar                                dani                110
+Dazzler                                      daz                 246
+Doctor Doom (Bot)                            dbotu               105
+(不明)                                         ddpl                8
+(不明)                                         ddpl0               1
+(不明)                                         ddplx               7
+(不明)                                         debug               41
+Deadpool                                     ded                 188
+(不明)                                         def                 18
+(不明)                                         det                 7
+(不明)                                         dhark               5
+(不明)                                         dhawk               81
+(不明)                                         dhk                 58
+(不明)                                         diau                90
+(不明)                                         disen               10
+(不明)                                         dkg                 20
+(不明)                                         dman                98
+(不明)                                         doc                 163
+Domino                                       dom                 135
+Doctor Doom                                  doom                82
+Dormammu                                     dor                 66
+(不明)                                         dplgld              36
+Deadpool (Platpool)                          dplplat             215
+(不明)                                         dpocos              26
+(不明)                                         dpomut              21
+(不明)                                         dpomys              29
+(不明)                                         dposci              24
+(不明)                                         dposkl              22
+(不明)                                         dpotch              17
+(不明)                                         dps                 18
+(不明)                                         dpxuwu              71
+Dracula                                      drac                102
+(不明)                                         drax                7
+(不明)                                         drdn                13
+(不明)                                         drdvl               11
+(不明)                                         drsrt               1
+(不明)                                         drstr               29
+Doctor Strange                               drstrange           99
+(不明)                                         drvood              46
+Deathtrap                                    dthns               159
+Dungeons (Content)                           dun                 426
+Dust                                         dust                99
+(不明)                                         ebm                 77
+(不明)                                         elec                6
+(不明)                                         elecluke            27
+(不明)                                         electro             20
+(不明)                                         elkta               17
+Elsa Bloodstone                              elsa                82
+Emma Frost                                   emma                193
+(不明)                                         enrg                19
+(不明)                                         enrgy               1
+(不明)                                         entree              3
+(不明)                                         eq                  15
+Fantastic Four Saga                          f4                  38
+(不明)                                         fight               3
+(不明)                                         flc                 38
+(不明)                                         flcjt               99
+(不明)                                         flcu                42
+(不明)                                         fncom               24
+(不明)                                         fpos                5
+(不明)                                         frank               20
+Franken-Castle                               frnk                108
+(不明)                                         fte                 2
+(不明)                                         fthor               19
+(不明)                                         fury                1
+(不明)                                         fx                  4
+Galan                                        galan               151
+(不明)                                         ggob                63
+(不明)                                         ghost               63
+(不明)                                         ghr                 54
+Ghost Rider (Universe)                       ghru                134
+Gladiator                                    glad                132
+(不明)                                         glltn               35
+(不明)                                         glt29               130
+(不明)                                         gltn                31
+Glykon                                       glyk                334
+Grandmaster                                  gmast               265
+Grandmaster                                  gmaster             495
+(不明)                                         gmb                 46
+(不明)                                         gmra                64
+(不明)                                         gntl                136
+Gorr the God Butcher                         gorr                91
+System Global Passive                        gp                  31
+(不明)                                         grt                 38
+(不明)                                         gt                  6
+Guardsman                                    guard               97
+(不明)                                         guu                 48
+(不明)                                         gwhyp               58
+(不明)                                         gwp                 41
+(不明)                                         hawko               70
+(不明)                                         hdu                 62
+Heimdall                                     heim                66
+(不明)                                         hela                61
+(不明)                                         hell                5
+(不明)                                         hell2               18
+Hercules                                     herc                122
+(不明)                                         higevo              5
+High Evolutionary                            highevo             168
+(不明)                                         him                 239
+(不明)                                         hit                 1
+Hit-Monkey                                   hitmon              101
+(不明)                                         hkbst               70
+(不明)                                         hklu                2
+(不明)                                         hlklin              10
+Hulkling                                     hlklng              107
+Henchman (Chapel)                            hnchpl              83
+(不明)                                         hobie               6
+(不明)                                         hotnbot             6
+(不明)                                         htdu                115
+(不明)                                         hulk                12
+(不明)                                         hulkbstr            7
+Hulk (Immortal)                              hulkim              100
+(不明)                                         hulkling            10
+Hulk (Ragnarok)                              hulkrag             105
+(不明)                                         hulku               57
+Havok                                        hvk                 74
+(不明)                                         hwky                7
+Hyperion                                     hyp                 58
+(不明)                                         iam                 11
+(不明)                                         icky                15
+(不明)                                         icm                 43
+(不明)                                         icmphx              35
+(不明)                                         ifist               9
+(不明)                                         ifistw              4
+Iron Heart                                   iheart              118
+Iron Man (Infamous)                          iim                 157
+(不明)                                         ikaris              54
+(不明)                                         iman                118
+(不明)                                         imi                 83
+(不明)                                         immrk               120
+(不明)                                         imp                 141
+(不明)                                         incur               117
+(不明)                                         inside              39
+(不明)                                         invulnerable        5
+Invisible Woman                              invwo               111
+(不明)                                         ipat                16
+Iphyne (Boss)                                iphyne              110
+(不明)                                         jabpan              76
+(不明)                                         jabpantu            90
+(不明)                                         jack                80
+(不明)                                         jean                143
+Jessica Jones                                jess                174
+(不明)                                         jgrnt               22
+J. Jonah Jameson                             jjj                 256
+Jubilee (Variant)                            joov                206
+Jubilee                                      jub                 116
+(不明)                                         jugg                11
+(不明)                                         jugger              59
+(不明)                                         kang                4
+Kang (Impostor)                              kangimp             238
+Kang (Superior)                              kangsup             416
+(不明)                                         karl                4
+Karrie                                       karrie              257
+Kate Bishop                                  kate                140
+(不明)                                         kg                  59
+(不明)                                         kgroot              47
+(不明)                                         kgu                 51
+(不明)                                         killm               69
+(不明)                                         kindrd              146
+(不明)                                         kmla                30
+(不明)                                         kng                 6
+(不明)                                         knp                 18
+(不明)                                         knull               65
+Korg                                         korg                82
+(不明)                                         kpu                 65
+(不明)                                         krku                44
+Karven                                       krvn                126
+(不明)                                         ksla                108
+King Thor                                    ktyp                141
+(不明)                                         lab                 206
+Lady Deathstrike                             ld                  177
+The Leader                                   leader              132
+(不明)                                         legacy              1
+(不明)                                         lite                9
+(不明)                                         lkcg                11
+(不明)                                         lkcgu               19
+(不明)                                         loki                41
+(不明)                                         long                102
+Leviathon Tide                               lotan               273
+(不明)                                         luke                58
+Luma                                         luma                141
+(不明)                                         lzrd                130
+(不明)                                         m                   459
+(不明)                                         madelyne            9
+Madelyne Pryor                               mady                196
+Maestro                                      maes                101
+Magik                                        magik               141
+The Maker                                    maker               185
+(不明)                                         mant                137
+Mantis                                       mantis              143
+M-Baku                                       mbaku               105
+(不明)                                         md                  1
+Mordok                                       mdk                 221
+(不明)                                         meas                1
+(不明)                                         medus               46
+(不明)                                         mephis              63
+(不明)                                         mephisto            2
+(不明)                                         metabolism          6
+(不明)                                         mgcl                72
+(不明)                                         mgk                 37
+(不明)                                         mgnt                13
+Magneto (X-Men)                              mgnx                94
+(不明)                                         mgog                129
+(不明)                                         mgst                50
+(不明)                                         minion              6
+(不明)                                         mk                  24
+Makkari                                      mkt                 151
+Mole Man                                     mls                 189
+Mojo                                         mojo                257
+(不明)                                         molmn               111
+(不明)                                         moondr              136
+Morbius                                      morb                113
+(不明)                                         mordo               57
+Mr. Knuckles                                 mrkn                133
+(不明)                                         mrneg               72
+(不明)                                         mrsin               92
+(不明)                                         mrsinister          26
+(不明)                                         msl                 38
+(不明)                                         msmrvl              9
+(不明)                                         mstro               37
+(不明)                                         msu                 45
+(不明)                                         mut                 1
+(不明)                                         mystic              1
+Mysterio                                     mysto               76
+(不明)                                         n                   11
+Namor                                        nam                 109
+(不明)                                         nblu                42
+(不明)                                         ncarn               47
+Necropolis (Content)                         nec                 6077
+(不明)                                         ngc                 40
+(不明)                                         nick                103
+Nico Minoru                                  nico                112
+Nimrod                                       nim                 113
+Nightmare (Master)                           nmaster             485
+Nova                                         nova                178
+NPC Enemy                                    npc                 7
+Northstar                                    nrthstr             136
+(不明)                                         nthra               85
+(不明)                                         ntrha               1
+(不明)                                         ntw                 85
+Odin                                         odin                222
+(不明)                                         oky                 92
+(不明)                                         oml                 65
+Onslaught                                    onslght             113
+Omega Red                                    ored                104
+Storm (Ororo Variant)                        oro                 175
+Old Man Logan                                osntl               148
+(不明)                                         outside             13
+(不明)                                         overseer            1
+(不明)                                         ovrsr               129
+(不明)                                         p                   6
+(不明)                                         parry               27
+(不明)                                         pc                  147
+Peni Parker                                  peni                125
+(不明)                                         pf                  5
+(不明)                                         phnx                133
+Photon                                       photon              145
+Phoenix                                      phx                 233
+Pixie                                        pixie               198
+(不明)                                         pj                  6
+(不明)                                         pn29                69
+(不明)                                         pn29u               66
+(不明)                                         pnang               35
+(不明)                                         pnsher              2
+(不明)                                         pnshr               24
+Punisher 2099                                pnshru              150
+(不明)                                         power               2
+Professor X                                  profx               170
+Prowler                                      prowl               113
+Proxima Midnight                             proxima             74
+(不明)                                         psyl                66
+Psylocke                                     psymn               101
+Patriot                                      ptrt                136
+Purgatory                                    purg                114
+PVE Content                                  pve                 10950
+Colossus (Piotr Variant)                     pvitr               142
+(不明)                                         pwr                 35
+(不明)                                         pwrcos1             1
+(不明)                                         pwrcos1a            1
+(不明)                                         pwrcos1b            1
+(不明)                                         pwrcos2             1
+(不明)                                         pwrcos2a            1
+(不明)                                         pwrcos2b            1
+(不明)                                         pwrcos3             1
+(不明)                                         pwrcos3a            1
+(不明)                                         pwrcos3b            1
+(不明)                                         pwrmut1             1
+(不明)                                         pwrmut1a            1
+(不明)                                         pwrmut1b            1
+(不明)                                         pwrmut2             1
+(不明)                                         pwrmut2a            1
+(不明)                                         pwrmut2b            1
+(不明)                                         pwrmut3             1
+(不明)                                         pwrmut3a            1
+(不明)                                         pwrmut3b            1
+(不明)                                         pwrmys1             1
+(不明)                                         pwrmys1a            1
+(不明)                                         pwrmys1b            1
+(不明)                                         pwrmys2             1
+(不明)                                         pwrmys2a            1
+(不明)                                         pwrmys2b            1
+(不明)                                         pwrmys3             1
+(不明)                                         pwrmys3a            1
+(不明)                                         pwrmys3b            1
+(不明)                                         pwrsci1             1
+(不明)                                         pwrsci1a            1
+(不明)                                         pwrsci1b            1
+(不明)                                         pwrsci2             1
+(不明)                                         pwrsci2a            1
+(不明)                                         pwrsci2b            1
+(不明)                                         pwrsci3             1
+(不明)                                         pwrsci3a            1
+(不明)                                         pwrsci3b            1
+(不明)                                         pwrski1             1
+(不明)                                         pwrski1a            1
+(不明)                                         pwrski1b            1
+(不明)                                         pwrski2             1
+(不明)                                         pwrski2a            1
+(不明)                                         pwrski2b            1
+(不明)                                         pwrski3             1
+(不明)                                         pwrski3a            1
+(不明)                                         pwrski3b            1
+(不明)                                         pwrtec1             1
+(不明)                                         pwrtec1a            1
+(不明)                                         pwrtec1b            1
+(不明)                                         pwrtec2             1
+(不明)                                         pwrtec2a            1
+(不明)                                         pwrtec2b            1
+(不明)                                         pwrtec3             1
+(不明)                                         pwrtec3a            1
+(不明)                                         pwrtec3b            1
+Quicksilver                                  qckslvr             217
+(不明)                                         qke                 63
+Raids (Content)                              raid                663
+(不明)                                         rdh                 46
+(不明)                                         rdhu                24
+Red Guardian                                 redg                176
+Mister Fantastic                             reed                196
+(不明)                                         rel                 574
+Red Goblin                                   rgob                113
+(不明)                                         rhn                 84
+(不明)                                         rhno                35
+(不明)                                         rint                70
+(不明)                                         rnan                16
+(不明)                                         roachroot           27
+Rogue                                        rogue               147
+Rocket Raccoon                               rokt                118
+(不明)                                         rol                 1
+(不明)                                         ron                 88
+(不明)                                         rskull              50
+(不明)                                         rskulln             70
+Ruby Thursday                                ruby                138
+(不明)                                         sabre               97
+(不明)                                         saga                55
+Sandman                                      sand                155
+(不明)                                         sau                 70
+Story Battle (Content)                       sb                  1287
+(不明)                                         sci                 2
+(不明)                                         scitch              110
+Scream                                       scrm                155
+(不明)                                         scrp                20
+Scorpion                                     scrpn               164
+(不明)                                         sctich              1
+Scytalis                                     scytalis            221
+(不明)                                         sent                100
+Sentinel Bot                                 sentibot            81
+(不明)                                         sentibots           3
+Sentinel                                     sentinel            86
+Sentineloid (Boss)                           sentineloid         134
+Sentry                                       sentry              59
+Sersi                                        sersi               117
+Shang-Chi                                    shang               113
+(不明)                                         sheh                112
+(不明)                                         shehn               64
+(不明)                                         shkr                137
+She-Hulk (Thanos Variant)                    shthra              186
+Shuri                                        shuri               122
+(不明)                                         siau                6
+(不明)                                         sig                 21
+Silk                                         silk                114
+(不明)                                         silvsam             93
+(不明)                                         ski                 1
+Skrull                                       skrull              81
+(不明)                                         sl                  6
+(不明)                                         slsf                66
+Solvang                                      solv                117
+Sorcerer Supreme                             sorcsup             100
+(不明)                                         sp                  6
+(不明)                                         sp3d                1
+(不明)                                         sp3o                1
+(不明)                                         spcos1a             1
+(不明)                                         spcos1b             1
+(不明)                                         spcos2a             1
+(不明)                                         spcos2b             1
+(不明)                                         spcos3a             1
+(不明)                                         spcos3b             1
+(不明)                                         spdmm               49
+Spider-Man 2099                              spdr2099            101
+(不明)                                         spdrgwn             36
+(不明)                                         spdrmn              75
+Spider-Man Supreme                           spdrsprm            156
+Spider-Woman                                 spdrwmn             152
+(不明)                                         spgwn               64
+Spider-Ham                                   spham               187
+(不明)                                         spmcu               75
+(不明)                                         spmmu               73
+(不明)                                         spmut1a             1
+(不明)                                         spmut1b             1
+(不明)                                         spmut2a             1
+(不明)                                         spmut2b             1
+(不明)                                         spmut3a             1
+(不明)                                         spmut3b             1
+(不明)                                         spmys1a             1
+(不明)                                         spmys1b             1
+(不明)                                         spmys2a             1
+(不明)                                         spmys2b             1
+(不明)                                         spmys3a             1
+(不明)                                         spmys3b             1
+The Spot                                     spot                147
+Spiral                                       sprl                153
+(不明)                                         spsci1a             1
+(不明)                                         spsci1b             1
+(不明)                                         spsci2a             1
+(不明)                                         spsci2b             1
+(不明)                                         spsci3a             1
+(不明)                                         spsci3b             1
+(不明)                                         spski1a             1
+(不明)                                         spski1b             1
+(不明)                                         spski2a             1
+(不明)                                         spski2b             1
+(不明)                                         spski3a             1
+(不明)                                         spski3b             1
+(不明)                                         sptec1a             1
+(不明)                                         sptec1b             1
+(不明)                                         sptec2a             1
+(不明)                                         sptec2b             1
+(不明)                                         sptec3a             1
+(不明)                                         sptec3b             1
+Spunk                                        spunk               276
+(不明)                                         spwtch              55
+Squirrel Girl                                sqch                113
+(不明)                                         sqg                 88
+(不明)                                         sr                  50
+Serpent                                      srpnt               146
+Silver Sable                                 ssable              132
+(不明)                                         start               1
+(不明)                                         stlsdpr             1
+Steel Spider                                 stlspdr             151
+Storm (Rogue Variant)                        stormr              103
+Stryfe                                       strf                109
+(不明)                                         strlrd              19
+(不明)                                         strm                9
+(不明)                                         stromr              1
+(不明)                                         stru                27
+(不明)                                         suns                101
+(不明)                                         sunsout             6
+Cosmic Spider-Man                            supman              182
+Silver Surfer                                surf                107
+Switch                                       swtch               28
+(不明)                                         sym                 2
+(不明)                                         symb                54
+(不明)                                         symbd               28
+(不明)                                         syms                85
+(不明)                                         syn                 44
+(不明)                                         t6                  1
+Thor (Binary Variant)                        tbe                 233
+(不明)                                         tbfire              21
+(不明)                                         tch                 1
+(不明)                                         tchalla             110
+(不明)                                         tech                1
+(不明)                                         tel                 37
+Terrax                                       terry               145
+(不明)                                         test                88
+(不明)                                         tfil                8
+Thanos                                       thanos              275
+(不明)                                         thdstrr             133
+The Champion                                 thechamp            232
+The Thing                                    thing               89
+(不明)                                         thor                19
+(不明)                                         thrh                1
+(不明)                                         thrj                37
+(不明)                                         thru                33
+(不明)                                         tigra               88
+(不明)                                         time                1
+Taskmaster                                   tm                  113
+Titania                                      tnia                144
+Toad                                         toad                91
+Human Torch                                  torch               168
+(不明)                                         tot                 1
+(不明)                                         tresrgob            43
+(不明)                                         tricky              15
+(不明)                                         tut                 60
+(不明)                                         ultc                33
+(不明)                                         ultrn               74
+(不明)                                         ultu                74
+(不明)                                         valk                103
+(不明)                                         visaark             72
+Viv Vision                                   viv                 176
+(不明)                                         vlt                 74
+(不明)                                         vnm                 85
+(不明)                                         vnpl                50
+The Void                                     void                123
+Vox                                          vox                 168
+(不明)                                         vplu                114
+(不明)                                         vsmov               8
+(不明)                                         vsn                 65
+Venompool                                    vtd                 140
+War Machine                                  warmac              104
+(不明)                                         wasp                40
+Wave                                         wave                141
+(不明)                                         wca                 6
+(不明)                                         wccn                199
+White Tiger                                  whttgr              92
+(不明)                                         willp               9
+(不明)                                         wlom                42
+(不明)                                         wlvrn               12
+(不明)                                         wlvrn0              1
+(不明)                                         wlvrn1              1
+(不明)                                         wnsld               25
+Wong                                         wong                139
+(不明)                                         wpnx                89
+Warlock                                      wrlk                68
+(不明)                                         wrmch               25
+Werewolf by Night                            wwolf               156
+X-23                                         x23                 56
+(不明)                                         x230                1
+(不明)                                         x231                1
+X-23 (Uncanny)                               x23u                158
+(不明)                                         yju                 59
+Yellowjacket                                 ylb                 95
+(不明)                                         ylj                 5
+(不明)                                         yllwjac             5
+(不明)                                         ynd                 31
+(不明)                                         yndu                40
+Baron Zemo                                   zemo                152
+Arnim Zola                                   zola                177

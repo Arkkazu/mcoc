@@ -1,0 +1,5024 @@
+{
+  "abomination": {
+    "jp": "アボミネーション",
+    "en": "ABOMINATION",
+    "ru": "МЕРЗОСТЬ",
+    "ko": "어보미네이션"
+  },
+  "abomination_immortal": {
+    "jp": "アボミネーション（イモータル）",
+    "en": "ABOMINATION (UDØDELIG)",
+    "ru": "МЕРЗОСТЬ (БЕССМЕРТНЫЙ)",
+    "ko": "어보미네이션(이모탈)"
+  },
+  "absorbingman": {
+    "jp": "アブソービングマン",
+    "en": "ABSORBING MAN",
+    "ru": "ПОГЛОТИТЕЛЬ",
+    "ko": "앱소빙 맨"
+  },
+  "adamwarlock": {
+    "jp": "アダム・ウォーロック",
+    "en": "ADAM WARLOCK",
+    "ru": "АДАМ УОРЛОК",
+    "ko": "아담 워록"
+  },
+  "aegon": {
+    "jp": "エイゴン",
+    "en": "ÆGON",
+    "ru": "ЭЙГОН",
+    "ko": "에이곤"
+  },
+  "agentvenom": {
+    "jp": "エージェント・ヴェノム",
+    "en": "AGENT VENOM",
+    "ru": "АГЕНТ ВЕНОМ",
+    "ko": "에이전트 베놈"
+  },
+  "airwalker": {
+    "jp": "エア・ウォーカー",
+    "en": "AIR-WALKER",
+    "ru": "ИДУЩИЙ ПО ВОЗДУХУ",
+    "ko": "에어워커"
+  },
+  "americachavez": {
+    "jp": "アメリカ・チャベス",
+    "en": "AMERICA CHAVEZ",
+    "ru": "АМЕРИКА ЧАВЕС",
+    "ko": "아메리카 차베즈"
+  },
+  "angela": {
+    "jp": "アンジェラ",
+    "en": "ANGELA",
+    "ru": "АНЖЕЛА",
+    "ko": "안젤라"
+  },
+  "annihilus": {
+    "jp": "アニヒラス",
+    "en": "ANNIHILUS",
+    "ru": "АННИГИЛУС",
+    "ko": "어나힐러스"
+  },
+  "antivenom": {
+    "jp": "アンチヴェノム",
+    "en": "ANTI-VENOM",
+    "ru": "АНТИ-ВЕНОМ",
+    "ko": "안티베놈"
+  },
+  "antivenomoid_cosmic": {
+    "jp": "アンチ・ヴェノモイド",
+    "en": "ANTI-VENOMOID",
+    "ru": "АНТИ-ВЕНОМОИД",
+    "ko": "안티베놈오이드"
+  },
+  "antivenomoid_mutant": {
+    "jp": "アンチ・ヴェノモイド",
+    "en": "ANTI-VENOMOID",
+    "ru": "АНТИ-ВЕНОМОИД",
+    "ko": "안티베놈오이드"
+  },
+  "antivenomoid_mystic": {
+    "jp": "アンチ・ヴェノモイド",
+    "en": "ANTI-VENOMOID",
+    "ru": "АНТИ-ВЕНОМОИД",
+    "ko": "안티베놈오이드"
+  },
+  "antivenomoid_science": {
+    "jp": "アンチ・ヴェノモイド",
+    "en": "ANTI-VENOMOID",
+    "ru": "АНТИ-ВЕНОМОИД",
+    "ko": "안티베놈오이드"
+  },
+  "antivenomoid_skill": {
+    "jp": "アンチ・ヴェノモイド",
+    "en": "ANTI-VENOMOID",
+    "ru": "АНТИ-ВЕНОМОИД",
+    "ko": "안티베놈오이드"
+  },
+  "antivenomoid_tech": {
+    "jp": "アンチ・ヴェノモイド",
+    "en": "ANTI-VENOMOID",
+    "ru": "АНТИ-ВЕНОМОИД",
+    "ko": "안티베놈오이드"
+  },
+  "antman": {
+    "jp": "アントマン",
+    "en": "ANT-MAN",
+    "ru": "ЧЕЛОВЕК-МУРАВЕЙ",
+    "ko": "앤트맨"
+  },
+  "antman_future": {
+    "jp": "アントマン（未来）",
+    "en": "ANT-MAN (FUTURE)",
+    "ru": "ЧЕЛОВЕК-МУРАВЕЙ (БУДУЩЕЕ)",
+    "ko": "앤트맨(미래)"
+  },
+  "apocalypse": {
+    "jp": "アポカリプス",
+    "en": "APOCALYPSE",
+    "ru": "АПОКАЛИПСИС",
+    "ko": "아포칼립스"
+  },
+  "arcade": {
+    "jp": "アーケード",
+    "en": "ARCADE",
+    "ru": "АРКАДА",
+    "ko": "아케이드"
+  },
+  "archangel": {
+    "jp": "アークエンジェル",
+    "en": "ARCHANGEL",
+    "ru": "АРХАНГЕЛ",
+    "ko": "아크앤젤"
+  },
+  "ares": {
+    "jp": "アレス",
+    "en": "ARES",
+    "ru": "АРЕС",
+    "ko": "아레스"
+  },
+  "arnimzola": {
+    "jp": "アーニム・ゾラ",
+    "en": "ARNIM ZOLA",
+    "ru": "АРНИМ ЗОЛА",
+    "ko": "아르님 졸라"
+  },
+  "attuma": {
+    "jp": "アットゥマ",
+    "en": "ATTUMA",
+    "ru": "АТТУМА",
+    "ko": "아투마"
+  },
+  "bahamet": {
+    "jp": "ハルク（バハメット）",
+    "en": "HULK (BAHAMET)",
+    "ru": "ХАЛК (БАХАМЕТ)",
+    "ko": "헐크 (바하메트)"
+  },
+  "baronzemo": {
+    "jp": "バロン・ジーモ",
+    "en": "BARON ZEMO",
+    "ru": "БАРОН ЗЕМО",
+    "ko": "제모 남작"
+  },
+  "bastion": {
+    "jp": "バスティオン",
+    "en": "BASTION",
+    "ru": "БАСТИОН",
+    "ko": "바스티온"
+  },
+  "beast": {
+    "jp": "ビースト",
+    "en": "BEAST",
+    "ru": "ЗВЕРЬ",
+    "ko": "비스트"
+  },
+  "betaraybill": {
+    "jp": "ベータ・レイ・ビル",
+    "en": "BETA RAY BILL",
+    "ru": "БЕТА РЭЙ БИЛЛ",
+    "ko": "베타 레이 빌"
+  },
+  "bishop": {
+    "jp": "ビショップ",
+    "en": "BISHOP",
+    "ru": "БИШОП",
+    "ko": "비숍"
+  },
+  "blackbolt": {
+    "jp": "ブラックボルト",
+    "en": "BLACK BOLT",
+    "ru": "ЧЕРНЫЙ ГРОМ",
+    "ko": "블랙 볼트"
+  },
+  "blackcat": {
+    "jp": "ブラックキャット",
+    "en": "BLACK CAT",
+    "ru": "ЧЕРНАЯ КОШКА",
+    "ko": "블랙 캣"
+  },
+  "blackpanther": {
+    "jp": "ブラックパンサー",
+    "en": "BLACK PANTHER",
+    "ru": "ЧЕРНАЯ ПАНТЕРА",
+    "ko": "블랙팬서"
+  },
+  "blackpanther_cw": {
+    "jp": "ブラックパンサー(シビル・ウォー)",
+    "en": "BLACK PANTHER (CIVIL WAR)",
+    "ru": "ЧЕРНАЯ ПАНТЕРА (ГРАЖДАНСКАЯ ВОЙНА)",
+    "ko": "블랙 팬서(시빌 워)"
+  },
+  "blackpanther_realm": {
+    "jp": "ジャバリ・パンサー",
+    "en": "JABARI PANTHER",
+    "ru": "ПАНТЕРА ДЖАБАРИ",
+    "ko": "자바리 팬서"
+  },
+  "blackwidow": {
+    "jp": "ブラック・ウィドウ",
+    "en": "BLACK WIDOW",
+    "ru": "ЧЕРНАЯ ВДОВА",
+    "ko": "블랙 위도우"
+  },
+  "blackwidow_movie": {
+    "jp": "ブラック・ウィドウ（デッドリー・オリジン）",
+    "en": "BLACK WIDOW (DEADLY ORIGIN)",
+    "ru": "ЧЕРНАЯ ВДОВА (СМЕРТЕЛЬНО ОПАСНА)",
+    "ko": "블랙 위도우(데들리 오리진)"
+  },
+  "blackwidow_timely": {
+    "jp": "ブラック・ウィドウ（クレア・ヴォヤン）",
+    "en": "BLACK WIDOW (CLAIRE VOYANT)",
+    "ru": "ЧЕРНАЯ ВДОВА (КЛЭР ВОЙАНТ)",
+    "ko": "블랙 위도우(클레어 보이언트)"
+  },
+  "blade": {
+    "jp": "ブレイド",
+    "en": "BLADE",
+    "ru": "БЛЭЙД",
+    "ko": "블레이드"
+  },
+  "blade_stellar": {
+    "jp": "ブレイド（ステラ・フォージド）",
+    "en": "BLADE (STJERNESKAPT)",
+    "ru": "БЛЭЙД (ЗВЕЗДНАЯ КУЗНИЦА)",
+    "ko": "블레이드(스텔라 포지드)"
+  },
+  "bluemarvel": {
+    "jp": "ブルーマーベル",
+    "en": "BLUE MARVEL",
+    "ru": "СИНЕЕ ЧУДО",
+    "ko": "블루 마블"
+  },
+  "brothervoodoo": {
+    "jp": "ドクター・ヴードゥー",
+    "en": "DOKTOR VOODOO",
+    "ru": "ДОКТОР ВУДУ",
+    "ko": "닥터 부두"
+  },
+  "bullseye": {
+    "jp": "ブルズアイ",
+    "en": "BULLSEYE",
+    "ru": "МЕЧЕНЫЙ",
+    "ko": "불스아이"
+  },
+  "cable": {
+    "jp": "ケーブル",
+    "en": "CABLE",
+    "ru": "КАБЕЛЬ",
+    "ko": "케이블"
+  },
+  "captainamerica": {
+    "jp": "キャプテン・アメリカ",
+    "en": "CAPTAIN AMERICA",
+    "ru": "КАПИТАН АМЕРИКА",
+    "ko": "캡틴 아메리카"
+  },
+  "captainamerica_movie": {
+    "jp": "キャプテン・アメリカ（インフィニティ・ウォー）",
+    "en": "CAPTAIN AMERICA (INFINITY WAR)",
+    "ru": "КАПИТАН АМЕРИКА (ВОЙНА БЕСКОНЕЧНОСТИ)",
+    "ko": "캡틴 아메리카(인피니티 워)"
+  },
+  "captainamerica_samwilson": {
+    "jp": "キャプテン・アメリカ（サム・ウィルソン）",
+    "en": "CAPTAIN AMERICA (SAM WILSON)",
+    "ru": "КАПИТАН АМЕРИКА (СЭМ УИЛСОН)",
+    "ko": "캡틴 아메리카(샘 윌슨)"
+  },
+  "captainamerica_ww2": {
+    "jp": "キャプテン・アメリカ(WWII)",
+    "en": "CAPTAIN AMERICA (2. VERDENSKRIG)",
+    "ru": "КАПИТАН АМЕРИКА (ВТОРАЯ МИРОВАЯ)",
+    "ko": "캡틴 아메리카(WWII)"
+  },
+  "captainbritain": {
+    "jp": "キャプテン・ブリテン",
+    "en": "CAPTAIN BRITAIN",
+    "ru": "КАПИТАН БРИТАНИЯ",
+    "ko": "캡틴 브리튼"
+  },
+  "captainmarvel": {
+    "jp": "キャプテン・マーベル（クラシック）",
+    "en": "CAPTAIN MARVEL (KLASSISK)",
+    "ru": "КАПИТАН МАРВЕЛ (КЛАССИКА)",
+    "ko": "캡틴 마블(클래식)"
+  },
+  "captainmarvel_movie": {
+    "jp": "キャプテン・マーベル",
+    "en": "CAPTAIN MARVEL",
+    "ru": "КАПИТАН МАРВЕЛ",
+    "ko": "캡틴 마블"
+  },
+  "carina_chronoserpent": {
+    "jp": "カリーナ（クロノサーペント）",
+    "en": "CARINA (CHRONOSERPENT)",
+    "ru": "КАРИНА (ХРОНОЗМЕЙ)",
+    "ko": "카리나(크로노서펀트)"
+  },
+  "carnage": {
+    "jp": "カーネージ",
+    "en": "CARNAGE",
+    "ru": "КАРНАЖ",
+    "ko": "카니지"
+  },
+  "cassielang": {
+    "jp": "キャシー・ラング",
+    "en": "CASSIE LANG",
+    "ru": "КЭССИ ЛЭНГ",
+    "ko": "캐시 랭"
+  },
+  "cerastes": {
+    "jp": "アイアンマン（セラステス）",
+    "en": "IRON MAN (CERASTES)",
+    "ru": "ЖЕЛЕЗНЫЙ ЧЕЛОВЕК (ЦЕРАСТ)",
+    "ko": "아이언맨(세라스테스)"
+  },
+  "champion": {
+    "jp": "ザ・チャンピオン",
+    "en": "THE CHAMPION",
+    "ru": "ЧЕМПИОН ВСЕЛЕННОЙ",
+    "ko": "챔피언 오브 더 유니버스"
+  },
+  "champion_gem": {
+    "jp": "ザ・チャンピオン",
+    "en": "THE CHAMPION",
+    "ru": "ЧЕМПИОН ВСЕЛЕННОЙ",
+    "ko": "챔피언 오브 더 유니버스"
+  },
+  "cassandranova": {
+    "jp": "カサンドラ・ノヴァ",
+    "en": "CASSANDRA NOVA",
+    "ru": "КАССАНДРА НОВА",
+    "ko": "카산드라 노바"
+  },
+  "cheeilth": {
+    "jp": "チールス",
+    "en": "CHEE’ILTH",
+    "ru": "ЧИ-ИЛТ",
+    "ko": "치일스"
+  },
+  "civilwarrior": {
+    "jp": "シビル・ウォリアー",
+    "en": "CIVIL WARRIOR",
+    "ru": "ГРАЖДАНСКИЙ ВОИН",
+    "ko": "시빌 워리어"
+  },
+  "collector": {
+    "jp": "コレクター",
+    "en": "THE COLLECTOR",
+    "ru": "КОЛЛЕКЦИОНЕР",
+    "ko": "콜렉터"
+  },
+  "collector_blackorder": {
+    "jp": "名もなきコレクター",
+    "en": "NAVNLØS COLLECTOR",
+    "ru": "БЕЗЫМЯННЫЙ КОЛЛЕКЦИОНЕР",
+    "ko": "그 누구의 콜렉터"
+  },
+  "collector_boss": {
+    "jp": "コレクター",
+    "en": "THE COLLECTOR",
+    "ru": "КОЛЛЕКЦИОНЕР",
+    "ko": "콜렉터"
+  },
+  "colossus": {
+    "jp": "コロッサス",
+    "en": "COLOSSUS",
+    "ru": "КОЛОСС",
+    "ko": "콜로서스"
+  },
+  "colossus_unstoppable": {
+    "jp": "アンストッパブル・コロッサス",
+    "en": "USTOPPELIG COLOSSUS",
+    "ru": "НЕУДЕРЖИМЫЙ КОЛОСС",
+    "ko": "저지불가 콜로서스"
+  },
+  "comingsoon": {
+    "jp": "近日登場",
+    "en": "KOMMER SNART",
+    "ru": "СКОРО",
+    "ko": "곧 공개됩니다."
+  },
+  "comingsoon2": {
+    "jp": "近日登場",
+    "en": "KOMMER SNART",
+    "ru": "СКОРО",
+    "ko": "곧 공개됩니다."
+  },
+  "comingsoon3": {
+    "jp": "近日登場",
+    "en": "KOMMER SNART",
+    "ru": "СКОРО",
+    "ko": "곧 공개됩니다."
+  },
+  "comingsoon4": {
+    "jp": "近日登場",
+    "en": "KOMMER SNART",
+    "ru": "СКОРО",
+    "ko": "곧 공개됩니다."
+  },
+  "corvusglaive": {
+    "jp": "コーヴァス・グレイヴ",
+    "en": "CORVUS GLAIVE",
+    "ru": "КОРВУС ГЛЭЙВ",
+    "ko": "코르버스 글레이브"
+  },
+  "countnefaria": {
+    "jp": "ネファリア伯爵",
+    "en": "COUNT NEFARIA",
+    "ru": "ГРАФ НЕФАРИЯ",
+    "ko": "네파리아 백작"
+  },
+  "crossbones": {
+    "jp": "クロスボーンズ",
+    "en": "CROSSBONES",
+    "ru": "ЧЕРЕП И КОСТИ",
+    "ko": "크로스본즈"
+  },
+  "cullobsidian": {
+    "jp": "カル・オブシディアン",
+    "en": "CULL OBSIDIAN",
+    "ru": "КУЛЛ ОБСИДИАН",
+    "ko": "컬 옵시디언"
+  },
+  "cyclops": {
+    "jp": "サイクロプス（新エグゼビア・スクール）",
+    "en": "CYCLOPS (NYE XAVIER-SKOLE)",
+    "ru": "ЦИКЛОП (НОВАЯ ШКОЛА КСАВЬЕ)",
+    "ko": "싸이클롭스(뉴 자비에르 스쿨)"
+  },
+  "cyclops_90s": {
+    "jp": "サイクロプス（ブルーチーム）",
+    "en": "CYCLOPS (BLÅTT LAG)",
+    "ru": "ЦИКЛОП (СИНЯЯ КОМАНДА)",
+    "ko": "싸이클롭스 (블루 팀)"
+  },
+  "cyclops_90s_legacy": {
+    "jp": "サイクロプス（ブルーチーム）（レガシー）",
+    "en": "CYCLOPS (BLÅTT LAG) (ELDRE)",
+    "ru": "ЦИКЛОП (СИНЯЯ КОМАНДА) (СТАРЫЙ)",
+    "ko": "싸이클롭스(블루 팀)(클래식)"
+  },
+  "danimoonstar": {
+    "jp": "ダニー・ムーンスター",
+    "en": "DANI MOONSTAR",
+    "ru": "ДАНИ МУНСТАР",
+    "ko": "대니 문스타"
+  },
+  "daredevil": {
+    "jp": "デアデビル（クラシック）",
+    "en": "DAREDEVIL (KLASSISK)",
+    "ru": "СОРВИГОЛОВА (КЛАССИКА)",
+    "ko": "데어데블(클래식)"
+  },
+  "daredevil_netflix": {
+    "jp": "デアデビル（ヘルズキッチン）",
+    "en": "DAREDEVIL (HELL'S KITCHEN)",
+    "ru": "СОРВИГОЛОВА (АДСКАЯ КУХНЯ)",
+    "ko": "데어데블(헬스 키친)"
+  },
+  "darkhawk": {
+    "jp": "ダークホーク",
+    "en": "DARKHAWK",
+    "ru": "ТЕМНЫЙ ЯСТРЕБ",
+    "ko": "다크호크"
+  },
+  "dazzler": {
+    "jp": "ダズラー",
+    "en": "DAZZLER",
+    "ru": "ОСЛЕПИТЕЛЬНАЯ",
+    "ko": "대즐러"
+  },
+  "deadpool": {
+    "jp": "デッドプール",
+    "en": "DEADPOOL",
+    "ru": "ДЭДПУЛ",
+    "ko": "데드풀"
+  },
+  "deadpool_gold": {
+    "jp": "ゴールドプール",
+    "en": "GOLDPOOL",
+    "ru": "ГОЛДПУЛ",
+    "ko": "골드풀"
+  },
+  "deadpool_platinum": {
+    "jp": "プラチナプール",
+    "en": "PLATINUMPOOL",
+    "ru": "ПЛАТИНАПУЛ",
+    "ko": "플래티넘풀"
+  },
+  "deadpool_xforce": {
+    "jp": "デッドプール（X-フォース）",
+    "en": "DEADPOOL (X-FORCE)",
+    "ru": "ДЭДПУЛ (X-FORCE)",
+    "ko": "데드풀(X-포스)"
+  },
+  "destroyer": {
+    "jp": "デストロイヤー",
+    "en": "THE DESTROYER",
+    "ru": "РАЗРУШИТЕЛЬ",
+    "ko": "디스트로이어"
+  },
+  "diablo": {
+    "jp": "ディアブロ",
+    "en": "DIABLO",
+    "ru": "ДИАБЛО",
+    "ko": "디아블로"
+  },
+  "doc_ock": {
+    "jp": "ドクター・オクトパス",
+    "en": "DOCTOR OCTOPUS",
+    "ru": "ДОКТОР ОСЬМИНОГ",
+    "ko": "닥터 옥토퍼스"
+  },
+  "doctorbong": {
+    "jp": "ドクター・ボン",
+    "en": "DOKTOR BONG",
+    "ru": "ДОКТОР БОНГ",
+    "ko": "닥터 봉"
+  },
+  "doctordoom": {
+    "jp": "ドクター・ドゥーム",
+    "en": "DOCTOR DOOM",
+    "ru": "ДОКТОР ДУМ",
+    "ko": "닥터 둠"
+  },
+  "domino": {
+    "jp": "ドミノ",
+    "en": "DOMINO",
+    "ru": "ДОМИНО",
+    "ko": "도미노"
+  },
+  "doombot_cosmic": {
+    "jp": "ドゥームボット",
+    "en": "DOOMBOT",
+    "ru": "ДУМБОТ",
+    "ko": "둠봇"
+  },
+  "doombot_mutant": {
+    "jp": "ドゥームボット",
+    "en": "DOOMBOT",
+    "ru": "ДУМБОТ",
+    "ko": "둠봇"
+  },
+  "doombot_mystic": {
+    "jp": "ドゥームボット",
+    "en": "DOOMBOT",
+    "ru": "ДУМБОТ",
+    "ko": "둠봇"
+  },
+  "doombot_science": {
+    "jp": "ドゥームボット",
+    "en": "DOOMBOT",
+    "ru": "ДУМБОТ",
+    "ko": "둠봇"
+  },
+  "doombot_skill": {
+    "jp": "ドゥームボット",
+    "en": "DOOMBOT",
+    "ru": "ДУМБОТ",
+    "ko": "둠봇"
+  },
+  "doombot_tech": {
+    "jp": "ドゥームボット",
+    "en": "DOOMBOT",
+    "ru": "ДУМБОТ",
+    "ko": "둠봇"
+  },
+  "dormammu": {
+    "jp": "ドーマムゥ",
+    "en": "DORMAMMU",
+    "ru": "ДОРМАММУ",
+    "ko": "도르마무"
+  },
+  "dracula": {
+    "jp": "ドラキュラ",
+    "en": "DRACULA",
+    "ru": "ДРАКУЛА",
+    "ko": "드라큘라"
+  },
+  "dragonman": {
+    "jp": "ドラゴンマン",
+    "en": "DRAGON MAN",
+    "ru": "ЧЕЛОВЕК-ДРАКОН",
+    "ko": "드래곤 맨"
+  },
+  "drax": {
+    "jp": "ドラックス",
+    "en": "DRAX",
+    "ru": "ДРАКС",
+    "ko": "드랙스"
+  },
+  "dreademperordoom": {
+    "jp": "ドレッド・エンペラー・ドゥーム",
+    "en": "DREAD EMPEROR DOOM",
+    "ru": "ГРОЗНЫЙ ИМПЕРАТОР ДУМ",
+    "ko": "드레드 엠퍼러 둠"
+  },
+  "drstrange": {
+    "jp": "ドクター・ストレンジ",
+    "en": "DOKTOR STRANGE",
+    "ru": "ДОКТОР СТРЭНДЖ",
+    "ko": "닥터 스트레인지"
+  },
+  "drstrange_legacy": {
+    "jp": "ドクター・ストレンジ（レガシー）",
+    "en": "DOCTOR STRANGE (LEGACY)",
+    "ru": "ДОКТОР СТРЭНДЖ (СТАРЫЙ)",
+    "ko": "닥터 스트레인지(클래식)"
+  },
+  "drstrange_realm": {
+    "jp": "ソーサラー・スプリーム",
+    "en": "SORCERER SUPREME",
+    "ru": "ВЕРХОВНАЯ КОЛДУНЬЯ",
+    "ko": "소서러 슈프림"
+  },
+  "dust": {
+    "jp": "ダスト",
+    "en": "DUST",
+    "ru": "ПЫЛЬ",
+    "ko": "더스트"
+  },
+  "ebonymaw": {
+    "jp": "エボニー・マウ",
+    "en": "EBONY MAW",
+    "ru": "ЭБОНИ МО",
+    "ko": "에보니 모"
+  },
+  "electro": {
+    "jp": "エレクトロ",
+    "en": "ELECTRO",
+    "ru": "ЭЛЕКТРО",
+    "ko": "일렉트로"
+  },
+  "elektra": {
+    "jp": "エレクトラ",
+    "en": "ELEKTRA",
+    "ru": "ЭЛЕКТРА",
+    "ko": "일렉트라"
+  },
+  "elsabloodstone": {
+    "jp": "エルサ・ブラッドストーン",
+    "en": "ELSA BLOODSTONE",
+    "ru": "ЭЛЬЗА БЛАДСТОУН",
+    "ko": "엘사 블러드스톤"
+  },
+  "emmafrost": {
+    "jp": "エマ・フロスト",
+    "en": "EMMA FROST",
+    "ru": "ЭММА ФРОСТ",
+    "ko": "에마 프로스트"
+  },
+  "enchantress": {
+    "jp": "エンチャントレス",
+    "en": "ENCHANTRESS",
+    "ru": "ЧАРОВНИЦА",
+    "ko": "인챈트리스"
+  },
+  "falcon": {
+    "jp": "ファルコン",
+    "en": "FALCON",
+    "ru": "СОКОЛ",
+    "ko": "팔콘"
+  },
+  "falcon_joaquintorres": {
+    "jp": "ファルコン（ホアキン・トーレス）",
+    "en": "FALCON (JOAQUIN TORRES)",
+    "ru": "СОКОЛ (ХОАКИН ТОРРЕС)",
+    "ko": "팔콘(호아킨 토레스)"
+  },
+  "frankencastle": {
+    "jp": "フランケンキャッスル",
+    "en": "FRANKEN-CASTLE",
+    "ru": "ФРАНКЕН-КАСЛ",
+    "ko": "프랑켄 캐슬"
+  },
+  "galan": {
+    "jp": "ギャラン",
+    "en": "GALAN",
+    "ru": "ГАЛАН",
+    "ko": "갈란"
+  },
+  "gambit": {
+    "jp": "ガンビット",
+    "en": "GAMBIT",
+    "ru": "ГАМБИТ",
+    "ko": "갬빗"
+  },
+  "gamora": {
+    "jp": "ガモーラ",
+    "en": "GAMORA",
+    "ru": "ГАМОРА",
+    "ko": "가모라"
+  },
+  "gentle": {
+    "jp": "隊長",
+    "en": "GENTLE",
+    "ru": "ДЖЕНТЛ",
+    "ko": "젠틀"
+  },
+  "ghost": {
+    "jp": "ゴースト",
+    "en": "GHOST",
+    "ru": "ПРИЗРАК",
+    "ko": "고스트"
+  },
+  "ghostrider": {
+    "jp": "ゴーストライダー",
+    "en": "GHOST RIDER",
+    "ru": "ПРИЗРАЧНЫЙ ГОНЩИК",
+    "ko": "고스트 라이더"
+  },
+  "ghostrider_cosmic": {
+    "jp": "コズミック・ゴーストライダー",
+    "en": "COSMIC GHOST RIDER",
+    "ru": "КОСМИЧЕСКИЙ ПРИЗРАЧНЫЙ ГОНЩИК",
+    "ko": "코스믹 고스트 라이더"
+  },
+  "gladiator": {
+    "jp": "グラディエーター",
+    "en": "GLADIATOR",
+    "ru": "ГЛАДИАТОР",
+    "ko": "글래디에이터"
+  },
+  "glykhan": {
+    "jp": "グリカン",
+    "en": "GLYKHAN",
+    "ru": "ГЛИХАН",
+    "ko": "글리칸"
+  },
+  "gorr": {
+    "jp": "ゴア",
+    "en": "GORR",
+    "ru": "ГОРР",
+    "ko": "고르"
+  },
+  "grandmaster_boss": {
+    "jp": "グランドマスター",
+    "en": "STORMESTER",
+    "ru": "ГРОССМЕЙСТЕР",
+    "ko": "그랜드마스터"
+  },
+  "grandmaster_blackorder": {
+    "jp": "名もなきグランドマスター",
+    "en": "NAVNLØS STORMESTER",
+    "ru": "БЕЗЫМЯННЫЙ ГРОССМЕЙСТЕР",
+    "ko": "이름 없는 그랜드마스터"
+  },
+  "green_goblin": {
+    "jp": "グリーンゴブリン",
+    "en": "GREEN GOBLIN",
+    "ru": "ЗЕЛЕНЫЙ ГОБЛИН",
+    "ko": "그린 고블린"
+  },
+  "groot": {
+    "jp": "グルート",
+    "en": "GROOT",
+    "ru": "ГРУТ",
+    "ko": "그루트"
+  },
+  "groot_king": {
+    "jp": "キング・グルート",
+    "en": "KONG GROOT",
+    "ru": "КОРОЛЬ ГРУТ",
+    "ko": "킹 그루트"
+  },
+  "groot_king_blackorder": {
+    "jp": "無名",
+    "en": "NAVNLØS",
+    "ru": "БЕЗЫМЯННЫЙ",
+    "ko": "그 누구의"
+  },
+  "groot_king_deathless": {
+    "jp": "キング・グルート（不死）",
+    "en": "KONG GROOT (UFORGJENGELIGE)",
+    "ru": "КОРОЛЬ ГРУТ (НЕТЛЕННЫЙ)",
+    "ko": "킹 그루트(데스리스)"
+  },
+  "guardian": {
+    "jp": "ガーディアン",
+    "en": "GUARDIAN",
+    "ru": "СТРАЖНИК",
+    "ko": "가디언"
+  },
+  "guillotine": {
+    "jp": "ギロチン",
+    "en": "GUILLOTINE",
+    "ru": "ГИЛЬОТИНА",
+    "ko": "길로틴"
+  },
+  "guillotine_blackswan": {
+    "jp": "無名",
+    "en": "NAVNLØS",
+    "ru": "БЕЗЫМЯННЫЙ",
+    "ko": "그 누구의"
+  },
+  "guillotine_nameless": {
+    "jp": "ギロチン（不死）",
+    "en": "GUILLOTINE (UFORGJENGELIGE)",
+    "ru": "ГИЛЬОТИНА (НЕТЛЕННАЯ)",
+    "ko": "길로틴(데스리스)"
+  },
+  "guillotine_2099": {
+    "jp": "ギロチン2099",
+    "en": "GUILLOTINE 2099",
+    "ru": "ГИЛЬОТИНА 2099",
+    "ko": "길로틴 2099"
+  },
+  "gwenmaster": {
+    "jp": "グウェンマスター",
+    "en": "GWENMASTER",
+    "ru": "ГВЕНМАСТЕР",
+    "ko": "그웬마스터"
+  },
+  "gwenpool": {
+    "jp": "グウェンプール",
+    "en": "GWENPOOL",
+    "ru": "Гвенпул",
+    "ko": "그웬풀"
+  },
+  "havok": {
+    "jp": "ハボック",
+    "en": "HAVOK",
+    "ru": "ХАВОК",
+    "ko": "하복"
+  },
+  "hawkeye": {
+    "jp": "ホークアイ",
+    "en": "HAWKEYE",
+    "ru": "СОКОЛИНЫЙ ГЛАЗ",
+    "ko": "호크아이"
+  },
+  "heimdall": {
+    "jp": "ヘイムダル",
+    "en": "HEIMDALL",
+    "ru": "ХЕЙМДАЛЛЬ",
+    "ko": "헤임달"
+  },
+  "hela": {
+    "jp": "ヘラ",
+    "en": "HELA",
+    "ru": "ХЕЛА",
+    "ko": "헬라"
+  },
+  "highevolutionary": {
+    "jp": "ハイ・エボリューショナリー",
+    "en": "HIGH EVOLUTIONARY",
+    "ru": "ВЫСШИЙ ЭВОЛЮЦИОНИСТ",
+    "ko": "하이 에볼루셔너리"
+  },
+  "hnchpl_mut": {
+    "jp": "ヘンチプール",
+    "en": "HENCHPOOL",
+    "ru": "ХЕНЧПУЛ",
+    "ko": "헨치풀"
+  },
+  "hnchpl_skl": {
+    "jp": "ヘンチプール",
+    "en": "HENCHPOOL",
+    "ru": "ХЕНЧПУЛ",
+    "ko": "헨치풀"
+  },
+  "hnchpl_sci": {
+    "jp": "ヘンチプール",
+    "en": "HENCHPOOL",
+    "ru": "ХЕНЧПУЛ",
+    "ko": "헨치풀"
+  },
+  "hnchpl_mys": {
+    "jp": "ヘンチプール",
+    "en": "HENCHPOOL",
+    "ru": "ХЕНЧПУЛ",
+    "ko": "헨치풀"
+  },
+  "hnchpl_cos": {
+    "jp": "ヘンチプール",
+    "en": "HENCHPOOL",
+    "ru": "ХЕНЧПУЛ",
+    "ko": "헨치풀"
+  },
+  "hnchpl_tch": {
+    "jp": "ヘンチプール",
+    "en": "HENCHPOOL",
+    "ru": "ХЕНЧПУЛ",
+    "ko": "헨치풀"
+  },
+  "hercules": {
+    "jp": "ハーキュリーズ",
+    "en": "HERCULES",
+    "ru": "ГЕРКУЛЕС",
+    "ko": "헤라클레스"
+  },
+  "hitmonkey": {
+    "jp": "ヒットモンキー",
+    "en": "HIT-MONKEY",
+    "ru": "ХИТ-МАНКИ",
+    "ko": "히트몽키"
+  },
+  "hood": {
+    "jp": "フッド",
+    "en": "THE HOOD",
+    "ru": "КАПЮШОН",
+    "ko": "후드"
+  },
+  "howardmech": {
+    "jp": "ハワード・ザ・ダック",
+    "en": "HOWARD THE DUCK",
+    "ru": "УТКА ГОВАРД",
+    "ko": "하워드 덕"
+  },
+  "hulk": {
+    "jp": "ハルク",
+    "en": "HULK",
+    "ru": "ХАЛК",
+    "ko": "헐크"
+  },
+  "hulk_immortal": {
+    "jp": "ハルク（イモータル）",
+    "en": "HULK (UDØDELIG)",
+    "ru": "ХАЛК (БЕССМЕРТНЫЙ)",
+    "ko": "헐크(이모탈)"
+  },
+  "hulk_ragnarok": {
+    "jp": "ハルク（ラグナロク）",
+    "en": "HULK (RAGNAROK)",
+    "ru": "ХАЛК (РАГНАРЕК)",
+    "ko": "헐크(라그나로크)"
+  },
+  "hulk_red": {
+    "jp": "レッド・ハルク",
+    "en": "RED HULK",
+    "ru": "КРАСНЫЙ ХАЛК",
+    "ko": "레드 헐크"
+  },
+  "hulkbuster_movie": {
+    "jp": "ハルクバスター",
+    "en": "HULKBUSTER",
+    "ru": "ХАЛКБАСТЕР",
+    "ko": "헐크버스터"
+  },
+  "hulkling": {
+    "jp": "ハルクリング",
+    "en": "HULKLING",
+    "ru": "ХАЛКЛИНГ",
+    "ko": "헐클링"
+  },
+  "humantorch": {
+    "jp": "ヒューマン・トーチ",
+    "en": "HUMAN TORCH",
+    "ru": "ЧЕЛОВЕК-ФАКЕЛ",
+    "ko": "휴먼 토치"
+  },
+  "hyperion": {
+    "jp": "ハイペリオン",
+    "en": "HYPERION",
+    "ru": "ГИПЕРИОН",
+    "ko": "하이페리온"
+  },
+  "hyperion_blackorder": {
+    "jp": "無名",
+    "en": "NAVNLØS",
+    "ru": "БЕЗЫМЯННЫЙ",
+    "ko": "그 누구의"
+  },
+  "iceman": {
+    "jp": "アイスマン",
+    "en": "ICEMAN",
+    "ru": "ЧЕЛОВЕК-ЛЕД",
+    "ko": "아이스맨"
+  },
+  "ikaris": {
+    "jp": "イカリス",
+    "en": "IKARIS",
+    "ru": "ИКАРИС",
+    "ko": "이카리스"
+  },
+  "invisiblewoman": {
+    "jp": "インビジブルウーマン",
+    "en": "INVISIBLE WOMAN",
+    "ru": "НЕВИДИМАЯ ЛЕДИ",
+    "ko": "인비저블 우먼"
+  },
+  "ironfist": {
+    "jp": "アイアンフィスト",
+    "en": "IRON FIST",
+    "ru": "ЖЕЛЕЗНЫЙ КУЛАК",
+    "ko": "아이언 피스트"
+  },
+  "ironfist_white": {
+    "jp": "アイアンフィスト（不死者）",
+    "en": "IRON FIST (UDØDELIG)",
+    "ru": "ЖЕЛЕЗНЫЙ КУЛАК (БЕССМЕРТНЫЙ)",
+    "ko": "아이언 피스트(불멸의 철권)"
+  },
+  "ironheart": {
+    "jp": "アイアンハート",
+    "en": "IRONHEART",
+    "ru": "ЖЕЛЕЗНОЕ СЕРДЦЕ",
+    "ko": "아이언하트"
+  },
+  "ironman": {
+    "jp": "アイアンマン",
+    "en": "IRON MAN",
+    "ru": "ЖЕЛЕЗНЫЙ ЧЕЛОВЕК",
+    "ko": "아이언맨"
+  },
+  "ironman_infamous": {
+    "jp": "アイアンマン（インファマス）",
+    "en": "IRON MAN (INFAMOUS)",
+    "ru": "ЖЕЛЕЗНЫЙ ЧЕЛОВЕК (БЕССЛАВНЫЙ)",
+    "ko": "아이언맨(인페이머스)"
+  },
+  "ironman_movie": {
+    "jp": "アイアンマン（インフィニティ・ウォー）",
+    "en": "IRON MAN (INFINITY WAR)",
+    "ru": "ЖЕЛЕЗНЫЙ ЧЕЛОВЕК (ВОЙНА БЕСКОНЕЧНОСТИ)\n",
+    "ko": "아이언맨(인피니티 워)"
+  },
+  "ironman_silvercenturion": {
+    "jp": "シルバー・センチュリオン",
+    "en": "SILVER CENTURION",
+    "ru": "СЕРЕБРЯНЫЙ ЦЕНТУРИОН",
+    "ko": "실버 센츄리온"
+  },
+  "ironman_superior": {
+    "jp": "スペリオル・アイアンマン",
+    "en": "OVERLEGEN IRON MAN",
+    "ru": "ЛУЧШИЙ ЖЕЛЕЗНЫЙ ЧЕЛОВЕК",
+    "ko": "슈페리어 아이언맨"
+  },
+  "ironpatriot": {
+    "jp": "アイアンパトリオット",
+    "en": "IRON PATRIOT",
+    "ru": "ЖЕЛЕЗНЫЙ ПАТРИОТ",
+    "ko": "아이언 패트리어트"
+  },
+  "isophyne": {
+    "jp": "イソフィン",
+    "en": "ISOPHYNE",
+    "ru": "ИЗОФИНА",
+    "ko": "아이소핀"
+  },
+  "jackolantern": {
+    "jp": "ジャック・オ・ランタン",
+    "en": "JACK O'LANTERN",
+    "ru": "ДЖЕК ФОНАРЬ",
+    "ko": "잭오랜턴"
+  },
+  "jeangrey_current": {
+    "jp": "ジーン・グレイ",
+    "en": "JEAN GREY",
+    "ru": "ДЖИН ГРЕЙ",
+    "ko": "진 그레이"
+  },
+  "jessicajones_current": {
+    "jp": "ジェシカ・ジョーンズ",
+    "en": "JESSICA JONES",
+    "ru": "ДЖЕССИКА ДЖОНС",
+    "ko": "제시카 존스"
+  },
+  "jjj_spiderslayer": {
+    "jp": "スパイダー・スレイヤー（J. ジョナ・ジェイムソン）",
+    "en": "SPIDER-SLAYER (J. JONAH JAMESON)",
+    "ru": "УБИЙЦА ПАУКОВ (ДЖЕЙ ДЖОНА ДЖЕЙМСОН)",
+    "ko": "스파이더 슬레이어(J. 조나 제임슨)"
+  },
+  "joefixit": {
+    "jp": "ジョー・フィクジット",
+    "en": "JOE FIXIT",
+    "ru": "ДЖО ФИКСИТ",
+    "ko": "조 픽싯"
+  },
+  "jubilee": {
+    "jp": "ジュビリー",
+    "en": "JUBILEE",
+    "ru": "ДЖУБИЛИ",
+    "ko": "주빌리"
+  },
+  "juggernaut": {
+    "jp": "ジャガーノート",
+    "en": "JUGGERNAUT",
+    "ru": "ДЖАГГЕРНАУТ",
+    "ko": "저거너트"
+  },
+  "kang": {
+    "jp": "カーン",
+    "en": "KANG",
+    "ru": "КАНГ",
+    "ko": "캉"
+  },
+  "kang_boss_tech": {
+    "jp": "カーン",
+    "en": "KANG",
+    "ru": "КАНГ",
+    "ko": "캉"
+  },
+  "kang_superior": {
+    "jp": "カーン",
+    "en": "KANG",
+    "ru": "КАНГ",
+    "ko": "캉"
+  },
+  "karlmordo": {
+    "jp": "モルド",
+    "en": "MORDO",
+    "ru": "МОРДО",
+    "ko": "모르도"
+  },
+  "karnak": {
+    "jp": "カーナック",
+    "en": "KARNAK",
+    "ru": "КАРНАК",
+    "ko": "카르낙"
+  },
+  "karolinadean": {
+    "jp": "カロリーナ・ディーン",
+    "en": "KAROLINA DEAN",
+    "ru": "КАРОЛИНА ДИН",
+    "ko": "캐롤리나 딘"
+  },
+  "katebishop": {
+    "jp": "ケイト・ビショップ",
+    "en": "KATE BISHOP",
+    "ru": "КЕЙТ БИШОП",
+    "ko": "케이트 비숍"
+  },
+  "killmonger": {
+    "jp": "キルモンガー",
+    "en": "KILLMONGER",
+    "ru": "КИЛЛМОНГЕР",
+    "ko": "킬몽거"
+  },
+  "kindred": {
+    "jp": "キンドレッド",
+    "en": "KINDRED",
+    "ru": "КИНДРЕД",
+    "ko": "킨드레드"
+  },
+  "kingpin": {
+    "jp": "キングピン",
+    "en": "KINGPIN",
+    "ru": "КИНГПИН",
+    "ko": "킹핀"
+  },
+  "kittypryde": {
+    "jp": "キティ・プライド",
+    "en": "KITTY PRYDE",
+    "ru": "КИТТИ ПРАЙД",
+    "ko": "키티 프라이드"
+  },
+  "knull": {
+    "jp": "ヌル",
+    "en": "KNULL",
+    "ru": "НАЛЛ",
+    "ko": "널"
+  },
+  "korg": {
+    "jp": "コーグ",
+    "en": "KORG",
+    "ru": "КОРГ",
+    "ko": "코르그"
+  },
+  "kraven": {
+    "jp": "クレイヴン",
+    "en": "KRAVEN",
+    "ru": "КРЭЙВЕН",
+    "ko": "크레이븐"
+  },
+  "kushala": {
+    "jp": "クシャラ",
+    "en": "KUSHALA",
+    "ru": "КУШАЛА",
+    "ko": "쿠샬라"
+  },
+  "ladydeathstrike": {
+    "jp": "レディ・デスストライク",
+    "en": "LADY DEATHSTRIKE",
+    "ru": "ЛЕДИ СМЕРТЕЛЬНЫЙ УДАР",
+    "ko": "레이디 데쓰스트라이크"
+  },
+  "lizard": {
+    "jp": "リザード",
+    "en": "LIZARD",
+    "ru": "ЯЩЕР",
+    "ko": "리자드"
+  },
+  "leader": {
+    "jp": "リーダー",
+    "en": "LEADER",
+    "ru": "ЛИДЕР",
+    "ko": "리더"
+  },
+  "lockjaw": {
+    "jp": "ロックジョー",
+    "en": "LOCKJAW",
+    "ru": "ЛОКДЖО",
+    "ko": "락조"
+  },
+  "loki": {
+    "jp": "ロキ",
+    "en": "LOKE",
+    "ru": "ЛОКИ",
+    "ko": "로키"
+  },
+  "longshot": {
+    "jp": "ロングショット",
+    "en": "LONGSHOT",
+    "ru": "СЧАСТЛИВЧИК",
+    "ko": "롱샷"
+  },
+  "lotan": {
+    "jp": "ジェーン・フォスター（ロータン）",
+    "en": "JANE FOSTER (LOTAN)",
+    "ru": "ДЖЕЙН ФОСТЕР (ЛОТАН)",
+    "ko": "제인 포스터(로탄)"
+  },
+  "lukecage": {
+    "jp": "ルーク・ケイジ",
+    "en": "LUKE CAGE",
+    "ru": "ЛЮК КЕЙДЖ",
+    "ko": "루크 케이지"
+  },
+  "lumatrix": {
+    "jp": "ルーマトリックス",
+    "en": "LUMATRIX",
+    "ru": "ЛЮМАТРИКС",
+    "ko": "루마트릭스"
+  },
+  "madelynepryor": {
+    "jp": "マデリン・プライアー",
+    "en": "MADELYNE PRYOR",
+    "ru": "МАДЛЕН ПРАЙОР",
+    "ko": "매들린 프라이어"
+  },
+  "maestro_trophy": {
+    "jp": "マエストロ",
+    "en": "MAESTRO",
+    "ru": "МАЭСТРО",
+    "ko": "마에스트로"
+  },
+  "maestro_overseer": {
+    "jp": "監督者",
+    "en": "THE OVERSEER",
+    "ru": "НАДЗИРАТЕЛЬ",
+    "ko": "오버시어"
+  },
+  "magik": {
+    "jp": "マジック",
+    "en": "MAGIK",
+    "ru": "МЭДЖИК",
+    "ko": "매직"
+  },
+  "magneto": {
+    "jp": "マグニートー",
+    "en": "MAGNETO",
+    "ru": "МАГНЕТО",
+    "ko": "매그니토"
+  },
+  "magneto_marvelnow": {
+    "jp": "マグニートー（ハウス・オブ・X）",
+    "en": "MAGNETO (HOUSE OF X)",
+    "ru": "МАГНЕТО (ДОМ ИКС)",
+    "ko": "매그니토(하우스 오브 엑스)"
+  },
+  "maker": {
+    "jp": "メーカー",
+    "en": "MAKER",
+    "ru": "ТВОРЕЦ",
+    "ko": "메이커"
+  },
+  "mangog": {
+    "jp": "マンゴグ",
+    "en": "MANGOG",
+    "ru": "МАНГОГ",
+    "ko": "만고그"
+  },
+  "manthing": {
+    "jp": "マンシング",
+    "en": "MAN-THING",
+    "ru": "ЛЕШИЙ",
+    "ko": "맨씽"
+  },
+  "mantis": {
+    "jp": "マンティス",
+    "en": "MANTIS",
+    "ru": "МАНТИС",
+    "ko": "맨티스"
+  },
+  "masacre": {
+    "jp": "マサカー",
+    "en": "MASACRE",
+    "ru": "МАСАКР",
+    "ko": "매서커"
+  },
+  "mbaku": {
+    "jp": "エムバク",
+    "en": "M'BAKU",
+    "ru": "М'БАКУ",
+    "ko": "음바쿠"
+  },
+  "medusa": {
+    "jp": "メデューサ",
+    "en": "MEDUSA",
+    "ru": "МЕДУЗА",
+    "ko": "메두사"
+  },
+  "mephisto": {
+    "jp": "メフィスト",
+    "en": "MEPHISTO",
+    "ru": "МЕФИСТО",
+    "ko": "메피스토"
+  },
+  "misterknight": {
+    "jp": "ミスター・ナイト",
+    "en": "MR. KNIGHT",
+    "ru": "МИСТЕР НАЙТ",
+    "ko": "미스터 나이트"
+  },
+  "misternegative": {
+    "jp": "Mr. ネガティブ",
+    "en": "MISTER NEGATIVE",
+    "ru": "МИСТЕР НЕГАТИВ",
+    "ko": "미스터 네거티브"
+  },
+  "mistersinister": {
+    "jp": "ミスター・シニスター",
+    "en": "MISTER SINISTER",
+    "ru": "МИСТЕР ЗЛОВЕЩИЙ",
+    "ko": "미스터 시니스터"
+  },
+  "mistyknight": {
+    "jp": "ミスティ・ナイト",
+    "en": "MISTY KNIGHT",
+    "ru": "МИСТИ НАЙТ",
+    "ko": "미스티 나이트"
+  },
+  "modok": {
+    "jp": "モードック",
+    "en": "M.O.D.O.K.",
+    "ru": "М.О.Д.О.К.",
+    "ko": "M.O.D.O.K."
+  },
+  "mojo": {
+    "jp": "モジョ―",
+    "en": "MOJO",
+    "ru": "МОДЖО",
+    "ko": "모조"
+  },
+  "moleman": {
+    "jp": "モールマン",
+    "en": "MOLE MAN",
+    "ru": "ЧЕЛОВЕК-КРОТ",
+    "ko": "몰맨"
+  },
+  "moondragon": {
+    "jp": "ムーンドラゴン",
+    "en": "MOONDRAGON",
+    "ru": "ЛУННЫЙ ДРАКОН",
+    "ko": "문드래곤"
+  },
+  "moonknight": {
+    "jp": "ムーンナイト",
+    "en": "MOON KNIGHT",
+    "ru": "ЛУННЫЙ РЫЦАРЬ",
+    "ko": "문나이트"
+  },
+  "morbius": {
+    "jp": "モービウス",
+    "en": "MORBIUS",
+    "ru": "МОРБИУС",
+    "ko": "모비우스"
+  },
+  "morningstar": {
+    "jp": "モーニングスター",
+    "en": "MORNINGSTAR",
+    "ru": "МОРНИНГСТАР",
+    "ko": "모닝스타"
+  },
+  "mrfantastic": {
+    "jp": "ミスター・ファンタスティック",
+    "en": "MISTER FANTASTIC",
+    "ru": "МИСТЕР ФАНТАСТИК",
+    "ko": "미스터 판타스틱"
+  },
+  "msmarvel": {
+    "jp": "ミスマーヴェル",
+    "en": "MS. MARVEL",
+    "ru": "МИСС МАРВЕЛ",
+    "ko": "미스 마블"
+  },
+  "msmarvel_kamala": {
+    "jp": "ミスマーヴェル（カマラ・カーン）",
+    "en": "MS. MARVEL (KAMALA KHAN)",
+    "ru": "МИСС МАРВЕЛ (КАМАЛА ХАН)",
+    "ko": "미스 마블(카말라 칸)"
+  },
+  "mysterio": {
+    "jp": "ミステリオ",
+    "en": "MYSTERIO",
+    "ru": "МИСТЕРИО",
+    "ko": "미스테리오"
+  },
+  "namor": {
+    "jp": "ネイモア",
+    "en": "NAMOR",
+    "ru": "НЭМОР",
+    "ko": "네이머"
+  },
+  "nebula": {
+    "jp": "ネビュラ",
+    "en": "NEBULA",
+    "ru": "НЕБУЛА",
+    "ko": "네뷸라"
+  },
+  "negasonicteenagewarhead": {
+    "jp": "ネガソニック・ティーンエイジ・ウォーヘッド",
+    "en": "NEGASONIC TEENAGE WARHEAD",
+    "ru": "СВЕРХЗВУКОВАЯ БОЕГОЛОВКА",
+    "ko": "네가소닉 틴에이지 워헤드"
+  },
+  "nickfury": {
+    "jp": "ニック・フューリー",
+    "en": "NICK FURY",
+    "ru": "НИК ФЬЮРИ",
+    "ko": "닉 퓨리"
+  },
+  "nicominoru": {
+    "jp": "ニコ・ミノル",
+    "en": "NICO MINORU",
+    "ru": "НИКО МИНОРУ",
+    "ko": "니코 미노루"
+  },
+  "nightcrawler": {
+    "jp": "ナイトクローラー",
+    "en": "NIGHTCRAWLER",
+    "ru": "НОЧНОЙ ЗМЕЙ",
+    "ko": "나이트크롤러"
+  },
+  "nightthrasher": {
+    "jp": "ナイト・スラッシャー",
+    "en": "NIGHT THRASHER",
+    "ru": "НОЧНОЙ ГРОМИЛА",
+    "ko": "나이트 트래셔"
+  },
+  "nimrod": {
+    "jp": "ニムロッド",
+    "en": "NIMROD",
+    "ru": "НИМРОД",
+    "ko": "님로드"
+  },
+  "northstar": {
+    "jp": "ノーススター",
+    "en": "NORTHSTAR",
+    "ru": "ПОЛЯРНАЯ ЗВЕЗДА",
+    "ko": "노스스타"
+  },
+  "nova": {
+    "jp": "ノヴァ",
+    "en": "NOVA",
+    "ru": "НОВА",
+    "ko": "노바"
+  },
+  "odin": {
+    "jp": "オーディン",
+    "en": "ODIN",
+    "ru": "ОДИН",
+    "ko": "오딘"
+  },
+  "okoye": {
+    "jp": "オコエ",
+    "en": "OKOYE",
+    "ru": "ОКОЙЕ",
+    "ko": "오코예"
+  },
+  "omegared": {
+    "jp": "オメガ・レッド",
+    "en": "OMEGA RED",
+    "ru": "КРАСНЫЙ ОМЕГА",
+    "ko": "오메가 레드"
+  },
+  "omegasentinel": {
+    "jp": "オメガ・センチネル",
+    "en": "OMEGA SENTINEL",
+    "ru": "ОМЕГА СТРАЖ",
+    "ko": "오메가 센티넬"
+  },
+  "onslaught": {
+    "jp": "オンスロート",
+    "en": "ONSLAUGHT",
+    "ru": "НАТИСК",
+    "ko": "온슬로트"
+  },
+  "orochi": {
+    "jp": "X-23（オロチ）",
+    "en": "X-23 (OROCHI)",
+    "ru": "X-23 (ОРОЧИ)",
+    "ko": "X-23(오로치)"
+  },
+  "patriot": {
+    "jp": "パトリオット",
+    "en": "PATRIOT",
+    "ru": "ПАТРИОТ",
+    "ko": "패트리어트"
+  },
+  "peniparker": {
+    "jp": "ペニー・パーカー",
+    "en": "PENI PARKER",
+    "ru": "ПЕНИ ПАРКЕР",
+    "ko": "페니 파커"
+  },
+  "phoenix": {
+    "jp": "フェニックス",
+    "en": "PHOENIX",
+    "ru": "ФЕНИКС",
+    "ko": "피닉스"
+  },
+  "phoenix_legacy": {
+    "jp": "フェニックス（レガシー）",
+    "en": "PHOENIX (ELDRE)",
+    "ru": "ФЕНИКС (СТАРЫЙ)",
+    "ko": "피닉스(클래식)"
+  },
+  "photon": {
+    "jp": "フォトン",
+    "en": "PHOTON",
+    "ru": "ФОТОН",
+    "ko": "포톤"
+  },
+  "pixie": {
+    "jp": "ピクシー",
+    "en": "PIXIE",
+    "ru": "ПИКСИ",
+    "ko": "픽시"
+  },
+  "professorx": {
+    "jp": "プロフェッサーX",
+    "en": "PROFESSOR X",
+    "ru": "ПРОФЕССОР ИКС",
+    "ko": "프로페서 X"
+  },
+  "prowler": {
+    "jp": "プラウラー",
+    "en": "PROWLER",
+    "ru": "БРОДЯГА",
+    "ko": "프라울러"
+  },
+  "proximamidnight": {
+    "jp": "プロキシマ・ ミッドナイト",
+    "en": "PROXIMA MIDNIGHT",
+    "ru": "ПРОКСИМА ПОЛНОЧНАЯ",
+    "ko": "프록시마 미드나잇"
+  },
+  "psychoman": {
+    "jp": "サイコマン",
+    "en": "PSYCHO-MAN",
+    "ru": "ПСИХО-ЧЕЛОВЕК",
+    "ko": "싸이코맨"
+  },
+  "psylocke": {
+    "jp": "サイロック",
+    "en": "PSYLOCKE",
+    "ru": "ПСАЙЛОК",
+    "ko": "사일록"
+  },
+  "punisher": {
+    "jp": "パニッシャー",
+    "en": "PUNISHER",
+    "ru": "КАРАТЕЛЬ",
+    "ko": "퍼니셔"
+  },
+  "punisher_legacy": {
+    "jp": "パニッシャー（レガシー）",
+    "en": "PUNISHER (ELDRE)",
+    "ru": "КАРАТЕЛЬ (СТАРЫЙ)",
+    "ko": "퍼니셔(클래식)"
+  },
+  "punisher_2099": {
+    "jp": "パニッシャー2099",
+    "en": "PUNISHER 2099",
+    "ru": "КАРАТЕЛЬ 2099",
+    "ko": "퍼니셔 2099"
+  },
+  "purgatory": {
+    "jp": "パーガトリー",
+    "en": "PURGATORY",
+    "ru": "ЧИСТИЛИЩЕ",
+    "ko": "펄가토리"
+  },
+  "quake": {
+    "jp": "クェイク",
+    "en": "QUAKE",
+    "ru": "ДРОЖЬ",
+    "ko": "퀘이크"
+  },
+  "quicksilver": {
+    "jp": "クイックシルバー",
+    "en": "QUICKSILVER",
+    "ru": "РТУТЬ",
+    "ko": "퀵실버"
+  },
+  "red_goblin": {
+    "jp": "レッドゴブリン",
+    "en": "RED GOBLIN",
+    "ru": "КРАСНЫЙ ГОБЛИН",
+    "ko": "레드 고블린"
+  },
+  "redguardian": {
+    "jp": "レッド・ガーディアン",
+    "en": "RED GUARDIAN",
+    "ru": "КРАСНЫЙ СТРАЖ",
+    "ko": "레드 가디언"
+  },
+  "redskull": {
+    "jp": "レッドスカル",
+    "en": "RED SKULL",
+    "ru": "КРАСНЫЙ ЧЕРЕП",
+    "ko": "레드 스컬"
+  },
+  "revealedsoon": {
+    "jp": "まもなく公開",
+    "en": "AVSLØRES SNART",
+    "ru": "УЖЕ СКОРО",
+    "ko": "곧 공개"
+  },
+  "revealedsoon2": {
+    "jp": "まもなく公開",
+    "en": "AVSLØRES SNART",
+    "ru": "УЖЕ СКОРО",
+    "ko": "곧 공개"
+  },
+  "rhino": {
+    "jp": "ライノ",
+    "en": "RHINO",
+    "ru": "НОСОРОГ",
+    "ko": "라이노"
+  },
+  "rintrah": {
+    "jp": "リントラ",
+    "en": "RINTRAH",
+    "ru": "РИНТРА",
+    "ko": "린트라"
+  },
+  "rocket": {
+    "jp": "ロケット・ラクーン",
+    "en": "ROCKET RACCOON",
+    "ru": "ЕНОТ РАКЕТА",
+    "ko": "로켓 라쿤"
+  },
+  "rogue": {
+    "jp": "ローグ",
+    "en": "ROGUE",
+    "ru": "ШЕЛЬМА",
+    "ko": "로그"
+  },
+  "ronan": {
+    "jp": "ロナン",
+    "en": "RONAN",
+    "ru": "РОНАН",
+    "ko": "로난"
+  },
+  "ronin": {
+    "jp": "ローニン",
+    "en": "RONIN",
+    "ru": "РОНИН",
+    "ko": "로닌"
+  },
+  "rubythursday": {
+    "jp": "ルビー・サーズデイ",
+    "en": "RUBY THURSDAY",
+    "ru": "РУБИ ФЕСДЕЙ",
+    "ko": "루비 써스데이"
+  },
+  "sabretooth": {
+    "jp": "セイバートゥース",
+    "en": "SABRETOOTH",
+    "ru": "САБЛЕЗУБЫЙ",
+    "ko": "세이버투스"
+  },
+  "sandman": {
+    "jp": "サンドマン",
+    "en": "SANDMAN",
+    "ru": "ПЕСОЧНЫЙ ЧЕЛОВЕК",
+    "ko": "샌드맨"
+  },
+  "sasquatch": {
+    "jp": "サスカッチ",
+    "en": "SASQUATCH",
+    "ru": "САСКВОТЧ",
+    "ko": "사스콰치"
+  },
+  "sauron": {
+    "jp": "サウロン",
+    "en": "SAURON",
+    "ru": "САУРОН",
+    "ko": "사우론"
+  },
+  "scarletwitch": {
+    "jp": "スカーレットウィッチ（クラシック）",
+    "en": "SCARLET WITCH (KLASSISK)",
+    "ru": "АЛАЯ ВЕДЬМА (КЛАССИКА)",
+    "ko": "스칼렛 위치(클래식)"
+  },
+  "scarletwitch_blackorder": {
+    "jp": "無名",
+    "en": "NAVNLØS",
+    "ru": "БЕЗЫМЯННЫЙ",
+    "ko": "그 누구의"
+  },
+  "scarletwitch_current": {
+    "jp": "スカーレットウィッチ",
+    "en": "SCARLET WITCH",
+    "ru": "АЛАЯ ВЕДЬМА",
+    "ko": "스칼렛 위치"
+  },
+  "scorpion": {
+    "jp": "スコーピオン",
+    "en": "SCORPION",
+    "ru": "СКОРПИОН",
+    "ko": "스콜피온"
+  },
+  "scream": {
+    "jp": "スクリーム",
+    "en": "SCREAM",
+    "ru": "КРИК",
+    "ko": "스크림"
+  },
+  "scytalis": {
+    "jp": "ブラック・ウィドウ（サイタリス）",
+    "en": "BLACK WIDOW (SCYTALIS)",
+    "ru": "ЧЕРНАЯ ВДОВА (СКИТАЛИС)",
+    "ko": "블랙 위도우(싸이탈리스)"
+  },
+  "sentinel": {
+    "jp": "センチネル",
+    "en": "SENTINEL",
+    "ru": "СТРАЖ",
+    "ko": "센티넬"
+  },
+  "sentinel_cosmic": {
+    "jp": "センチネル",
+    "en": "SENTINEL",
+    "ru": "СТРАЖ",
+    "ko": "센티넬"
+  },
+  "sentinel_mutant": {
+    "jp": "センチネル",
+    "en": "SENTINEL",
+    "ru": "СТРАЖ",
+    "ko": "센티넬"
+  },
+  "sentinel_mystic": {
+    "jp": "センチネル",
+    "en": "SENTINEL",
+    "ru": "СТРАЖ",
+    "ko": "센티넬"
+  },
+  "sentinel_science": {
+    "jp": "センチネル",
+    "en": "SENTINEL",
+    "ru": "СТРАЖ",
+    "ko": "센티넬"
+  },
+  "sentinel_skill": {
+    "jp": "センチネル",
+    "en": "SENTINEL",
+    "ru": "СТРАЖ",
+    "ko": "센티넬"
+  },
+  "sentinel_tech": {
+    "jp": "センチネル",
+    "en": "SENTINEL",
+    "ru": "СТРАЖ",
+    "ko": "센티넬"
+  },
+  "sentinelbot_cosmic": {
+    "jp": "センチネルボット",
+    "en": "SENTINELBOT",
+    "ru": "СТРАЖ-БОТ",
+    "ko": "센티넬봇"
+  },
+  "sentinelbot_mutant": {
+    "jp": "センチネルボット",
+    "en": "SENTINELBOT",
+    "ru": "СТРАЖ-БОТ",
+    "ko": "센티넬봇"
+  },
+  "sentinelbot_mystic": {
+    "jp": "センチネルボット",
+    "en": "SENTINELBOT",
+    "ru": "СТРАЖ-БОТ",
+    "ko": "센티넬봇"
+  },
+  "sentinelbot_science": {
+    "jp": "センチネルボット",
+    "en": "SENTINELBOT",
+    "ru": "СТРАЖ-БОТ",
+    "ko": "센티넬봇"
+  },
+  "sentinelbot_skill": {
+    "jp": "センチネルボット",
+    "en": "SENTINELBOT",
+    "ru": "СТРАЖ-БОТ",
+    "ko": "센티넬봇"
+  },
+  "sentinelbot_tech": {
+    "jp": "センチネルボット",
+    "en": "SENTINELBOT",
+    "ru": "СТРАЖ-БОТ",
+    "ko": "센티넬봇"
+  },
+  "sentry": {
+    "jp": "セントリー",
+    "en": "SENTRY",
+    "ru": "ЧАСОВОЙ",
+    "ko": "센트리"
+  },
+  "serpent": {
+    "jp": "サーペント",
+    "en": "SERPENT",
+    "ru": "ЗМЕЙ",
+    "ko": "서펀트"
+  },
+  "sersi": {
+    "jp": "セルシー",
+    "en": "SERSI",
+    "ru": "СЕРСИ",
+    "ko": "세르시"
+  },
+  "shangchi": {
+    "jp": "シャン・チー",
+    "en": "SHANG-CHI",
+    "ru": "ШАН-ЧИ",
+    "ko": "샹치"
+  },
+  "shathra": {
+    "jp": "シャスラ",
+    "en": "SHATHRA",
+    "ru": "ШАТРА",
+    "ko": "샤트라"
+  },
+  "shehulk": {
+    "jp": "シー・ハルク",
+    "en": "SHE-HULK",
+    "ru": "ЖЕНЩИНА-ХАЛК",
+    "ko": "쉬헐크"
+  },
+  "shehulk_deathless": {
+    "jp": "シー・ハルク（不死）",
+    "en": "SHE-HULK (UFORGJENGELIGE)",
+    "ru": "ЖЕНЩИНА-ХАЛК (НЕТЛЕННАЯ)",
+    "ko": "쉬헐크(데스리스)"
+  },
+  "shocker": {
+    "jp": "ショッカー",
+    "en": "SHOCKER",
+    "ru": "ШОКЕР",
+    "ko": "쇼커"
+  },
+  "shuri": {
+    "jp": "シュリ",
+    "en": "SHURI",
+    "ru": "ШУРИ",
+    "ko": "슈리"
+  },
+  "silk": {
+    "jp": "シルク",
+    "en": "SILK",
+    "ru": "ШЕЛК",
+    "ko": "실크"
+  },
+  "silversable": {
+    "jp": "シルバーセーブル",
+    "en": "SILVER SABLE",
+    "ru": "СЕРЕБРЯНЫЙ СОБОЛЬ",
+    "ko": "실버 세이블"
+  },
+  "silversamurai": {
+    "jp": "シルバーサムライ",
+    "en": "SILVER SAMURAI",
+    "ru": "СЕРЕБРЯНЫЙ САМУРАЙ",
+    "ko": "실버 사무라이"
+  },
+  "silversurfer": {
+    "jp": "シルバーサーファー",
+    "en": "SILVER SURFER",
+    "ru": "СЕРЕБРЯНЫЙ СЕРФЕР",
+    "ko": "실버 서퍼"
+  },
+  "skrull": {
+    "jp": "スクラル",
+    "en": "SKRULL",
+    "ru": "СКРУЛЛ",
+    "ko": "스크럴"
+  },
+  "skrull_super": {
+    "jp": "スーパースクラル",
+    "en": "SUPER-SKRULL",
+    "ru": "СУПЕР-СКРУЛЛ",
+    "ko": "슈퍼 스크럴"
+  },
+  "solvarch": {
+    "jp": "ソルヴァーク",
+    "en": "SOLVARCH",
+    "ru": "СОЛВАРХ",
+    "ko": "솔바르크"
+  },
+  "spidergwen": {
+    "jp": "スパイダー・グウェン",
+    "en": "SPIDER-GWEN",
+    "ru": "ГВЕН-ПАУК",
+    "ko": "스파이더 그웬"
+  },
+  "spiderham": {
+    "jp": "スパイダー・ハム",
+    "en": "SPIDER-HAM",
+    "ru": "СВИН-ПАУК",
+    "ko": "스파이더햄"
+  },
+  "spiderman": {
+    "jp": "スパイダーマン(クラシック)",
+    "en": "SPIDER-MAN (KLASSISK)",
+    "ru": "ЧЕЛОВЕК-ПАУК (КЛАССИКА)",
+    "ko": "스파이더맨(클래식)"
+  },
+  "spiderman_2099": {
+    "jp": "スパイダーマン2099",
+    "en": "SPIDER-MAN 2099",
+    "ru": "ЧЕЛОВЕК-ПАУК 2099",
+    "ko": "스파이더맨 2099"
+  },
+  "spiderman_black": {
+    "jp": "スパイダーマン (シンビオート)",
+    "en": "SPIDER-MAN (SYMBIOTE)",
+    "ru": "ЧЕЛОВЕК-ПАУК (СИМБИОТ)",
+    "ko": "스파이더맨(심비오트)"
+  },
+  "spiderman_morales": {
+    "jp": "スパイダーマン(マイルズ・モラレス)",
+    "en": "SPIDER-MAN (MILES MORALES)",
+    "ru": "ЧЕЛОВЕК-ПАУК (МАЙЛС МОРАЛЕС)",
+    "ko": "스파이더맨(마일즈 모랄레스)"
+  },
+  "spiderman_movie": {
+    "jp": "スパイダーマン（スターク強化版）",
+    "en": "SPIDER-MAN (STARK-FORBEDRET)",
+    "ru": "ЧЕЛОВЕК-ПАУК (УСИЛЕНИЯ СТАРКА)",
+    "ko": "스파이더맨(스타크 강화버전)"
+  },
+  "spiderman_pavitr": {
+    "jp": "スパイダーマン（パヴィトル・プラバカカル）",
+    "en": "SPIDER-MAN (PAVITR PRABHAKAR)",
+    "ru": "ЧЕЛОВЕК-ПАУК (ПАВИТР ПРАБХАКАР)",
+    "ko": "스파이더맨(파비트르 프라바카르)"
+  },
+  "spiderman_stealth": {
+    "jp": "スパイダーマン（ステルス・スーツ）",
+    "en": "SPIDER-MAN (STEALTH SUIT)",
+    "ru": "ЧЕЛОВЕК-ПАУК (СКРЫТЫЙ КОСТЮМ)",
+    "ko": "스파이더맨(스텔스 슈트)"
+  },
+  "spiderman_supreme": {
+    "jp": "スパイダーマン（スプリーム）",
+    "en": "SPIDER-MAN (SUPREME)",
+    "ru": "ЧЕЛОВЕК-ПАУК (ВЕРХОВНЫЙ)",
+    "ko": "스파이더맨(슈프림)"
+  },
+  "spiderpunk": {
+    "jp": "スパイダーパンク",
+    "en": "SPIDER-PUNK",
+    "ru": "ПАУК-ПАНК",
+    "ko": "스파이더 펑크"
+  },
+  "spiderwoman": {
+    "jp": "スパイダーウーマン (ジェシカ・ドリュー)",
+    "en": "SPIDER-WOMAN (JESSICA DREW)",
+    "ru": "ЖЕНЩИНА-ПАУК (ДЖЕССИКА ДРЮ)",
+    "ko": "스파이더우먼(제시카 드류)"
+  },
+  "spiral": {
+    "jp": "スパイラル",
+    "en": "SPIRAL",
+    "ru": "СПИРАЛЬ",
+    "ko": "스파이럴"
+  },
+  "spot": {
+    "jp": "スポット",
+    "en": "SPOT",
+    "ru": "ПЯТНО",
+    "ko": "스팟"
+  },
+  "squirrelgirl": {
+    "jp": "スクイレル・ガール",
+    "en": "SQUIRREL GIRL",
+    "ru": "ДЕВУШКА-БЕЛКА",
+    "ko": "스쿼럴 걸"
+  },
+  "starlord": {
+    "jp": "スター・ロード",
+    "en": "STAR-LORD",
+    "ru": "ЗВЕЗДНЫЙ ЛОРД",
+    "ko": "스타로드"
+  },
+  "starlord_stellar": {
+    "jp": "スター・ロード（ステラ・フォージド）",
+    "en": "STAR-LORD (STJERNESKAPT)",
+    "ru": "ЗВЕЗДНЫЙ ЛОРД (ЗВЕЗДНАЯ КУЗНИЦА)",
+    "ko": "스타로드(스텔라 포지드)"
+  },
+  "storm": {
+    "jp": "ストーム",
+    "en": "STORM",
+    "ru": "ШТОРМ",
+    "ko": "스톰"
+  },
+  "storm_realm": {
+    "jp": "ストーム（ピラミッドX）",
+    "en": "STORM (PYRAMIDE X)",
+    "ru": "ШТОРМ (ПИРАМИДА ИКС)",
+    "ko": "스톰(피라미드 X)"
+  },
+  "stryfe": {
+    "jp": "ストライフ",
+    "en": "STRYFE",
+    "ru": "СТРАЙФ",
+    "ko": "스트라이프"
+  },
+  "sunspot": {
+    "jp": "サンスポット",
+    "en": "SUNSPOT",
+    "ru": "САНСПОТ",
+    "ko": "선스팟"
+  },
+  "symbiotesupreme": {
+    "jp": "シンビオート・スプリーム ",
+    "en": "SYMBIOTE SUPREME",
+    "ru": "ВЕРХОВНЫЙ СИМБИОТ",
+    "ko": "심비오트 슈프림"
+  },
+  "taskmaster": {
+    "jp": "タスクマスター",
+    "en": "TASKMASTER",
+    "ru": "ТАСКМАСТЕР",
+    "ko": "태스크마스터"
+  },
+  "terrax": {
+    "jp": "テラックス",
+    "en": "TERRAX",
+    "ru": "ТЕРРАКС",
+    "ko": "테락스"
+  },
+  "thanos": {
+    "jp": "サノス",
+    "en": "THANOS",
+    "ru": "ТАНОС",
+    "ko": "타노스"
+  },
+  "thanos_blackorder": {
+    "jp": "無名",
+    "en": "NAVNLØS",
+    "ru": "БЕЗЫМЯННЫЙ",
+    "ko": "그 누구의"
+  },
+  "thanos_deathless_trophy": {
+    "jp": "サノス（不死）",
+    "en": "THANOS (UFORGJENGELIGE)",
+    "ru": "ТАНОС (НЕТЛЕННЫЙ)",
+    "ko": "타노스(데스리스)"
+  },
+  "thanos_boss_battle_end": {
+    "jp": "サノス",
+    "en": "THANOS",
+    "ru": "ТАНОС",
+    "ko": "타노스"
+  },
+  "thanos_boss_battle_end_blackorder": {
+    "jp": "無名",
+    "en": "NAVNLØS",
+    "ru": "БЕЗЫМЯННЫЙ",
+    "ko": "그 누구의"
+  },
+  "thanos_boss_battle_enw_blackorder": {
+    "jp": "無名",
+    "en": "NAVNLØS",
+    "ru": "БЕЗЫМЯННЫЙ",
+    "ko": "그 누구의"
+  },
+  "thanos_boss_battle_gcw": {
+    "jp": "サノス",
+    "en": "THANOS",
+    "ru": "ТАНОС",
+    "ko": "타노스"
+  },
+  "thanos_boss_battle_gcw_blackorder": {
+    "jp": "無名",
+    "en": "NAVNLØS",
+    "ru": "БЕЗЫМЯННЫЙ",
+    "ko": "그 누구의"
+  },
+  "thanos_gauntlet": {
+    "jp": "サノス",
+    "en": "THANOS",
+    "ru": "ТАНОС",
+    "ko": "타노스"
+  },
+  "thing": {
+    "jp": "シング",
+    "en": "THING",
+    "ru": "СУЩЕСТВО",
+    "ko": "씽"
+  },
+  "thor": {
+    "jp": "ソー",
+    "en": "TOR",
+    "ru": "ТОР",
+    "ko": "토르"
+  },
+  "thor_janefoster": {
+    "jp": "ソー(ジェーン・フォスター)",
+    "en": "TOR (JANE FOSTER)",
+    "ru": "ТОР (ДЖЕЙН ФОСТЕР)",
+    "ko": "토르(제인 포스터)"
+  },
+  "thor_ragnarok": {
+    "jp": "ソー（ラグナロク）",
+    "en": "TOR (RAGNAROK)",
+    "ru": "ТОР (РАГНАРEК)",
+    "ko": "토르(라그나로크)"
+  },
+  "tigra": {
+    "jp": "ティグラ",
+    "en": "TIGRA",
+    "ru": "ТИГРА",
+    "ko": "타이그라"
+  },
+  "titania": {
+    "jp": "ティターニア",
+    "en": "TITANIA",
+    "ru": "ТИТАНИЯ",
+    "ko": "타이타니아"
+  },
+  "toad": {
+    "jp": "トード",
+    "en": "TOAD",
+    "ru": "ЖАБА",
+    "ko": "토드"
+  },
+  "ultron": {
+    "jp": "ウルトロン（クラシック）",
+    "en": "ULTRON (KLASSISK)",
+    "ru": "АЛЬТРОН (КЛАССИКА)",
+    "ko": "울트론(클래식)"
+  },
+  "ultron_prime": {
+    "jp": "ウルトロン",
+    "en": "ULTRON",
+    "ru": "АЛЬТРОН",
+    "ko": "울트론"
+  },
+  "unstoppable_ant": {
+    "jp": "無敵のアント",
+    "en": "USTOPPELIG ANT",
+    "ru": "НЕУДЕРЖИМЫЙ МУРАВЕЙ",
+    "ko": "저지불가 앤트"
+  },
+  "valkyrie": {
+    "jp": "ヴァルキリー",
+    "en": "VALKYRIE",
+    "ru": "ВАЛЬКИРИЯ",
+    "ko": "발키리"
+  },
+  "venom": {
+    "jp": "ヴェノム",
+    "en": "Venom",
+    "ru": "Веном",
+    "ko": "베놈"
+  },
+  "venompool": {
+    "jp": "ヴェノムプール",
+    "en": "VENOMPOOL",
+    "ru": "ВЕНОМПУЛ",
+    "ko": "베놈풀"
+  },
+  "venomtheduck": {
+    "jp": "ヴェノム・ザ・ダック",
+    "en": "VENOM THE DUCK",
+    "ru": "УТКА ВЕНОМ",
+    "ko": "베놈 덕"
+  },
+  "vision": {
+    "jp": "ビジョン",
+    "en": "VISION",
+    "ru": "ВИЖН",
+    "ko": "비전"
+  },
+  "vision_blackorder": {
+    "jp": "無名",
+    "en": "NAVNLØS",
+    "ru": "БЕЗЫМЯННЫЙ",
+    "ko": "그 누구의"
+  },
+  "vision_deathless": {
+    "jp": "ビジョン（不死）",
+    "en": "VISION (UFORGJENGELIGE)",
+    "ru": "ВИЖН (НЕТЛЕННЫЙ)",
+    "ko": "비전(데스리스)"
+  },
+  "vision_movie": {
+    "jp": "ビジョン(エイジ・オブ・ウルトロン)",
+    "en": "VISION (AGE OF ULTRON)",
+    "ru": "ВИЖН (ЭРА АЛЬТРОНА)",
+    "ko": "비전(에이지 오브 울트론)"
+  },
+  "vision_timely": {
+    "jp": "ビジョン（アールカス）",
+    "en": "VISION (AARKUS)",
+    "ru": "ВИЖН (ААРКУС)",
+    "ko": "비전(아쿠스)"
+  },
+  "vivvision": {
+    "jp": "ヴィヴ・ヴィジョン",
+    "en": "VIV VISION",
+    "ru": "ВИВ ВИЖН",
+    "ko": "비비안 비전"
+  },
+  "void": {
+    "jp": "ボイド",
+    "en": "VOID",
+    "ru": "ВОЙД",
+    "ko": "보이드"
+  },
+  "vox": {
+    "jp": "ヴォックス",
+    "en": "VOX",
+    "ru": "ВОКС",
+    "ko": "복스"
+  },
+  "vulture_movie": {
+    "jp": "ヴァルチャー",
+    "en": "VULTURE",
+    "ru": "СТЕРВЯТНИК",
+    "ko": "벌쳐"
+  },
+  "warlock": {
+    "jp": "ウォーロック",
+    "en": "WARLOCK",
+    "ru": "УОРЛОК",
+    "ko": "워록"
+  },
+  "warmachine": {
+    "jp": "ウォーマシン",
+    "en": "WAR MACHINE",
+    "ru": "ВОИТЕЛЬ",
+    "ko": "워머신"
+  },
+  "wasp": {
+    "jp": "ワスプ",
+    "en": "WASP",
+    "ru": "ОСА",
+    "ko": "와스프"
+  },
+  "wave": {
+    "jp": "ウェイブ",
+    "en": "WAVE",
+    "ru": "ВОЛНА",
+    "ko": "웨이브"
+  },
+  "werewolfbynight": {
+    "jp": "ウェアウルフ・バイ・ナイト",
+    "en": "WEREWOLF BY NIGHT",
+    "ru": "НОЧНОЙ ОБОРОТЕНЬ",
+    "ko": "웨어울프 바이 나이트"
+  },
+  "whitetiger": {
+    "jp": "ホワイトタイガー",
+    "en": "WHITE TIGER",
+    "ru": "БЕЛАЯ ТИГРИЦА",
+    "ko": "화이트 타이거"
+  },
+  "wiccan": {
+    "jp": "ウィッカン",
+    "en": "WICCAN",
+    "ru": "ВИККАН",
+    "ko": "위칸"
+  },
+  "wintersoldier": {
+    "jp": "ウィンター・ソルジャー",
+    "en": "WINTER SOLDIER",
+    "ru": "ЗИМНИЙ СОЛДАТ",
+    "ko": "윈터 솔져"
+  },
+  "wolverine": {
+    "jp": "ウルヴァリン",
+    "en": "WOLVERINE",
+    "ru": "РОСОМАХА",
+    "ko": "울버린"
+  },
+  "wolverine_oldman": {
+    "jp": "オールドマン・ローガン",
+    "en": "GAMLE LOGAN",
+    "ru": "СТАРИК ЛОГАН",
+    "ko": "올드맨 로건"
+  },
+  "wong": {
+    "jp": "ウォン",
+    "en": "WONG",
+    "ru": "ВОНГ",
+    "ko": "웡"
+  },
+  "x23": {
+    "jp": "ウルヴァリン（X-23）",
+    "en": "WOLVERINE (X-23)",
+    "ru": "РОСОМАХА (X-23)",
+    "ko": "울버린(X-23)"
+  },
+  "yelenabelova": {
+    "jp": "エレナ・ベロワ",
+    "en": "YELENA BELOVA",
+    "ru": "ЕЛЕНА БЕЛОВА",
+    "ko": "옐레나 벨로바"
+  },
+  "yellowjacket": {
+    "jp": "イエロージャケット",
+    "en": "YELLOWJACKET",
+    "ru": "ЖЕЛТЫЙ ШЕРШЕНЬ",
+    "ko": "옐로재킷"
+  },
+  "yondu": {
+    "jp": "ヨンドゥ",
+    "en": "YONDU",
+    "ru": "ЙОНДУ",
+    "ko": "욘두"
+  },
+  "carinativan": {
+    "jp": "カリーナ・ティヴァン",
+    "en": "CARINA TIVAN",
+    "ru": "КАРИНА ТИВАН",
+    "ko": "카리나 티반"
+  },
+  "captainmarvel_x": {
+    "jp": "キャプテン・マーベル",
+    "en": "CAPTAIN MARVEL",
+    "ru": "КАПИТАН МАРВЕЛ",
+    "ko": "캡틴 마블"
+  },
+  "chair": {
+    "jp": "椅子",
+    "en": "STOL",
+    "ru": "СТУЛ",
+    "ko": "의자"
+  },
+  "dormammu_avehard": {
+    "jp": "ドーマムゥ",
+    "en": "DORMAMMU",
+    "ru": "ДОРМАММУ",
+    "ko": "도르마무"
+  },
+  "dormammu_aveeasy": {
+    "jp": "ドーマムゥ",
+    "en": "DORMAMMU",
+    "ru": "ДОРМАММУ",
+    "ko": "도르마무"
+  },
+  "grandmaster": {
+    "jp": "グランドマスター",
+    "en": "STORMESTER",
+    "ru": "ГРОССМЕЙСТЕР",
+    "ko": "그랜드마스터"
+  },
+  "grandmaster_event": {
+    "jp": "グランドマスター",
+    "en": "STORMESTER",
+    "ru": "ГРОССМЕЙСТЕР",
+    "ko": "그랜드마스터"
+  },
+  "howardfrontend": {
+    "jp": "ハワード・ザ・ダック",
+    "en": "HOWARD THE DUCK",
+    "ru": "УТКА ГОВАРД",
+    "ko": "하워드 덕"
+  },
+  "humantorch_old": {
+    "jp": "ヒューマン・トーチ",
+    "en": "HUMAN TORCH",
+    "ru": "ЧЕЛОВЕК-ФАКЕЛ",
+    "ko": "휴먼 토치"
+  },
+  "isosphere": {
+    "jp": "ISOスフィア",
+    "en": "ISO-KULE",
+    "ru": "ISO-СФЕРА",
+    "ko": "ISO 스피어"
+  },
+  "jeangrey": {
+    "jp": "ジーン・グレイ",
+    "en": "JEAN GREY",
+    "ru": "ДЖИН ГРЕЙ",
+    "ko": "진 그레이"
+  },
+  "jessicajones": {
+    "jp": "ジェシカ・ジョーンズ",
+    "en": "JESSICA JONES",
+    "ru": "ДЖЕССИКА ДЖОНС",
+    "ko": "제시카 존스"
+  },
+  "kang_avehard": {
+    "jp": "カーン",
+    "en": "KANG",
+    "ru": "КАНГ",
+    "ko": "캉"
+  },
+  "kang_aveeasy": {
+    "jp": "カーン",
+    "en": "KANG",
+    "ru": "КАНГ",
+    "ko": "캉"
+  },
+  "maestro": {
+    "jp": "マエストロ",
+    "en": "MAESTRO",
+    "ru": "МАЭСТРО",
+    "ko": "마에스트로"
+  },
+  "phoenix_dark": {
+    "jp": "ダーク・フェニックス",
+    "en": "DARK PHOENIX",
+    "ru": "ТЕМНЫЙ ФЕНИКС",
+    "ko": "다크 피닉스"
+  },
+  "venomtheduckfrontend": {
+    "jp": "ヴェノム・ザ・ダック",
+    "en": "VENOM THE DUCK",
+    "ru": "УТКА ВЕНОМ",
+    "ko": "베놈 덕"
+  },
+  "wolverine_weaponx": {
+    "jp": "ウルヴァリン(ウェポンX)",
+    "en": "WOLVERINE (WEAPON X)",
+    "ru": "РОСОМАХА (ОРУЖИЕ ИКС)",
+    "ko": "울버린(웨폰 X)"
+  },
+  "wolverine_xforce": {
+    "jp": "ウルヴァリン（Xフォース）",
+    "en": "WOLVERINE (X-FORCE)",
+    "ru": "РОСОМАХА (X-FORCE)",
+    "ko": "울버린 (X-포스)"
+  },
+  "sym_cos_beam": {
+    "jp": "シンビオイド",
+    "en": "SYMBIOID",
+    "ru": "СИМБИОИД",
+    "ko": "심비오드"
+  },
+  "sym_cos_thanos": {
+    "jp": "シンビオイド",
+    "en": "SYMBIOID",
+    "ru": "СИМБИОИД",
+    "ko": "심비오드"
+  },
+  "sym_gold": {
+    "jp": "ゴールデン・シンビオイド",
+    "en": "GOLDEN SYMBIOID",
+    "ru": "ЗОЛОТОЙ СИМБИОИД",
+    "ko": "골든 심비오이드"
+  },
+  "sym_mut_electric": {
+    "jp": "シンビオイド",
+    "en": "SYMBIOID",
+    "ru": "СИМБИОИД",
+    "ko": "심비오드"
+  },
+  "sym_mut_ground": {
+    "jp": "シンビオイド",
+    "en": "SYMBIOID",
+    "ru": "СИМБИОИД",
+    "ko": "심비오드"
+  },
+  "sym_mys_beams": {
+    "jp": "シンビオイド",
+    "en": "SYMBIOID",
+    "ru": "СИМБИОИД",
+    "ko": "심비오드"
+  },
+  "sym_mys_wizard": {
+    "jp": "シンビオイド",
+    "en": "SYMBIOID",
+    "ru": "СИМБИОИД",
+    "ko": "심비오드"
+  },
+  "sym_sci_brute": {
+    "jp": "シンビオイド",
+    "en": "SYMBIOID",
+    "ru": "СИМБИОИД",
+    "ko": "심비오드"
+  },
+  "sym_sci_heavy": {
+    "jp": "シンビオイド",
+    "en": "SYMBIOID",
+    "ru": "СИМБИОИД",
+    "ko": "심비오드"
+  },
+  "sym_skl_brute": {
+    "jp": "シンビオイド",
+    "en": "SYMBIOID",
+    "ru": "СИМБИОИД",
+    "ko": "심비오드"
+  },
+  "sym_skl_dex": {
+    "jp": "シンビオイド",
+    "en": "SYMBIOID",
+    "ru": "СИМБИОИД",
+    "ko": "심비오드"
+  },
+  "sym_tch_beam": {
+    "jp": "シンビオイド",
+    "en": "SYMBIOID",
+    "ru": "СИМБИОИД",
+    "ko": "심비오드"
+  },
+  "sym_tch_rockets": {
+    "jp": "シンビオイド",
+    "en": "SYMBIOID",
+    "ru": "СИМБИОИД",
+    "ko": "심비오드"
+  },
+  "symbioid_mut": {
+    "jp": "シンビオイド",
+    "en": "SYMBIOID",
+    "ru": "СИМБИОИД",
+    "ko": "심비오드"
+  },
+  "symbioid_skl": {
+    "jp": "シンビオイド",
+    "en": "SYMBIOID",
+    "ru": "СИМБИОИД",
+    "ko": "심비오드"
+  },
+  "symbioid_sci": {
+    "jp": "シンビオイド",
+    "en": "SYMBIOID",
+    "ru": "СИМБИОИД",
+    "ko": "심비오드"
+  },
+  "symbioid_mys": {
+    "jp": "シンビオイド",
+    "en": "SYMBIOID",
+    "ru": "СИМБИОИД",
+    "ko": "심비오드"
+  },
+  "symbioid_cos": {
+    "jp": "シンビオイド",
+    "en": "SYMBIOID",
+    "ru": "СИМБИОИД",
+    "ko": "심비오드"
+  },
+  "symbioid_tch": {
+    "jp": "シンビオイド",
+    "en": "SYMBIOID",
+    "ru": "СИМБИОИД",
+    "ko": "심비오드"
+  },
+  "pvp_adaptoid_blackbolt": {
+    "jp": "アダプトイド",
+    "en": "ADAPTOID",
+    "ru": "АДАПТОИД",
+    "ko": "어뎁토이드"
+  },
+  "pvp_adaptoid_blackpanther": {
+    "jp": "アダプトイド",
+    "en": "ADAPTOID",
+    "ru": "АДАПТОИД",
+    "ko": "어뎁토이드"
+  },
+  "pvp_adaptoid_colossus": {
+    "jp": "アダプトイド",
+    "en": "ADAPTOID",
+    "ru": "АДАПТОИД",
+    "ko": "어뎁토이드"
+  },
+  "pvp_adaptoid_cyclops": {
+    "jp": "アダプトイド",
+    "en": "ADAPTOID",
+    "ru": "АДАПТОИД",
+    "ko": "어뎁토이드"
+  },
+  "pvp_adaptoid_drax": {
+    "jp": "アダプトイド",
+    "en": "ADAPTOID",
+    "ru": "АДАПТОИД",
+    "ko": "어뎁토이드"
+  },
+  "pvp_adaptoid_electro": {
+    "jp": "アダプトイド",
+    "en": "ADAPTOID",
+    "ru": "АДАПТОИД",
+    "ko": "어뎁토이드"
+  },
+  "pvp_adaptoid_ironman": {
+    "jp": "アダプトイド",
+    "en": "ADAPTOID",
+    "ru": "АДАПТОИД",
+    "ko": "어뎁토이드"
+  },
+  "pvp_adaptoid_juggernaut": {
+    "jp": "アダプトイド",
+    "en": "ADAPTOID",
+    "ru": "АДАПТОИД",
+    "ko": "어뎁토이드"
+  },
+  "pvp_adaptoid_scarletwitch": {
+    "jp": "アダプトイド",
+    "en": "ADAPTOID",
+    "ru": "АДАПТОИД",
+    "ko": "어뎁토이드"
+  },
+  "pvp_adaptoid_spiderman": {
+    "jp": "アダプトイド",
+    "en": "ADAPTOID",
+    "ru": "АДАПТОИД",
+    "ko": "어뎁토이드"
+  },
+  "pvp_adaptoid_vision": {
+    "jp": "アダプトイド",
+    "en": "ADAPTOID",
+    "ru": "АДАПТОИД",
+    "ko": "어뎁토이드"
+  },
+  "pvp_adaptoid_wintersoldier": {
+    "jp": "アダプトイド",
+    "en": "ADAPTOID",
+    "ru": "АДАПТОИД",
+    "ko": "어뎁토이드"
+  },
+  "dploid_cos": {
+    "jp": "デッドプーロイド",
+    "en": "DEADPOOLOID",
+    "ru": "ДЭДПУЛОИД",
+    "ko": "데드풀로이드"
+  },
+  "dploid_mut": {
+    "jp": "デッドプーロイド",
+    "en": "DEADPOOLOID",
+    "ru": "ДЭДПУЛОИД",
+    "ko": "데드풀로이드"
+  },
+  "dploid_mys": {
+    "jp": "デッドプーロイド",
+    "en": "DEADPOOLOID",
+    "ru": "ДЭДПУЛОИД",
+    "ko": "데드풀로이드"
+  },
+  "dploid_sci": {
+    "jp": "デッドプーロイド",
+    "en": "DEADPOOLOID",
+    "ru": "ДЭДПУЛОИД",
+    "ko": "데드풀로이드"
+  },
+  "dploid_skl": {
+    "jp": "デッドプーロイド",
+    "en": "DEADPOOLOID",
+    "ru": "ДЭДПУЛОИД",
+    "ko": "데드풀로이드"
+  },
+  "dploid_tch": {
+    "jp": "デッドプーロイド",
+    "en": "DEADPOOLOID",
+    "ru": "ДЭДПУЛОИД",
+    "ko": "데드풀로이드"
+  },
+  "adaptoid_blackbolt": {
+    "jp": "アダプトイド",
+    "en": "ADAPTOID",
+    "ru": "АДАПТОИД",
+    "ko": "어뎁토이드"
+  },
+  "adaptoid_blackpanther": {
+    "jp": "アダプトイド",
+    "en": "ADAPTOID",
+    "ru": "АДАПТОИД",
+    "ko": "어뎁토이드"
+  },
+  "adaptoid_colossus": {
+    "jp": "アダプトイド",
+    "en": "ADAPTOID",
+    "ru": "АДАПТОИД",
+    "ko": "어뎁토이드"
+  },
+  "adaptoid_cyclops": {
+    "jp": "アダプトイド",
+    "en": "ADAPTOID",
+    "ru": "АДАПТОИД",
+    "ko": "어뎁토이드"
+  },
+  "adaptoid_drax": {
+    "jp": "アダプトイド",
+    "en": "ADAPTOID",
+    "ru": "АДАПТОИД",
+    "ko": "어뎁토이드"
+  },
+  "adaptoid_electro": {
+    "jp": "アダプトイド",
+    "en": "ADAPTOID",
+    "ru": "АДАПТОИД",
+    "ko": "어뎁토이드"
+  },
+  "adaptoid_gold_juggernaut": {
+    "jp": "ゴールデン・アダプトイド",
+    "en": "GOLDEN ADAPTOID",
+    "ru": "ЗОЛОТОЙ АДАПТОИД",
+    "ko": "골든 어뎁토이드"
+  },
+  "adaptoid_hydra": {
+    "jp": "アダプトイド",
+    "en": "ADAPTOID",
+    "ru": "АДАПТОИД",
+    "ko": "어뎁토이드"
+  },
+  "adaptoid_ironman": {
+    "jp": "アダプトイド",
+    "en": "ADAPTOID",
+    "ru": "АДАПТОИД",
+    "ko": "어뎁토이드"
+  },
+  "adaptoid_juggernaut": {
+    "jp": "アダプトイド",
+    "en": "ADAPTOID",
+    "ru": "АДАПТОИД",
+    "ko": "어뎁토이드"
+  },
+  "adaptoid_scarletwitch": {
+    "jp": "アダプトイド",
+    "en": "ADAPTOID",
+    "ru": "АДАПТОИД",
+    "ko": "어뎁토이드"
+  },
+  "adaptoid_spiderman": {
+    "jp": "アダプトイド",
+    "en": "ADAPTOID",
+    "ru": "АДАПТОИД",
+    "ko": "어뎁토이드"
+  },
+  "adaptoid_vision": {
+    "jp": "アダプトイド",
+    "en": "ADAPTOID",
+    "ru": "АДАПТОИД",
+    "ko": "어뎁토이드"
+  },
+  "adaptoid_wintersoldier": {
+    "jp": "アダプトイド",
+    "en": "ADAPTOID",
+    "ru": "АДАПТОИД",
+    "ko": "어뎁토이드"
+  },
+  "ex_hulk_red": {
+    "jp": "最強レッド・ハルク",
+    "en": "EKS. RED HULK",
+    "ru": "ОСОБЫЙ КРАСНЫЙ ХАЛК",
+    "ko": "극강 레드 헐크"
+  },
+  "ex_antman": {
+    "jp": "最強アントマン",
+    "en": "EKS. ANT-MAN",
+    "ru": "ОСОБЫЙ ЧЕЛОВЕК-МУРАВЕЙ",
+    "ko": "극강 앤트맨"
+  },
+  "ex_spidergwen": {
+    "jp": "最強スパイダーグウェン",
+    "en": "EKS. SPIDER-GWEN",
+    "ru": "ОСОБАЯ ГВЕН-ПАУК",
+    "ko": "극강 스파이더 그웬"
+  },
+  "ex_venom": {
+    "jp": "最強ヴェノム",
+    "en": "EKS. VENOM",
+    "ru": "ОСОБЫЙ ВЕНОМ",
+    "ko": "극강 베놈"
+  },
+  "ex_gamora": {
+    "jp": "最強ガモーラ",
+    "en": "EKS. GAMORA",
+    "ru": "ОСОБАЯ ГАМОРА",
+    "ko": "극강 가모라"
+  },
+  "ex_msmarvel": {
+    "jp": "最強ミス・ マーベル",
+    "en": "EKS. MS. MARVEL",
+    "ru": "ОСОБАЯ МИСС МАРВЕЛ",
+    "ko": "극강 미스 마블"
+  },
+  "ex_cyclops": {
+    "jp": "最強サイクロプス（新エグゼビア・スクール）",
+    "en": "EKS. CYCLOPS (NYE XAVIER-SKOLE)",
+    "ru": "ОСОБЫЙ ЦИКЛОП (НОВАЯ ШКОЛА КСАВЬЕ)",
+    "ko": "극강 싸이클롭스(뉴 자비에르 스쿨)"
+  },
+  "ex_wolverine_oldman": {
+    "jp": "最強オールドマン・ローガン",
+    "en": "EKS. GAMLE LOGAN",
+    "ru": "ОСОБ. СТАРИК ЛОГАН",
+    "ko": "극강 올드맨 로건"
+  },
+  "ex_deadpool_xforce": {
+    "jp": "最強デッドプール（X-フォース）",
+    "en": "EKS. DEADPOOL (X-FORCE)",
+    "ru": "ОСОБЫЙ ДЭДПУЛ (X-FORCE)",
+    "ko": "극강 데드풀(X-포스)"
+  },
+  "ex_daredevil": {
+    "jp": "最強デアデビル（クラシック）",
+    "en": "EKS. DAREDEVIL (KLASSISK)",
+    "ru": "ОСОБЫЙ СОРВИГОЛОВА (КЛАССИКА)",
+    "ko": "극강 데어데블(클래식)"
+  },
+  "ex_elektra": {
+    "jp": "最強エレクトラ",
+    "en": "EKS. ELEKTRA",
+    "ru": "ОСОБАЯ ЭЛЕКТРА",
+    "ko": "극강 일렉트라"
+  },
+  "ex_falcon": {
+    "jp": "最強ファルコン",
+    "en": "EKS. FALCON",
+    "ru": "ОСОБЫЙ СОКОЛ",
+    "ko": "극강 팔콘"
+  },
+  "ex_warmachine": {
+    "jp": "最強ウォーマシン",
+    "en": "EKS. WAR MACHINE",
+    "ru": "ОСОБЫЙ ВОИТЕЛЬ",
+    "ko": "극강 워머신"
+  },
+  "ex_vision_movie": {
+    "jp": "最強ビジョン（エイジ・オブ・ウルトロン）",
+    "en": "EKS. VISION (AGE OF ULTRON)",
+    "ru": "ОСОБЫЙ ВИЖН (ЭРА АЛЬТРОНА)",
+    "ko": "극강 비전(에이지 오브 울트론)"
+  },
+  "ex_civilwarrior": {
+    "jp": "最強シビル・ウォリアー",
+    "en": "EKS. CIVIL WARRIOR",
+    "ru": "ОСОБЫЙ ГРАЖДАНСКИЙ ВОИН",
+    "ko": "극강 시빌 워리어"
+  },
+  "ex_colossus_unstoppable": {
+    "jp": "最強アンストッパブル・コロッサス",
+    "en": "EKS. USTOPPELIG COLOSSUS",
+    "ru": "ОСОБЫЙ НЕУДЕРЖИМЫЙ КОЛОСС",
+    "ko": "극강 저지불가 콜로서스"
+  },
+  "ex_magik": {
+    "jp": "最強マジック",
+    "en": "EKS. MAGIK",
+    "ru": "ОСОБАЯ МЭДЖИК",
+    "ko": "극강 매직"
+  },
+  "ex_ironfist": {
+    "jp": "最強アイアンフィスト",
+    "en": "EKS. IRON FIST",
+    "ru": "ОСОБЫЙ ЖЕЛЕЗНЫЙ КУЛАК",
+    "ko": "극강 아이언 피스트"
+  },
+  "ex_abomination": {
+    "jp": "最強アボミネーション",
+    "en": "EKS. ABOMINATION",
+    "ru": "ОСОБАЯ МЕРЗОСТЬ",
+    "ko": "극강 어보미네이션"
+  },
+  "ex_guillotine": {
+    "jp": "最強ギロチン",
+    "en": "EKS. GUILLOTINE",
+    "ru": "ОСОБАЯ ГИЛЬОТИНА",
+    "ko": "극강 길로틴"
+  },
+  "ex_x23": {
+    "jp": "最強ウルヴァリン（X-23）",
+    "en": "EKS. WOLVERINE (X-23)",
+    "ru": "ОСОБАЯ РОСОМАХА (ИКС-23)",
+    "ko": "극강 울버린(X-23)"
+  },
+  "ex_starlord": {
+    "jp": "最強スター・ロード",
+    "en": "EKS. STAR-LORD",
+    "ru": "ОСОБЫЙ ЗВЕЗДНЫЙ ЛОРД",
+    "ko": "극강 스타 로드"
+  },
+  "ex_drstrange": {
+    "jp": "最強ドクター・ストレンジ",
+    "en": "EX. DOKTOR STRANGE",
+    "ru": "ОСБ. Д.СТРЭНДЖ",
+    "ko": "극강 닥터 스트레인지"
+  },
+  "ex_thor": {
+    "jp": "最強ソー",
+    "en": "EKS. TOR",
+    "ru": "ОСОБЫЙ ТОР",
+    "ko": "극강 토르"
+  },
+  "ex_electro": {
+    "jp": "最強エレクトラ",
+    "en": "EKS. ELECTRO",
+    "ru": "ОСОБЫЙ ЭЛЕКТРО",
+    "ko": "극강 일렉트로"
+  },
+  "ex_moonknight": {
+    "jp": "最強ムーンナイト",
+    "en": "EKS. MOON KNIGHT",
+    "ru": "ОСОБЫЙ ЛУННЫЙ РЫЦАРЬ",
+    "ko": "극강 문나이트"
+  },
+  "ex_spiderman_morales": {
+    "jp": "最強スパイダーマン（マイルズ・モラレス）",
+    "en": "EKS. SPIDER-MAN (MILES MORALES)",
+    "ru": "ОСОБЫЙ ЧЕЛОВЕК-ПАУК (МАЙЛЗ МОРАЛЕС)",
+    "ko": "극강 스파이더맨(마일즈 모랄레스)"
+  },
+  "ex_spiderman": {
+    "jp": "最強スパイダーマン（クラシック）",
+    "en": "EKS. SPIDER-MAN (KLASSISK)",
+    "ru": "ОСОБЫЙ ЧЕЛОВЕК-ПАУК (КЛАССИКА)",
+    "ko": "극강 스파이더맨(클래식)"
+  },
+  "ex_vision": {
+    "jp": "最強ビジョン",
+    "en": "EKS. VISION",
+    "ru": "ОСОБЫЙ ВИЖН",
+    "ko": "극강 비전"
+  },
+  "ex_hulkbuster_movie": {
+    "jp": "最強ハルクバスター",
+    "en": "EKS. HULKBUSTER",
+    "ru": "ОСОБЫЙ ХАЛКБАСТЕР",
+    "ko": "극강 헐크버스터"
+  },
+  "ex_blackpanther_cw": {
+    "jp": "最強ブラックパンサー（シビル・ウォー）",
+    "en": "EKS. BLACK PANTHER (CIVIL WAR)",
+    "ru": "ОСОБАЯ ЧЕРНАЯ ПАНТЕРА (ГРАЖДАНСКАЯ ВОЙНА)",
+    "ko": "극강 블랙 팬서(시빌 워)"
+  },
+  "ex_rocket": {
+    "jp": "最強ロケット・ラクーン",
+    "en": "EKS. ROCKET RACCOON",
+    "ru": "ОСОБЫЙ ЕНОТ РАКЕТА",
+    "ko": "극강 로켓 라쿤"
+  },
+  "ex_magneto": {
+    "jp": "最強マグニートー",
+    "en": "EKS. MAGNETO",
+    "ru": "ОСОБЫЙ МАГНЕТО",
+    "ko": "극강 매그니토"
+  },
+  "ex_venompool": {
+    "jp": "最強ヴェノムプール",
+    "en": "EKS. VENOMPOOL",
+    "ru": "ОСОБ. ВЕНОМПУЛ",
+    "ko": "극강 베놈풀"
+  },
+  "ex_juggernaut": {
+    "jp": "最強ジャガーノート",
+    "en": "EKS. JUGGERNAUT",
+    "ru": "ОСОБЫЙ ДЖАГГЕРНАУТ",
+    "ko": "극강 저거너트"
+  },
+  "ex_colossus": {
+    "jp": "最強コロッサス",
+    "en": "EKS. COLOSSUS",
+    "ru": "ОСОБЫЙ КОЛОСС",
+    "ko": "극강 콜로서스"
+  },
+  "ex_cyclops_90s": {
+    "jp": "最強サイクロプス（ブルーチーム）",
+    "en": "EKS. CYCLOPS (BLÅTT LAG)",
+    "ru": "ОСОБЫЙ ЦИКЛОП (СИНЯЯ КОМАНДА)",
+    "ko": "극강 싸이클롭스(블루 팀)"
+  },
+  "ex_groot": {
+    "jp": "最強グルート",
+    "en": "EKS. GROOT",
+    "ru": "ОСОБЫЙ ГРУТ",
+    "ko": "극강 그루트"
+  },
+  "ex_msmarvel_kamala": {
+    "jp": "最強ミス・マーヴェル（カマラ・カーン）",
+    "en": "EKS. MS. MARVEL (KAMALA KHAN)",
+    "ru": "ОСОБАЯ МИСС МИСС МАРВЕЛ (КАМАЛА ХАН)",
+    "ko": "극강 미스 마블(카말라 칸)"
+  },
+  "ex_rhino": {
+    "jp": "最強ライノ",
+    "en": "EKS. RHINO",
+    "ru": "ОСОБЫЙ НОСОРОГ",
+    "ko": "극강 라이노"
+  },
+  "ex_ultron_prime": {
+    "jp": "最強ウルトロン",
+    "en": "EKS. ULTRON",
+    "ru": "ОСОБЫЙ АЛЬТРОН",
+    "ko": "극강 울트론"
+  },
+  "ex_blackwidow": {
+    "jp": "最強ブラック・ウィドウ",
+    "en": "EKS. BLACK WIDOW",
+    "ru": "ОСОБАЯ ЧЕРНАЯ ВДОВА",
+    "ko": "극강 블랙 위도우"
+  },
+  "ex_thor_janefoster": {
+    "jp": "最強ソー（ジェーン・フォスター）",
+    "en": "EKS. TOR (JANE FOSTER)",
+    "ru": "ОСОБЫЙ ТОР (ДЖЕЙН ФОСТЕР)",
+    "ko": "극강 토르(제인 포스터)"
+  },
+  "ex_daredevil_netflix": {
+    "jp": "最強デアデビル",
+    "en": "EKS. DAREDEVIL",
+    "ru": "ОСОБЫЙ СОРВИГОЛОВА",
+    "ko": "극강 데어데블"
+  },
+  "ex_agentvenom": {
+    "jp": "最強エージェント・ヴェノム",
+    "en": "EKS. AGENT VENOM",
+    "ru": "ОСОБЫЙ АГЕНТ ВЕНОМ",
+    "ko": "극강 에이전트 베놈"
+  },
+  "ex_yellowjacket": {
+    "jp": "最強イエロージャケット",
+    "en": "EKS. YELLOWJACKET",
+    "ru": "ОСОБ. ЖЕЛТЫЙ ШЕРШЕНЬ",
+    "ko": "극강 옐로재킷"
+  },
+  "ex_lukecage": {
+    "jp": "最強ルーク・ケイジ",
+    "en": "EKS. LUKE CAGE",
+    "ru": "ОСОБ. ЛЮК КЕЙДЖ",
+    "ko": "극강 루크 케이지"
+  },
+  "ex_joefixit": {
+    "jp": "最強ジョー・フィクジット",
+    "en": "EKS. JOE FIXIT",
+    "ru": "ОСОБ. ДЖО ФИКСИТ",
+    "ko": "극강 조 픽싯"
+  },
+  "ex_quake": {
+    "jp": "最強クェイク",
+    "en": "EKS. QUAKE",
+    "ru": "ОСОБ. ДРОЖЬ",
+    "ko": "극강 퀘이크"
+  },
+  "ex_symbiotesupreme": {
+    "jp": "最強シンビオート・スプリーム",
+    "en": "EKS. SYMBIOTE SUPREME",
+    "ru": "ОСОБ. ВЕРХОВНЫЙ СИМБИОТ",
+    "ko": "극강 심비오트 슈프림"
+  },
+  "ex_morningstar": {
+    "jp": "最強モーニングスター",
+    "en": "EKS. MORNINGSTAR",
+    "ru": "ОСОБ. МОРНИНГСТАР",
+    "ko": "극강 모닝스타"
+  },
+  "ex_loki": {
+    "jp": "最強ロキ",
+    "en": "EKS. LOKE",
+    "ru": "ОСОБ. ЛОКИ",
+    "ko": "극강 로키"
+  },
+  "ex_ghostrider": {
+    "jp": "最強ゴーストライダー",
+    "en": "EKS. GHOST RIDER",
+    "ru": "ОСОБ. ПРИЗРАЧНЫЙ ГОНЩИК",
+    "ko": "극강 고스트 라이더"
+  },
+  "ex_hood": {
+    "jp": "最強フッド",
+    "en": "EKS. THE HOOD",
+    "ru": "ОСОБ. КАПЮШОН",
+    "ko": "극강 후드"
+  },
+  "ex_deadpool": {
+    "jp": "最強デッドプール",
+    "en": "EKS. DEADPOOL",
+    "ru": "ОСОБ. ДЭДПУЛ",
+    "ko": "극강 데드풀"
+  },
+  "ex_bishop": {
+    "jp": "最強ビショップ",
+    "en": "EKS. BISHOP",
+    "ru": "ОСОБ. БИШОП",
+    "ko": "극강 비숍"
+  },
+  "ex_cable": {
+    "jp": "最強ケーブル",
+    "en": "EKS. CABLE",
+    "ru": "ОСОБ. КАБЕЛЬ",
+    "ko": "극강 케이블"
+  },
+  "ex_redskull": {
+    "jp": "最強レッドスカル",
+    "en": "EKS. RED SKULL",
+    "ru": "ОСОБ. КРАСНЫЙ ЧЕРЕП",
+    "ko": "극강 레드 스컬"
+  },
+  "ex_howardmech": {
+    "jp": "最強ハワード・ザ・ダック",
+    "en": "EKS. HOWARD THE DUCK",
+    "ru": "ОСОБ. УТКА ГОВАРД",
+    "ko": "극강 하워드 덕"
+  },
+  "ex_punisher_2099": {
+    "jp": "最強パニッシャー2099",
+    "en": "EKS. PUNISHER 2099",
+    "ru": "ОСОБ. КАРАТЕЛЬ 2099",
+    "ko": "극강 퍼니셔 2099"
+  },
+  "ex_green_goblin": {
+    "jp": "最強グリーンゴブリン",
+    "en": "EKS. GREEN GOBLIN",
+    "ru": "ОСОБ. ЗЕЛЕНЫЙ ГОБЛИН",
+    "ko": "극강 그린 고블린"
+  },
+  "ex_venomtheduck": {
+    "jp": "最強ヴェノム・ザ・ダック",
+    "en": "EKS. VENOM THE DUCK",
+    "ru": "ОСОБ. УТКА ВЕНОМ",
+    "ko": "극강 베놈 덕"
+  },
+  "ex_captainmarvel_movie": {
+    "jp": "最強キャプテン・マーベル",
+    "en": "EKS. CAPTAIN MARVEL",
+    "ru": "ОСОБ. КАПИТАН МАРВЕЛ",
+    "ko": "극강 캡틴 마블"
+  },
+  "ex_cullobsidian": {
+    "jp": "最強カル・オブシディアン",
+    "en": "EKS. CULL OBSIDIAN",
+    "ru": "ОСОБ. КУЛЛ ОБСИДИАН",
+    "ko": "극강 컬 옵시디언"
+  },
+  "ex_masacre": {
+    "jp": "最強マサカー",
+    "en": "EKS. MASACRE",
+    "ru": "ОСОБ. МАСАКР",
+    "ko": "극강 매서커"
+  },
+  "ex_thor_ragnarok": {
+    "jp": "最強ソー",
+    "en": "EKS. TOR",
+    "ru": "ОСОБЫЙ ТОР",
+    "ko": "극강 토르"
+  },
+  "ex_karnak": {
+    "jp": "最強カーナック",
+    "en": "EKS. KARNAK",
+    "ru": "ОСОБ. КАРНАК",
+    "ko": "극강 카르낙"
+  },
+  "ex_taskmaster": {
+    "jp": "最強タスクマスター",
+    "en": "EKS. TASKMASTER",
+    "ru": "ОСОБ. ТАКСМАСТЕР",
+    "ko": "극강 태스크마스터"
+  },
+  "ex_modok": {
+    "jp": "最強モードック",
+    "en": "EKS. M.O.D.O.K.",
+    "ru": "ОСОБ. М.О.Д.О.К.",
+    "ko": "극강 M.O.D.O.K."
+  },
+  "ex_invisiblewoman": {
+    "jp": "最強インビジブルウーマン",
+    "en": "EKS. INVISIBLE WOMAN",
+    "ru": "ОСОБ. НЕВИДИМАЯ ЛЕДИ",
+    "ko": "극강 인비저블 우먼"
+  },
+  "ex_thing": {
+    "jp": "最強シング",
+    "en": "EKS. THING",
+    "ru": "ОСОБ. СУЩЕСТВО",
+    "ko": "극강 씽"
+  },
+  "ex_champion": {
+    "jp": "最強ザ・チャンピオン",
+    "en": "EKS. THE CHAMPION",
+    "ru": "ОСОБ. ЧЕМПИОН ВСЕЛЕННОЙ",
+    "ko": "극강 챔피언 오브 더 유니버스"
+  },
+  "ex_medusa": {
+    "jp": "最強メデューサ",
+    "en": "EKS. MEDUSA",
+    "ru": "ОСОБ. МЕДУЗА",
+    "ko": "극강 메두사"
+  },
+  "ex_hyperion": {
+    "jp": "最強ハイペリオン",
+    "en": "EKS. HYPERION",
+    "ru": "ОСОБ. ГИПЕРИОН",
+    "ko": "극강 하이페리온"
+  },
+  "ex_omegared": {
+    "jp": "最強オメガ・レッド",
+    "en": "EKS. OMEGA RED",
+    "ru": "ОСОБ. КРАСНЫЙ ОМЕГА",
+    "ko": "극강 오메가 레드"
+  },
+  "ex_mistersinister": {
+    "jp": "最強ミスター・シニスター",
+    "en": "EKS. MISTER SINISTER",
+    "ru": "ОСОБ. МИСТЕР ЗЛОВЕЩИЙ",
+    "ko": "극강 미스터 시니스터"
+  },
+  "ex_havok": {
+    "jp": "最強ハボック",
+    "en": "EKS. HAVOK",
+    "ru": "ОСОБ. ХАВОК",
+    "ko": "극강 하복"
+  },
+  "ex_aegon": {
+    "jp": "最強エイゴン",
+    "en": "EKS. ÆGON",
+    "ru": "ОСОБ. ЭЙГОН",
+    "ko": "극강 에이곤"
+  },
+  "ex_killmonger": {
+    "jp": "最強キルモンガー",
+    "en": "EKS. KILLMONGER",
+    "ru": "ОСОБ. КИЛЛМОНГЕР",
+    "ko": "극강 킬몽거"
+  },
+  "ex_korg": {
+    "jp": "最強コーグ",
+    "en": "EKS. KORG",
+    "ru": "ОСОБ. КОРГ",
+    "ko": "극강 코르그"
+  },
+  "ex_ironman_movie": {
+    "jp": "最強アイアンマン（インフィニティ・ウォー）",
+    "en": "EKS. IRON MAN (INFINITY WAR)",
+    "ru": "ОСОБ. ЖЕЛЕЗНЫЙ ЧЕЛОВЕК (ВОЙНА БЕСКОНЕЧНОСТИ)",
+    "ko": "극강 아이언맨(인피니티 워)"
+  },
+  "ex_ghost": {
+    "jp": "最強ゴースト",
+    "en": "EKS. GHOST",
+    "ru": "ОСОБ. ПРИЗРАК",
+    "ko": "극강 고스트"
+  },
+  "ex_darkhawk": {
+    "jp": "最強ダークホーク",
+    "en": "EKS. DARKHAWK",
+    "ru": "ОСОБ. ТЕМНЫЙ ЯСТРЕБ",
+    "ko": "극강 다크호크"
+  },
+  "ex_karlmordo": {
+    "jp": "最強モルド",
+    "en": "EKS. MORDO",
+    "ru": "ОСОБ. МОРДО",
+    "ko": "극강 모르도"
+  },
+  "ex_dormammu": {
+    "jp": "最強ドーマムゥ",
+    "en": "EKS. DORMAMMU",
+    "ru": "ОСОБ. ДОРМАММУ",
+    "ko": "극강 도르마무"
+  },
+  "ex_mephisto": {
+    "jp": "最強メフィスト",
+    "en": "EKS. MEPHISTO",
+    "ru": "ОСОБ. МЕФИСТО",
+    "ko": "극강 메피스토"
+  },
+  "ex_jubilee": {
+    "jp": "EXジュビリー",
+    "en": "EX. JUBILEE",
+    "ru": "ОСОБ. ДЖУБИЛИ",
+    "ko": "극강 주빌리"
+  },
+  "ex_abomination_immortal": {
+    "jp": "EXアボミネーション（イモータル）",
+    "en": "EX. ABOMINATION (UDØDELIG)",
+    "ru": "ОСОБ. МЕРЗОСТЬ (БЕССМЕРТНЫЙ)",
+    "ko": "극강 어보미네이션(이모탈)"
+  },
+  "ex_diablo": {
+    "jp": "EXディアブロ",
+    "en": "EX. DIABLO",
+    "ru": "ОСОБ. ДИАБЛО",
+    "ko": "극강 디아블로"
+  },
+  "ex_red_goblin": {
+    "jp": "EXレッドゴブリン",
+    "en": "EX. RED GOBLIN",
+    "ru": "ОСОБ. КРАСНЫЙ ГОБЛИН",
+    "ko": "극강 레드 고블린"
+  },
+  "ex_kraven": {
+    "jp": "EXクレイヴン",
+    "en": "EX. KRAVEN",
+    "ru": "ОСОБ. КРЭЙВЕН",
+    "ko": "극강 크레이븐"
+  },
+  "ex_nimrod": {
+    "jp": "EXニムロッド",
+    "en": "EX. NIMROD",
+    "ru": "ОСОБ. НИМРОД",
+    "ko": "극강 님로드"
+  },
+  "ex_odin": {
+    "jp": "EXオーディン",
+    "en": "EX. ODIN",
+    "ru": "ОСОБ. ОДИН",
+    "ko": "극강 오딘"
+  },
+  "ex_blackwidow_timely": {
+    "jp": "EXブラック・ウィドウ（クレア・ヴォヤン）",
+    "en": "EX. BLACK WIDOW (CLAIRE VOYANT)",
+    "ru": "ОСОБ. ЧЕРНАЯ ВДОВА (КЛЭР ВОЙАНТ)",
+    "ko": "극강 블랙 위도우(클레어 보이언트)"
+  },
+  "ex_squirrelgirl": {
+    "jp": "EXスクイレル・ガール",
+    "en": "EX. SQUIRREL GIRL",
+    "ru": "ОСОБ. ДЕВУШКА-БЕЛКА",
+    "ko": "극강 스쿼럴 걸"
+  },
+  "ex_ironman_silvercenturion": {
+    "jp": "EXシルバー・センチュリオン",
+    "en": "EX. SILVER CENTURION",
+    "ru": "ОСОБ. СЕРЕБРЯНЫЙ ЦЕНТУРИОН",
+    "ko": "극강 실버 센츄리온"
+  },
+  "ex_spiderman_2099": {
+    "jp": "EXスパイダーマン2099",
+    "en": "EX. SPIDER-MAN 2099",
+    "ru": "ОСОБ. ЧЕЛОВЕК-ПАУК 2099",
+    "ko": "극강 스파이더맨 2099"
+  },
+  "ex_sunspot": {
+    "jp": "EXサンスポット",
+    "en": "EX. SUNSPOT",
+    "ru": "ОСОБ. САНСПОТ",
+    "ko": "극강 선스팟"
+  },
+  "ex_shangchi": {
+    "jp": "EXシャン・チー",
+    "en": "EX. SHANG-CHI",
+    "ru": "ОСОБ. ШАН-ЧИ",
+    "ko": "극강 샹치"
+  },
+  "ex_sauron": {
+    "jp": "EXサウロン",
+    "en": "EX. SAURON",
+    "ru": "ОСОБ. САУРОН",
+    "ko": "극강 사우론"
+  },
+  "ex_hitmonkey": {
+    "jp": "EXヒットモンキー",
+    "en": "EX. HIT-MONKEY",
+    "ru": "ОСОБ. ХИТ-МАНКИ",
+    "ko": "극강 히트몽키"
+  },
+  "ex_americachavez": {
+    "jp": "EXアメリカ・チャベス",
+    "en": "EX. AMERICA CHAVEZ",
+    "ru": "ОСОБ. АМЕРИКА ЧАВЕС",
+    "ko": "극강 아메리카 차베즈"
+  },
+  "ex_mrfantastic": {
+    "jp": "EXミスター・ファンタスティック",
+    "en": "EX. MISTER FANTASTIC",
+    "ru": "ОСОБ. МИСТЕР ФАНТАСТИКА",
+    "ko": "극강 미스터 판타스틱"
+  },
+  "ex_namor": {
+    "jp": "EXネイモア",
+    "en": "EX. NAMOR",
+    "ru": "ОСОБ. НЭМОР",
+    "ko": "극강 네이머"
+  },
+  "ex_attuma": {
+    "jp": "EXアットゥマ",
+    "en": "EX. ATTUMA",
+    "ru": "ОСОБ. АТТУМА",
+    "ko": "극강 아투마"
+  },
+  "ex_titania": {
+    "jp": "EXティターニア",
+    "en": "EX. TITANIA",
+    "ru": "ОСОБ. ТИТАНИЯ",
+    "ko": "극강 타이타니아"
+  },
+  "ex_vision_timely": {
+    "jp": "EXビジョン（アールカス ）",
+    "en": "EX. VISION (AARKUS)",
+    "ru": "ОСОБ. ВИЖН (ААРКУС)",
+    "ko": "극강 비전(아쿠스)"
+  },
+  "ex_omegasentinel": {
+    "jp": "EXオメガ・センチネル",
+    "en": "EX. OMEGA SENTINEL",
+    "ru": "ОСОБ. ОМЕГА СТРАЖ",
+    "ko": "극강 오메가 센티넬"
+  },
+  "ex_airwalker": {
+    "jp": "EXエア・ウォーカー",
+    "en": "EX. AIR-WALKER",
+    "ru": "ОСОБ. ИДУЩИЙ ПО ВОЗДУХУ",
+    "ko": "극강 에어워커"
+  },
+  "ex_captainbritain": {
+    "jp": "EXキャプテン・ブリテン",
+    "en": "EX. CAPTAIN BRITAIN",
+    "ru": "ОСОБ. КАПИТАН БРИТАНИЯ",
+    "ko": "극강 캡틴 브리튼"
+  },
+  "ex_wiccan": {
+    "jp": "EXウィッカン",
+    "en": "EX. WICCAN",
+    "ru": "ОСОБ. ВИККАН",
+    "ko": "극강 위칸"
+  },
+  "ex_psychoman": {
+    "jp": "EXサイコマン",
+    "en": "EX. PSYCHO-MAN",
+    "ru": "ОСОБ. ПСИХО-ЧЕЛОВЕК",
+    "ko": "극강 싸이코맨"
+  },
+  "ex_silversurfer": {
+    "jp": "EXシルバーサーファー",
+    "en": "EX. SILVER SURFER",
+    "ru": "ОСОБ. СЕРЕБРЯНЫЙ СЕРФЕР",
+    "ko": "극강 실버 서퍼"
+  },
+  "ex_mistyknight": {
+    "jp": "EXミスティ・ナイト",
+    "en": "EX. MISTY KNIGHT",
+    "ru": "ОСОБ. МИСТИ НАЙТ",
+    "ko": "극강 미스티 나이트"
+  },
+  "ex_storm_realm": {
+    "jp": "EXストーム（ピラミッドX）",
+    "en": "EX. STORM (PYRAMID X)",
+    "ru": "ОСОБ. ШТОРМ (ПИРАМИДА ИКС)",
+    "ko": "극강 스톰(피라미드 X)"
+  },
+  "ex_apocalypse": {
+    "jp": "EXアポカリプス",
+    "en": "EX. APOCALYPSE",
+    "ru": "ОСОБ. АПОКАЛИПСИС",
+    "ko": "극강 아포칼립스"
+  },
+  "ex_tigra": {
+    "jp": "EXティグラ",
+    "en": "EX. TIGRA",
+    "ru": "ОСОБ. ТИГРА",
+    "ko": "극강 타이그라"
+  },
+  "ex_hercules": {
+    "jp": "EXハーキュリーズ",
+    "en": "EX. HERCULES",
+    "ru": "ОСОБ. ГЕРКУЛЕС",
+    "ko": "극강 헤라클레스"
+  },
+  "ex_guardian": {
+    "jp": "EXガーディアン",
+    "en": "EX. GUARDIAN",
+    "ru": "ОСОБ. СТРАЖНИК",
+    "ko": "극강 가디언"
+  },
+  "ex_valkyrie": {
+    "jp": "EXヴァルキリー",
+    "en": "EX. VALKYRIE",
+    "ru": "ОСОБ. ВАЛЬКИРИЯ",
+    "ko": "극강 발키리"
+  },
+  "ex_redguardian": {
+    "jp": "EXレッド・ガーディアン",
+    "en": "EX. RED GUARDIAN",
+    "ru": "ОСОБ. КРАСНЫЙ СТРАЖ",
+    "ko": "극강 레드 가디언"
+  },
+  "ex_captainamerica_samwilson": {
+    "jp": "EXキャプテン・アメリカ（サム・ウィルソン）",
+    "en": "EX. CAPTAIN AMERICA (SAM WILSON)",
+    "ru": "ОСОБ. КАПИТАН АМЕРИКА (СЭМ УИЛСОН)",
+    "ko": "극강 캡틴 아메리카(샘 윌슨)"
+  },
+  "ex_dragonman": {
+    "jp": "EXドラゴンマン",
+    "en": "EX. DRAGON MAN",
+    "ru": "ОСОБ. ЧЕЛОВЕК-ДРАКОН",
+    "ko": "극강 드래곤 맨"
+  },
+  "ex_captainamerica_movie": {
+    "jp": "EXキャプテン・アメリカ（インフィニティ・ウォー）",
+    "en": "EX. CAPTAIN AMERICA (INFINITY WAR)",
+    "ru": "ОСОБ. КАПИТАН АМЕРИКА (ВОЙНА БЕСКОНЕЧНОСТИ)",
+    "ko": "극강 캡틴 아메리카(인피니티 워)"
+  },
+  "ex_nova": {
+    "jp": "EXノヴァ",
+    "en": "EX. NOVA",
+    "ru": "ОСОБ. НОВА",
+    "ko": "극강 노바"
+  },
+  "ex_stryfe": {
+    "jp": "EXストライフ",
+    "en": "EX. STRYFE",
+    "ru": "ОСОБ. СТРАЙФ",
+    "ko": "극강 스트라이프"
+  },
+  "ex_spot": {
+    "jp": "EXスポット",
+    "en": "EX. SPOT",
+    "ru": "ОСОБ. ПЯТНО",
+    "ko": "극강 스팟"
+  },
+  "ex_galan": {
+    "jp": "EXギャラン",
+    "en": "EX. GALAN",
+    "ru": "ОСОБ. ГАЛАН",
+    "ko": "극강 갈란"
+  },
+  "ex_elsabloodstone": {
+    "jp": "EXエルサ・ブラッドストーン",
+    "en": "EX. ELSA BLOODSTONE",
+    "ru": "ОСОБ. ЭЛЬЗА БЛАДСТОУН",
+    "ko": "극강 엘사 블러드스톤"
+  },
+  "ex_purgatory": {
+    "jp": "EXパーガトリー",
+    "en": "EX. PURGATORY",
+    "ru": "ОСОБ. ЧИСТИЛИЩЕ",
+    "ko": "극강 펄가토리"
+  },
+  "ex_quicksilver": {
+    "jp": "EXクイックシルバー",
+    "en": "EX. QUICKSILVER",
+    "ru": "ОСОБ. РТУТЬ",
+    "ko": "극강 퀵실버"
+  },
+  "ex_mantis": {
+    "jp": "EXマンティス",
+    "en": "EX. MANTIS",
+    "ru": "ОСОБ. МАНТИС",
+    "ko": "극강 맨티스"
+  },
+  "ex_antman_future": {
+    "jp": "EXアントマン（フューチャー）",
+    "en": "EX. ANT-MAN (FUTURE)",
+    "ru": "ОСОБ. ЧЕЛОВЕК-МУРАВЕЙ (БУДУЩЕЕ)",
+    "ko": "극강 앤트맨(미래)"
+  },
+  "ex_kittypryde": {
+    "jp": "EXキティ・プライド",
+    "en": "EX. KITTY PRYDE",
+    "ru": "ОСОБ. КИТТИ ПРАЙД",
+    "ko": "극강 키티 프라이드"
+  },
+  "ex_sandman": {
+    "jp": "EXサンドマン",
+    "en": "EX. SANDMAN",
+    "ru": "ОСОБ. ПЕСОЧНЫЙ ЧЕЛОВЕК",
+    "ko": "극강 샌드맨"
+  },
+  "ex_spiderman_supreme": {
+    "jp": "EXスパイダーマン（スプリーム）",
+    "en": "EX. SPIDER-MAN (SUPREME)",
+    "ru": "ОСОБ. ЧЕЛОВЕК-ПАУК (ВЕРХОВНЫЙ)",
+    "ko": "극강 스파이더맨(슈프림)"
+  },
+  "ex_knull": {
+    "jp": "EXヌル",
+    "en": "EX. KNULL",
+    "ru": "ОСОБ. НАЛЛ",
+    "ko": "극강 널"
+  },
+  "ex_shocker": {
+    "jp": "EXショッカー",
+    "en": "EX. SHOCKER",
+    "ru": "ОСОБ. ШОКЕР",
+    "ko": "극강 쇼커"
+  },
+  "ex_maestro": {
+    "jp": "最強マエストロ",
+    "en": "EKS. MAESTRO",
+    "ru": "ОСОБЫЙ МАЭСТРО",
+    "ko": "극강 마에스트로"
+  },
+  "lab_gold_mut": {
+    "jp": "ゴールデン・シンビオイド",
+    "en": "GOLDEN SYMBIOID",
+    "ru": "ЗОЛОТОЙ СИМБИОИД",
+    "ko": "골든 심비오이드"
+  },
+  "lab_gold_sci": {
+    "jp": "ゴールデン・シンビオイド",
+    "en": "GOLDEN SYMBIOID",
+    "ru": "ЗОЛОТОЙ СИМБИОИД",
+    "ko": "골든 심비오이드"
+  },
+  "lab_gold_mys": {
+    "jp": "ゴールデン・シンビオイド",
+    "en": "GOLDEN SYMBIOID",
+    "ru": "ЗОЛОТОЙ СИМБИОИД",
+    "ko": "골든 심비오이드"
+  },
+  "lab_gold_tch": {
+    "jp": "ゴールデン・シンビオイド",
+    "en": "GOLDEN SYMBIOID",
+    "ru": "ЗОЛОТОЙ СИМБИОИД",
+    "ko": "골든 심비오이드"
+  },
+  "lab_gold_cos": {
+    "jp": "ゴールデン・シンビオイド",
+    "en": "GOLDEN SYMBIOID",
+    "ru": "ЗОЛОТОЙ СИМБИОИД",
+    "ko": "골든 심비오이드"
+  },
+  "ultron_drone_cosmic": {
+    "jp": "ウルトロン・ドローン",
+    "en": "ULTRONDRONE",
+    "ru": "ДРОН АЛЬТРОНА",
+    "ko": "울트론의 드론"
+  },
+  "ultron_drone_mutant": {
+    "jp": "ウルトロン・ドローン",
+    "en": "ULTRONDRONE",
+    "ru": "ДРОН АЛЬТРОНА",
+    "ko": "울트론의 드론"
+  },
+  "ultron_drone_mystic": {
+    "jp": "ウルトロン・ドローン",
+    "en": "ULTRONDRONE",
+    "ru": "ДРОН АЛЬТРОНА",
+    "ko": "울트론의 드론"
+  },
+  "ultron_drone_science": {
+    "jp": "ウルトロン・ドローン",
+    "en": "ULTRONDRONE",
+    "ru": "ДРОН АЛЬТРОНА",
+    "ko": "울트론의 드론"
+  },
+  "ultron_drone_skill": {
+    "jp": "ウルトロン・ドローン",
+    "en": "ULTRONDRONE",
+    "ru": "ДРОН АЛЬТРОНА",
+    "ko": "울트론의 드론"
+  },
+  "ultron_drone_tech": {
+    "jp": "ウルトロン・ドローン",
+    "en": "ULTRONDRONE",
+    "ru": "ДРОН АЛЬТРОНА",
+    "ko": "울트론의 드론"
+  },
+  "gwenperion": {
+    "jp": "グウェンペリオン",
+    "en": "GWENPERION",
+    "ru": "ГВЕНПЕРИОН",
+    "ko": "그웬페리온"
+  },
+  "icephoenix": {
+    "jp": "アイスフェニックス",
+    "en": "ICE PHOENIX",
+    "ru": "ФЕНИКС-ЛЕД",
+    "ko": "아이스피닉스"
+  },
+  "punishingangel": {
+    "jp": "パニッシングエンジェル",
+    "en": "PUNISHING ANGEL",
+    "ru": "КАРАЮЩИЙ АНГЕЛ",
+    "ko": "퍼니싱 앤젤"
+  },
+  "nightcarnage": {
+    "jp": "ナイトカーネージ",
+    "en": "NIGHTCARNAGE",
+    "ru": "НОЧНОЙ КАРНАЖ",
+    "ko": "나이트케니지"
+  },
+  "electroluke": {
+    "jp": "エレクトロ・ルーク",
+    "en": "Electro Luke",
+    "ru": "Электро-Люк",
+    "ko": "일렉트로 루크"
+  },
+  "spiderwitch": {
+    "jp": "スパイダーウィッチ",
+    "en": "SPIDER-WITCH",
+    "ru": "ВЕДЬМА-ПАУК",
+    "ko": "스파이더 위치"
+  },
+  "summoned_symbiote": {
+    "jp": "召喚されたシンビオイド",
+    "en": "UTVALGT SYMBIOID",
+    "ru": "ПРИЗВАННЫЙ СИМБИОИД",
+    "ko": "소환된 심비오드"
+  },
+  "colossus_tut_armor": {
+    "jp": "コロッサス",
+    "en": "COLOSSUS",
+    "ru": "КОЛОСС",
+    "ko": "콜로서스"
+  },
+  "raid_thanos": {
+    "jp": "サノス",
+    "en": "THANOS",
+    "ru": "ТАНОС",
+    "ko": "타노스"
+  },
+  "raid_kang": {
+    "jp": "カーン",
+    "en": "KANG",
+    "ru": "КАНГ",
+    "ko": "캉"
+  },
+  "raid_maestro": {
+    "jp": "マエストロ",
+    "en": "MAESTRO",
+    "ru": "МАЭСТРО",
+    "ko": "마에스트로"
+  },
+  "raid_ultron": {
+    "jp": "ウルトロン",
+    "en": "ULTRON",
+    "ru": "АЛЬТРОН",
+    "ko": "울트론"
+  },
+  "raid_modok": {
+    "jp": "モードック",
+    "en": "M.O.D.O.K.",
+    "ru": "М.О.Д.О.К.",
+    "ko": "M.O.D.O.K."
+  },
+  "raid_medusa": {
+    "jp": "メデューサ",
+    "en": "MEDUSA",
+    "ru": "МЕДУЗА",
+    "ko": "메두사"
+  },
+  "raid_guardian": {
+    "jp": "ガーディアン",
+    "en": "GUARDIAN",
+    "ru": "СТРАЖНИК",
+    "ko": "가디언"
+  },
+  "raid_thor_ragnarok": {
+    "jp": "ソー（ラグナロク）",
+    "en": "TOR (RAGNAROK)",
+    "ru": "ТОР (РАГНАРEК)",
+    "ko": "토르(라그나로크)"
+  },
+  "raid_professorx": {
+    "jp": "プロフェッサーX",
+    "en": "PROFESSOR X",
+    "ru": "ПРОФЕССОР ИКС",
+    "ko": "프로페서 X"
+  },
+  "raid_prowler": {
+    "jp": "プラウラー",
+    "en": "PROWLER",
+    "ru": "БРОДЯГА",
+    "ko": "프라울러"
+  },
+  "raid_invisiblewoman": {
+    "jp": "インビジブルウーマン",
+    "en": "INVISIBLE WOMAN",
+    "ru": "НЕВИДИМАЯ ЛЕДИ",
+    "ko": "인비저블 우먼"
+  },
+  "raid_hood": {
+    "jp": "フッド",
+    "en": "THE HOOD",
+    "ru": "КАПЮШОН",
+    "ko": "후드"
+  },
+  "raid_shehulk_deathless": {
+    "jp": "シー・ハルク（不死）",
+    "en": "SHE-HULK (UFORGJENGELIGE)",
+    "ru": "ЖЕНЩИНА-ХАЛК (НЕТЛЕННАЯ)",
+    "ko": "쉬헐크(데스리스)"
+  },
+  "raid_thanos_deathless_trophy": {
+    "jp": "サノス（不死）",
+    "en": "THANOS (UFORGJENGELIGE)",
+    "ru": "ТАНОС (НЕТЛЕННЫЙ)",
+    "ko": "타노스(데스리스)"
+  },
+  "raid_vision_deathless": {
+    "jp": "ビジョン（不死）",
+    "en": "VISION (UFORGJENGELIGE)",
+    "ru": "ВИЖН (НЕТЛЕННЫЙ)",
+    "ko": "비전(데스리스)"
+  },
+  "raid_guillotine_nameless": {
+    "jp": "ギロチン（不死）",
+    "en": "GUILLOTINE (UFORGJENGELIGE)",
+    "ru": "ГИЛЬОТИНА (НЕТЛЕННАЯ)",
+    "ko": "길로틴(데스리스)"
+  },
+  "raid_apocalypse": {
+    "jp": "アポカリプス",
+    "en": "APOCALYPSE",
+    "ru": "АПОКАЛИПСИС",
+    "ko": "아포칼립스"
+  },
+  "raid_wolverine_weaponx": {
+    "jp": "ウルヴァリン(ウェポンX)",
+    "en": "WOLVERINE (WEAPON X)",
+    "ru": "РОСОМАХА (ОРУЖИЕ ИКС)",
+    "ko": "울버린(웨폰 X)"
+  },
+  "raid_blackpanther_realm": {
+    "jp": "ジャバリ・パンサー",
+    "en": "JABARI PANTHER",
+    "ru": "ПАНТЕРА ДЖАБАРИ",
+    "ko": "자바리 팬서"
+  },
+  "raid_korg": {
+    "jp": "コーグ",
+    "en": "KORG",
+    "ru": "КОРГ",
+    "ko": "코르그"
+  },
+  "raid_annihilus": {
+    "jp": "アニヒラス",
+    "en": "ANNIHILUS",
+    "ru": "АННИГИЛУС",
+    "ko": "어나힐러스"
+  },
+  "raid_gentle": {
+    "jp": "隊長",
+    "en": "GENTLE",
+    "ru": "ДЖЕНТЛ",
+    "ko": "젠틀"
+  },
+  "raid_sasquatch": {
+    "jp": "サスカッチ",
+    "en": "SASQUATCH",
+    "ru": "САСКВОТЧ",
+    "ko": "사스콰치"
+  },
+  "raid_rintrah": {
+    "jp": "リントラ",
+    "en": "RINTRAH",
+    "ru": "РИНТРА",
+    "ko": "린트라"
+  },
+  "raid_humantorch": {
+    "jp": "ヒューマン・トーチ",
+    "en": "HUMAN TORCH",
+    "ru": "ЧЕЛОВЕК-ФАКЕЛ",
+    "ko": "휴먼 토치"
+  },
+  "raid_hulkbuster_movie": {
+    "jp": "ハルクバスター",
+    "en": "HULKBUSTER",
+    "ru": "ХАЛКБАСТЕР",
+    "ko": "헐크버스터"
+  },
+  "raid_vision_timely": {
+    "jp": "ビジョン（アールカス）",
+    "en": "VISION (AARKUS)",
+    "ru": "ВИЖН (ААРКУС)",
+    "ko": "비전(아쿠스)"
+  },
+  "raid_gladiator": {
+    "jp": "グラディエーター",
+    "en": "GLADIATOR",
+    "ru": "ГЛАДИАТОР",
+    "ko": "글래디에이터"
+  },
+  "raid_skrull_super": {
+    "jp": "スーパースクラル",
+    "en": "SUPER-SKRULL",
+    "ru": "СУПЕР-СКРУЛЛ",
+    "ko": "슈퍼 스크럴"
+  },
+  "raid_spiderman_supreme": {
+    "jp": "スパイダーマン（スプリーム）",
+    "en": "SPIDER-MAN (SUPREME)",
+    "ru": "ЧЕЛОВЕК-ПАУК (ВЕРХОВНЫЙ)",
+    "ko": "스파이더맨(슈프림)"
+  },
+  "raid_ebonymaw": {
+    "jp": "エボニー・マウ",
+    "en": "EBONY MAW",
+    "ru": "ЭБОНИ МО",
+    "ko": "에보니 모"
+  },
+  "raid_spot": {
+    "jp": "スポット",
+    "en": "SPOT",
+    "ru": "ПЯТНО",
+    "ko": "스팟"
+  },
+  "raid_spiderman_morales": {
+    "jp": "スパイダーマン(マイルズ・モラレス)",
+    "en": "SPIDER-MAN (MILES MORALES)",
+    "ru": "ЧЕЛОВЕК-ПАУК (МАЙЛС МОРАЛЕС)",
+    "ko": "스파이더맨(마일즈 모랄레스)"
+  },
+  "raid_shuri": {
+    "jp": "シュリ",
+    "en": "SHURI",
+    "ru": "ШУРИ",
+    "ko": "슈리"
+  },
+  "raid_moondragon": {
+    "jp": "ムーンドラゴン",
+    "en": "MOONDRAGON",
+    "ru": "ЛУННЫЙ ДРАКОН",
+    "ko": "문드래곤"
+  },
+  "raid_airwalker": {
+    "jp": "エア・ウォーカー",
+    "en": "AIR-WALKER",
+    "ru": "ИДУЩИЙ ПО ВОЗДУХУ",
+    "ko": "에어워커"
+  },
+  "raid_terrax": {
+    "jp": "テラックス",
+    "en": "TERRAX",
+    "ru": "ТЕРРАКС",
+    "ko": "테락스"
+  },
+  "raid_mangog": {
+    "jp": "マンゴグ",
+    "en": "MANGOG",
+    "ru": "МАНГОГ",
+    "ko": "만고그"
+  },
+  "raid_destroyer": {
+    "jp": "デストロイヤー",
+    "en": "THE DESTROYER",
+    "ru": "РАЗРУШИТЕЛЬ",
+    "ko": "디스트로이어"
+  },
+  "raid_thing": {
+    "jp": "シング",
+    "en": "THING",
+    "ru": "СУЩЕСТВО",
+    "ko": "씽"
+  },
+  "raid_champion": {
+    "jp": "ザ・チャンピオン",
+    "en": "THE CHAMPION",
+    "ru": "ЧЕМПИОН ВСЕЛЕННОЙ",
+    "ko": "챔피언 오브 더 유니버스"
+  },
+  "raid_moleman": {
+    "jp": "モールマン",
+    "en": "MOLE MAN",
+    "ru": "ЧЕЛОВЕК-КРОТ",
+    "ko": "몰맨"
+  },
+  "raid_doctordoom": {
+    "jp": "ドクター・ドゥーム",
+    "en": "DOCTOR DOOM",
+    "ru": "ДОКТОР ДУМ",
+    "ko": "닥터 둠"
+  },
+  "raid_mrfantastic": {
+    "jp": "ミスター・ファンタスティック",
+    "en": "MISTER FANTASTIC",
+    "ru": "МИСТЕР ФАНТАСТИК",
+    "ko": "미스터 판타스틱"
+  },
+  "raid_hulk_ragnarok": {
+    "jp": "ハルク（ラグナロク）",
+    "en": "HULK (RAGNAROK)",
+    "ru": "ХАЛК (РАГНАРЕК)",
+    "ko": "헐크(라그나로크)"
+  },
+  "howardmech_raid": {
+    "jp": "ハワード・ザ・ダック",
+    "en": "HOWARD THE DUCK",
+    "ru": "УТКА ГОВАРД",
+    "ko": "하워드 덕"
+  },
+  "silversamurai_raid": {
+    "jp": "シルバーサムライ",
+    "en": "SILVER SAMURAI",
+    "ru": "СЕРЕБРЯНЫЙ САМУРАЙ",
+    "ko": "실버 사무라이"
+  },
+  "joefixit_raid": {
+    "jp": "ジョー・フィクジット",
+    "en": "JOE FIXIT",
+    "ru": "ДЖО ФИКСИТ",
+    "ko": "조 픽싯"
+  },
+  "isophyne_raid": {
+    "jp": "イソフィン",
+    "en": "ISOPHYNE",
+    "ru": "ИЗОФИНА",
+    "ko": "아이소핀"
+  },
+  "antivenom_raid": {
+    "jp": "アンチヴェノム",
+    "en": "ANTI-VENOM",
+    "ru": "АНТИ-ВЕНОМ",
+    "ko": "안티베놈"
+  },
+  "vivvision_raid": {
+    "jp": "ヴィヴ・ヴィジョン",
+    "en": "VIV VISION",
+    "ru": "ВИВ ВИЖН",
+    "ko": "비비안 비전"
+  },
+  "lumatrix_raid": {
+    "jp": "ルーマトリックス",
+    "en": "LUMATRIX",
+    "ru": "ЛЮМАТРИКС",
+    "ko": "루마트릭스"
+  },
+  "sauron_raid": {
+    "jp": "サウロン",
+    "en": "SAURON",
+    "ru": "САУРОН",
+    "ko": "사우론"
+  },
+  "spiderman_raid": {
+    "jp": "スパイダーマン(クラシック)",
+    "en": "SPIDER-MAN (KLASSISK)",
+    "ru": "ЧЕЛОВЕК-ПАУК (КЛАССИКА)",
+    "ko": "스파이더맨(클래식)"
+  },
+  "prowler_raid": {
+    "jp": "プラウラー",
+    "en": "PROWLER",
+    "ru": "БРОДЯГА",
+    "ko": "프라울러"
+  },
+  "betaraybill_raid": {
+    "jp": "ベータ・レイ・ビル",
+    "en": "BETA RAY BILL",
+    "ru": "БЕТА РЭЙ БИЛЛ",
+    "ko": "베타 레이 빌"
+  },
+  "sabretooth_raid": {
+    "jp": "セイバートゥース",
+    "en": "SABRETOOTH",
+    "ru": "САБЛЕЗУБЫЙ",
+    "ko": "세이버투스"
+  },
+  "tigra_raid": {
+    "jp": "ティグラ",
+    "en": "TIGRA",
+    "ru": "ТИГРА",
+    "ko": "타이그라"
+  },
+  "falcon_joaquintorres_raid": {
+    "jp": "ファルコン（ホアキン・トーレス）",
+    "en": "FALCON (JOAQUIN TORRES)",
+    "ru": "СОКОЛ (ХОАКИН ТОРРЕС)",
+    "ko": "팔콘(호아킨 토레스)"
+  },
+  "rocket_raid": {
+    "jp": "ロケット・ラクーン",
+    "en": "ROCKET RACCOON",
+    "ru": "ЕНОТ РАКЕТА",
+    "ko": "로켓 라쿤"
+  },
+  "sandman_raid": {
+    "jp": "サンドマン",
+    "en": "SANDMAN",
+    "ru": "ПЕСОЧНЫЙ ЧЕЛОВЕК",
+    "ko": "샌드맨"
+  },
+  "peniparker_raid": {
+    "jp": "ペニー・パーカー",
+    "en": "PENI PARKER",
+    "ru": "ПЕНИ ПАРКЕР",
+    "ko": "페니 파커"
+  },
+  "hitmonkey_raid": {
+    "jp": "ヒットモンキー",
+    "en": "HIT-MONKEY",
+    "ru": "ХИТ-МАНКИ",
+    "ko": "히트몽키"
+  },
+  "ladydeathstrike_raid": {
+    "jp": "レディ・デスストライク",
+    "en": "LADY DEATHSTRIKE",
+    "ru": "ЛЕДИ СМЕРТЕЛЬНЫЙ УДАР",
+    "ko": "레이디 데쓰스트라이크"
+  },
+  "emmafrost_raid": {
+    "jp": "エマ・フロスト",
+    "en": "EMMA FROST",
+    "ru": "ЭММА ФРОСТ",
+    "ko": "에마 프로스트"
+  },
+  "storm_realm_raid": {
+    "jp": "ストーム（ピラミッドX）",
+    "en": "STORM (PYRAMIDE X)",
+    "ru": "ШТОРМ (ПИРАМИДА ИКС)",
+    "ko": "스톰(피라미드 X)"
+  },
+  "scarletwitch_current_raid": {
+    "jp": "スカーレットウィッチ",
+    "en": "SCARLET WITCH",
+    "ru": "АЛАЯ ВЕДЬМА",
+    "ko": "스칼렛 위치"
+  },
+  "trained": {
+    "jp": "スキル",
+    "en": "Teknikk",
+    "ru": "Способности",
+    "ko": "마스터"
+  },
+  "tech": {
+    "jp": "テクノロジー",
+    "en": "Teknologi",
+    "ru": "Технологии",
+    "ko": "기계"
+  },
+  "mutant": {
+    "jp": "ミュータント",
+    "en": "Mutant",
+    "ru": "Мутации",
+    "ko": "뮤턴트"
+  },
+  "chemical": {
+    "jp": "サイエンス",
+    "en": "Vitenskap",
+    "ru": "Наука",
+    "ko": "변형체"
+  },
+  "mystic": {
+    "jp": "ミスティック",
+    "en": "Mystisk",
+    "ru": "Мистика",
+    "ko": "미스틱"
+  },
+  "cosmic": {
+    "jp": "コズミック",
+    "en": "Kosmisk",
+    "ru": "Космос",
+    "ko": "코스믹"
+  },
+  "superior": {
+    "jp": "最上級",
+    "en": "Overlegen",
+    "ru": "Превосходный",
+    "ko": "슈페리어"
+  },
+  "def": {
+    "jp": "防衛者",
+    "en": "Forsvarer",
+    "ru": "Защитник",
+    "ko": "수호자"
+  },
+  "grd": {
+    "jp": "ガーディアン",
+    "en": "Vokter",
+    "ru": "Страж",
+    "ko": "수호자"
+  },
+  "typ_off_bur": {
+    "jp": "攻撃型：バースト",
+    "en": "Offensiv: Utbrudd",
+    "ru": "Атака: кратковременный высокий урон",
+    "ko": "공격: 파열"
+  },
+  "typ_off_dot": {
+    "jp": "攻撃型：時間経過ダメージ",
+    "en": "Offensiv: Skade over tid",
+    "ru": "Атака: урон с течением времени",
+    "ko": "공격: 지속 피해"
+  },
+  "typ_off_raw": {
+    "jp": "攻撃型：通常ダメージ",
+    "en": "Offensiv: Rå skade",
+    "ru": "Атака: чистый урон",
+    "ko": "#공격: 원초적 피해"
+  },
+  "typ_def_tnk": {
+    "jp": "防御型：タンク",
+    "en": "Defensiv: Tanks",
+    "ru": "Защита: танк",
+    "ko": "방어: 탱크"
+  },
+  "typ_def_grd": {
+    "jp": "防御型：ガード",
+    "en": "Defensiv: Vakt",
+    "ru": "Защита: блокирование",
+    "ko": "방어: 가드"
+  },
+  "typ_def_uti": {
+    "jp": "防御型：ユーティリティ",
+    "en": "Defensiv: Verktøy",
+    "ru": "Защита: прикладные умения",
+    "ko": "방어: 유틸리티"
+  },
+  "typ_con_cnt": {
+    "jp": "コントロール：反撃",
+    "en": "Kontroll: Motsvar",
+    "ru": "Контроль: контрмеры",
+    "ko": "통제: 반격"
+  },
+  "typ_con_den": {
+    "jp": "コントロール：拒否",
+    "en": "Kontroll: Benektelse",
+    "ru": "Контроль: нейтрализация",
+    "ko": "통제: 부정"
+  },
+  "tg_met": {
+    "jp": "金属",
+    "en": "Metall",
+    "ru": "Металл",
+    "ko": "금속"
+  },
+  "tg_rob": {
+    "jp": "ロボット",
+    "en": "Robot",
+    "ru": "Робот",
+    "ko": "로봇"
+  },
+  "tg_hero": {
+    "jp": "ヒーロー",
+    "en": "Helt",
+    "ru": "Герой",
+    "ko": "히어로"
+  },
+  "tg_vill": {
+    "jp": "ヴィラン",
+    "en": "Skurk",
+    "ru": "Злодей",
+    "ko": "악당"
+  },
+  "tg_merc": {
+    "jp": "傭兵",
+    "en": "Leiesoldat",
+    "ru": "Наемник",
+    "ko": "용병"
+  },
+  "tg_psyshld": {
+    "jp": "サイキックシールド",
+    "en": "Psykisk skjerming",
+    "ru": "Психический щит",
+    "ko": "정신능력 보호장치"
+  },
+  "tg_gam": {
+    "jp": "ガンマ",
+    "en": "Gamma",
+    "ru": "Гамма",
+    "ko": "감마"
+  },
+  "tg_gotg": {
+    "jp": "ガーディアンズ・オブ・ギャラクシー",
+    "en": "Guardians of the Galaxy",
+    "ru": "Стражи Галактики",
+    "ko": "가디언즈 오브 갤럭시"
+  },
+  "tg_symb": {
+    "jp": "シンビオート",
+    "en": "Symbiote",
+    "ru": "Симбиот",
+    "ko": "심비오트"
+  },
+  "tg_illum": {
+    "jp": "イルミナティ",
+    "en": "Illuminati",
+    "ru": "Иллюминаты",
+    "ko": "일루미나티"
+  },
+  "tg_inhum": {
+    "jp": "インヒューマン",
+    "en": "Inhuman",
+    "ru": "Нелюди",
+    "ko": "인휴먼스"
+  },
+  "tg_inhumroyal": {
+    "jp": "インヒューマン王家の一族",
+    "en": "Inhuman-kongefamilien",
+    "ru": "Королевская семья нелюдей",
+    "ko": "인휴먼스 황족"
+  },
+  "tg_aveng": {
+    "jp": "アベンジャーズ",
+    "en": "Avengers",
+    "ru": "Мстители",
+    "ko": "어벤져스"
+  },
+  "tg_newav": {
+    "jp": "ニューアベンジャーズ",
+    "en": "New Avengers",
+    "ru": "Новые Мстители",
+    "ko": "뉴 어벤져스"
+  },
+  "tg_mighty": {
+    "jp": "マイティ・アベンジャーズ",
+    "en": "Mighty Avengers",
+    "ru": "Могучие мстители",
+    "ko": "막강 어벤져스"
+  },
+  "tg_culw": {
+    "jp": "カルの相応しき者",
+    "en": "Culs Worthy",
+    "ru": "Достойный Кула",
+    "ko": "쿨의 워디"
+  },
+  "tg_dfndrs": {
+    "jp": "ディフェンダーズ",
+    "en": "Defenders",
+    "ru": "Защитники",
+    "ko": "디펜더스"
+  },
+  "tg_sinsix": {
+    "jp": "シニスター・シックス",
+    "en": "Sinister Six",
+    "ru": "Зловещая шестерка",
+    "ko": "시니스터 식스"
+  },
+  "tg_bromut": {
+    "jp": "ブラザーフッド・オブ・ミュータンツ",
+    "en": "Brotherhood of Mutants",
+    "ru": "Братство Мутантов",
+    "ko": "뮤턴트의 브라더후드"
+  },
+  "tg_votc": {
+    "jp": "オールスターバトルのヴィラン",
+    "en": "Konkurransens skurk",
+    "ru": "Злодей Битвы",
+    "ko": "올스타 배틀의 악당"
+  },
+  "tg_thund": {
+    "jp": "サンダーボルト",
+    "en": "Lynnedslag",
+    "ru": "Разряды молнии",
+    "ko": "썬더볼트"
+  },
+  "tg_legmon": {
+    "jp": "モンスター軍団",
+    "en": "Monsterlegion",
+    "ru": "Легион монстров",
+    "ko": "리전 오브 몬스터즈"
+  },
+  "tg_xfor": {
+    "jp": "X-フォース",
+    "en": "X-Force",
+    "ru": "X-Force",
+    "ko": "X-포스"
+  },
+  "tg_kree": {
+    "jp": "クリー",
+    "en": "Kree",
+    "ru": "Кри",
+    "ko": "크리"
+  },
+  "tg_champ": {
+    "jp": "チャンピオンズ",
+    "en": "Mestere",
+    "ru": "Чемпионы",
+    "ko": "챔피언"
+  },
+  "tg_aforce": {
+    "jp": "Aフォース",
+    "en": "A-Force",
+    "ru": "Отряд А",
+    "ko": "A 포스"
+  },
+  "tg_chcor": {
+    "jp": "クロノスコーズ",
+    "en": "Chronos Corps",
+    "ru": "Корпус Времени",
+    "ko": "크로노스 군단"
+  },
+  "tg_strktch": {
+    "jp": "スタークテック",
+    "en": "Stark-teknologi",
+    "ru": "Stark Tech",
+    "ko": "스타크 테크"
+  },
+  "tg_fly": {
+    "jp": "飛行",
+    "en": "Flying",
+    "ru": "Летающий",
+    "ko": "비행"
+  },
+  "tg_dimentional": {
+    "jp": "次元の者",
+    "en": "Dimensjonalt vesen",
+    "ru": "Сущность измерений",
+    "ko": "차원의 존재"
+  },
+  "tg_thanosarmy": {
+    "jp": "サノスの軍勢",
+    "en": "Thanos' hær",
+    "ru": "Армия Таноса",
+    "ko": "타노스의 군대"
+  },
+  "tg_spiders": {
+    "jp": "スパイダーヴァース・ヒーロー",
+    "en": "Spider-verse-helter",
+    "ru": "Герои паучьей вселенной",
+    "ko": "스파이더 버스 히어로"
+  },
+  "tg_elder": {
+    "jp": "エルダー",
+    "en": "Eldre",
+    "ru": "Старейшина",
+    "ko": "장로"
+  },
+  "tg_god": {
+    "jp": "神",
+    "en": "Gud",
+    "ru": "Бог",
+    "ko": "신"
+  },
+  "tg_pwrovertime": {
+    "jp": "パワーの上昇",
+    "en": "Stigende krefter",
+    "ru": "Возвышение к могуществу",
+    "ko": "신진 세력"
+  },
+  "tg_silver": {
+    "jp": "シルバー",
+    "en": "Sølv",
+    "ru": "Серебро",
+    "ko": "실버"
+  },
+  "tg_f4": {
+    "jp": "ファンタスティック・フォー",
+    "en": "Fantastic Four",
+    "ru": "Фантастическая Четверка",
+    "ko": "판타스틱 포"
+  },
+  "tg_alphaflight": {
+    "jp": "アルファフライト",
+    "en": "Alpha Flight",
+    "ru": "Альфа-звено",
+    "ko": "알파 플라이트"
+  },
+  "tg_youngavengers": {
+    "jp": "ヤング・アベンジャーズ",
+    "en": "Young Avengers",
+    "ru": "Молодые Мстители",
+    "ko": "영 어벤져스"
+  },
+  "tg_deathless": {
+    "jp": "不死",
+    "en": "Uforgjengelig",
+    "ru": "Нетленный",
+    "ko": "데스리스"
+  },
+  "tg_hydra": {
+    "jp": "ヒドラ",
+    "en": "Hydra",
+    "ru": "Гидра",
+    "ko": "하이드라"
+  },
+  "tg_cabal": {
+    "jp": "カバル",
+    "en": "Kabal",
+    "ru": "Заговорщики",
+    "ko": "카발"
+  },
+  "tg_cdn": {
+    "jp": "カナダ人",
+    "en": "Kanadisk",
+    "ru": "Канадец",
+    "ko": "캐나다인"
+  },
+  "tg_eidol": {
+    "jp": "エイドル",
+    "en": "Eidol",
+    "ru": "Эйдол",
+    "ko": "에이돌"
+  },
+  "tg_stellar": {
+    "jp": "ステラフォージド",
+    "en": "Stjerneskapt",
+    "ru": "Звездная Кузница",
+    "ko": "스텔라 포지드"
+  },
+  "tg_midsons": {
+    "jp": "ミッドナイト・サンズ",
+    "en": "Midnight Sons",
+    "ru": "Сыновья Полуночи",
+    "ko": "미드나이트 썬즈"
+  },
+  "tg_dplgold_a": {
+    "jp": "[f1c232]悪魔級のカッコよさ[-]",
+    "en": "[f1c232]Djevelsk kjekk[-]",
+    "ru": "[f1c232]Чертовски привлекательный[-]",
+    "ko": "[f1c232]지독할 정도로 미남[-]"
+  },
+  "tg_dplgold_b": {
+    "jp": "[f1c232]激ヤバ1000%[-]",
+    "en": "[f1c232]1000% fantastisk[-]",
+    "ru": "[f1c232]Круто на 1000%[-]",
+    "ko": "[f1c232]1000% 대단해[-]"
+  },
+  "tg_dplplat_a": {
+    "jp": "[60bbc9]祝福[-]",
+    "en": "[60bbc9]velsignet[-]",
+    "ru": "[60bbc9]благословленный[-]",
+    "ko": "[60bbc9]축복 받음[-]"
+  },
+  "tg_dplplat_b": {
+    "jp": "[60bbc9]勝ち[-]",
+    "en": "[60bbc9]jegvinner[-]",
+    "ru": "[60bbc9]побеждающий[-]",
+    "ko": "[60bbc9]승리[-]"
+  },
+  "tg_dplplat_c": {
+    "jp": "[60bbc9]ゴール[-]",
+    "en": "[60bbc9]mål[-]",
+    "ru": "[60bbc9]цели[-]",
+    "ko": "[60bbc9]목표[-]"
+  },
+  "tg_dplplat_d": {
+    "jp": "[60bbc9]どデカくなる[-]",
+    "en": "[60bbc9]muskelpumping[-]",
+    "ru": "[60bbc9]подкачанный[-]",
+    "ko": "[60bbc9]우락부락 버프 획득[-]"
+  },
+  "tg_dplplat_e": {
+    "jp": "[60bbc9]超健康体[-]",
+    "en": "[60bbc9]shrednation[-]",
+    "ru": "[60bbc9]гора мышц[-]",
+    "ko": "[60bbc9]건강한 몸[-]"
+  },
+  "tg_dplplat_f": {
+    "jp": "[60bbc9]Marvel オールスターバトル [-]",
+    "en": "[60bbc9]mcm[-]",
+    "ru": "[60bbc9]мбч[-]",
+    "ko": "[60bbc9]Marvel 올스타 배틀[-]"
+  },
+  "tg_dplplat_g": {
+    "jp": "[60bbc9]フィルターなし[-]",
+    "en": "[60bbc9]nofilter[-]",
+    "ru": "[60bbc9]безфильтра[-]",
+    "ko": "[60bbc9]필터링 없음[-]"
+  },
+  "tg_dplplat_h": {
+    "jp": "[60bbc9]言い訳なし[-]",
+    "en": "[60bbc9]ingenunnskyldning[-]",
+    "ru": "[60bbc9]бескомпромиссный[-]",
+    "ko": "[60bbc9]변명 따위 소용없어[-]"
+  },
+  "tg_sizes": {
+    "jp": "Sサイズ",
+    "en": "Størrelse: S",
+    "ru": "Размер: S",
+    "ko": "사이즈: S"
+  },
+  "tg_sizem": {
+    "jp": "Mサイズ",
+    "en": "Størrelse: M",
+    "ru": "Размер: M",
+    "ko": "사이즈: M"
+  },
+  "tg_sizel": {
+    "jp": "Lサイズ",
+    "en": "Størrelse: L",
+    "ru": "Размер: L",
+    "ko": "사이즈: L"
+  },
+  "tg_sizexl": {
+    "jp": "XLサイズ",
+    "en": "Størrelse: XL",
+    "ru": "Размер: XL",
+    "ko": "사이즈: XL"
+  },
+  "tg_10years": {
+    "jp": "10年目の挑戦",
+    "en": "10 års utfordring",
+    "ru": "Испытание десятилетия",
+    "ko": "10주년 챌린지"
+  },
+  "tg_valentines": {
+    "jp": "バレンタイン",
+    "en": "Valentins",
+    "ru": "Валентин",
+    "ko": "발렌타인"
+  },
+  "cc_challengers": {
+    "jp": "カリーナの挑戦者たち",
+    "en": "Carinas utfordrere",
+    "ru": "Претенденты Карины",
+    "ko": "카리나의 도전자"
+  },
+  "aw_subdue": {
+    "jp": "アライアンスウォー：鎮圧",
+    "en": "AK: Undertrykke",
+    "ru": "ВС: Подчинение",
+    "ko": "연합 전쟁: 진압"
+  },
+  "aw_armorburn": {
+    "jp": "アライアンスウォー：アーマーバーン",
+    "en": "AK: Rustningsforbrenning",
+    "ru": "ВС: Сжигание брони",
+    "ko": "연합 전쟁: 방어력 소진"
+  },
+  "aw_decay": {
+    "jp": "アライアンスウォー：腐敗",
+    "en": "AK: Forråtnelse",
+    "ru": "ВС: Распад",
+    "ko": "연합 전쟁: 부패"
+  },
+  "aw_sugar_pill": {
+    "jp": "アライアンスウォー：シュガーピル",
+    "en": "AK: Sukkerpille",
+    "ru": "ВС: Подсластить пилюлю",
+    "ko": "연합 전쟁: 설탕 알약"
+  },
+  "raid_dps": {
+    "jp": "奇襲：アサルト",
+    "en": "TOKT: Storming",
+    "ru": "РЕЙДЫ: Натиск",
+    "ko": "레이드: 공격"
+  },
+  "raid_sup": {
+    "jp": "奇襲：戦術家",
+    "en": "TOKT: Taktiker",
+    "ru": "РЕЙДЫ: Тактик",
+    "ko": "레이드: 전술가"
+  },
+  "raid_tank": {
+    "jp": "奇襲：先駆者",
+    "en": "TOKT: Fortropp",
+    "ru": "РЕЙДЫ: Авангард",
+    "ko": "레이드: 선봉"
+  },
+  "aw_crush2": {
+    "jp": "アライアンスウォー：押し潰し2.0",
+    "en": "AK: Knuse 2.0",
+    "ru": "ВС: Сокрушение 2.0",
+    "ko": "연합 전쟁: 크러시 2.0"
+  },
+  "eq_rom": {
+    "jp": "[e97451]EQ：ロマンス[-]",
+    "en": "[e97451]EQ: Romantikk[-]",
+    "ru": "[e97451]ЗС: Романтичная[-]",
+    "ko": "[e97451]이벤트 퀘스트: 로맨스[-]"
+  },
+  "eq_itscom": {
+    "jp": "[ffb6c1]EQ：複雑な状況[-]",
+    "en": "[ffb6c1]EQ: Det er komplisert[-]",
+    "ru": "[ffb6c1]ЗС: Все сложно[-]",
+    "ko": "[ffb6c1]이벤트 퀘스트: 복잡해[-]"
+  },
+  "saga_xmagica": {
+    "jp": "X-マジック",
+    "en": "X-Magi",
+    "ru": "Икс-магия",
+    "ko": "X-매지카"
+  },
+  "saga_magicthief": {
+    "jp": "マジック泥棒",
+    "en": "Magityv",
+    "ru": "Вор магии",
+    "ko": "마법 도둑"
+  },
+  "saga_dodge": {
+    "jp": "回避",
+    "en": "Rykke",
+    "ru": "Уклонение",
+    "ko": "회피"
+  },
+  "saga_scythe": {
+    "jp": "明晰",
+    "en": "Klarhet",
+    "ru": "Ясность",
+    "ko": "명료성"
+  },
+  "saga_provocateur": {
+    "jp": "プロボケーター",
+    "en": "Provokatør",
+    "ru": "Провокатор",
+    "ko": "프로보커터"
+  },
+  "saga_secutor": {
+    "jp": "セキューター",
+    "en": "Secutor",
+    "ru": "Секутор",
+    "ko": "세큐터"
+  },
+  "saga_all": {
+    "jp": "サーガ・ヒーロー",
+    "en": "Saga-mestere",
+    "ru": "Чемпионы Саги",
+    "ko": "모험담 챔피언"
+  },
+  "saga_genesis": {
+    "jp": "起源",
+    "en": "Skapelse",
+    "ru": "Творение",
+    "ko": "제네시스"
+  },
+  "saga_coda": {
+    "jp": "コダ",
+    "en": "Coda",
+    "ru": "Кода",
+    "ko": "코다"
+  },
+  "aw_frghtfl": {
+    "jp": "恐ろしい",
+    "en": "Fryktelig",
+    "ru": "Яростный",
+    "ko": "프라이트풀"
+  },
+  "aw_fntstic": {
+    "jp": "ファンタスティック",
+    "en": "Fantastisk",
+    "ru": "Фантастический",
+    "ko": "판타스틱"
+  },
+  "aw_defilade": {
+    "jp": "怒気",
+    "en": "Vrede",
+    "ru": "Разъяренность",
+    "ko": "분노"
+  },
+  "aw_enfilade": {
+    "jp": "抑制",
+    "en": "Selvbeherskelse",
+    "ru": "Сдержанность",
+    "ko": "인내"
+  },
+  "aw_meteor": {
+    "jp": "メテオ",
+    "en": "Meteor",
+    "ru": "Метеор",
+    "ko": "유성"
+  },
+  "aw_water": {
+    "jp": "ウォーター",
+    "en": "Vann",
+    "ru": "Вода",
+    "ko": "물"
+  },
+  "tbe_album": {
+    "jp": "派閥ビルダー",
+    "en": "Lagbygger",
+    "ru": "Создатель отряда",
+    "ko": "스쿼드 빌더"
+  },
+  "tbe_faction_a": {
+    "jp": "ファイヤー（火）属性",
+    "en": "Ild-fraksjon",
+    "ru": "Фракция огня",
+    "ko": "불 팩션"
+  },
+  "tbe_faction_b": {
+    "jp": "アース（土）属性",
+    "en": "Jord-fraksjon",
+    "ru": "Фракция земли",
+    "ko": "흙 팩션"
+  },
+  "tbe_faction_c": {
+    "jp": "メタル（金）属性",
+    "en": "Metall-fraksjon",
+    "ru": "Фракция металла",
+    "ko": "금속 팩션"
+  },
+  "tbe_faction_d": {
+    "jp": "ウォーター（水）属性",
+    "en": "Vann-fraksjon",
+    "ru": "Фракция воды",
+    "ko": "물 팩션"
+  },
+  "tbe_grade_iso": {
+    "jp": "ISOグレード",
+    "en": "Iso-grad",
+    "ru": "Категория ISO",
+    "ko": "ISO 등급"
+  },
+  "tbe_grade_13": {
+    "jp": "グレード13",
+    "en": "13. grad",
+    "ru": "13 категория",
+    "ko": "13 등급"
+  },
+  "tbe_grade_12": {
+    "jp": "グレード12",
+    "en": "12. grad",
+    "ru": "12 категория",
+    "ko": "12 등급"
+  },
+  "tbe_grade_11": {
+    "jp": "グレード11",
+    "en": "11. grad",
+    "ru": "11 категория",
+    "ko": "11 등급"
+  },
+  "tbe_grade_10": {
+    "jp": "グレード10",
+    "en": "10. grad",
+    "ru": "10 категория",
+    "ko": "10 등급"
+  },
+  "tbe_grade_9": {
+    "jp": "グレード9",
+    "en": "9. grad",
+    "ru": "9 категория",
+    "ko": "9 등급"
+  },
+  "tbe_grade_8": {
+    "jp": "グレード8",
+    "en": "8. grad",
+    "ru": "8 категория",
+    "ko": "8 등급"
+  },
+  "tbe_grade_7": {
+    "jp": "グレード7",
+    "en": "7. grad",
+    "ru": "7 категория",
+    "ko": "7 등급"
+  },
+  "tbe_grade_6": {
+    "jp": "グレード6",
+    "en": "6. grad",
+    "ru": "6 категория",
+    "ko": "6 등급"
+  },
+  "tbe_grade_5": {
+    "jp": "グレード5",
+    "en": "5. grad",
+    "ru": "5 категория",
+    "ko": "5 등급"
+  },
+  "tbe_grade_4": {
+    "jp": "グレード4",
+    "en": "4. grad",
+    "ru": "4 категория",
+    "ko": "4 등급"
+  },
+  "tbe_grade_3": {
+    "jp": "グレード3",
+    "en": "3. grad",
+    "ru": "3 категория",
+    "ko": "3 등급"
+  },
+  "tbe_grade_2": {
+    "jp": "グレード2",
+    "en": "2. grad",
+    "ru": "2 категория",
+    "ko": "2 등급"
+  },
+  "ave_ramp": {
+    "jp": "[525306]AQ: ランプ[-]",
+    "en": "[525306]Allianseoppdrag: Opptrapping[-]",
+    "ru": "[525306]Задание союза: Разгон[-]",
+    "ko": "[525306]AQ：暴走[-]"
+  },
+  "col_apex_1": {
+    "jp": "頂点チャレンジャーズ - プラウラー",
+    "en": "Apex Utfordrere - Prowler",
+    "ru": "Высшие противники — Бродяга",
+    "ko": "에이펙스 도전자 - 프라울러"
+  },
+  "col_apex_2": {
+    "jp": "頂点チャレンジャーズ - ダズラー",
+    "en": "Apex Utfordrere - Dazzler",
+    "ru": "Высшие противники — Ослепительная",
+    "ko": "에이펙스 도전자 - 대즐러"
+  },
+  "col_apex_3": {
+    "jp": "頂点チャレンジャーズ - エア・ウォーカー",
+    "en": "Apex Utfordrere - Air-walker",
+    "ru": "Высшие противники — Идущий По Воздуху",
+    "ko": "에이펙스 도전자 - 에어워커"
+  },
+  "col_apex_4": {
+    "jp": "頂点チャレンジャーズ - エボニー・マウ",
+    "en": "Apex Utfordrere - Ebony Maw",
+    "ru": "Высшие противники — Эбони Мо",
+    "ko": "에이펙스 도전자 - 에보니 모"
+  },
+  "common": {
+    "jp": "1つ星",
+    "en": "1-STJERNERS",
+    "ru": "1-ЗВЕЗДНЫЙ",
+    "ko": "1 스타"
+  },
+  "uncommon": {
+    "jp": "2つ星",
+    "en": "2-STJERNERS",
+    "ru": "2-ЗВЕЗДНЫЙ",
+    "ko": "2 스타"
+  },
+  "rare": {
+    "jp": "3つ星",
+    "en": "3-STJERNERS",
+    "ru": "3-ЗВЕЗДНЫЙ",
+    "ko": "3 스타"
+  },
+  "epic": {
+    "jp": "4つ星",
+    "en": "4-STJERNERS",
+    "ru": "4-ЗВЕЗДНЫЙ",
+    "ko": "4 스타"
+  },
+  "legendary": {
+    "jp": "5つ星",
+    "en": "5-STJERNERS",
+    "ru": "5-ЗВЕЗДНЫЙ",
+    "ko": "5 스타"
+  },
+  "t6": {
+    "jp": "6つ星",
+    "en": "6-STJERNERS",
+    "ru": "6-ЗВЕЗДНЫЙ",
+    "ko": "6 스타"
+  },
+  "t7": {
+    "jp": "7つ星",
+    "en": "7-STJERNERS",
+    "ru": "7-ЗВЕЗДНЫЙ",
+    "ko": "7 스타"
+  },
+  "mls": {
+    "jp": "1つ星",
+    "en": "1-STJERNERS",
+    "ru": "1-ЗВЕЗДНЫЙ",
+    "ko": "1 스타"
+  },
+  "fem": {
+    "jp": "1つ星",
+    "en": "1-STJERNERS",
+    "ru": "1-ЗВЕЗДНЫЙ",
+    "ko": "1 스타"
+  },
+  "merc": {
+    "jp": "傭兵",
+    "en": "Leiesoldat",
+    "ru": "Наемник",
+    "ko": "용병"
+  },
+  "psyshield": {
+    "jp": "サイキックシールド",
+    "en": "Psykisk skjerming",
+    "ru": "Психический щит",
+    "ko": "정신능력 보호장치"
+  },
+  "cdn": {
+    "jp": "カナダ人",
+    "en": "Kanadisk",
+    "ru": "Канадец",
+    "ko": "캐나다인"
+  },
+  "id_saga": {
+    "jp": "サーガ",
+    "en": "Saga",
+    "ru": "Сага",
+    "ko": "모험담"
+  },
+  "id_combat_style": {
+    "jp": "戦闘スタイル",
+    "en": "Kampstil",
+    "ru": "Стиль боя",
+    "ko": "전투 스타일"
+  },
+  "id_attributes": {
+    "jp": "属性",
+    "en": "Egenskaper",
+    "ru": "Параметры",
+    "ko": "속성"
+  },
+  "id_organization": {
+    "jp": "所属",
+    "en": "Organisasjon",
+    "ru": "Организация",
+    "ko": "조직"
+  },
+  "id_ava": {
+    "jp": "アライアンスウォー",
+    "en": "ALLIANSEKRIGER",
+    "ru": "ВОЙНЫ СОЮЗОВ",
+    "ko": "연합 전쟁"
+  },
+  "id_carina2": {
+    "jp": "カリーナのチャレンジ",
+    "en": "Carinas utfordringer",
+    "ru": "Испытания Карины",
+    "ko": "카리나의 챌린지"
+  },
+  "id_ave": {
+    "jp": "アライアンスクエスト",
+    "en": "ALLIANSEOPPDRAG",
+    "ru": "ЗАДАНИЯ СОЮЗА",
+    "ko": "연합 퀘스트"
+  },
+  "id_release_date": {
+    "jp": "リリースの日付",
+    "en": "Lanseringsdato",
+    "ru": "Дата релиза",
+    "ko": "출시일"
+  },
+  "id_teambuilder": {
+    "jp": "派閥ビルダー",
+    "en": "Lagbygger",
+    "ru": "Создатель отряда",
+    "ko": "스쿼드 빌더"
+  },
+  "id_col": {
+    "jp": "コロシアム",
+    "en": "Colosseum",
+    "ru": "Колизей",
+    "ko": "콜로세움"
+  }
+}

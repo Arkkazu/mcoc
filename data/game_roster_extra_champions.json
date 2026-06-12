@@ -1,0 +1,696 @@
+[
+  {
+    "slug": "game-roster-abomination",
+    "name": "Abomination",
+    "name_jp": "アボミネーション",
+    "champion_class": "Science",
+    "release_date": "",
+    "portrait": "portrait_abomination.png",
+    "ability_prefix": "abmntn",
+    "loc_prefix": "",
+    "legacy_loc_prefixes": [
+      "ABOMINATION"
+    ],
+    "source": "game_roster"
+  },
+  {
+    "slug": "game-roster-agent-venom",
+    "name": "Agent Venom",
+    "name_jp": "エージェント・ヴェノム",
+    "champion_class": "Skill",
+    "release_date": "",
+    "portrait": "portrait_agent_venom.png",
+    "ability_prefix": "agv",
+    "loc_prefix": "",
+    "legacy_loc_prefixes": [
+      "AGENTVENOM"
+    ],
+    "source": "game_roster"
+  },
+  {
+    "slug": "game-roster-ant-man",
+    "name": "Ant-Man",
+    "name_jp": "アントマン",
+    "champion_class": "Science",
+    "release_date": "",
+    "portrait": "portrait_antman.png",
+    "ability_prefix": "antu",
+    "loc_prefix": "",
+    "legacy_loc_prefixes": [
+      "ANTMAN"
+    ],
+    "source": "game_roster"
+  },
+  {
+    "slug": "game-roster-black-bolt",
+    "name": "Black Bolt",
+    "name_jp": "ブラックボルト",
+    "champion_class": "Cosmic",
+    "release_date": "",
+    "portrait": "portrait_black_bolt.png",
+    "ability_prefix": "blkblt",
+    "loc_prefix": "",
+    "legacy_loc_prefixes": [
+      "BLACKBOLT"
+    ],
+    "source": "game_roster"
+  },
+  {
+    "slug": "game-roster-black-panther-civil-war",
+    "name": "Black Panther (Civil War)",
+    "name_jp": "ブラックパンサー(シビル・ウォー)",
+    "champion_class": "Skill",
+    "release_date": "",
+    "portrait": "portrait_black_panther_cw.png",
+    "ability_prefix": "bpu",
+    "loc_prefix": "BPCW",
+    "legacy_loc_prefixes": [],
+    "source": "game_roster"
+  },
+  {
+    "slug": "game-roster-captain-america",
+    "name": "Captain America",
+    "name_jp": "キャプテン・アメリカ",
+    "champion_class": "Science",
+    "release_date": "",
+    "portrait": "portrait_captain_america.png",
+    "ability_prefix": "cpam",
+    "loc_prefix": "",
+    "legacy_loc_prefixes": [
+      "CAPTAINAMERICA"
+    ],
+    "source": "game_roster"
+  },
+  {
+    "slug": "game-roster-captain-america-wwii",
+    "name": "Captain America (WWII)",
+    "name_jp": "キャプテン・アメリカ(WWII)",
+    "champion_class": "Science",
+    "release_date": "",
+    "portrait": "portrait_capamerica_wwii.png",
+    "ability_prefix": "cpww2",
+    "loc_prefix": "",
+    "legacy_loc_prefixes": [
+      "CAPTAINAMERICAWWII"
+    ],
+    "source": "game_roster"
+  },
+  {
+    "slug": "game-roster-captain-marvel-movie",
+    "name": "Captain Marvel (Movie)",
+    "name_jp": "キャプテン・マーベル",
+    "champion_class": "Cosmic",
+    "release_date": "",
+    "portrait": "portrait_captain_marvel_movie.png",
+    "ability_prefix": "cptmcu",
+    "loc_prefix": "",
+    "legacy_loc_prefixes": [
+      "CAPTAINMARVEL_MOVIE"
+    ],
+    "source": "game_roster"
+  },
+  {
+    "slug": "game-roster-colossus",
+    "name": "Colossus",
+    "name_jp": "コロッサス",
+    "champion_class": "Mutant",
+    "release_date": "",
+    "portrait": "portrait_colossus.png",
+    "ability_prefix": "colos",
+    "loc_prefix": "",
+    "legacy_loc_prefixes": [
+      "COLOSSUS"
+    ],
+    "source": "game_roster"
+  },
+  {
+    "slug": "game-roster-cyclops-blue-team",
+    "name": "Cyclops (Blue Team)",
+    "name_jp": "サイクロプス（ブルーチーム）",
+    "champion_class": "Mutant",
+    "release_date": "",
+    "portrait": "portrait_cyclops_90s.png",
+    "ability_prefix": "cyc90",
+    "loc_prefix": "CYC90",
+    "legacy_loc_prefixes": [],
+    "source": "game_roster"
+  },
+  {
+    "slug": "game-roster-cyclops-new-xavier-school",
+    "name": "Cyclops (New Xavier School)",
+    "name_jp": "サイクロプス（新エグゼビア・スクール）",
+    "champion_class": "Mutant",
+    "release_date": "",
+    "portrait": "portrait_cyclops.png",
+    "ability_prefix": "cyclps",
+    "loc_prefix": "",
+    "legacy_loc_prefixes": [
+      "CYCLOPS"
+    ],
+    "source": "game_roster"
+  },
+  {
+    "slug": "game-roster-daredevil-classic",
+    "name": "Daredevil (Classic)",
+    "name_jp": "デアデビル（クラシック）",
+    "champion_class": "Skill",
+    "release_date": "",
+    "portrait": "portrait_daredevil.png",
+    "ability_prefix": "drdvl",
+    "loc_prefix": "",
+    "legacy_loc_prefixes": [
+      "DAREDEVIL"
+    ],
+    "source": "game_roster"
+  },
+  {
+    "slug": "game-roster-deadpool",
+    "name": "Deadpool",
+    "name_jp": "デッドプール",
+    "champion_class": "Mutant",
+    "release_date": "",
+    "portrait": "portrait_deadpool.png",
+    "ability_prefix": "ddpl",
+    "loc_prefix": "",
+    "legacy_loc_prefixes": [
+      "DEADPOOL"
+    ],
+    "source": "game_roster"
+  },
+  {
+    "slug": "game-roster-deadpool-x-force",
+    "name": "Deadpool (X-Force)",
+    "name_jp": "デッドプール（X-フォース）",
+    "champion_class": "Mutant",
+    "release_date": "",
+    "portrait": "portrait_deadpool_xforce.png",
+    "ability_prefix": "ddplx",
+    "loc_prefix": "",
+    "legacy_loc_prefixes": [
+      "DEADPOOL_XFORCE"
+    ],
+    "source": "game_roster"
+  },
+  {
+    "slug": "game-roster-drax",
+    "name": "Drax",
+    "name_jp": "ドラックス",
+    "champion_class": "Cosmic",
+    "release_date": "",
+    "portrait": "portrait_drax.png",
+    "ability_prefix": "drax",
+    "loc_prefix": "",
+    "legacy_loc_prefixes": [
+      "DRAX"
+    ],
+    "source": "game_roster"
+  },
+  {
+    "slug": "game-roster-electro",
+    "name": "Electro",
+    "name_jp": "エレクトロ",
+    "champion_class": "Science",
+    "release_date": "",
+    "portrait": "portrait_electro.png",
+    "ability_prefix": "electro",
+    "loc_prefix": "",
+    "legacy_loc_prefixes": [
+      "ELECTRO"
+    ],
+    "source": "game_roster"
+  },
+  {
+    "slug": "game-roster-elektra",
+    "name": "Elektra",
+    "name_jp": "エレクトラ",
+    "champion_class": "Skill",
+    "release_date": "",
+    "portrait": "portrait_elektra.png",
+    "ability_prefix": "elkta",
+    "loc_prefix": "",
+    "legacy_loc_prefixes": [
+      "ELEKTRA"
+    ],
+    "source": "game_roster"
+  },
+  {
+    "slug": "game-roster-groot",
+    "name": "Groot",
+    "name_jp": "グルート",
+    "champion_class": "Cosmic",
+    "release_date": "",
+    "portrait": "portrait_groot.png",
+    "ability_prefix": "grt",
+    "loc_prefix": "",
+    "legacy_loc_prefixes": [
+      "GROOT"
+    ],
+    "source": "game_roster"
+  },
+  {
+    "slug": "game-roster-hulk",
+    "name": "Hulk",
+    "name_jp": "ハルク",
+    "champion_class": "Science",
+    "release_date": "",
+    "portrait": "portrait_hulk.png",
+    "ability_prefix": "hulk",
+    "loc_prefix": "",
+    "legacy_loc_prefixes": [
+      "HULK"
+    ],
+    "source": "game_roster"
+  },
+  {
+    "slug": "game-roster-iron-fist",
+    "name": "Iron Fist",
+    "name_jp": "アイアンフィスト",
+    "champion_class": "Mystic",
+    "release_date": "",
+    "portrait": "portrait_iron_fist.png",
+    "ability_prefix": "ifist",
+    "loc_prefix": "",
+    "legacy_loc_prefixes": [
+      "IRONFIST"
+    ],
+    "source": "game_roster"
+  },
+  {
+    "slug": "game-roster-iron-fist-immortal",
+    "name": "Iron Fist (Immortal)",
+    "name_jp": "アイアンフィスト（不死者）",
+    "champion_class": "Mystic",
+    "release_date": "",
+    "portrait": "portrait_iron_fist_white.png",
+    "ability_prefix": "ifistw",
+    "loc_prefix": "",
+    "legacy_loc_prefixes": [
+      "IRONFIST_WHITE"
+    ],
+    "source": "game_roster"
+  },
+  {
+    "slug": "game-roster-iron-man",
+    "name": "Iron Man",
+    "name_jp": "アイアンマン",
+    "champion_class": "Tech",
+    "release_date": "",
+    "portrait": "portrait_iron_man.png",
+    "ability_prefix": "iman",
+    "loc_prefix": "",
+    "legacy_loc_prefixes": [
+      "IRONMAN"
+    ],
+    "source": "game_roster"
+  },
+  {
+    "slug": "game-roster-iron-patriot",
+    "name": "Iron Patriot",
+    "name_jp": "アイアンパトリオット",
+    "champion_class": "Tech",
+    "release_date": "",
+    "portrait": "portrait_ironpatriot.png",
+    "ability_prefix": "ipat",
+    "loc_prefix": "",
+    "legacy_loc_prefixes": [
+      "IRONPATRIOT"
+    ],
+    "source": "game_roster"
+  },
+  {
+    "slug": "game-roster-juggernaut",
+    "name": "Juggernaut",
+    "name_jp": "ジャガーノート",
+    "champion_class": "Mystic",
+    "release_date": "",
+    "portrait": "portrait_juggernaut.png",
+    "ability_prefix": "jugger",
+    "loc_prefix": "JUGGER",
+    "legacy_loc_prefixes": [
+      "JUGGERNAUT"
+    ],
+    "source": "game_roster"
+  },
+  {
+    "slug": "game-roster-kang-the-conqueror",
+    "name": "Kang the Conqueror",
+    "name_jp": "カーン",
+    "champion_class": "Tech",
+    "release_date": "",
+    "portrait": "portrait_kang.png",
+    "ability_prefix": "kang",
+    "loc_prefix": "",
+    "legacy_loc_prefixes": [
+      "KANG"
+    ],
+    "source": "game_roster"
+  },
+  {
+    "slug": "game-roster-luke-cage",
+    "name": "Luke Cage",
+    "name_jp": "ルーク・ケイジ",
+    "champion_class": "Science",
+    "release_date": "",
+    "portrait": "portrait_luke_cage.png",
+    "ability_prefix": "luke",
+    "loc_prefix": "",
+    "legacy_loc_prefixes": [
+      "LUKECAGE"
+    ],
+    "source": "game_roster"
+  },
+  {
+    "slug": "game-roster-moon-knight",
+    "name": "Moon Knight",
+    "name_jp": "ムーンナイト",
+    "champion_class": "Skill",
+    "release_date": "",
+    "portrait": "portrait_moonknight.png",
+    "ability_prefix": "mk",
+    "loc_prefix": "",
+    "legacy_loc_prefixes": [
+      "MOONKNIGHT"
+    ],
+    "source": "game_roster"
+  },
+  {
+    "slug": "game-roster-ms-marvel",
+    "name": "Ms. Marvel",
+    "name_jp": "ミスマーヴェル",
+    "champion_class": "Cosmic",
+    "release_date": "",
+    "portrait": "portrait_msmarvel.png",
+    "ability_prefix": "msmrvl",
+    "loc_prefix": "",
+    "legacy_loc_prefixes": [
+      "MSMARVEL"
+    ],
+    "source": "game_roster"
+  },
+  {
+    "slug": "game-roster-ms-marvel-kamala-khan",
+    "name": "Ms. Marvel (Kamala Khan)",
+    "name_jp": "ミスマーヴェル（カマラ・カーン）",
+    "champion_class": "Cosmic",
+    "release_date": "",
+    "portrait": "portrait_msmarvel_kamala.png",
+    "ability_prefix": "kmla",
+    "loc_prefix": "",
+    "legacy_loc_prefixes": [
+      "MSMARVEL_KAMALA"
+    ],
+    "source": "game_roster"
+  },
+  {
+    "slug": "game-roster-old-man-logan",
+    "name": "Old Man Logan",
+    "name_jp": "オールドマン・ローガン",
+    "champion_class": "Mutant",
+    "release_date": "",
+    "portrait": "portrait_wolverine_oldman.png",
+    "ability_prefix": "wlom",
+    "loc_prefix": "",
+    "legacy_loc_prefixes": [
+      "OLDMANLOGAN"
+    ],
+    "source": "game_roster"
+  },
+  {
+    "slug": "game-roster-punisher",
+    "name": "Punisher",
+    "name_jp": "パニッシャー",
+    "champion_class": "Skill",
+    "release_date": "",
+    "portrait": "portrait_punisher.png",
+    "ability_prefix": "pnshru",
+    "loc_prefix": "PNSHR",
+    "legacy_loc_prefixes": [
+      "PUNISHER"
+    ],
+    "source": "game_roster"
+  },
+  {
+    "slug": "game-roster-red-hulk",
+    "name": "Red Hulk",
+    "name_jp": "レッド・ハルク",
+    "champion_class": "Science",
+    "release_date": "",
+    "portrait": "portrait_hulk_red.png",
+    "ability_prefix": "rdhu",
+    "loc_prefix": "REDHULK",
+    "legacy_loc_prefixes": [],
+    "source": "game_roster"
+  },
+  {
+    "slug": "game-roster-rhino",
+    "name": "Rhino",
+    "name_jp": "ライノ",
+    "champion_class": "Science",
+    "release_date": "",
+    "portrait": "portrait_rhino.png",
+    "ability_prefix": "rhn",
+    "loc_prefix": "",
+    "legacy_loc_prefixes": [
+      "RHINO"
+    ],
+    "source": "game_roster"
+  },
+  {
+    "slug": "game-roster-rocket-raccoon",
+    "name": "Rocket Raccoon",
+    "name_jp": "ロケット・ラクーン",
+    "champion_class": "Tech",
+    "release_date": "",
+    "portrait": "portrait_rocket.png",
+    "ability_prefix": "rokt",
+    "loc_prefix": "ROKT",
+    "legacy_loc_prefixes": [
+      "ROCKET"
+    ],
+    "source": "game_roster"
+  },
+  {
+    "slug": "game-roster-ronan",
+    "name": "Ronan",
+    "name_jp": "ロナン",
+    "champion_class": "Cosmic",
+    "release_date": "",
+    "portrait": "portrait_ronan.png",
+    "ability_prefix": "rnan",
+    "loc_prefix": "",
+    "legacy_loc_prefixes": [
+      "RONAN"
+    ],
+    "source": "game_roster"
+  },
+  {
+    "slug": "game-roster-she-hulk",
+    "name": "She-Hulk",
+    "name_jp": "シー・ハルク",
+    "champion_class": "Science",
+    "release_date": "",
+    "portrait": "portrait_shehulk.png",
+    "ability_prefix": "sheh",
+    "loc_prefix": "",
+    "legacy_loc_prefixes": [
+      "SHEHULK"
+    ],
+    "source": "game_roster"
+  },
+  {
+    "slug": "game-roster-spider-gwen",
+    "name": "Spider-Gwen",
+    "name_jp": "スパイダー・グウェン",
+    "champion_class": "Science",
+    "release_date": "",
+    "portrait": "portrait_spidergwen.png",
+    "ability_prefix": "spgwn",
+    "loc_prefix": "",
+    "legacy_loc_prefixes": [
+      "SPIDERGWEN"
+    ],
+    "source": "game_roster"
+  },
+  {
+    "slug": "game-roster-spider-man-classic",
+    "name": "Spider-Man (Classic)",
+    "name_jp": "スパイダーマン(クラシック)",
+    "champion_class": "Science",
+    "release_date": "",
+    "portrait": "portrait_spider_man.png",
+    "ability_prefix": "spdrmn",
+    "loc_prefix": "SPDRMN",
+    "legacy_loc_prefixes": [
+      "SPIDERMAN"
+    ],
+    "source": "game_roster"
+  },
+  {
+    "slug": "game-roster-spider-man-symbiote",
+    "name": "Spider-Man (Symbiote)",
+    "name_jp": "スパイダーマン (シンビオート)",
+    "champion_class": "Cosmic",
+    "release_date": "",
+    "portrait": "portrait_spiderman_black.png",
+    "ability_prefix": "syms",
+    "loc_prefix": "",
+    "legacy_loc_prefixes": [
+      "SPIDERMAN_BLACK"
+    ],
+    "source": "game_roster"
+  },
+  {
+    "slug": "game-roster-star-lord",
+    "name": "Star-Lord",
+    "name_jp": "スター・ロード",
+    "champion_class": "Tech",
+    "release_date": "",
+    "portrait": "portrait_star_lord.png",
+    "ability_prefix": "strlrd",
+    "loc_prefix": "",
+    "legacy_loc_prefixes": [
+      "STARLORD"
+    ],
+    "source": "game_roster"
+  },
+  {
+    "slug": "game-roster-superior-iron-man",
+    "name": "Superior Iron Man",
+    "name_jp": "スペリオル・アイアンマン",
+    "champion_class": "Cosmic",
+    "release_date": "",
+    "portrait": "portrait_ironman_superior.png",
+    "ability_prefix": "imi",
+    "loc_prefix": "",
+    "legacy_loc_prefixes": [
+      "IRONMAN_SUPERIOR"
+    ],
+    "source": "game_roster"
+  },
+  {
+    "slug": "game-roster-thor",
+    "name": "Thor",
+    "name_jp": "ソー",
+    "champion_class": "Cosmic",
+    "release_date": "",
+    "portrait": "portrait_thor.png",
+    "ability_prefix": "thor",
+    "loc_prefix": "",
+    "legacy_loc_prefixes": [
+      "THOR"
+    ],
+    "source": "game_roster"
+  },
+  {
+    "slug": "game-roster-thor-jane-foster",
+    "name": "Thor (Jane Foster)",
+    "name_jp": "ソー(ジェーン・フォスター)",
+    "champion_class": "Mystic",
+    "release_date": "",
+    "portrait": "portrait_thor_janefoster.png",
+    "ability_prefix": "thrj",
+    "loc_prefix": "JANEF",
+    "legacy_loc_prefixes": [
+      "THOR_JANEFOSTER"
+    ],
+    "source": "game_roster"
+  },
+  {
+    "slug": "game-roster-unstoppable-colossus",
+    "name": "Unstoppable Colossus",
+    "name_jp": "アンストッパブル・コロッサス",
+    "champion_class": "Mystic",
+    "release_date": "",
+    "portrait": "portrait_colossus_unstoppable.png",
+    "ability_prefix": "ultc",
+    "loc_prefix": "",
+    "legacy_loc_prefixes": [
+      "COLOSSUS_UNSTOPPABLE"
+    ],
+    "source": "game_roster"
+  },
+  {
+    "slug": "game-roster-venom",
+    "name": "Venom",
+    "name_jp": "ヴェノム",
+    "champion_class": "Cosmic",
+    "release_date": "",
+    "portrait": "portrait_venom.png",
+    "ability_prefix": "vnm",
+    "loc_prefix": "",
+    "legacy_loc_prefixes": [
+      "VENOM"
+    ],
+    "source": "game_roster"
+  },
+  {
+    "slug": "game-roster-vision",
+    "name": "Vision",
+    "name_jp": "ビジョン",
+    "champion_class": "Tech",
+    "release_date": "",
+    "portrait": "portrait_vision.png",
+    "ability_prefix": "vsn",
+    "loc_prefix": "",
+    "legacy_loc_prefixes": [
+      "VISION"
+    ],
+    "source": "game_roster"
+  },
+  {
+    "slug": "game-roster-vision-age-of-ultron",
+    "name": "Vision (Age of Ultron)",
+    "name_jp": "ビジョン(エイジ・オブ・ウルトロン)",
+    "champion_class": "Tech",
+    "release_date": "",
+    "portrait": "portrait_vision_movie.png",
+    "ability_prefix": "vsmov",
+    "loc_prefix": "",
+    "legacy_loc_prefixes": [
+      "VISION_MOVIE"
+    ],
+    "source": "game_roster"
+  },
+  {
+    "slug": "game-roster-winter-soldier",
+    "name": "Winter Soldier",
+    "name_jp": "ウィンター・ソルジャー",
+    "champion_class": "Skill",
+    "release_date": "",
+    "portrait": "portrait_winter_soldier.png",
+    "ability_prefix": "wnsld",
+    "loc_prefix": "",
+    "legacy_loc_prefixes": [
+      "WINTERSOLDIER"
+    ],
+    "source": "game_roster"
+  },
+  {
+    "slug": "game-roster-wolverine",
+    "name": "Wolverine",
+    "name_jp": "ウルヴァリン",
+    "champion_class": "Mutant",
+    "release_date": "",
+    "portrait": "portrait_wolverine.png",
+    "ability_prefix": "wlvrn",
+    "loc_prefix": "",
+    "legacy_loc_prefixes": [
+      "WOLVERINE"
+    ],
+    "source": "game_roster"
+  },
+  {
+    "slug": "game-roster-wolverine-x-23",
+    "name": "Wolverine (X-23)",
+    "name_jp": "ウルヴァリン（X-23）",
+    "champion_class": "Mutant",
+    "release_date": "",
+    "portrait": "portrait_x23.png",
+    "ability_prefix": "x23",
+    "loc_prefix": "X23U",
+    "legacy_loc_prefixes": [
+      "X23"
+    ],
+    "source": "game_roster"
+  }
+]

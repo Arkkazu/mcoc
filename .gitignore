@@ -1,0 +1,43 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+venv/
+.venv/
+
+# Local environment
+.env
+.env.*
+
+# Logs and temporary files
+*.log
+*.tmp
+_entries.xml
+
+# Raw game/client assets and encrypted cache files
+*.assetbundle
+*.assets
+*.bytes
+*.bin
+*.zip
+
+# Generated bulky investigation dumps
+champions_all.txt
+champions_with_values.txt
+champion_full_data.txt
+data/champion_database.sqlite
+data/bcg_stat_ja_decrypted.bin
+data/champion_database.json
+data/champions.csv
+data/champions_jp.html
+data/abilities/
+data/abilities_all.json
+data/news_cache.json
+data/translations_cache.json
+words_main.json
+
+# Local screenshots / visual investigation notes
+screenshot/
+
+# Extracted game images
+data/portraits/
