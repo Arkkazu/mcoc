@@ -42,6 +42,7 @@ index.html
 index.html
 privacy.html
 disclaimer.html
+ads.txt
 robots.txt
 sitemap.xml
 data/portraits/
@@ -49,15 +50,15 @@ data/portraits/
 
 ## 収益化の準備
 
-AdSense 申請前に、公開サイトへ `privacy.html`、`disclaimer.html`、`robots.txt`、`sitemap.xml` を配置します。
+AdSense 対応として、公開サイトへ `privacy.html`、`disclaimer.html`、`ads.txt`、`robots.txt`、`sitemap.xml` を配置します。
 
-AdSense 承認後、Google から発行される `pub-xxxxxxxxxxxxxxxx` を使って、ルート直下に `ads.txt` を追加してください。例:
+ルート直下の `ads.txt` には、既存の AdSense publisher ID を指定します。
 
 ```text
-google.com, pub-xxxxxxxxxxxxxxxx, DIRECT, f08c47fec0942fa0
+google.com, pub-1334543920393100, DIRECT, f08c47fec0942fa0
 ```
 
-`pub-...` が未確定の段階では、誤った `ads.txt` を公開しないでください。
+`index.html` には AdSense 自動広告スクリプトを挿入しています。広告ユニットを個別配置する場合は、AdSense 管理画面で発行される `data-ad-slot` を追加してください。
 
 ## GitHub Actions デプロイ
 

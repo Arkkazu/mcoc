@@ -18,6 +18,7 @@ BASE = Path(__file__).parent
 OUTPUT_PATH     = BASE / "index.html"
 PORTRAIT_SRC_DIR = "data/portraits"
 SITE_URL = "https://marvel-allstar-battle.tokyo/"
+ADSENSE_CLIENT = "ca-pub-1334543920393100"
 ABILITIES_PATH  = BASE / "data" / "abilities_all.json"
 SLUG_MAP_PATH   = BASE / "data" / "slug_to_prefix.json"
 NAME_JP_PATH    = BASE / "data" / "slug_to_jp.json"
@@ -4657,6 +4658,7 @@ def generate_html(champions: list[dict], cache: dict,
 <meta name="twitter:title" content="{html.escape(seo_title, quote=True)}">
 <meta name="twitter:description" content="{html.escape(seo_description, quote=True)}">
 <script type="application/ld+json">{html.escape(seo_json_ld, quote=False)}</script>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client={html.escape(ADSENSE_CLIENT, quote=True)}" crossorigin="anonymous"></script>
 <style>
 :root{{
   --bg:#f2f3f7;--bg2:#ffffff;--bg3:#eef0f6;
