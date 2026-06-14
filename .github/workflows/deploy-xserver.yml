@@ -6,6 +6,10 @@ on:
       - main
     paths:
       - index.html
+      - privacy.html
+      - disclaimer.html
+      - robots.txt
+      - sitemap.xml
       - data/portraits/**
       - .github/workflows/deploy-xserver.yml
   workflow_dispatch:
@@ -25,6 +29,10 @@ jobs:
       - name: Validate deploy files
         run: |
           test -f index.html
+          test -f privacy.html
+          test -f disclaimer.html
+          test -f robots.txt
+          test -f sitemap.xml
           test -d data/portraits
           test "$(find data/portraits -type f -name '*.png' | wc -l)" -gt 0
 
@@ -80,6 +88,10 @@ jobs:
           esac
           mkdir -p "$DEPLOY_PATH/data"
           rm -f "$DEPLOY_PATH/index.html"
+          rm -f "$DEPLOY_PATH/privacy.html"
+          rm -f "$DEPLOY_PATH/disclaimer.html"
+          rm -f "$DEPLOY_PATH/robots.txt"
+          rm -f "$DEPLOY_PATH/sitemap.xml"
           rm -rf "$DEPLOY_PATH/data/portraits"
           REMOTE
 
@@ -94,6 +106,8 @@ jobs:
           XSERVER_PORT="${XSERVER_PORT:-10022}"
           scp -i ~/.ssh/xserver_key -P "$XSERVER_PORT" index.html \
             "$XSERVER_USER@$XSERVER_HOST:$XSERVER_DEPLOY_PATH/index.html"
+          scp -i ~/.ssh/xserver_key -P "$XSERVER_PORT" privacy.html disclaimer.html robots.txt sitemap.xml \
+            "$XSERVER_USER@$XSERVER_HOST:$XSERVER_DEPLOY_PATH/"
           scp -i ~/.ssh/xserver_key -P "$XSERVER_PORT" -r data/portraits \
             "$XSERVER_USER@$XSERVER_HOST:$XSERVER_DEPLOY_PATH/data/"
 
@@ -107,4 +121,4 @@ jobs:
           set -euo pipefail
           XSERVER_PORT="${XSERVER_PORT:-10022}"
           ssh -i ~/.ssh/xserver_key -p "$XSERVER_PORT" "$XSERVER_USER@$XSERVER_HOST" \
-            "test -f '$XSERVER_DEPLOY_PATH/index.html' && test -d '$XSERVER_DEPLOY_PATH/data/portraits'"
+            "test -f '$XSERVER_DEPLOY_PATH/index.html' && test -f '$XSERVER_DEPLOY_PATH/privacy.html' && test -f '$XSERVER_DEPLOY_PATH/disclaimer.html' && test -f '$XSERVER_DEPLOY_PATH/robots.txt' && test -f '$XSERVER_DEPLOY_PATH/sitemap.xml' && test -d '$XSERVER_DEPLOY_PATH/data/portraits'"

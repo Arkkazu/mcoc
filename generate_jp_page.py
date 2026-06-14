@@ -4752,6 +4752,11 @@ body{{background:var(--bg);color:var(--text);font-family:'Segoe UI','Hiragino Ka
 .glossary-popover.show{{display:block}}
 .glossary-pop-title{{font-size:13px;font-weight:700;color:var(--text);margin-bottom:5px}}
 .glossary-pop-desc{{font-size:12px;color:var(--text2);line-height:1.55}}
+.site-foot{{max-width:1400px;margin:10px auto 0;padding:18px 20px 28px;color:var(--text2);font-size:12px;line-height:1.7}}
+.foot-links{{display:flex;flex-wrap:wrap;gap:12px;margin-bottom:8px}}
+.foot-links a{{color:var(--accent);text-decoration:none}}
+.foot-links a:hover{{text-decoration:underline}}
+.foot-note{{max-width:900px}}
 
 </style>
 </head>
@@ -4802,6 +4807,16 @@ body{{background:var(--bg);color:var(--text);font-family:'Segoe UI','Hiragino Ka
   </div>
   <div class="no-res" id="noRes">該当するチャンピオンが見つかりませんでした</div>
 </main>
+
+<footer class="site-foot">
+  <nav class="foot-links" aria-label="サイト情報">
+    <a href="/">トップ</a>
+    <a href="/privacy.html">プライバシーポリシー</a>
+    <a href="/disclaimer.html">免責事項</a>
+    <a href="/sitemap.xml">サイトマップ</a>
+  </nav>
+  <p class="foot-note">このサイトは Marvel Contest of Champions の非公式ファンサイトです。Marvel、Kabam、各キャラクターおよび関連画像の権利は各権利者に帰属します。</p>
+</footer>
 
 <script>
 let cls='all',yr='all',q='';
