@@ -12,7 +12,8 @@ import os
 from collections import defaultdict
 from pathlib import Path
 
-BIN_PATH = Path("B64FC6A6D6243DB2A88B295572F5B5F145A66393.bin")
+GAME_BCG_OUT = Path(r"C:\Users\tane1\AppData\LocalLow\Kabam\Champions\bcg\out\v1")
+LOCAL_BIN_PATH = Path("B64FC6A6D6243DB2A88B295572F5B5F145A66393.bin")
 OUT_DIR  = Path("data/abilities")
 OUT_ALL  = Path("data/abilities_all.json")
 
@@ -20,8 +21,8 @@ OUT_ALL  = Path("data/abilities_all.json")
 SKIP_PREFIXES = {
     "pve", "nec", "aol", "sb", "avx", "raid", "rel", "gmaster", "nmaster",
     "ava", "m", "aq", "ave", "dun", "kangsup", "aw", "col", "lab",
-    "carserp", "glyk", "bhmt", "spunk", "kangimp",
-    "tbe", "gmast", "karrie", "joov", "wccn", "atma", "pvp", "a1",
+    "carserp", "glyk", "bhmt", "kangimp",
+    "tbe", "gmast", "karrie", "pvp", "a1",
     "bg", "apfoo",
 }
 
@@ -29,6 +30,19 @@ KEEP_SHORT_PREFIXES = {
     # Classic Abomination keeps one old all-attacks Fury entry under abm_*.
     "abm",
 }
+
+
+def latest_bcg_bin() -> Path:
+    """Return the newest game BCG binary, falling back to the local copy."""
+    if GAME_BCG_OUT.exists():
+        bins = sorted(
+            GAME_BCG_OUT.glob("*.bin"),
+            key=lambda path: path.stat().st_mtime,
+            reverse=True,
+        )
+        if bins:
+            return bins[0]
+    return LOCAL_BIN_PATH
 
 
 def read_varint(data: bytes, pos: int) -> tuple[int, int]:
@@ -132,8 +146,9 @@ def classify_entry(entry: dict) -> str:
 
 
 def main():
-    print(f"バイナリ読み込み: {BIN_PATH}")
-    raw = BIN_PATH.read_bytes()
+    bin_path = latest_bcg_bin()
+    print(f"バイナリ読み込み: {bin_path}")
+    raw = bin_path.read_bytes()
     print(f"  サイズ: {len(raw):,} bytes")
 
     print("エントリ解析中...")

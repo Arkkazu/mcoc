@@ -15,10 +15,33 @@ Marvel Contest of Champions (MCoC) のチャンピオンデータを整理し、
 | `extract_abilities.py` | AppData .bin からアビリティデータを抽出するスクリプト |
 | `data/abilities_all.json` | 全チャンピオン統合アビリティデータ |
 | `data/abilities/<prefix>.json` | チャンピオン別アビリティデータ（475ファイル） |
-| `data/champions.csv` | 旧スクレイピング/参照用CSV。現行HTML生成の主ソースではない |
-| `data/translations_cache.json` | 旧Google翻訳キャッシュ。現行HTMLの能力説明には使わない |
 | `data/slug_to_prefix.json` | CSVスラッグ → バイナリプレフィックスマッピング |
-| `data/localization_binary.json` | .bin から抽出したローカライズデータ（AWノード名等） |
+
+### 削除済みの旧調査スクリプト/成果物
+
+現行のHTML生成に不要なため、Spotlight/ニュース収集、メモリダンプ、AESキー探索のスクリプトと旧生成物は削除済み。
+
+- `build_champion_database.py`
+- `find_spotlights.py`
+- `mcoc_news_fetcher.py`
+- `dump_category.py`
+- `dump_memory.py`
+- `find_aes_key.py`
+- `find_aes_key2.py`
+- `extract_all.ps1`
+- `extract_champions.ps1`
+- `extract_values.ps1`
+- `extract_champion_full.ps1`
+- `data/champion_database.json`
+- `data/champion_database.sqlite`
+- `data/champions.json`
+- `data/champions.csv`
+- `data/localization_binary.json`
+- `data/memory_strings.json`
+- `data/news_cache.json`
+- `data/slug_to_bio_jp.json`
+- `data/slug_to_portrait.json`
+- `data/translations_cache.json`
 
 ### 実行方法
 
@@ -28,6 +51,17 @@ python3 generate_jp_page.py     # 日本語HTMLを生成
 ```
 
 ブラウザで開く: `C:\python\mcoc\data\champions_jp.html`
+
+### 更新履歴
+
+#### 2026-06-13
+
+- 最新BCG `AB9A00DA06B336BCE87DC509A0308313FE1C0F31.bin` からアビリティを再抽出。
+- `data/abilities_all.json` は479プレフィックス、`data/abilities/` は479ファイルに更新。
+- `words_main.json` を最新の `words/out/v1` 主JSONへ更新。
+- 新規候補 `phyla` を確認し、`Phyla-Vell` / `フィラ＝ヴェル` として `data/game_roster_extra_champions.json` に補完。
+- `data/portraits/portrait_phylavell.png` をゲーム本体 `ui_portraits_57.0` から追加。
+- `data/champions_jp.html` は239件のチャンピオン一覧として再生成。
 
 ---
 
@@ -259,6 +293,8 @@ OUTPUT_PATH.write_bytes(content.encode("utf-8"))
 
 ## デプロイ（Xserver VPS）
 
+旧 `build_champion_database.py` 前提のクロール運用は廃止。現行は生成済みの `data/champions_jp.html` と必要な静的アセットを配置する。
+
 | 項目 | 内容 |
 |---|---|
 | サーバー | Xserver VPS（Ubuntu / 2GB RAM） |
@@ -269,38 +305,21 @@ OUTPUT_PATH.write_bytes(content.encode("utf-8"))
 ### ファイル転送
 
 ```powershell
-scp -i ~/.ssh/xvps C:\python\mcoc\scraper.py root@85.131.248.47:~/mcoc/
-scp -i ~/.ssh/xvps C:\python\mcoc\build_champion_database.py root@85.131.248.47:~/mcoc/
-scp -i ~/.ssh/xvps -r C:\python\mcoc\data\ root@85.131.248.47:~/mcoc/
+scp -i ~/.ssh/xvps C:\python\mcoc\data\champions_jp.html root@85.131.248.47:~/mcoc/
+scp -i ~/.ssh/xvps -r C:\python\mcoc\data\portraits root@85.131.248.47:~/mcoc/
 ```
 
 ### VPS初期セットアップ（初回のみ）
 
 ```bash
-# Chrome インストール
-wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
-apt install -y ./google-chrome-stable_current_amd64.deb
-
-# Python venv
-cd ~/mcoc
-python3 -m venv venv
-./venv/bin/pip install selenium beautifulsoup4
-```
-
-### cron設定（毎日午前9時）
-
-```
-0 9 * * * cd /root/mcoc && ./venv/bin/python ./build_champion_database.py --resume >> logs/cron.log 2>&1
+mkdir -p ~/mcoc/portraits
 ```
 
 ### 日常操作
 
 ```bash
-# 手動実行
-ssh -i ~/.ssh/xvps root@85.131.248.47 "cd ~/mcoc && ./venv/bin/python scraper.py"
-
-# ログ確認
-ssh -i ~/.ssh/xvps root@85.131.248.47 "tail -50 ~/mcoc/logs/cron.log"
+# 配置確認
+ssh -i ~/.ssh/xvps root@85.131.248.47 "ls -lh ~/mcoc/champions_jp.html"
 ```
 
 ---

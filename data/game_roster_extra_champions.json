@@ -62,7 +62,7 @@
     "champion_class": "Skill",
     "release_date": "",
     "portrait": "portrait_black_panther_cw.png",
-    "ability_prefix": "bpu",
+    "ability_prefix": "blkpanther",
     "loc_prefix": "BPCW",
     "legacy_loc_prefixes": [],
     "source": "game_roster"
@@ -184,7 +184,7 @@
     "champion_class": "Mutant",
     "release_date": "",
     "portrait": "portrait_deadpool_xforce.png",
-    "ability_prefix": "ddplx",
+    "ability_prefix": "dpxuwu",
     "loc_prefix": "",
     "legacy_loc_prefixes": [
       "DEADPOOL_XFORCE"
@@ -560,7 +560,7 @@
     "champion_class": "Cosmic",
     "release_date": "",
     "portrait": "portrait_ironman_superior.png",
-    "ability_prefix": "imi",
+    "ability_prefix": "supman",
     "loc_prefix": "",
     "legacy_loc_prefixes": [
       "IRONMAN_SUPERIOR"
@@ -602,7 +602,7 @@
     "champion_class": "Mystic",
     "release_date": "",
     "portrait": "portrait_colossus_unstoppable.png",
-    "ability_prefix": "ultc",
+    "ability_prefix": "clsun",
     "loc_prefix": "",
     "legacy_loc_prefixes": [
       "COLOSSUS_UNSTOPPABLE"
@@ -686,11 +686,26 @@
     "champion_class": "Mutant",
     "release_date": "",
     "portrait": "portrait_x23.png",
-    "ability_prefix": "x23",
+    "ability_prefix": "x23u",
     "loc_prefix": "X23U",
     "legacy_loc_prefixes": [
       "X23"
     ],
+    "source": "game_roster"
+  },
+  {
+    "slug": "game-roster-phyla-vell",
+    "name": "Phyla-Vell",
+    "name_jp": "フィラ＝ヴェル",
+    "champion_class": "Cosmic",
+    "release_date": "",
+    "portrait": "portrait_phylavell.png",
+    "ability_prefix": "phyla",
+    "loc_prefix": "PHYLA",
+    "legacy_loc_prefixes": [
+      "PHYLAVELL"
+    ],
+    "binary_id": "phylavell",
     "source": "game_roster"
   }
 ]

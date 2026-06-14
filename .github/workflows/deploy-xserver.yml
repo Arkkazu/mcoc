@@ -1,0 +1,110 @@
+name: Deploy to Xserver
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - index.html
+      - data/portraits/**
+      - .github/workflows/deploy-xserver.yml
+  workflow_dispatch:
+
+concurrency:
+  group: xserver-production
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Validate deploy files
+        run: |
+          test -f index.html
+          test -d data/portraits
+          test "$(find data/portraits -type f -name '*.png' | wc -l)" -gt 0
+
+      - name: Configure SSH
+        env:
+          XSERVER_HOST: ${{ secrets.XSERVER_HOST }}
+          XSERVER_PORT: ${{ secrets.XSERVER_PORT }}
+          XSERVER_SSH_KEY: ${{ secrets.XSERVER_SSH_KEY }}
+        run: |
+          set -euo pipefail
+          : "${XSERVER_HOST:?GitHub secret XSERVER_HOST is required}"
+          : "${XSERVER_SSH_KEY:?GitHub secret XSERVER_SSH_KEY is required}"
+          XSERVER_PORT="${XSERVER_PORT:-10022}"
+
+          mkdir -p ~/.ssh
+          chmod 700 ~/.ssh
+          printf '%s\n' "$XSERVER_SSH_KEY" > ~/.ssh/xserver_key
+          chmod 600 ~/.ssh/xserver_key
+          ssh-keyscan -p "$XSERVER_PORT" -H "$XSERVER_HOST" >> ~/.ssh/known_hosts
+
+      - name: Prepare remote directory
+        env:
+          XSERVER_HOST: ${{ secrets.XSERVER_HOST }}
+          XSERVER_PORT: ${{ secrets.XSERVER_PORT }}
+          XSERVER_USER: ${{ secrets.XSERVER_USER }}
+          XSERVER_DEPLOY_PATH: ${{ secrets.XSERVER_DEPLOY_PATH }}
+        run: |
+          set -euo pipefail
+          : "${XSERVER_HOST:?GitHub secret XSERVER_HOST is required}"
+          : "${XSERVER_USER:?GitHub secret XSERVER_USER is required}"
+          : "${XSERVER_DEPLOY_PATH:?GitHub secret XSERVER_DEPLOY_PATH is required}"
+          XSERVER_PORT="${XSERVER_PORT:-10022}"
+
+          case "$XSERVER_DEPLOY_PATH" in
+            */marvel-allstar-battle.tokyo/public_html|*/marvel-allstar-battle.tokyo/public_html/)
+              ;;
+            *)
+              echo "Refusing to deploy outside marvel-allstar-battle.tokyo/public_html: $XSERVER_DEPLOY_PATH"
+              exit 1
+              ;;
+          esac
+
+          ssh -i ~/.ssh/xserver_key -p "$XSERVER_PORT" "$XSERVER_USER@$XSERVER_HOST" \
+            "DEPLOY_PATH='$XSERVER_DEPLOY_PATH' bash -s" <<'REMOTE'
+          set -euo pipefail
+          case "$DEPLOY_PATH" in
+            */marvel-allstar-battle.tokyo/public_html|*/marvel-allstar-battle.tokyo/public_html/)
+              ;;
+            *)
+              echo "Refusing to prepare unexpected path: $DEPLOY_PATH"
+              exit 1
+              ;;
+          esac
+          mkdir -p "$DEPLOY_PATH/data"
+          rm -f "$DEPLOY_PATH/index.html"
+          rm -rf "$DEPLOY_PATH/data/portraits"
+          REMOTE
+
+      - name: Upload site files
+        env:
+          XSERVER_HOST: ${{ secrets.XSERVER_HOST }}
+          XSERVER_PORT: ${{ secrets.XSERVER_PORT }}
+          XSERVER_USER: ${{ secrets.XSERVER_USER }}
+          XSERVER_DEPLOY_PATH: ${{ secrets.XSERVER_DEPLOY_PATH }}
+        run: |
+          set -euo pipefail
+          XSERVER_PORT="${XSERVER_PORT:-10022}"
+          scp -i ~/.ssh/xserver_key -P "$XSERVER_PORT" index.html \
+            "$XSERVER_USER@$XSERVER_HOST:$XSERVER_DEPLOY_PATH/index.html"
+          scp -i ~/.ssh/xserver_key -P "$XSERVER_PORT" -r data/portraits \
+            "$XSERVER_USER@$XSERVER_HOST:$XSERVER_DEPLOY_PATH/data/"
+
+      - name: Verify remote files
+        env:
+          XSERVER_HOST: ${{ secrets.XSERVER_HOST }}
+          XSERVER_PORT: ${{ secrets.XSERVER_PORT }}
+          XSERVER_USER: ${{ secrets.XSERVER_USER }}
+          XSERVER_DEPLOY_PATH: ${{ secrets.XSERVER_DEPLOY_PATH }}
+        run: |
+          set -euo pipefail
+          XSERVER_PORT="${XSERVER_PORT:-10022}"
+          ssh -i ~/.ssh/xserver_key -p "$XSERVER_PORT" "$XSERVER_USER@$XSERVER_HOST" \
+            "test -f '$XSERVER_DEPLOY_PATH/index.html' && test -d '$XSERVER_DEPLOY_PATH/data/portraits'"

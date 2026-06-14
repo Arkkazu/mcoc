@@ -9,20 +9,23 @@ MCOC チャンピオン日本語解説ページ生成スクリプト
   python3 generate_jp_page.py
 """
 
+import html
 import json
 from pathlib import Path
 
 # ─── パス設定 ───────────────────────────────────────────────
 BASE = Path(__file__).parent
-OUTPUT_PATH     = BASE / "data" / "champions_jp.html"
+OUTPUT_PATH     = BASE / "index.html"
+PORTRAIT_SRC_DIR = "data/portraits"
+SITE_URL = "https://marvel-allstar-battle.tokyo/"
 ABILITIES_PATH  = BASE / "data" / "abilities_all.json"
 SLUG_MAP_PATH   = BASE / "data" / "slug_to_prefix.json"
 NAME_JP_PATH    = BASE / "data" / "slug_to_jp.json"
 WORDS_PATH      = BASE / "words_main.json"
 CHAMP_NAMES_PATH = BASE / "data" / "champion_names_jp.json"
-EXTRA_CHAMPIONS_PATH = BASE / "data" / "game_roster_extra_champions.json"
 CHAMPION_CLASSES_PATH = BASE / "champion_classes.txt"
 CHAMPIONS_SUMMARY_PATH = BASE / "champions_summary.txt"
+LOCAL_BCG_PATH = BASE / "B64FC6A6D6243DB2A88B295572F5B5F145A66393.bin"
 GAME_WORDS_OUT = Path(r"C:\Users\tane1\AppData\LocalLow\Kabam\Champions\words\out\v1")
 GAME_BCG_OUT = Path(r"C:\Users\tane1\AppData\LocalLow\Kabam\Champions\bcg\out\v1")
 
@@ -98,8 +101,8 @@ ABILITY_TYPE_JP = {
     "block_proficiency":"ブロック効果",
     "block_proficiency_mod": "ブロック効果増幅",
     "perfect_block_chance":  "パーフェクトブロック",
-    "resist_physical":  "物理耐性",
-    "resist_magic":     "魔法耐性",
+    "resist_physical":  "物理抵抗力",
+    "resist_magic":     "エネルギー抵抗力",
     "damage_reduction_percent": "ダメージ軽減",
     "steadfast":        "堅強",
     "vigilance":        "警戒",
@@ -222,8 +225,8 @@ ABILITY_TYPE_JP = {
     "evolution_armor":  "進化アーマー",
     "pixie_spell":      "ピクシー魔法",
     # ─ 耐性・免疫（追加）
-    "crit_resist":          "クリティカル耐性",
-    "crit_resist_mod":      "クリティカル耐性増幅",
+    "crit_resist":          "クリティカル抵抗力",
+    "crit_resist_mod":      "クリティカル抵抗力増幅",
     "crit_pen_mod":         "クリティカル貫通",
     "buff_accel_all":      "バフ加速",
     "buff_decel_all":      "バフ減速",
@@ -341,46 +344,303 @@ MANUAL_BINARY_TO_PREFIX = {
 AUTO_BINARY_TO_PREFIX = {
     # champions_summary.txt上では本名/短縮名で出るプレイアブル。
     "absorbingman": "carl",
+    "antman": "antu",
+    "attuma": "atma",
+    "beast": "bst",
+    "bishop": "bishn",
+    "blackpanther": "bpu",
+    "blackpanther_cw": "blkpanther",
+    "blackpanther_realm": "jabpantu",
+    "blackwidow_movie": "bwmcu",
     "blackwidow_timely": "cvbw",
     "brothervoodoo": "drvood",
-    "captainbritain_legacy": "capb",
+    "captainamerica": "cpam",
+    "captainamerica_movie": "capiw",
+    "captainamerica_ww2": "cpww2",
+    "captainmarvel_movie": "cptmcu",
+    "carnage": "car",
+    "cassandranova": "cnova",
     "champion": "thechamp",
-    "cyclops_90s_legacy": "cyc90",
+    "civilwarrior": "cwu",
+    "colossus": "colos",
+    "countnefaria": "cnef",
+    "cullobsidian": "cul",
+    "cyclops": "clclps",
+    "daredevil_netflix": "dhk",
+    "daredevil": "drdvl",
+    "deadpool_gold": "dplgld",
+    "deadpool_x_force": "dpxuwu",
+    "deadpool_xforce": "dpxuwu",
+    "destroyer": "thdstrr",
+    "diablo": "diau",
     "doc_ock": "doc",
-    "drstrange_legacy": "drstrange",
-    "emmafrost_legacy": "emma",
+    "doctorbong": "bong",
+    "dragonman": "dman",
+    "ebonymaw": "ebm",
+    "falcon": "flcu",
+    "falcon_joaquintorres": "flcjt",
+    "frankencastle": "frnk",
     "ghostrider_cosmic": "cgr",
-    "ghostrider_legacy": "ghr",
     "groot_king": "kgu",
-    "groot_king_deathless": "kgroot",
+    "groot_king_deathless": "kg",
+    "guillotine": "guu",
     "guillotine_2099": "glt29",
     "guillotine_nameless": "gltn",
+    "hawkeye": "hawko",
     "howardfrontend": "htdu",
+    "howardmech": "htdu",
+    "hulk": "hulku",
+    "hulkbuster_movie": "hkbst",
+    "hulkling": "hlklng",
+    "iceman": "icm",
     "icephoenix": "icmphx",
     "ironman_movie": "imi",
     "ironman_silvercenturion": "immrk",
+    "ironman_superior": "supman",
+    "ironfist": "ifist",
+    "ironfist_white": "ifistw",
+    "isophyne": "iphyne",
     "jjj_spiderslayer": "jjj",
+    "joefixit": "joov",
+    "juggernaut": "jugger",
+    "karnak": "krku",
+    "kittypryde": "ktyp",
+    "lukecage": "luke",
+    "maestro_overseer": "ovrsr",
+    "madelynepryor": "mady",
+    "magneto": "mgcl",
     "magneto_marvelnow": "mgnx",
+    "mangog": "mgog",
+    "misterknight": "mrkn",
+    "misternegative": "mrneg",
     "mistersinister": "mrsin",
+    "mistyknight": "mkt",
+    "moleman": "molmn",
+    "msmarvel_kamala": "kmla",
+    "nebula": "nblu",
     "negasonicteenagewarhead": "ntw",
     "nightcarnage": "ncarn",
+    "nightcrawler": "ngc",
+    "nightthrasher": "nthra",
+    "okoye": "oky",
     "phoenix_dark": "phx",
-    "phoenix_legacy": "phx",
+    "phylavell": "phyla",
+    "punisher": "pnshru",
+    "punisher_2099": "pn29u",
+    "red_goblin": "rgob",
+    "redskull": "rskulln",
+    "rhino": "rhno",
+    "sasquatch": "sqch",
+    "scarletwitch": "swtch",
     "scarletwitch_current": "scitch",
+    "shatterstar": "shatter",
+    "shehulk_deathless": "sheh",
+    "spidergwen": "spgwn",
+    "spiderman_morales": "spmmu",
     "spiderman_movie": "spmcu",
     "spiderman_pavitr": "pvitr",
+    "spiderman_black": "spdrmn",
+    "spiderman_stealth": "stlspdr",
+    "spiderpunk": "spunk",
     "spiderwitch": "spwtch",
+    "squirrelgirl": "sqg",
+    "starlord_stellar": "slsf",
+    "storm_realm": "stormr",
+    "superior_iron_man": "supman",
+    "thanos_deathless_trophy": "thanos",
+    "thor": "thor",
+    "thor_janefoster": "thrj",
+    "ultron": "ultc",
     "ultron_prime": "ultu",
+    "unstoppable_colossus": "clsun",
     "venompool": "vplu",
     "venomtheduck": "vtd",
     "vision_deathless": "vsn",
+    "vision": "vsn",
+    "vision_movie": "vsmov",
     "vision_timely": "visaark",
     "vulture_movie": "vlt",
+    "wiccan": "wccn",
+    "wolverine": "wlvrn",
+    "wolverine_oldman": "oml",
+    "x23": "x23u",
+    "wolverine_x_23": "x23u",
+    "yelenabelova": "ylb",
+    "yellowjacket": "yju",
+    "colossus_unstoppable": "clsun",
 }
 
 SUPPLEMENTAL_ABILITY_PREFIXES = {
     # Classic Abomination stores its old all-attacks Fury as a one-entry abm_* bundle.
     "abmntn": ("abm",),
+    # Cyclops (New Xavier School) splits current signature rows from legacy optic-blast rows.
+    "clclps": ("cyclps",),
+    # Iron Fist (Immortal) shares the base Iron Fist combat kit but has a different signature.
+    "ifistw": ("ifist",),
+    # Vision (Age of Ultron) keeps the movie power-steal row in the base Vision bundle.
+    "vsmov": ("vsn",),
+}
+
+PORTRAIT_BINARY_ID_ALIASES = {
+    # ゲーム内binary idとportraitファイル名が一致しないもの。
+    "beast": "portrait_Beast_Allnew.png",
+    "captainamerica_movie": "portrait_captainamerica_infinitywar.png",
+    "captainamerica_ww2": "portrait_capamerica_wwii.png",
+    "drstrange": "portrait_doctor_strange.png",
+    "groot_king_deathless": "portrait_groot_king_blackorder.png",
+    "guillotine_nameless": "portrait_guillotine_blackorder.png",
+    "gwenperion": "portrait_ALT_gwenperion.png",
+    "howardfrontend": "portrait_howardmech.png",
+    "humantorch": "portrait_johnnystorm.png",
+    "icephoenix": "portrait_ALT_icephoenix.png",
+    "jeangrey": "portrait_jean_grey_current.png",
+    "jessicajones_current": "portrait_jessica_jones.png",
+    "korg": "portrait_korg_movie.png",
+    "maestro_trophy": "portrait_maestro.png",
+    "magneto_marvelnow": "portrait_magneto_white.png",
+    "nightcarnage": "portrait_ALT_nightcarnage.png",
+    "sentry": "portrait_sentry_current.png",
+    "spiderwitch": "portrait_ALT_spider_witch.png",
+    "thanos_deathless_trophy": "portrait_thanos_nameless.png",
+    "vision_deathless": "portrait_vision_blackorder.png",
+    "void": "portrait_void_current.png",
+}
+
+ROSTER_BINARY_ID_ALIASES = {
+    # slug由来ID・旧表示IDと、ロスタータグ定義のbinary idが一致しないもの。
+    "captain_marvel_movie": "captainmarvel_movie",
+    "kang_the_conqueror": "kang",
+    "rocket_raccoon": "rocket",
+    "spider_man_classic": "spiderman",
+    "howardfrontend": "howardmech",
+    "jeangrey": "jeangrey_current",
+    "jessicajones": "jessicajones_current",
+    "skrull": "skrull_super",
+}
+
+LOC_PREFIX_ALIASES = {
+    # binary_idから機械生成したprefixと、実際の日本語ローカライズprefixが違うもの。
+    "cassandranova": ("CASSANDRA",),
+    "hulk_red": ("REDHULK",),
+    "madelynepryor": ("MADELYNE",),
+    "thanos_deathless_trophy": ("THANOS_DEATHLESS_TROPHY",),
+    "thor_janefoster": ("JANEF",),
+    "thor_ragnarok": ("RAGTHOR",),
+    "x23": ("X23U",),
+}
+
+CLASS_FALLBACKS = {
+    # champion_classes.txt の抽出が internal class=chemical/trained を拾えない場合の補完。
+    "abomination": "Science",
+    "abomination_immortal": "Science",
+    "antivenom": "Science",
+    "antman": "Science",
+    "bluemarvel": "Science",
+    "captainamerica": "Science",
+    "captainamerica_movie": "Science",
+    "captainamerica_ww2": "Science",
+    "cassielang": "Science",
+    "countnefaria": "Science",
+    "electro": "Science",
+    "highevolutionary": "Science",
+    "hulk": "Science",
+    "hulk_immortal": "Science",
+    "hulk_ragnarok": "Science",
+    "hulk_red": "Science",
+    "humantorch": "Science",
+    "invisiblewoman": "Science",
+    "jessicajones": "Science",
+    "joefixit": "Science",
+    "leader": "Science",
+    "lizard": "Science",
+    "lukecage": "Science",
+    "maestro_overseer": "Science",
+    "misternegative": "Science",
+    "modok": "Science",
+    "morbius": "Science",
+    "mrfantastic": "Science",
+    "falcon_joaquintorres": "Science",
+    "photon": "Science",
+    "quake": "Science",
+    "quicksilver": "Science",
+    "redguardian": "Science",
+    "rhino": "Science",
+    "sandman": "Science",
+    "scorpion": "Science",
+    "sentry": "Science",
+    "shehulk": "Science",
+    "shehulk_deathless": "Science",
+    "silk": "Science",
+    "spidergwen": "Science",
+    "spiderham": "Science",
+    "spiderman": "Science",
+    "spiderman_2099": "Science",
+    "spiderman_morales": "Science",
+    "spiderpunk": "Science",
+    "spiderwoman": "Science",
+    "spot": "Science",
+    "thing": "Science",
+    "titania": "Science",
+    "void": "Science",
+    "wasp": "Science",
+    "wave": "Science",
+    "yellowjacket": "Science",
+    "aegon": "Skill",
+    "agentvenom": "Skill",
+    "attuma": "Skill",
+    "baronzemo": "Skill",
+    "blackcat": "Skill",
+    "blackpanther": "Skill",
+    "blackpanther_cw": "Skill",
+    "blackpanther_realm": "Skill",
+    "blackwidow": "Skill",
+    "blackwidow_movie": "Skill",
+    "blade": "Skill",
+    "bullseye": "Skill",
+    "cheeilth": "Skill",
+    "crossbones": "Skill",
+    "daredevil": "Skill",
+    "daredevil_netflix": "Skill",
+    "elektra": "Skill",
+    "elsabloodstone": "Skill",
+    "falcon": "Skill",
+    "doctorbong": "Skill",
+    "frankencastle": "Skill",
+    "gwenpool": "Skill",
+    "hawkeye": "Skill",
+    "hitmonkey": "Skill",
+    "karnak": "Skill",
+    "katebishop": "Skill",
+    "killmonger": "Skill",
+    "kingpin": "Skill",
+    "korg": "Skill",
+    "kraven": "Skill",
+    "lumatrix": "Skill",
+    "mantis": "Skill",
+    "masacre": "Skill",
+    "mbaku": "Skill",
+    "misterknight": "Skill",
+    "mistyknight": "Skill",
+    "moleman": "Skill",
+    "moondragon": "Skill",
+    "moonknight": "Skill",
+    "nickfury": "Skill",
+    "nightthrasher": "Skill",
+    "okoye": "Skill",
+    "punisher": "Skill",
+    "patriot": "Skill",
+    "ronin": "Skill",
+    "shangchi": "Skill",
+    "silversable": "Skill",
+    "spiderman_stealth": "Skill",
+    "squirrelgirl": "Skill",
+    "starlord_stellar": "Skill",
+    "taskmaster": "Skill",
+    "thor_ragnarok": "Skill",
+    "valkyrie": "Skill",
+    "wintersoldier": "Skill",
+    "yelenabelova": "Skill",
+    "shatterstar": "Mutant",
 }
 
 NON_PLAYABLE_BINARY_PREFIXES = (
@@ -401,15 +661,22 @@ NON_PLAYABLE_BINARY_PREFIXES = (
 )
 
 NON_PLAYABLE_BINARY_IDS = {
+    "ares",
     "chair",
     "cerastes",
     "grandmaster",
     "grandmaster_event",
+    "gwenperion",
     "herbie",
+    "icephoenix",
     "infinityclaw",
     "isosphere",
     "lockheed",
     "lockjaw",
+    "lotan",
+    "nightcarnage",
+    "orochi",
+    "spiderwitch",
     "sym_cos_beam",
     "sym_cos_thanos",
     "sym_mut_electric",
@@ -420,16 +687,100 @@ NON_PLAYABLE_BINARY_IDS = {
 }
 
 ALLOW_DUPLICATE_PREFIX_BINARY_IDS = {
-    "captainbritain_legacy",
-    "drstrange_legacy",
-    "emmafrost_legacy",
     "phoenix_dark",
-    "phoenix_legacy",
+    "shehulk_deathless",
+    "spiderman_black",
+    "storm_realm",
+    "thanos_deathless_trophy",
     "vision_deathless",
 }
 
+NO_GAME_ABILITY_PREFIX_BINARY_IDS = {
+    # Deathless Thanos shares the base thanos BCG prefix, but the current local
+    # BCG export does not expose a clean playable ability subset for him.
+    "hulk_red",
+    "thanos_deathless_trophy",
+    "thor_ragnarok",
+}
+
+SHARED_PREFIX_ABILITY_FILTERS = {
+    # Dark Phoenix uses the normal Phoenix ability prefix (phx), so remove its
+    # boss-only entries when building the playable Phoenix card.
+    "phoenix": {
+        "exclude_entry": ("phx_dk_",),
+        "exclude_ui": ("phoenix_dark_",),
+    },
+    "phoenix_dark": {
+        "include_entry": ("phx_dk_",),
+        "include_ui": ("phoenix_dark_",),
+    },
+    "ironfist_white": {
+        "exclude_entry": ("ifist_sig",),
+    },
+    "shehulk_deathless": {
+        "include_entry": ("sheh_dthls_",),
+    },
+    "spiderman_black": {
+        "exclude_entry": ("spdrmn_sig", "spdrmn_tnt_", "spdrmn_web_", "spdrmn_stn_opp_"),
+        "exclude_ui": ("spiderman_spider_sense_", "spiderman_taunt", "spiderman_webbing"),
+    },
+    "vision": {
+        "exclude_entry": ("vsmov_", "vsn_mov_", "vsn_dthls_"),
+        "exclude_ui": ("dvision_",),
+    },
+    "vision_deathless": {
+        "include_entry": ("vsn_dthls_",),
+        "include_ui": ("dvision_",),
+    },
+    "vision_movie": {
+        "include_entry": ("vsmov_", "vsn_mov_"),
+    },
+}
+
+
+def _has_roster_year_tag(tags: list[str]) -> bool:
+    return any(_re.fullmatch(r"tg_20\d{2}", tag) for tag in tags)
+
+
+def _has_roster_size_tag(tags: list[str]) -> bool:
+    return any(tag.startswith("tg_size") for tag in tags)
+
+
+def is_game_playable_roster_record(binary_id: str, record: dict | None) -> bool:
+    """BCGロスター行だけから、一覧に出すプレイアブルかを判定する。"""
+    if not record:
+        return False
+    if binary_id.endswith("_legacy"):
+        return False
+    if any(binary_id.startswith(prefix) for prefix in NON_PLAYABLE_BINARY_PREFIXES):
+        return False
+    if record.get("champion_class") not in CLASS_JP:
+        return False
+    tags = record.get("tags", [])
+    if not _has_roster_year_tag(tags) or not _has_roster_size_tag(tags):
+        return False
+    return bool(record.get("header_links"))
+
+
+def load_game_playable_binary_ids() -> set[str]:
+    """BCGロスター定義からプレイアブルbinary id集合を返す。"""
+    global _BCG_PLAYABLE_BINARY_ID_CACHE
+    if _BCG_PLAYABLE_BINARY_ID_CACHE is not None:
+        return _BCG_PLAYABLE_BINARY_ID_CACHE
+    records = load_bcg_roster_records()
+    _BCG_PLAYABLE_BINARY_ID_CACHE = {
+        binary_id
+        for binary_id, record in records.items()
+        if is_game_playable_roster_record(binary_id, record)
+    }
+    return _BCG_PLAYABLE_BINARY_ID_CACHE
+
 
 def is_playable_binary_id(binary_id: str) -> bool:
+    if load_bcg_roster_records():
+        return binary_id in load_game_playable_binary_ids()
+    if binary_id.endswith("_legacy"):
+        return False
     if binary_id in NON_PLAYABLE_BINARY_IDS:
         return False
     return not any(binary_id.startswith(prefix) for prefix in NON_PLAYABLE_BINARY_PREFIXES)
@@ -470,11 +821,330 @@ def load_localization() -> dict:
     print(f"ローカライズデータ: {len(kv)} エントリ / {source_count} ファイル")
     return kv
 
+_LOC_GLOSSARY_TAG_RE = _re.compile(r'\[k=glossary/([^\]]+)\](.*?)\[/k\]')
+_LOC_LINK_TAG_RE = _re.compile(r'\[k=[^\]]+\](.*?)\[/k\]')
+_LOC_COLOR_TAG_RE = _re.compile(r'\[(?:[-#a-fA-F0-9]{1,10})\]')
+
+
+def _strip_loc_color_tags(text: str) -> str:
+    """色タグだけ除去し、glossaryリンクは必要に応じて残せるようにする。"""
+    return _LOC_COLOR_TAG_RE.sub('', text)
+
+
+def _normalize_loc_link_tags(text: str) -> str:
+    """一部ローカライズに混じる [k] 閉じタグ表記を標準の [/k] に寄せる。"""
+    return text.replace('[k]', '[/k]')
+
+
 def strip_loc_tags(text: str) -> str:
     """カラータグ・リンクタグを除去してプレーンテキストにする"""
-    text = _re.sub(r'\[k=[\w/]+\]([^\[]*)\[/k\]', r'\1', text)
-    text = _re.sub(r'\[[-a-zA-Z0-9#]+\]|\[/[-a-zA-Z0-9]*\]', '', text)
+    text = _normalize_loc_link_tags(text)
+    text = _LOC_LINK_TAG_RE.sub(r'\1', text)
+    text = _strip_loc_color_tags(text)
     return text.strip()
+
+
+def _clean_loc_text(value: str, preserve_glossary: bool = False) -> str:
+    """ローカライズ本文を整形する。能力本文ではglossaryタグを保持できる。"""
+    value = _normalize_loc_link_tags(value)
+    if preserve_glossary:
+        value = _strip_loc_color_tags(value)
+        value = _re.sub(r'\[k=(?!glossary/)[^\]]+\](.*?)\[/k\]', r'\1', value)
+    else:
+        value = strip_loc_tags(value)
+    value = _re.sub(r'\{\d+\}', '〔数値〕', value)
+    value = _re.sub(r'\s+', ' ', value)
+    return value.strip()
+
+
+GLOSSARY_DEFINITION_KEYS = {
+    # ゲーム内ローカライズの汎用説明キー。存在するものだけHTML化する。
+    "armor_break": ("ID_ARAK64T", "ID_ARAK64D"),
+    "armor_shattered": ("ID_ARMSHAT_T", "ID_ARMSHAT_D"),
+    "armor_up": ("ID_ARMOR_UP_T", "ID_ARMOR_UP_D"),
+    "bleed": ("ID_BLED98T", "ID_BLED98D"),
+    "coldsnap": ("ID_COAP58403T", "ID_COAP58403D"),
+    "degen": ("ID_DEON94T", "ID_DEON94D"),
+    "degeneration": ("ID_DEON94T", "ID_DEON94D"),
+    "phys_res": ("ID_PHCE117T", "ID_PHCE117D"),
+    "energy_res": ("ID_ENCE116T", "ID_ENCE116D"),
+    "fury": ("ID_FURY107T", "ID_FURY107D"),
+    "precision": ("ID_PRON80T", "ID_PRON80D"),
+    "prowess": ("ID_PRSS83T", "ID_PRSS83D"),
+    "unblockable": ("ID_UNLE83T", "ID_UNLE83D"),
+    "evade": ("ID_EVON101T", "ID_EVON101D"),
+    "parry": ("ID_UI_TUTORIAL_PARRY_TITLE", "ID_PS_PARRY_ICON_D_V2"),
+    "hinder": ("ID_DSTRR_HNDRT", "ID_DSTRR_HNDRD"),
+    "enervate": ("ID_ENTE109T", "ID_ENTE109D"),
+    "exhaustion": ("ID_EXON35T", "ID_EXON35D"),
+    "fatigue": ("ID_FAUE106T", "ID_FAUE106D"),
+    "fear": ("ID_FEAR_T", "ID_FEAR_D"),
+    "frostbite": ("ID_FRTE58403T", "ID_FRTE58403D"),
+    "heal_block": ("ID_HECK90T", "ID_HECK90D"),
+    "infuriate": ("ID_INFURIATET", "ID_INFURIATED"),
+    "incinerate": ("ID_INTE211T", "ID_INTE211D"),
+    "intimidate": ("ID_INTIM_T", "ID_INTIM_D"),
+    "petrify": ("ID_PEFY58372T", "ID_PEFY58372D"),
+    "power_lock": ("ID_POCK109T", "ID_POCK109D"),
+    "power_sting": ("ID_PONG91T", "ID_PONG91D"),
+    "power_gain": ("ID_POIN78T", "ID_POIN78D"),
+    "power_steal": ("ID_POAL78T", "ID_POAL78D"),
+    "poison": ("ID_POON122T", "ID_POON122D"),
+    "cleanse": ("ID_CLNS_T", "ID_CLNS_D"),
+    "combo_shield": ("ID_COLD220T", "ID_COLD220D"),
+    "weakness": ("ID_WESS99T", "ID_WESS99D"),
+    "acid_burn": ("ID_ACDT", "ID_ACDD"),
+    "energy_vulnerability": ("ID_UI_STAT_ATTRIBUTE_ENERGY_VULNERABILITY_PT", "ID_UI_STAT_ATTRIBUTE_ENERGY_VULNERABILITY_PD"),
+    "sabotage": ("ID_PS_SABOTAGE_T", "ID_PS_SABOTAGE_D"),
+    "shock": ("ID_SHCK79T", "ID_SHCK79D"),
+    "spectre": ("ID_SPECTRE_T", "ID_SPECTRE_D"),
+    "stagger": ("ID_STER8216T", "ID_STER8216D"),
+    "stun": ("ID_STUN115T", "ID_STUN115D"),
+    "taunt": ("ID_TANT193T", "ID_TANT193D"),
+    "tranquilize": ("ID_PS_TRANQUILIZE_T", "ID_PS_TRANQUILIZE_D"),
+    "wither": ("ID_UI_STAT_ATTRIBUTE_WITHER_PT", "ID_UI_STAT_ATTRIBUTE_WITHER_PD"),
+    "power_burn": ("ID_UI_STAT_FORMAT_POWER_BURN_TITLE", "ID_UI_STAT_FORMAT_POWER_BURN_DESC"),
+    "power_dissolve": ("ID_PS_POWER_DISSOLVE_T", "ID_PS_POWER_DISSOLVE_D"),
+    "power_efficiency": ("ID_POWEREFFICIENCY_T", "ID_POWEREFFICIENCY_D"),
+    "power_reroute": ("ID_PS_POWER_REROUTE_T", "ID_PS_POWER_REROUTE_D"),
+    "neuroshock": ("ID_PS_DANIMOONSTAR_NEUROSHOCK_T", "ID_PS_DANIMOONSTAR_NEUROSHOCK_D"),
+    "trauma": ("ID_TRAUMAT", "ID_TRAUMAD"),
+    "ensnare": ("ID_ENRE194T", "ID_ENRE194D"),
+    "nova_flame": ("ID_TORCHNOVAT", "ID_TORCHNOVAD"),
+    "charm": ("ID_CHARM_T", "ID_CHARM_D"),
+    "soul_barb": ("ID_SOUL_BARB_T", "ID_SOUL_BARB_D"),
+    "marked": ("ID_MARKED_T", "ID_MARKED_D"),
+    "buff_accel": ("ID_MGK_BUFFACCEL_PAUSE_T", "ID_MGK_BUFFACCEL_PAUSE_D"),
+    "buff_decel": ("ID_MGK_BUFFDECEL_PAUSE_T", "ID_MGK_BUFFDECEL_PAUSE_D"),
+    "buff_immunity": ("ID_ANTIVENOMBIPT", "ID_ANTIVENOMBIPD"),
+    "unsteady": ("ID_UNSTDYT", "ID_UNSTDYD"),
+    "reckless": ("ID_PS_RECKLESS_T", "ID_PS_RECKLESS_D"),
+    "ineptitude": ("ID_UI_STAT_FORMAT_DMAN_PAUSE_INEPT_TITLE", "ID_UI_STAT_FORMAT_DMAN_PAUSE_INEPT_DESC"),
+    "slow": ("ID_UI_STAT_SLOW_DEBUFF", "ID_UI_STAT_SLOW_DEBUFF_LONG_V2"),
+}
+
+_GLOSSARY_DEFS_CACHE: dict[str, dict[str, str]] | None = None
+
+# ゲーム本文には glossary タグが付かず、平文だけで出る用語がある。
+# ただし「精度」「回避」「直撃」のように別語の一部になりやすい語は誤リンクを避ける。
+PLAINTEXT_GLOSSARY_TERMS = {
+    "acid_burn",
+    "armor_break",
+    "armor_shattered",
+    "armor_up",
+    "bleed",
+    "buff_accel",
+    "buff_decel",
+    "buff_immunity",
+    "charm",
+    "cleanse",
+    "coldsnap",
+    "combo_shield",
+    "degen",
+    "energy_res",
+    "energy_vulnerability",
+    "enervate",
+    "ensnare",
+    "exhaustion",
+    "fatigue",
+    "fear",
+    "frostbite",
+    "fury",
+    "heal_block",
+    "incinerate",
+    "ineptitude",
+    "infuriate",
+    "intimidate",
+    "marked",
+    "neuroshock",
+    "nova_flame",
+    "parry",
+    "petrify",
+    "phys_res",
+    "power_burn",
+    "power_dissolve",
+    "power_efficiency",
+    "power_gain",
+    "power_lock",
+    "power_reroute",
+    "power_steal",
+    "power_sting",
+    "prowess",
+    "reckless",
+    "shock",
+    "slow",
+    "soul_barb",
+    "spectre",
+    "stagger",
+    "stun",
+    "taunt",
+    "tranquilize",
+    "trauma",
+    "unblockable",
+    "unsteady",
+    "weakness",
+    "wither",
+}
+
+
+def _collect_glossary_term_labels(kv: dict) -> dict[str, dict[str, int]]:
+    labels: dict[str, dict[str, int]] = {}
+    for value in kv.values():
+        raw = _normalize_loc_link_tags(str(value))
+        for match in _LOC_GLOSSARY_TAG_RE.finditer(raw):
+            term = match.group(1).strip().lower()
+            label = strip_loc_tags(match.group(2)).strip()
+            if not term or not label:
+                continue
+            labels.setdefault(term, {})
+            labels[term][label] = labels[term].get(label, 0) + 1
+    return labels
+
+
+def _best_glossary_label(term: str, labels: dict[str, int]) -> str:
+    if labels:
+        return max(labels, key=labels.get)
+    return ABILITY_TYPE_JP.get(term, term.replace("_", " "))
+
+
+def _safe_exact_glossary_definitions(term_labels: dict[str, dict[str, int]],
+                                     kv: dict,
+                                     known_terms: set[str]) -> dict[str, dict[str, str]]:
+    """同じベース名のタイトル/説明ペアだけから、安全にglossary説明を補完する。"""
+    label_to_terms: dict[str, set[str]] = {}
+    for term, labels in term_labels.items():
+        for label in labels:
+            label_to_terms.setdefault(label, set()).add(term)
+
+    candidates: dict[str, list[tuple[int, int, str, str, str]]] = {}
+    for title_key, raw_title in kv.items():
+        key_up = title_key.upper()
+        bases: list[str] = []
+        for suffix in ("_T", "T", "_TITLE"):
+            if key_up.endswith(suffix):
+                bases.append(title_key[:-len(suffix)])
+        if not bases:
+            continue
+
+        title = _clean_loc_text(raw_title)
+        terms = label_to_terms.get(title, set())
+        if not terms:
+            continue
+
+        for base in bases:
+            desc_key = ""
+            for suffix in ("_D", "D", "_DESC", "_DESCRIPTION", "_LONG"):
+                candidate_key = base + suffix
+                if candidate_key in kv:
+                    desc_key = candidate_key
+                    break
+            if not desc_key:
+                continue
+
+            desc = _clean_loc_text(kv[desc_key])
+            if not desc or len(desc) < 8 or len(desc) > 260:
+                continue
+
+            for term in terms:
+                if term in known_terms:
+                    continue
+                # 同じ表示名が複数のglossary keyに使われる場合は誤対応を避ける。
+                if len(terms) > 1 and _re.sub(r'[^a-z0-9]', '', term) not in _re.sub(r'[^a-z0-9]', '', title_key.lower()):
+                    continue
+                penalty = 0
+                bad_parts = ("SIGNATURE", "SYNERGY", "SPECIAL_ATTACK", "BIOS", "TUT", "TUTORIAL", "TRAINING")
+                if any(part in key_up for part in bad_parts):
+                    penalty += 100
+                if key_up.startswith(("ID_UI_STAT_FORMAT_", "ID_UI_STAT_ATTRIBUTE_", "ID_STAT_ATTRIBUTE_")):
+                    penalty += 15
+                if key_up.startswith("ID_PS_"):
+                    penalty += 5
+                penalty += len(title_key)
+                candidates.setdefault(term, []).append((penalty, abs(len(desc) - 70), title_key, title, desc))
+
+    result: dict[str, dict[str, str]] = {}
+    for term, items in candidates.items():
+        items.sort(key=lambda item: (item[0], item[1], item[2]))
+        _, _, _, title, desc = items[0]
+        result[term] = {"title": title, "desc": desc}
+    return result
+
+
+def get_glossary_definitions(kv: dict) -> dict[str, dict[str, str]]:
+    """glossary/key → {title, desc}。説明が取れない用語はクリック化しない。"""
+    global _GLOSSARY_DEFS_CACHE
+    if _GLOSSARY_DEFS_CACHE is not None:
+        return _GLOSSARY_DEFS_CACHE
+    defs: dict[str, dict[str, str]] = {}
+    for term, (title_key, desc_key) in GLOSSARY_DEFINITION_KEYS.items():
+        title = strip_loc_tags(kv.get(title_key, "")).strip()
+        desc = _clean_loc_text(kv.get(desc_key, "")).strip()
+        if title and desc:
+            defs[term.lower()] = {"title": title, "desc": desc}
+    term_labels = _collect_glossary_term_labels(kv)
+    defs.update(_safe_exact_glossary_definitions(term_labels, kv, set(defs)))
+    _GLOSSARY_DEFS_CACHE = defs
+    return defs
+
+
+def _glossary_button_html(term: str, label: str, glossary_defs: dict[str, dict[str, str]]) -> str:
+    key = term.strip().lower()
+    definition = glossary_defs.get(key)
+    clean_label = strip_loc_tags(label)
+    if not definition:
+        return html.escape(clean_label)
+    return (
+        '<button type="button" class="glossary-term" '
+        f'data-glossary-key="{html.escape(key, quote=True)}" '
+        f'data-glossary-title="{html.escape(definition["title"], quote=True)}" '
+        f'data-glossary-desc="{html.escape(definition["desc"], quote=True)}">'
+        f'{html.escape(clean_label)}</button>'
+    )
+
+
+def render_plain_text_with_glossary_links(text: str,
+                                          glossary_defs: dict[str, dict[str, str]]) -> str:
+    """glossaryタグがないがゲーム内説明を持つ一部用語を本文中でリンク化する。"""
+    clean = strip_loc_tags(text)
+    link_terms = [
+        (term, glossary_defs[term]["title"])
+        for term in PLAINTEXT_GLOSSARY_TERMS
+        if term in glossary_defs and glossary_defs[term].get("title")
+    ]
+    if not link_terms:
+        return html.escape(clean)
+    link_terms.sort(key=lambda item: len(item[1]), reverse=True)
+
+    parts: list[str] = []
+    pos = 0
+    while pos < len(clean):
+        matched: tuple[str, str] | None = None
+        for term, label in link_terms:
+            if clean.startswith(label, pos):
+                matched = (term, label)
+                break
+        if not matched:
+            parts.append(html.escape(clean[pos]))
+            pos += 1
+            continue
+        term, label = matched
+        parts.append(_glossary_button_html(term, label, glossary_defs))
+        pos += len(label)
+    return "".join(parts)
+
+
+def render_ability_text_html(text: str, glossary_defs: dict[str, dict[str, str]]) -> str:
+    """能力本文のglossaryタグを、クリック可能な用語ボタンに変換する。"""
+    parts: list[str] = []
+    pos = 0
+    for match in _LOC_GLOSSARY_TAG_RE.finditer(text):
+        if match.start() > pos:
+            parts.append(render_plain_text_with_glossary_links(text[pos:match.start()], glossary_defs))
+        parts.append(_glossary_button_html(match.group(1), match.group(2), glossary_defs))
+        pos = match.end()
+    if pos < len(text):
+        parts.append(render_plain_text_with_glossary_links(text[pos:], glossary_defs))
+    return "".join(parts)
 
 
 _SYNERGY_GENERIC_JP = {
@@ -730,17 +1400,47 @@ _SYNERGY_TITLE_LEVEL_RE = _re.compile(r'_(?:I|II|III|IV|V|VI|VII|VIII|IX|X)$')
 _BCG_SYNERGY_CACHE: tuple[dict, dict] | None = None
 _BCG_UI_STAT_CACHE: dict[str, list[tuple[int, str]]] | None = None
 _BCG_ACTIVE_ABILITY_CACHE: tuple[dict[str, set[str]], dict[str, set[str]]] | None = None
+_BCG_CHAMPION_TAG_CACHE: dict[str, list[str]] | None = None
+_BCG_ROSTER_RECORD_CACHE: dict[str, dict] | None = None
+_BCG_PLAYABLE_BINARY_ID_CACHE: set[str] | None = None
+
+ROSTER_CLASS_TOKENS = {"chemical", "mutant", "trained", "cosmic", "tech", "mystic", "superior"}
+ROSTER_CLASS_TO_CHAMPION_CLASS = {
+    "chemical": "Science",
+    "mutant": "Mutant",
+    "trained": "Skill",
+    "cosmic": "Cosmic",
+    "tech": "Tech",
+    "mystic": "Mystic",
+}
+ROSTER_RARITY_TOKENS = {"common", "uncommon", "rare", "epic", "legendary", "t6", "t7"}
+ROSTER_SIZE_TOKENS = {"small", "average", "large", "giant"}
+ROSTER_TAG_PREFIXES = (
+    "typ_", "tg_", "saga_", "aw_", "eq_", "raid_", "tbe_", "cc_", "ave_", "col_",
+)
+ROSTER_LINK_PLACEHOLDERS = {"ff", "fff", "ffff", "ffV", "33", "333", "Ga", "ga"}
+ROSTER_TAG_LABEL_FALLBACKS = {
+    "tg_xmen": "X-Men",
+    "tg_shld": "S.H.I.E.L.D.",
+    "tg_wknda": "ワカンダ人",
+    "aw_stone": "アライアンスウォー：ストーン",
+    "aw_dinosaur": "アライアンスウォー：ダイナソー",
+    "aw_ricochet": "アライアンスウォー：跳弾",
+    "aw_stabilize": "アライアンスウォー：安定化",
+    "tbe_wild": "派閥ビルダー：ワイルド",
+}
 
 
 def _latest_game_bcg_path() -> Path | None:
-    if not GAME_BCG_OUT.exists():
-        return None
-    bins = sorted(
-        GAME_BCG_OUT.glob("*.bin"),
-        key=lambda p: p.stat().st_mtime,
-        reverse=True,
-    )
-    return bins[0] if bins else None
+    if GAME_BCG_OUT.exists():
+        bins = sorted(
+            GAME_BCG_OUT.glob("*.bin"),
+            key=lambda p: p.stat().st_mtime,
+            reverse=True,
+        )
+        if bins:
+            return bins[0]
+    return LOCAL_BCG_PATH if LOCAL_BCG_PATH.exists() else None
 
 
 def _variant_base_id(variant_id: str) -> str:
@@ -756,6 +1456,175 @@ def _variant_suffix(variant_id: str) -> str:
         if variant_id.endswith("_" + suffix):
             return suffix
     return ""
+
+
+def _is_roster_tag_token(value: str) -> bool:
+    return value.startswith(ROSTER_TAG_PREFIXES)
+
+
+def load_champion_tag_labels() -> dict[str, str]:
+    """タグID → 表示名。日本語ラベルが無いものは最小限のフォールバックを使う。"""
+    labels: dict[str, str] = {}
+    if CHAMP_NAMES_PATH.exists():
+        try:
+            data = json.loads(CHAMP_NAMES_PATH.read_text(encoding="utf-8"))
+        except (OSError, json.JSONDecodeError):
+            data = {}
+        for key, info in data.items():
+            if not _is_roster_tag_token(key) or not isinstance(info, dict):
+                continue
+            jp = strip_loc_tags(info.get("jp", "")).strip()
+            if jp:
+                labels[key] = jp
+    labels.update(ROSTER_TAG_LABEL_FALLBACKS)
+    return labels
+
+
+def format_roster_tag_label(tag_key: str, labels: dict[str, str]) -> str:
+    label = labels.get(tag_key, "")
+    if label:
+        return label
+    year_match = _re.fullmatch(r"tg_(20\d{2})", tag_key)
+    if year_match:
+        return year_match.group(1)
+    return tag_key.replace("_", " ")
+
+
+def _roster_header_link_tokens(tokens: list[tuple[int, str]], header_idx: int, roster_idx: int) -> list[str]:
+    """ロスター行ヘッダ内の実リンクIDだけを返す。ff/333等の埋め草は除外する。"""
+    ignored = set(ROSTER_LINK_PLACEHOLDERS)
+    ignored.update(f"{suffix}_regen" for suffix in _HERO_RARITY_SUFFIXES)
+    links: list[str] = []
+    seen: set[str] = set()
+    for _, token in tokens[header_idx + 4:roster_idx]:
+        if (
+            token in ignored
+            or _re.fullmatch(r"f+", token)
+            or _re.fullmatch(r"3+", token)
+        ):
+            continue
+        if token not in seen:
+            links.append(token)
+            seen.add(token)
+    return links
+
+
+def load_bcg_roster_records() -> dict[str, dict]:
+    """BCGのロスター定義から binary_id ごとの class/tags/リンク情報を抽出する。"""
+    global _BCG_ROSTER_RECORD_CACHE
+    if _BCG_ROSTER_RECORD_CACHE is not None:
+        return _BCG_ROSTER_RECORD_CACHE
+
+    bcg_path = _latest_game_bcg_path()
+    if not bcg_path:
+        _BCG_ROSTER_RECORD_CACHE = {}
+        return _BCG_ROSTER_RECORD_CACHE
+
+    try:
+        raw = bcg_path.read_bytes()
+    except OSError:
+        _BCG_ROSTER_RECORD_CACHE = {}
+        return _BCG_ROSTER_RECORD_CACHE
+
+    token_re = _re.compile(rb"[A-Za-z0-9_./:+-]{2,}")
+    variant_re = _re.compile(r"^([a-z][a-z0-9_]*_(?:cm|un|rar|ep|leg|t6|t7))$")
+    tokens = [
+        (m.start(), m.group().decode("ascii", "ignore"))
+        for m in token_re.finditer(raw)
+    ]
+
+    records: dict[str, dict] = {}
+    for idx, (pos, token) in enumerate(tokens):
+        if not variant_re.match(token):
+            continue
+        binary_id = _variant_base_id(token)
+        suffix = _variant_suffix(token)
+        if idx + 3 >= len(tokens):
+            continue
+        if tokens[idx + 1][1] != f"{binary_id}h" or tokens[idx + 2][1] not in ROSTER_CLASS_TOKENS:
+            continue
+        class_token = tokens[idx + 2][1]
+
+        roster_idx = None
+        for scan_idx in range(idx + 3, min(idx + 45, len(tokens) - 4)):
+            if (
+                tokens[scan_idx][1] == token
+                and tokens[scan_idx + 1][1] == binary_id
+                and tokens[scan_idx + 2][1] == class_token
+                and tokens[scan_idx + 3][1] in ROSTER_RARITY_TOKENS
+            ):
+                roster_idx = scan_idx
+                break
+        if roster_idx is None:
+            continue
+
+        tags: list[str] = []
+        seen: set[str] = set()
+        for _, tag_token in tokens[roster_idx + 4:min(roster_idx + 45, len(tokens))]:
+            if tag_token in ROSTER_SIZE_TOKENS:
+                break
+            if _variant_suffix(tag_token):
+                break
+            if not _is_roster_tag_token(tag_token) or tag_token in seen:
+                continue
+            tags.append(tag_token)
+            seen.add(tag_token)
+
+        rank = _HERO_RARITY_RANK.get(suffix, -1)
+        record = records.setdefault(binary_id, {
+            "class_token": class_token,
+            "champion_class": ROSTER_CLASS_TO_CHAMPION_CLASS.get(class_token, ""),
+            "variants": {},
+            "tags_by_suffix": {},
+            "pos": pos,
+        })
+        record["class_token"] = class_token
+        record["champion_class"] = ROSTER_CLASS_TO_CHAMPION_CLASS.get(class_token, "")
+        record["pos"] = min(record.get("pos", pos), pos)
+        record["variants"][suffix] = {
+            "rank": rank,
+            "pos": pos,
+            "header_idx": idx,
+            "roster_idx": roster_idx,
+            "header_links": _roster_header_link_tokens(tokens, idx, roster_idx),
+        }
+        record["tags_by_suffix"][suffix] = tags
+
+    for binary_id, record in records.items():
+        variants = record.get("variants", {})
+        if not variants:
+            continue
+        best_suffix = max(
+            variants,
+            key=lambda suffix: (variants[suffix].get("rank", -1), variants[suffix].get("pos", -1)),
+        )
+        record["best_suffix"] = best_suffix
+        record["tags"] = record.get("tags_by_suffix", {}).get(best_suffix, [])
+        record["header_links"] = variants[best_suffix].get("header_links", [])
+        record["suffixes"] = sorted(
+            variants.keys(),
+            key=lambda suffix: _HERO_RARITY_RANK.get(suffix, -1),
+        )
+
+    _BCG_ROSTER_RECORD_CACHE = records
+    print(f"ゲーム内ロスター定義: {len(_BCG_ROSTER_RECORD_CACHE)} 件")
+    return _BCG_ROSTER_RECORD_CACHE
+
+
+def load_bcg_champion_tags() -> dict[str, list[str]]:
+    """BCGのロスター定義から binary_id → チャンピオンタグID一覧を抽出する。"""
+    global _BCG_CHAMPION_TAG_CACHE
+    if _BCG_CHAMPION_TAG_CACHE is not None:
+        return _BCG_CHAMPION_TAG_CACHE
+
+    records = load_bcg_roster_records()
+    _BCG_CHAMPION_TAG_CACHE = {
+        binary_id: record.get("tags", [])
+        for binary_id, record in records.items()
+        if record.get("tags")
+    }
+    print(f"ゲーム内チャンピオンタグ: {len(_BCG_CHAMPION_TAG_CACHE)} 件")
+    return _BCG_CHAMPION_TAG_CACHE
 
 
 def _synergy_signature(defn: dict) -> tuple[str, str, tuple[str, ...]]:
@@ -1175,9 +2044,7 @@ def get_champion_sections(loc_prefix: str, kv: dict,
     fmt_keys: dict[str, list[tuple[int, str]]] = {}
 
     def clean_value(value: str) -> str:
-        value = _re.sub(r'\{\d+\}', '〔数値〕', strip_loc_tags(value)).strip()
-        value = _re.sub(r'\s+', ' ', value)
-        return value
+        return _clean_loc_text(value, preserve_glossary=True)
 
     def item_order(suffix: str) -> int:
         if suffix.isdigit():
@@ -1411,6 +2278,24 @@ def _fmt_game_value(v, as_percent: bool = False) -> str:
     return f"{f:g}"
 
 
+def _replace_percent_placeholder(text: str, idx: int, raw_value) -> str:
+    """ローカライズ文の符号と実数値の符号が二重表示にならないよう置換する。"""
+    formatted = _fmt_game_value(raw_value, True)
+    if not formatted:
+        return text
+    abs_formatted = formatted[1:] if formatted[0] in "+-" else formatted
+
+    def repl(match: _re.Match) -> str:
+        prefix = match.group(1)
+        if prefix == "+":
+            return formatted if formatted.startswith("-") else f"+{abs_formatted}"
+        if prefix == "-":
+            return formatted if formatted.startswith("-") else f"-{abs_formatted}"
+        return formatted
+
+    return _re.sub(rf"([+-]?)\{{{idx}\}}%", repl, text)
+
+
 def _entry_by_id(cats: dict, entry_id: str) -> dict:
     for entries in cats.values():
         for e in entries:
@@ -1453,6 +2338,60 @@ def _prefer_rank_variant_entries(entries: list[dict]) -> list[dict]:
     return result
 
 
+def _variant_entry_score(entry: dict) -> tuple[int, int]:
+    """同じ表示IDのランク別/星別エントリから、表示に使う代表を選ぶためのスコア。"""
+    entry_id = str(entry.get("id", "")).lower()
+    score = 0
+    if entry_id.endswith("_200"):
+        score = 200
+    elif entry_id.endswith("_99"):
+        score = 99
+    elif entry_id.endswith("_5s"):
+        score = 5
+    elif entry_id.endswith("_4s"):
+        score = 4
+    return (score, len(entry_id))
+
+
+def _prefer_signature_variant_entries(entries: list[dict]) -> list[dict]:
+    """シグネチャー内で同じUI本文を参照する星/ランク違いを1つに絞る。"""
+    best_by_ui: dict[str, dict] = {}
+    order: list[str] = []
+    passthrough: list[dict] = []
+    for entry in entries:
+        ui_id = entry.get("f12", "")
+        if not ui_id:
+            passthrough.append(entry)
+            continue
+        if ui_id not in best_by_ui:
+            best_by_ui[ui_id] = entry
+            order.append(ui_id)
+            continue
+        if _variant_entry_score(entry) > _variant_entry_score(best_by_ui[ui_id]):
+            best_by_ui[ui_id] = entry
+    return passthrough + [best_by_ui[ui_id] for ui_id in order]
+
+
+def _prefer_category_entries(cat: str, entries: list[dict]) -> list[dict]:
+    preferred = _prefer_rank_variant_entries(entries)
+    if cat == "signature":
+        preferred = _prefer_signature_variant_entries(preferred)
+    return preferred
+
+
+def _keep_entry_for_active_sections(cat: str, entry: dict, active_ids: set[str]) -> bool:
+    if not active_ids or entry.get("id") in active_ids:
+        return True
+    return cat == "signature" and bool(entry.get("f12"))
+
+
+def _is_signature_display_entry(cat: str, entry: dict) -> bool:
+    ui_id = entry.get("f12", "")
+    if not ui_id or ui_id.endswith(("_hud", "_icon")):
+        return False
+    return cat == "signature" or ui_id.startswith("sig_")
+
+
 def _prefer_rank_variant_categories(cats: dict[str, list[dict]]) -> dict[str, list[dict]]:
     entry_ids = {
         entry.get("id", "")
@@ -1467,7 +2406,7 @@ def _prefer_rank_variant_categories(cats: dict[str, list[dict]]) -> dict[str, li
             if not (entry.get("id", "") and f'{entry.get("id", "")}_5s' in entry_ids)
         ]
         if filtered:
-            result[cat] = filtered
+            result[cat] = _prefer_category_entries(cat, filtered)
     return result
 
 
@@ -1489,12 +2428,48 @@ def _core_game_categories(cats: dict[str, list[dict]], binary_id: str = "") -> d
     return result
 
 
+def _filter_non_playable_variant_categories(cats: dict[str, list[dict]], binary_id: str) -> dict[str, list[dict]]:
+    """同じability prefix内で複数キャラが混ざる場合、表示行をキャラ別に絞る。"""
+    filters = SHARED_PREFIX_ABILITY_FILTERS.get(binary_id, {})
+    include_entry_prefixes = tuple(filters.get("include_entry", ()))
+    include_ui_prefixes = tuple(filters.get("include_ui", ()))
+    exclude_entry_prefixes = tuple(filters.get("exclude_entry", ()))
+    exclude_ui_prefixes = tuple(filters.get("exclude_ui", ()))
+    if not any((include_entry_prefixes, include_ui_prefixes, exclude_entry_prefixes, exclude_ui_prefixes)):
+        return cats
+
+    result: dict[str, list[dict]] = {}
+    for cat, entries in cats.items():
+        filtered = []
+        for entry in entries:
+            entry_id = str(entry.get("id", "")).lower()
+            ui_id = str(entry.get("f12", "")).lower()
+            if include_entry_prefixes or include_ui_prefixes:
+                if not (
+                    (include_entry_prefixes and entry_id.startswith(include_entry_prefixes)) or
+                    (include_ui_prefixes and ui_id.startswith(include_ui_prefixes))
+                ):
+                    continue
+            if exclude_entry_prefixes and entry_id.startswith(exclude_entry_prefixes):
+                continue
+            if exclude_ui_prefixes and ui_id.startswith(exclude_ui_prefixes):
+                continue
+            filtered.append(entry)
+        if filtered:
+            result[cat] = filtered
+    return result
+
+
 def _section_text_count(sections: list[tuple[str, list[str]]]) -> int:
     return sum(len(texts) for _, texts in sections)
 
 
 def _has_non_special_section(sections: list[tuple[str, list[str]]]) -> bool:
-    return any(not title.startswith("必殺技") for title, texts in sections if texts)
+    return any(
+        not title.startswith("必殺技") and not title.startswith("シグネチャー")
+        for title, texts in sections
+        if texts
+    )
 
 
 def _immune_badges_from_entry(entry: dict) -> list[str]:
@@ -1521,13 +2496,76 @@ def _immune_badges_from_entry(entry: dict) -> list[str]:
     return badges
 
 
-def _clean_game_text(value: str, entry: dict | None = None) -> str:
-    value = strip_loc_tags(value).strip()
+def _entry_targets_opponent(entry: dict) -> bool:
+    return str(entry.get("f55", "")).lower() == "opponent"
+
+
+OPPONENT_DEBUFF_TYPE_LABELS = {
+    # BCG内部名がABILITY_TYPE_JPに無いが、ゲーム内では相手へ付与する弱体効果として表示されるもの。
+    "buff_immunity": "バフ耐性",
+    "hinder": "妨害",
+    "fragility": "虚弱",
+    "spectre": "怪異",
+    "tranquilize": "鎮静化",
+    "mana_loss": "パワードレイン",
+    "mana_steal": "パワースティール",
+    "provoke": "挑発",
+    "panic": "パニック",
+    "stifle": "窒息",
+    "neurotoxin": "神経毒",
+    "ineptitude": "不適当",
+    "reckless": "無謀",
+    "distract": "錯乱",
+    "disintegrate_vuln": "崩壊弱点",
+    "incin_vuln": "焼却弱点",
+    "fear_of_the_void": "ボイドの恐怖",
+    "agility_debuff": "機敏性デバフ",
+}
+
+
+def _opponent_debuff_label_from_entry(entry: dict,
+                                      ui_index: dict[str, list[tuple[int, str]]],
+                                      kv: dict) -> str:
+    """相手に付与するデバフ/弱体効果として絞り込みに使う表示名を返す。"""
+    if not _entry_targets_opponent(entry):
+        return ""
+
+    raw = entry.get("f2", "")
+    display_title = ""
+    display_texts: list[str] = []
+    if kv:
+        display_title, display_texts = _entry_display_text(entry, ui_index, kv)
+
+    if display_title in DEBUFF_LABELS_JP:
+        return display_title
+
+    jp = OPPONENT_DEBUFF_TYPE_LABELS.get(raw) or ABILITY_TYPE_JP.get(raw, "")
+    if not jp:
+        return ""
+
+    if raw in DEBUFF_TYPES or jp in DEBUFF_LABELS_JP or raw in OPPONENT_DEBUFF_TYPE_LABELS:
+        return jp
+
+    return ""
+
+
+def _immunity_kind_from_entry(entry: dict) -> str:
+    trigger = str(entry.get("f4", "")).lower()
+    condition = str(entry.get("f11", "") or "").strip()
+    state_gate = str(entry.get("f5", "") or "").strip()
+    if condition or state_gate:
+        return "conditional"
+    if trigger in {"onstart", "always"}:
+        return "full"
+    return "conditional"
+
+
+def _clean_game_text(value: str, entry: dict | None = None,
+                     preserve_glossary: bool = False) -> str:
+    value = _clean_loc_text(value, preserve_glossary=preserve_glossary)
     if entry:
-        if "{0}%" in value:
-            value = value.replace("{0}%", _fmt_game_value(entry.get("f13"), True))
-        if "{1}%" in value:
-            value = value.replace("{1}%", _fmt_game_value(entry.get("f14"), True))
+        value = _replace_percent_placeholder(value, 0, entry.get("f13"))
+        value = _replace_percent_placeholder(value, 1, entry.get("f14"))
         try:
             duration = float(entry.get("f15", ""))
         except (TypeError, ValueError):
@@ -1565,7 +2603,7 @@ def _entry_display_text(entry: dict, ui_index: dict[str, list[tuple[int, str]]],
     for tag, key in fields:
         if tag not in desc_tags or key not in kv:
             continue
-        text = _clean_game_text(kv[key], entry)
+        text = _clean_game_text(kv[key], entry, preserve_glossary=True)
         if text and len(text) > 5 and text not in texts:
             texts.append(text)
 
@@ -1573,7 +2611,7 @@ def _entry_display_text(entry: dict, ui_index: dict[str, list[tuple[int, str]]],
         for tag, key in fields:
             if tag != 0x2a or key not in kv:
                 continue
-            text = _clean_game_text(kv[key], entry)
+            text = _clean_game_text(kv[key], entry, preserve_glossary=True)
             if text and len(text) > 5 and text not in texts:
                 texts.append(text)
 
@@ -1597,6 +2635,89 @@ def _signature_section_title(ui_id: str, ui_index: dict[str, list[tuple[int, str
     return "シグネチャー"
 
 
+def _ui_description_text(ui_id: str, ui_index: dict[str, list[tuple[int, str]]], kv: dict) -> str:
+    for tag, key in ui_index.get(ui_id, []):
+        if tag not in (0x22, 0x2a, 0x32) or key not in kv:
+            continue
+        text = _clean_game_text(kv[key], preserve_glossary=True)
+        if text:
+            return text
+    return ""
+
+
+def _bladesf_signature_section(active_cats: dict[str, list[dict]],
+                               ui_index: dict[str, list[tuple[int, str]]],
+                               kv: dict) -> tuple[str, list[str]] | None:
+    sig_entries = active_cats.get("signature", [])
+    if not any(str(entry.get("id", "")).startswith("bladesf_sig_") for entry in sig_entries):
+        return None
+
+    title = "シグネチャー - 強化吸血不死"
+    title_entry = next((entry for entry in sig_entries if entry.get("f12") == "bladesf_ui_sig_regen"), {})
+    if title_entry:
+        title = _signature_section_title(title_entry.get("f12", ""), ui_index, kv) or title
+
+    texts: list[str] = []
+    for ui_id in ("bladesf_regenblk_trig", "bladesf_regenblk_hud"):
+        text = _ui_description_text(ui_id, ui_index, kv)
+        if text and text not in texts:
+            texts.append(text)
+    return (title, texts) if texts else None
+
+
+def _localized_signature_section(loc_prefixes: list[str], kv: dict) -> tuple[str, list[str]] | None:
+    """Some newer champions store signature text as PREFIX_SIG_1/2 without a UI index link."""
+    skip_suffixes = {"TITLE", "TITLE_LOWER", "SHORT", "HUD", "ICON", "CALLOUT"}
+
+    def suffix_order(suffix: str) -> tuple[int, str]:
+        if suffix.isdigit():
+            return (int(suffix), suffix)
+        if len(suffix) == 1 and suffix.isalpha():
+            return (100 + ord(suffix.upper()), suffix)
+        return (500, suffix)
+
+    for prefix in loc_prefixes:
+        if not prefix:
+            continue
+        title = "シグネチャー"
+        for key in (
+            f"ID_UI_{prefix}_SIG_TITLE",
+            f"ID_UI_STAT_FORMAT_{prefix}_SIG_TITLE",
+            f"ID_UI_STAT_ATTRIBUTE_{prefix}_SIG_TITLE",
+            f"ID_STAT_ATTRIBUTE_{prefix}_SIG_TITLE",
+            f"ID_UI_STAT_SIGNATURE_{prefix}_TITLE",
+        ):
+            if key in kv:
+                clean_title = _clean_game_text(kv[key])
+                if clean_title:
+                    title = f"シグネチャー - {clean_title}"
+                    break
+
+        ordered_texts: list[tuple[tuple[int, str], str]] = []
+        for head in (
+            f"ID_UI_STAT_FORMAT_{prefix}_SIG_",
+            f"ID_UI_STAT_ATTRIBUTE_{prefix}_SIG_",
+            f"ID_STAT_ATTRIBUTE_{prefix}_SIG_",
+        ):
+            for key, value in kv.items():
+                if not key.startswith(head):
+                    continue
+                suffix = key[len(head):]
+                if suffix in skip_suffixes or suffix.endswith(("_TITLE", "_SHORT", "_HUD", "_ICON", "_CALLOUT")):
+                    continue
+                text = _clean_game_text(value, preserve_glossary=True)
+                if text and len(text) > 5:
+                    ordered_texts.append((suffix_order(suffix), text))
+
+        texts: list[str] = []
+        for _, text in sorted(ordered_texts, key=lambda item: item[0]):
+            if text not in texts:
+                texts.append(text)
+        if texts:
+            return title, texts
+    return None
+
+
 def _special_attack_section_title(loc_prefixes: list[str], kv: dict, idx: int) -> str:
     label = ("必殺技1", "必殺技2", "必殺技3")[idx]
     for prefix in loc_prefixes:
@@ -1614,7 +2735,7 @@ def _special_attack_description(loc_prefixes: list[str], kv: dict, idx: int) -> 
             continue
         key = f"ID_SPECIAL_ATTACK_DESCRIPTION_{prefix}_{idx}"
         if key in kv:
-            return _clean_game_text(kv[key])
+            return _clean_game_text(kv[key], preserve_glossary=True)
     return ""
 
 
@@ -1647,20 +2768,26 @@ def _event_trigger_tokens(entry: dict) -> list[str]:
     second = str(entry.get("f5", "") or "")
     first_lower = first.lower()
     generic_first = (
-        first_lower in {"none", "onstart", "onabilityactivate", "ontypeactivate"} or
+        first_lower in {"none", "onstart", "onentermatch", "onabilityactivate", "ontypeactivate"} or
         first_lower.endswith(".ontypeactivate")
     )
     raw_tokens = [second, first] if second and generic_first else [first, second]
     result: list[str] = []
     for raw in raw_tokens:
-        token = _re.sub(r"[^A-Za-z0-9]+", "", raw).upper()
-        if token and token != "NONE" and token not in result:
-            result.append(token)
+        token = _re.sub(r"[^A-Za-z0-9_]+", "", raw).upper()
+        compact_token = _re.sub(r"[^A-Za-z0-9]+", "", raw).upper()
+        for candidate in (token, compact_token):
+            if candidate and candidate != "NONE" and candidate not in result:
+                result.append(candidate)
     return result
 
 
 def _localized_event_section_title(entry: dict, kv: dict) -> str:
     """ゲーム内ローカライズ済みの発動条件見出しを返す。"""
+    group_title = _localized_group_section_title(entry, kv)
+    if group_title:
+        return group_title
+
     for token in _event_trigger_tokens(entry):
         key = f"ID_UI_STAT_ATTRIBUTE_TRIGGER_SUBTITLE_{token}"
         if key in kv:
@@ -1668,6 +2795,19 @@ def _localized_event_section_title(entry: dict, kv: dict) -> str:
             if title:
                 return title
     return ""
+
+
+def _localized_group_section_title(entry: dict, kv: dict) -> str:
+    """f5に入るゲーム内グループ見出しを、イベント名より優先して返す。"""
+    raw = str(entry.get("f5", "") or "")
+    token = _re.sub(r"[^A-Za-z0-9_]+", "", raw).upper()
+    if not token or token == "NONE" or "_" not in token:
+        return ""
+    key = f"ID_UI_STAT_ATTRIBUTE_TRIGGER_SUBTITLE_{token}"
+    if key not in kv:
+        return ""
+    title = strip_loc_tags(kv[key])
+    return title.strip()
 
 
 def _event_section_title(entry: dict, kv: dict) -> str:
@@ -1721,9 +2861,9 @@ def build_active_game_ability_sections(cats: dict, active_ids: set[str],
     ui_index = load_bcg_ui_stat_index()
     active_cats: dict[str, list[dict]] = {}
     for cat, entries in cats.items():
-        filtered = [e for e in entries if not active_ids or e.get("id") in active_ids]
+        filtered = [e for e in entries if _keep_entry_for_active_sections(cat, e, active_ids)]
         if filtered:
-            active_cats[cat] = _prefer_rank_variant_entries(filtered)
+            active_cats[cat] = _prefer_category_entries(cat, filtered)
     active_cats = _prefer_rank_variant_categories(active_cats)
 
     sections: list[tuple[str, list[str]]] = []
@@ -1750,20 +2890,50 @@ def build_active_game_ability_sections(cats: dict, active_ids: set[str],
         seen_sections.add(ident)
 
     # Signature entries may be in signature/ui/other depending on champion age.
-    signature_texts_by_title: dict[str, list[str]] = {}
-    for entries in active_cats.values():
+    signature_entries: list[dict] = []
+    for cat, entries in active_cats.items():
         for entry in entries:
-            ui_id = entry.get("f12", "")
-            if not ui_id.startswith("sig_"):
-                continue
-            _, texts = _entry_display_text(entry, ui_index, kv)
-            if not texts:
-                continue
-            display_title = _signature_section_title(ui_id, ui_index, kv)
-            bucket = signature_texts_by_title.setdefault(display_title, [])
-            for text in texts:
-                if text not in bucket:
-                    bucket.append(text)
+            if _is_signature_display_entry(cat, entry):
+                signature_entries.append(entry)
+
+    signature_fallback_title = ""
+    for entry in signature_entries:
+        display_title = _signature_section_title(entry.get("f12", ""), ui_index, kv)
+        if display_title and display_title != "シグネチャー":
+            signature_fallback_title = display_title
+            break
+
+    signature_texts_by_title: dict[str, list[str]] = {}
+    for entry in signature_entries:
+        ui_id = entry.get("f12", "")
+        _, texts = _entry_display_text(entry, ui_index, kv)
+        if not texts:
+            continue
+        display_title = _signature_section_title(ui_id, ui_index, kv)
+        if display_title == "シグネチャー" and signature_fallback_title:
+            display_title = signature_fallback_title
+        bucket = signature_texts_by_title.setdefault(display_title, [])
+        for text in texts:
+            if text not in bucket:
+                bucket.append(text)
+    bladesf_signature = _bladesf_signature_section(active_cats, ui_index, kv)
+    if bladesf_signature:
+        title, texts = bladesf_signature
+        bucket = signature_texts_by_title.setdefault(title, [])
+        for text in texts:
+            if text not in bucket:
+                bucket.append(text)
+    localized_signature = (
+        _localized_signature_section(loc_prefixes, kv)
+        if active_cats.get("signature") and not signature_texts_by_title
+        else None
+    )
+    if localized_signature:
+        title, texts = localized_signature
+        bucket = signature_texts_by_title.setdefault(title, [])
+        for text in texts:
+            if text not in bucket:
+                bucket.append(text)
     for title, texts in signature_texts_by_title.items():
         add_section(title, texts)
 
@@ -1774,7 +2944,8 @@ def build_active_game_ability_sections(cats: dict, active_ids: set[str],
         if not entries:
             continue
         for entry in entries:
-            if _entry_special_indices(entry):
+            group_title = _localized_group_section_title(entry, kv)
+            if _entry_special_indices(entry) and not group_title:
                 continue
             ui_id = entry.get("f12", "")
             if not ui_id or ui_id.startswith("sig_") or ui_id.endswith(("_hud", "_icon")):
@@ -1782,7 +2953,7 @@ def build_active_game_ability_sections(cats: dict, active_ids: set[str],
             title, texts = _entry_display_text(entry, ui_index, kv)
             if not texts:
                 continue
-            section_title = _all_attacks_section_title(entry) or _always_active_section_title(entry) or _event_section_title(entry, kv) or _trigger_section_title(entry) or title or normal_titles.get(cat) or "能力補足"
+            section_title = _all_attacks_section_title(entry) or group_title or _always_active_section_title(entry) or _event_section_title(entry, kv) or _trigger_section_title(entry) or title or normal_titles.get(cat) or "能力補足"
             if cat in {"passive", "heavy"} and title and title not in section_title:
                 texts = [f"{title}: {text}" for text in texts]
             add_section(section_title, texts)
@@ -1805,6 +2976,8 @@ def build_active_game_ability_sections(cats: dict, active_ids: set[str],
             if source_cat in {cat, "signature"}:
                 continue
             for entry in source_entries:
+                if _localized_group_section_title(entry, kv):
+                    continue
                 if idx in _entry_special_indices(entry):
                     add_special_entry(entry)
 
@@ -2136,19 +3309,22 @@ def build_antman_game_ability_sections(cats: dict) -> list[tuple[str, list[str]]
     return sections
 
 
-def build_game_ability_sections_html(sections: list[tuple[str, list[str]]]) -> str:
+def build_game_ability_sections_html(sections: list[tuple[str, list[str]]],
+                                     glossary_defs: dict[str, dict[str, str]] | None = None) -> str:
     """能力説明を単一の「能力」アコーディオン内に平坦表示する"""
     if not sections:
         return ""
 
+    glossary_defs = glossary_defs or {}
     groups: list[str] = []
     for title, texts in sections:
-        text_li = "".join(f'<li>{t}</li>' for t in texts if t)
+        safe_title = render_ability_text_html(title, glossary_defs)
+        text_li = "".join(f'<li>{render_ability_text_html(t, glossary_defs)}</li>' for t in texts if t)
         if not text_li:
             continue
         groups.append(
             f'<div class="gd-ability-group">'
-            f'<div class="gd-ability-title">{title}</div>'
+            f'<div class="gd-ability-title">{safe_title}</div>'
             f'<ul class="gd-texts">{text_li}</ul>'
             f'</div>'
         )
@@ -2174,21 +3350,25 @@ def build_game_data_html(slug: str, abilities: dict, slug_map: dict,
     prefix = slug_map.get(slug)
     loc_prefix = loc_prefix_map.get(slug, "") if loc_prefix_map else ""
     loc_prefixes = [p for p in [loc_prefix] + (legacy_loc_prefixes or []) if p]
+    glossary_defs = get_glossary_definitions(kv) if kv else {}
     if not prefix or prefix not in abilities:
         sections = get_champion_sections(loc_prefix, kv, legacy_loc_prefixes) if kv else []
-        sections_html = build_game_ability_sections_html(sections)
+        sections_html = build_game_ability_sections_html(sections, glossary_defs)
         if not sections_html:
             return ""
         return f"""<div class="gd-sec">
   {sections_html}
 </div>"""
 
-    cats = _merged_ability_categories(abilities, prefix)
+    cats = _filter_non_playable_variant_categories(
+        _merged_ability_categories(abilities, prefix),
+        binary_id,
+    )
     active_by_binary, active_by_prefix = load_bcg_active_ability_ids(abilities)
     active_ids = set(active_by_binary.get(binary_id, set()) or active_by_prefix.get(prefix, set()))
     active_ids.update(_supplemental_ability_ids(abilities, prefix))
     active_cats = {
-        cat: _prefer_rank_variant_entries([entry for entry in entries if not active_ids or entry.get("id") in active_ids])
+        cat: _prefer_category_entries(cat, [entry for entry in entries if _keep_entry_for_active_sections(cat, entry, active_ids)])
         for cat, entries in cats.items()
     }
     active_cats = _prefer_rank_variant_categories(active_cats)
@@ -2198,10 +3378,6 @@ def build_game_data_html(slug: str, abilities: dict, slug_map: dict,
     sections: list[tuple[str, list[str]]] = []
     section_cats = active_cats
     manual_section_builder = {
-        "game-roster-abomination": build_abomination_game_ability_sections,
-        "game-roster-ant-man": build_antman_game_ability_sections,
-        "game-roster-wolverine": build_wolverine_game_ability_sections,
-        "game-roster-agent-venom": build_agent_venom_game_ability_sections,
     }.get(slug)
     if manual_section_builder:
         sections = manual_section_builder(cats)
@@ -2256,17 +3432,24 @@ def build_game_data_html(slug: str, abilities: dict, slug_map: dict,
     seen_set: set[str] = set()
     buff_badges:   list[str] = []
     debuff_badges: list[str] = []
-    immune_badges: list[str] = []
+    opponent_debuff_badges: list[str] = []
+    opponent_debuff_seen: set[str] = set()
+    immune_badges: list[tuple[str, str]] = []
     other_badges:  list[str] = []
     ui_index = load_bcg_ui_stat_index()
 
     for e in all_entries:
-        immune_jps = _immune_badges_from_entry(e)
+        opponent_debuff_jp = _opponent_debuff_label_from_entry(e, ui_index, kv or {})
+        if opponent_debuff_jp and opponent_debuff_jp not in opponent_debuff_seen:
+            opponent_debuff_seen.add(opponent_debuff_jp)
+            opponent_debuff_badges.append(opponent_debuff_jp)
+
+        immune_jps = [] if _entry_targets_opponent(e) else _immune_badges_from_entry(e)
         if immune_jps:
             for immune_jp in immune_jps:
                 if immune_jp not in seen_set:
                     seen_set.add(immune_jp)
-                    immune_badges.append(immune_jp)
+                    immune_badges.append((immune_jp, _immunity_kind_from_entry(e)))
             continue
         if not e.get("f12"):
             continue
@@ -2275,17 +3458,22 @@ def build_game_data_html(slug: str, abilities: dict, slug_map: dict,
             continue
         jp = ABILITY_TYPE_JP.get(raw, None)
         display_title = ""
+        display_texts: list[str] = []
         if kv:
-            display_title, _ = _entry_display_text(e, ui_index, kv)
+            display_title, display_texts = _entry_display_text(e, ui_index, kv)
         if display_title in BUFF_LABELS_JP or display_title in DEBUFF_LABELS_JP:
             jp = display_title
         if jp is None:
             continue
+        jp = _resistance_badge_label_from_display(raw, jp, display_title, display_texts)
         if jp in seen_set:
             continue
         seen_set.add(jp)
         if raw.endswith("_immune") or raw.endswith("_immunity"):
-            immune_badges.append(jp)
+            if _entry_targets_opponent(e):
+                debuff_badges.append(jp)
+            else:
+                immune_badges.append((jp, _immunity_kind_from_entry(e)))
         elif jp in BUFF_LABELS_JP or raw in BUFF_TYPES:
             buff_badges.append(jp)
         elif jp in DEBUFF_LABELS_JP or raw in DEBUFF_TYPES:
@@ -2296,6 +3484,12 @@ def build_game_data_html(slug: str, abilities: dict, slug_map: dict,
     def badges(items: list[str], css: str) -> str:
         return "".join(f'<span class="abi-badge {css}">{jp}</span>' for jp in items)
 
+    def immune_badges_html(items: list[tuple[str, str]]) -> str:
+        return "".join(
+            f'<span class="abi-badge abi-immune" data-resistance-kind="{kind}">{jp}</span>'
+            for jp, kind in items
+        )
+
     all_badges_html = (
         badges(buff_badges,   "abi-buff") +
         badges(debuff_badges, "abi-debuff") +
@@ -2303,17 +3497,47 @@ def build_game_data_html(slug: str, abilities: dict, slug_map: dict,
     )
 
     # 免疫・耐性セクション
-    immune_html = ""
+    raw_immune_html = ""
     if immune_badges:
-        imm = badges(immune_badges, "abi-immune")
-        immune_html = (
+        imm = immune_badges_html(immune_badges)
+        raw_immune_html = (
             '<div class="gd-immune">'
             '<span class="gd-sublabel">耐性</span>'
             f'<div class="gd-badges">{imm}</div>'
             '</div>'
         )
 
-    sections_html = build_game_ability_sections_html(sections)
+    sections_html = build_game_ability_sections_html(sections, glossary_defs)
+    immune_html = raw_immune_html
+    if raw_immune_html or sections_html:
+        resistance_items = extract_resistance_items_from_game_data_html(
+            f'<div class="gd-sec">{raw_immune_html}{sections_html}</div>'
+        )
+        full_items = list(dict.fromkeys(resistance_items["full"]))
+        conditional_items = [
+            item
+            for item in dict.fromkeys(resistance_items["conditional"])
+            if item not in full_items
+        ]
+
+        def resistance_group_html(label: str, items: list[str]) -> str:
+            if not items:
+                return ""
+            kind = "conditional" if label == "条件付き耐性" else "full"
+            return (
+                '<div class="gd-immune">'
+                f'<span class="gd-sublabel">{label}</span>'
+                f'<div class="gd-badges">{immune_badges_html([(item, kind) for item in items])}</div>'
+                '</div>'
+            )
+
+        classified_immune_html = (
+            resistance_group_html("完全耐性", full_items) +
+            resistance_group_html("条件付き耐性", conditional_items)
+        )
+        if classified_immune_html:
+            immune_html = classified_immune_html
+
     abilities_html = (
         '<div class="gd-abilities">\n'
         '    <span class="gd-sublabel">アビリティ</span>\n'
@@ -2325,15 +3549,299 @@ def build_game_data_html(slug: str, abilities: dict, slug_map: dict,
     if not (abilities_html or immune_html or sections_html):
         return ""
 
+    opponent_debuff_search = html.escape("|".join(opponent_debuff_badges))
     return f"""<div class="gd-sec">
+<div class="gd-meta" hidden data-opponent-debuffs="{opponent_debuff_search}"></div>
   {abilities_html}
   {immune_html}
   {sections_html}
 </div>"""
 
 
+_RESISTANCE_TERM_MAP = [
+    ("防御ブレイカー", "防御ブレーカー"),
+    ("防御ブレーカー", "防御ブレーカー"),
+    ("防御不能な必殺技", "防御不能"),
+    ("防御不能な攻撃", "防御不能"),
+    ("防御不能の攻撃", "防御不能"),
+    ("防御不能攻撃", "防御不能"),
+    ("防御不能", "防御不能"),
+    ("リバース・コントロール", "リバース・コントロール"),
+    ("リバースコントロール", "リバース・コントロール"),
+    ("経時的ダメージ効果", "経時的ダメージ効果"),
+    ("パワースティール", "パワースティール"),
+    ("パワー・スティール", "パワースティール"),
+    ("パワードレイン", "パワードレイン"),
+    ("パワーバーン", "パワーバーン"),
+    ("パワーロック", "パワーロック"),
+    ("必殺技ロック", "必殺技ロック"),
+    ("必殺ロック", "必殺技ロック"),
+    ("パワー操作全般", "パワー操作"),
+    ("パワー操作", "パワー操作"),
+    ("ヒールブロック", "ヒールブロック"),
+    ("回復ブロック", "ヒールブロック"),
+    ("アーマー破壊", "アーマー破壊"),
+    ("アーマー粉砕", "アーマー粉砕"),
+    ("コールドスナップ", "コールドスナップ"),
+    ("フロストバイト", "フロストバイト"),
+    ("ノヴァ・フレイム", "ノヴァ・フレイム"),
+    ("スキル精度変更", "スキル精度変更"),
+    ("スキル精度低減", "スキル精度変更"),
+    ("スキル精度の影響", "スキル精度変更"),
+    ("スキル精度", "スキル精度変更"),
+    ("リバース", "リバース・コントロール"),
+    ("運命封印", "運命封印"),
+    ("運命刻印", "運命封印"),
+    ("無効化", "無効化"),
+    ("よろめき", "よろめき"),
+    ("中和", "中和"),
+    ("断裂", "断裂"),
+    ("スロー", "スロー"),
+    ("弱体化", "弱体化"),
+    ("停留", "固定"),
+    ("固定", "固定"),
+    ("押し潰し", "押し潰し"),
+    ("挑発", "挑発"),
+    ("威圧", "威圧"),
+    ("激昂", "激昂"),
+    ("ひるみ", "ひるみ"),
+    ("怪異", "怪異"),
+    ("疲労", "疲労"),
+    ("極度の疲労", "極度の疲労"),
+    ("脳震とう", "脳震盪"),
+    ("脳震盪", "脳震盪"),
+    ("衰え", "衰え"),
+    ("消滅", "消滅"),
+    ("崩壊", "崩壊"),
+    ("化石化", "化石化"),
+    ("回復率変更", "回復率変更"),
+    ("ダメージ効果", "ダメージ効果"),
+    ("死への耐性", "死への耐性"),
+    ("気絶", "気絶"),
+    ("流血", "流血"),
+    ("出血", "流血"),
+    ("毒", "毒"),
+    ("焼却", "焼却"),
+    ("放火", "焼却"),
+    ("ショック", "ショック"),
+    ("衝撃", "ショック"),
+    ("凍傷", "フロストバイト"),
+]
+_RESISTANCE_TERM_MAP.sort(key=lambda item: len(item[0]), reverse=True)
+_RESISTANCE_MARKERS = (
+    "耐性", "免疫", "受けない", "影響を受けない", "効果を受けない",
+    "ダメージを受けない", "防御でき", "防御が可能", "抵抗できる",
+    "抵抗する", "抵抗力を持つ", "完全に身を守る", "完全に防ぐ",
+    "効果を無効化", "効果を無効に", "デバフによるダメージ",
+    "変更不可能", "変動せず", "変更されない", "低下させることができない",
+)
+_RESISTANCE_SKIP_LABELS = {"耐性低下"}
+_FULL_RESISTANCE_TITLE_MARKERS = ("常時発動", "常に発動", "常時稼働", "常時")
+_CONDITIONAL_RESISTANCE_TITLE_MARKERS = (
+    "シグネチャー", "必殺技", "強攻撃", "弱攻撃", "中攻撃", "防御中", "攻撃中",
+    "攻撃を受けた", "ブロック", "フォーム", "形態", "フェーズ", "発動中",
+    "シナジー", "戦闘前",
+)
+_CONDITIONAL_RESISTANCE_TEXT_MARKERS = (
+    "発動中", "発動している間", "持っている間", "中は", "場合", "時、", "とき",
+    "間、", "している間", "対して", "ヒーロー", "属性", "以外", "防御中",
+    "攻撃中", "必殺技", "フォーム", "形態", "シグネチャー", "戦闘前", "チーム",
+    "シナジー", "発動すると", "発動時", "チャージ中", "受けると",
+    "受けたとき", "中に", "強攻撃", "オートブロック", "防御でき",
+    "防御が可能", "抵抗できる", "抵抗すると", "との対戦", "対戦では",
+)
+_FULL_RESISTANCE_TEXT_MARKERS = (
+    "完全な耐性", "完全な免疫", "免疫を持つ", "効果を受けない",
+    "ダメージを受けない", "完全に身を守る", "完全に防ぐ",
+)
+_WEAK_CONDITIONAL_RESISTANCE_TITLE_MARKERS = {"フォーム", "形態"}
+_WEAK_CONDITIONAL_RESISTANCE_TEXT_MARKERS = {"フォーム", "形態", "対して"}
+
+
+def _resistance_label(canon: str) -> str:
+    if not canon:
+        return ""
+    if canon.endswith("耐性"):
+        return canon
+    return f"{canon}耐性"
+
+
+def _normalize_resistance_label(label: str) -> str:
+    label = html.unescape(label).strip()
+    label = label.rstrip("：:")
+    label = label.replace("出血耐性", "流血耐性")
+    label = label.replace("凍傷耐性", "フロストバイト耐性")
+    label = label.replace("必殺ロック耐性", "必殺技ロック耐性")
+    label = label.replace("回復ブロック耐性", "ヒールブロック耐性")
+    label = label.replace("防御ブレイカー耐性", "防御ブレーカー耐性")
+    return label
+
+
+def _resistance_badge_label_from_display(raw: str, fallback: str,
+                                         display_title: str,
+                                         display_texts: list[str]) -> str:
+    display = " ".join([display_title, *display_texts])
+    if raw == "unblockable_immune" and _re.search(r"防御ブレ[イー]カー", display):
+        return "防御ブレーカー耐性"
+    title_label = _normalize_resistance_label(display_title)
+    if title_label.endswith("耐性") or title_label == "死への耐性":
+        return title_label
+    return _normalize_resistance_label(fallback)
+
+
+def _add_resistance_label(groups: dict[str, list[str]], seen: set[tuple[str, str]],
+                          label: str, kind: str) -> None:
+    label = _normalize_resistance_label(label)
+    if not label or label in _RESISTANCE_SKIP_LABELS:
+        return
+    if not (label.endswith("耐性") or label == "死への耐性"):
+        return
+    kind = "conditional" if kind == "conditional" else "full"
+    key = (kind, label)
+    if key not in seen:
+        seen.add(key)
+        groups[kind].append(label)
+
+
+def _resistance_kind(title: str, segment: str) -> str:
+    title = title.strip()
+    segment = segment.strip()
+    title_conditional_markers = {
+        marker for marker in _CONDITIONAL_RESISTANCE_TITLE_MARKERS
+        if marker in title
+    }
+    hard_title_conditional_markers = (
+        title_conditional_markers - _WEAK_CONDITIONAL_RESISTANCE_TITLE_MARKERS
+    )
+    if hard_title_conditional_markers:
+        return "conditional"
+    full_text = any(marker in segment for marker in _FULL_RESISTANCE_TEXT_MARKERS)
+    conditional_markers = {
+        marker for marker in _CONDITIONAL_RESISTANCE_TEXT_MARKERS
+        if marker in segment
+    }
+    hard_conditional_markers = conditional_markers - _WEAK_CONDITIONAL_RESISTANCE_TEXT_MARKERS
+    if full_text and not hard_conditional_markers:
+        return "full"
+    if any(marker in segment for marker in _CONDITIONAL_RESISTANCE_TEXT_MARKERS):
+        return "conditional"
+    if any(marker in title for marker in _FULL_RESISTANCE_TITLE_MARKERS):
+        return "full"
+    if full_text:
+        return "full"
+    return "conditional"
+
+
+def _looks_like_opponent_resistance_condition(segment: str) -> bool:
+    """相手側の耐性を条件にした説明を、自分の耐性として拾わない。"""
+    if "対戦相手による" in segment or "相手から受ける" in segment:
+        return False
+    if _re.search(r"(対戦相手|相手|敵)が[^。]{0,45}耐性", segment):
+        return True
+    if _re.search(r"(対戦相手|相手|敵)は[^。]{0,45}(耐性|免疫)", segment):
+        return True
+    if _re.search(r"(対戦相手|相手|敵)に[^。]{0,30}耐性[^。]{0,12}(付与|食らわせる|与える)", segment):
+        return True
+    if "耐性デバフ" in segment and any(word in segment for word in ("付与", "食らわせる", "与える")):
+        return True
+    return False
+
+
+def _resistance_text_segments(text: str) -> list[str]:
+    chunks = _re.split(r"(?<=。)|[；;]", text)
+    result: list[str] = []
+    for chunk in chunks:
+        parts = _re.split(r"(?:さらに、|また、|加え、|、?非接触攻撃に対して)", chunk)
+        for part in parts:
+            part = part.strip()
+            if part and any(marker in part for marker in _RESISTANCE_MARKERS):
+                result.append(part)
+    return result
+
+
+def extract_resistance_items_from_game_data_html(game_data_html: str) -> dict[str, list[str]]:
+    """表示本文・バッジから、完全耐性/条件付き耐性を正規化して抽出する。"""
+    groups: dict[str, list[str]] = {"full": [], "conditional": []}
+    seen: set[tuple[str, str]] = set()
+    badge_labels: list[tuple[str, str]] = []
+
+    for badge in _re.finditer(r'<span class="abi-badge abi-immune"([^>]*)>([^<]+)</span>', game_data_html):
+        attrs = badge.group(1)
+        label = _normalize_resistance_label(badge.group(2))
+        kind_match = _re.search(r'data-resistance-kind="(full|conditional)"', attrs)
+        explicit_kind = kind_match.group(1) if kind_match else ""
+        if label.endswith("耐性") or label == "死への耐性":
+            badge_labels.append((label, explicit_kind))
+
+    group_re = _re.compile(
+        r'<div class="gd-ability-group"><div class="gd-ability-title">(.*?)</div>'
+        r'<ul class="gd-texts">(.*?)</ul></div>',
+        _re.S,
+    )
+    for group in group_re.finditer(game_data_html):
+        title = html.unescape(_re.sub(r"<.*?>", "", group.group(1))).strip()
+        for li in _re.finditer(r"<li>(.*?)</li>", group.group(2), _re.S):
+            text = html.unescape(_re.sub(r"<.*?>", "", li.group(1))).strip()
+            if not any(marker in text for marker in _RESISTANCE_MARKERS):
+                continue
+            for segment in _resistance_text_segments(text):
+                if _looks_like_opponent_resistance_condition(segment):
+                    continue
+                kind = _resistance_kind(title, segment)
+                for raw, canon in _RESISTANCE_TERM_MAP:
+                    if raw in segment:
+                        if canon == "無効化" and _re.search(r"効果を無効化", segment):
+                            continue
+                        _add_resistance_label(groups, seen, _resistance_label(canon), kind)
+                if "スティール" in segment and "パワー" in segment:
+                    _add_resistance_label(groups, seen, "パワースティール耐性", kind)
+                if "バーン" in segment and "パワー" in segment:
+                    _add_resistance_label(groups, seen, "パワーバーン耐性", kind)
+                if _re.search(r"(バフ耐性|バフへの耐性|バフに対する耐性|バフの影響を受けず)", segment):
+                    _add_resistance_label(groups, seen, "バフ耐性", kind)
+                if _re.search(r"(デバフ耐性|デバフへの耐性|デバフに対する耐性)", segment):
+                    _add_resistance_label(groups, seen, "デバフ耐性", kind)
+
+    text_full = set(groups["full"])
+    text_conditional = set(groups["conditional"])
+    for label, explicit_kind in badge_labels:
+        if (
+            label == "防御不能耐性"
+            and "防御不能耐性" not in text_full
+            and "防御不能耐性" not in text_conditional
+            and (
+                "防御ブレーカー耐性" in text_full
+                or "防御ブレーカー耐性" in text_conditional
+            )
+        ):
+            continue
+        if label in text_conditional and label not in text_full:
+            kind = "conditional"
+        elif label in text_full:
+            kind = "full"
+        elif explicit_kind in {"full", "conditional"}:
+            kind = explicit_kind
+        elif label == "防御不能耐性":
+            kind = "conditional"
+        else:
+            kind = "full"
+        _add_resistance_label(groups, seen, label, kind)
+
+    return groups
+
+
 def load_champion_class_map() -> dict[str, str]:
-    """BCG抽出済みの champion_classes.txt から binary_id → class を返す"""
+    """BCGロスター定義から binary_id → class を返す。失敗時のみ旧抽出ファイルへ戻す。"""
+    roster_records = load_bcg_roster_records()
+    if roster_records:
+        class_map = {
+            binary_id: record.get("champion_class", "")
+            for binary_id, record in roster_records.items()
+            if record.get("champion_class")
+        }
+        print(f"ゲーム内クラス定義: {len(class_map)} 件（BCGロスター）")
+        return class_map
+
     if not CHAMPION_CLASSES_PATH.exists():
         return {}
     header_to_class = {
@@ -2354,6 +3862,7 @@ def load_champion_class_map() -> dict[str, str]:
         value = line.strip()
         if current_class and _re.match(r"^[a-z0-9_]+$", value):
             class_map[value] = current_class
+    class_map.update(CLASS_FALLBACKS)
     print(f"ゲーム内クラス定義: {len(class_map)} 件")
     return class_map
 
@@ -2506,7 +4015,29 @@ def _portrait_key(value: str) -> str:
 
 
 def _name_from_binary_id(binary_id: str) -> str:
+    if binary_id == "phylavell":
+        return "Phyla-Vell"
     return " ".join(part.upper() if part in {"x", "x23"} else part.capitalize() for part in binary_id.split("_"))
+
+
+def infer_jp_name_from_bio(binary_id: str, kv: dict) -> str:
+    """champion_namesに無い新規IDの表示名を、ゲーム内バイオ文から最小限補完する。"""
+    legacy = _legacy_loc_prefix_from_binary_id(binary_id)
+    bio = strip_loc_tags(kv.get(f"ID_CHARACTER_BIOS_{legacy}", "")).strip()
+    if not bio:
+        return ""
+    patterns = (
+        r"として生まれた([^、。]{2,30})は",
+        r"存在、([^、。]{2,30})は",
+        r"^([^、。]{2,30})は",
+    )
+    for pattern in patterns:
+        match = _re.search(pattern, bio)
+        if match:
+            name = match.group(1).strip()
+            if name:
+                return name
+    return ""
 
 
 def load_direct_portrait_map() -> dict[str, str]:
@@ -2522,9 +4053,17 @@ def load_direct_portrait_map() -> dict[str, str]:
     return result
 
 
+def resolve_direct_portrait(binary_id: str, direct_portraits: dict[str, str]) -> str:
+    alias = PORTRAIT_BINARY_ID_ALIASES.get(binary_id.lower())
+    if alias and (BASE / "data" / "portraits" / alias).exists():
+        return alias
+    return direct_portraits.get(binary_id.lower(), "") or direct_portraits.get(_portrait_key(binary_id), "")
+
+
 def load_game_only_champions(abilities: dict, kv: dict, name_jp_map: dict) -> tuple[list[dict], dict, dict]:
     """スポットライトCSVを使わず、ゲーム内抽出データだけでチャンピオン一覧を構築する"""
     class_map = load_champion_class_map()
+    roster_records = load_bcg_roster_records()
     binary_to_prefix = load_binary_prefix_map(abilities)
     direct_portraits = load_direct_portrait_map()
     champion_name_data: dict = {}
@@ -2537,38 +4076,26 @@ def load_game_only_champions(abilities: dict, kv: dict, name_jp_map: dict) -> tu
     used_prefixes: set[str] = set()
     used_names: set[str] = set()
 
-    extra_champions = load_game_roster_champions(abilities, kv)
-    for c in extra_champions:
-        c["source"] = "game_roster"
-        champions.append(c)
-        slug = c.get("slug", "")
-        prefix = c.get("ability_prefix", "")
-        if prefix:
-            slug_map[slug] = prefix
-            used_prefixes.add(prefix)
-        if c.get("portrait"):
-            portrait_map[slug] = c["portrait"]
-        extra_binary_id = c.get("binary_id", "") or (
-            slug.removeprefix("game-roster-").replace("-", "_") if slug.startswith("game-roster-") else prefix
-        )
-        name_jp_map[slug] = {"jp": c.get("name_jp", ""), "en": c.get("name", ""), "binary_id": extra_binary_id}
-        used_names.add((c.get("name_jp") or c.get("name") or "").lower())
-
     for binary_id, cls in sorted(class_map.items()):
-        if not is_playable_binary_id(binary_id):
+        record = roster_records.get(binary_id, {})
+        if roster_records:
+            if not is_game_playable_roster_record(binary_id, record):
+                continue
+            cls = record.get("champion_class", cls)
+        elif not is_playable_binary_id(binary_id):
             continue
-        prefix = binary_to_prefix.get(binary_id, "")
+        prefix = "" if binary_id in NO_GAME_ABILITY_PREFIX_BINARY_IDS else binary_to_prefix.get(binary_id, "")
         if prefix and prefix in used_prefixes and binary_id not in ALLOW_DUPLICATE_PREFIX_BINARY_IDS:
             continue
 
         name_info = champion_name_data.get(binary_id, {})
-        name_jp = name_info.get("jp", "")
+        name_jp = name_info.get("jp", "") or infer_jp_name_from_bio(binary_id, kv)
         name_en = name_info.get("en", "") or _name_from_binary_id(binary_id)
         dedupe_name = (name_jp or name_en).lower()
         if dedupe_name in used_names:
             continue
 
-        portrait = direct_portraits.get(binary_id.lower(), "") or direct_portraits.get(_portrait_key(binary_id), "")
+        portrait = resolve_direct_portrait(binary_id, direct_portraits)
         if not (name_jp or name_en or prefix or portrait):
             continue
 
@@ -2582,7 +4109,11 @@ def load_game_only_champions(abilities: dict, kv: dict, name_jp_map: dict) -> tu
             "portrait": portrait,
             "ability_prefix": prefix,
             "loc_prefix": "",
-            "legacy_loc_prefixes": [_legacy_loc_prefix_from_binary_id(binary_id)],
+            "legacy_loc_prefixes": list(dict.fromkeys(
+                [_legacy_loc_prefix_from_binary_id(binary_id)] +
+                list(LOC_PREFIX_ALIASES.get(binary_id, ()))
+            )),
+            "binary_id": binary_id,
             "source": "game_roster",
         }
         champions.append(champ)
@@ -2596,22 +4127,6 @@ def load_game_only_champions(abilities: dict, kv: dict, name_jp_map: dict) -> tu
 
     print(f"ゲーム内チャンピオン一覧: {len(champions)} 件")
     return champions, slug_map, portrait_map
-
-
-
-def load_game_roster_champions(abilities: dict, kv: dict) -> list[dict]:
-    """公式CSVにないプレイアブル勢をゲーム内データから補完する"""
-    if not EXTRA_CHAMPIONS_PATH.exists():
-        return []
-    with open(EXTRA_CHAMPIONS_PATH, encoding="utf-8") as f:
-        records = json.load(f)
-    champs: list[dict] = []
-    for record in records:
-        c = dict(record)
-        champs.append(c)
-    print(f"ゲーム内補完チャンピオン: {len(champs)} 件")
-    return champs
-
 
 def build_cards(champions: list[dict], cache: dict,
                 abilities: dict | None = None, slug_map: dict | None = None,
@@ -2645,10 +4160,12 @@ def build_cards(champions: list[dict], cache: dict,
                 if _name_norm:
                     _name_to_binary[_name_norm] = _bid
             _jp = _info.get('jp', '')
-            _fname = _direct_portraits.get(_bid.lower(), '') or _direct_portraits.get(_portrait_key(_bid), '')
+            _fname = resolve_direct_portrait(_bid, _direct_portraits)
             if _jp and _fname:
                 _norm_to_portrait[_norm_jp(_jp)] = _fname
     _game_synergy_defs, _game_synergies_by_binary = load_bcg_synergy_index()
+    _game_tags_by_binary = load_bcg_champion_tags()
+    _tag_labels = load_champion_tag_labels()
 
     def _binary_id_for_card(c: dict, name_jp: str, name_en: str) -> str:
         slug = c.get("slug", "")
@@ -2659,9 +4176,28 @@ def build_cards(champions: list[dict], cache: dict,
             _name_to_binary.get(_norm_jp(name_jp), ""),
             _name_to_binary.get(_norm_jp(name_en), ""),
         ]
+        expanded_candidates: list[str] = []
         for candidate in candidates:
-            if candidate and candidate in _game_synergies_by_binary:
+            if not candidate:
+                continue
+            expanded_candidates.append(candidate)
+            alias = ROSTER_BINARY_ID_ALIASES.get(candidate, "")
+            if alias:
+                expanded_candidates.append(alias)
+        for candidate in expanded_candidates:
+            if candidate and (candidate in _game_synergies_by_binary or candidate in _game_tags_by_binary):
                 return candidate
+        return next((candidate for candidate in expanded_candidates if candidate), "")
+
+    def _ability_binary_id_for_card(c: dict, name_jp: str, name_en: str) -> str:
+        slug = c.get("slug", "")
+        candidates = [
+            c.get("binary_id", ""),
+            name_jp_map.get(slug, {}).get("binary_id", ""),
+            slug.removeprefix("game-roster-").replace("-", "_") if slug.startswith("game-roster-") else "",
+            _name_to_binary.get(_norm_jp(name_jp), ""),
+            _name_to_binary.get(_norm_jp(name_en), ""),
+        ]
         return next((candidate for candidate in candidates if candidate), "")
 
     def _portrait_for_binary_id(binary_id: str) -> str:
@@ -2669,8 +4205,7 @@ def build_cards(champions: list[dict], cache: dict,
             return ""
         info = _names_data.get(binary_id, {}) if isinstance(_names_data, dict) else {}
         return (
-            _direct_portraits.get(binary_id.lower(), "") or
-            _direct_portraits.get(_portrait_key(binary_id), "") or
+            resolve_direct_portrait(binary_id, _direct_portraits) or
             _norm_to_portrait.get(_norm_jp(info.get("jp", "")), "")
         )
 
@@ -2729,7 +4264,7 @@ def build_cards(champions: list[dict], cache: dict,
             if not is_playable_binary_id(_bid):
                 continue
             _jp = _info.get('jp', '')
-            _portrait = _direct_portraits.get(_bid.lower(), '') or _direct_portraits.get(_portrait_key(_bid), '')
+            _portrait = resolve_direct_portrait(_bid, _direct_portraits)
             if not _jp or not _portrait:
                 continue
             _add_known_name(_jp, _jp, _portrait)
@@ -2812,15 +4347,39 @@ def build_cards(champions: list[dict], cache: dict,
         # 表示名：日本語名 + 英語名（サブタイトル）
         name = name_jp if name_jp else name_en
 
-        # アトリビュートバッジ
-        attr_html = "".join(
-            f'<span class="attr-badge">{ATTR_JP.get(a, a)}</span>'
-            for a in attrs
-        )
-
         # シナジー
         binary_id = _binary_id_for_card(c, name_jp, name_en)
+        ability_binary_id = _ability_binary_id_for_card(c, name_jp, name_en) or binary_id
         syn_list: list[tuple[str, str, list[str]]] = _game_synergy_entries_for_binary(binary_id)
+
+        tag_keys = _game_tags_by_binary.get(binary_id, [])
+        tag_items: list[str] = []
+        seen_tags: set[str] = set()
+        for tag_key in tag_keys:
+            tag_name = format_roster_tag_label(tag_key, _tag_labels)
+            if tag_name and tag_name not in seen_tags:
+                tag_items.append(tag_name)
+                seen_tags.add(tag_name)
+        for attr in attrs:
+            attr_name = ATTR_JP.get(attr, attr)
+            if attr_name and attr_name not in seen_tags:
+                tag_items.append(attr_name)
+                seen_tags.add(attr_name)
+        year_items = [
+            match.group(1)
+            for tag_key in tag_keys
+            for match in [_re.fullmatch(r"tg_(20\d{2})", tag_key)]
+            if match
+        ]
+        tag_html = (
+            f'<details class="tag-details"><summary>タグ一覧（{len(tag_items)}件）</summary>' +
+            '<div class="tags-row">' +
+            ''.join(f'<span class="tag-badge">{tag}</span>' for tag in tag_items) +
+            '</div></details>'
+            if tag_items else ""
+        )
+        tag_search = " ".join(tag_keys + tag_items)
+        year_search = " ".join(year_items)
 
         if not syn_list:
             syn_raw  = c.get("synergy_bonuses", "")
@@ -2901,7 +4460,7 @@ def build_cards(champions: list[dict], cache: dict,
 
         def _syn_li(title: str, desc: str, portraits: list[str]) -> str:
             imgs = ''.join(
-                f'<img class="syn-portrait" src="portraits/{p}" alt="">'
+                f'<img class="syn-portrait" src="{PORTRAIT_SRC_DIR}/{p}" alt="">'
                 for p in portraits
             )
             portraits_html = f'<div class="syn-portraits">{imgs}</div>' if imgs else ''
@@ -2917,20 +4476,39 @@ def build_cards(champions: list[dict], cache: dict,
         syn_items = "".join(_syn_li(t, d, p) for t, d, p in syn_list)
 
         # ゲームデータセクション
+        game_loc_prefix_map = loc_prefix_map
+        if c.get("loc_prefix") and not (loc_prefix_map or {}).get(slug):
+            game_loc_prefix_map = dict(loc_prefix_map or {})
+            game_loc_prefix_map[slug] = c["loc_prefix"]
         game_data_html = build_game_data_html(
-            slug, abilities, slug_map, loc_prefix_map, kv,
-            c.get("legacy_loc_prefixes", []), binary_id
+            slug, abilities, slug_map, game_loc_prefix_map, kv,
+            c.get("legacy_loc_prefixes", []), ability_binary_id
         )
+        opponent_debuff_match = _re.search(r'data-opponent-debuffs="([^"]*)"', game_data_html)
+        opponent_debuff_search = (
+            html.unescape(opponent_debuff_match.group(1))
+            if opponent_debuff_match else ""
+        )
+        resistance_items = extract_resistance_items_from_game_data_html(game_data_html)
+        full_immunity_items = list(dict.fromkeys(resistance_items["full"]))
+        conditional_immunity_items = [
+            item
+            for item in dict.fromkeys(resistance_items["conditional"])
+            if item not in full_immunity_items
+        ]
+        immunity_search = "|".join(dict.fromkeys(full_immunity_items + conditional_immunity_items))
+        full_immunity_search = "|".join(full_immunity_items)
+        conditional_immunity_search = "|".join(conditional_immunity_items)
 
         portrait_html = (
-            f'<img class="champ-portrait" src="portraits/{portrait_fname}" alt="{name_en}">'
+            f'<img class="champ-portrait" src="{PORTRAIT_SRC_DIR}/{portrait_fname}" alt="{name_en}">'
             if portrait_fname else '<div class="champ-portrait champ-portrait-none"></div>'
         )
 
         en_sub = f'<span class="champ-en">{name_en}</span>' if name_jp else ""
         release_html = f'<div class="release">リリース: {release}</div>' if release else ""
         card = f"""
-<div class="card" data-slug="{slug}" data-class="{cls}" data-name="{(name_jp + ' ' + name_en).lower()}">
+<div class="card" data-slug="{slug}" data-binary-id="{html.escape(binary_id)}" data-class="{cls}" data-years="{year_search}" data-immunities="{html.escape(immunity_search)}" data-immunities-full="{html.escape(full_immunity_search)}" data-immunities-conditional="{html.escape(conditional_immunity_search)}" data-debuffs="{html.escape(opponent_debuff_search)}" data-name="{html.escape((name_jp + ' ' + name_en + ' ' + tag_search + ' ' + opponent_debuff_search.replace('|', ' ')).lower())}">
   <div class="card-header" style="border-left:4px solid {color}">
     <div class="title-row">
       {portrait_html}
@@ -2940,8 +4518,9 @@ def build_cards(champions: list[dict], cache: dict,
     {release_html}
   </div>
   <div class="card-body">
-    {'<details class="syn-details"><summary>シナジー一覧（' + str(len(syn_list)) + '件）</summary><ul class="syn-list">' + syn_items + '</ul></details>' if syn_items else ''}
     {game_data_html}
+    {'<details class="syn-details"><summary>シナジー一覧（' + str(len(syn_list)) + '件）</summary><ul class="syn-list">' + syn_items + '</ul></details>' if syn_items else ''}
+    {tag_html}
   </div>
 </div>"""
         html_parts.append(card)
@@ -2959,24 +4538,125 @@ def generate_html(champions: list[dict], cache: dict,
         set(c.get("champion_class", "") for c in champions if c.get("champion_class"))
     )
 
-    filter_btns = '<button class="f-btn active" data-class="all">すべて</button>\n'
+    filter_btns = '<button class="f-btn class-btn active" data-class="all">すべて</button>\n'
     for cls in classes:
         color = CLASS_COLORS.get(cls, "#607D8B")
         jp    = CLASS_JP.get(cls, cls)
         filter_btns += (
-            f'<button class="f-btn" data-class="{cls}" '
+            f'<button class="f-btn class-btn" data-class="{cls}" '
             f'style="--cc:{color}">{jp}</button>\n'
         )
 
     cards_html = build_cards(champions, cache, abilities, slug_map, name_jp_map, loc_prefix_map, kv, portrait_map)
+    years = sorted(set(_re.findall(r'data-years="[^"]*\b(20\d{2})\b[^"]*"', cards_html)))
+    year_btns = '<button class="f-btn year-btn active" data-year="all">全年</button>\n'
+    for year in years:
+        year_btns += f'<button class="f-btn year-btn" data-year="{year}">{year}</button>\n'
+    full_immunity_values: set[str] = set()
+    for raw in _re.findall(r'data-immunities-full="([^"]*)"', cards_html):
+        for item in html.unescape(raw).split("|"):
+            if item:
+                full_immunity_values.add(item)
+    conditional_immunity_values: set[str] = set()
+    for raw in _re.findall(r'data-immunities-conditional="([^"]*)"', cards_html):
+        for item in html.unescape(raw).split("|"):
+            if item:
+                conditional_immunity_values.add(item)
+    full_immunity_btns = '<button class="f-btn immunity-btn full-immunity-btn active" data-full-immunity="all">指定なし</button>\n'
+    for item in sorted(full_immunity_values):
+        safe_item = html.escape(item)
+        full_immunity_btns += f'<button class="f-btn immunity-btn full-immunity-btn" data-full-immunity="{safe_item}">{safe_item}</button>\n'
+    conditional_immunity_btns = '<button class="f-btn immunity-btn conditional-immunity-btn active" data-conditional-immunity="all">指定なし</button>\n'
+    for item in sorted(conditional_immunity_values):
+        safe_item = html.escape(item)
+        conditional_immunity_btns += f'<button class="f-btn immunity-btn conditional-immunity-btn" data-conditional-immunity="{safe_item}">{safe_item}</button>\n'
+    opponent_debuff_values: set[str] = set()
+    for raw in _re.findall(r'data-debuffs="([^"]*)"', cards_html):
+        for item in html.unescape(raw).split("|"):
+            if item:
+                opponent_debuff_values.add(item)
+    opponent_debuff_btns = '<button class="f-btn debuff-btn active" data-debuff="all">指定なし</button>\n'
+    for item in sorted(opponent_debuff_values):
+        safe_item = html.escape(item)
+        opponent_debuff_btns += f'<button class="f-btn debuff-btn" data-debuff="{safe_item}">{safe_item}</button>\n'
     total      = len(champions)
+    seo_title = f"MCOC チャンピオン一覧・能力検索（日本語）｜{total}体対応"
+    seo_description = (
+        f"Marvel Contest of Champions（MCOC）のチャンピオン{total}体を日本語で検索・絞り込みできる一覧。"
+        "クラス、リリース年、完全耐性、条件付き耐性、相手に付与するデバフ、タグ、能力説明、シナジーを確認できます。"
+    )
+    seo_keywords = (
+        "MCOC,Marvel Contest of Champions,マーベルコンテストオブチャンピオンズ,"
+        "チャンピオン一覧,チャンピオン能力,日本語,耐性,デバフ,シナジー,攻略"
+    )
+    seo_json_ld = json.dumps(
+        [
+            {
+                "@context": "https://schema.org",
+                "@type": "WebApplication",
+                "name": seo_title,
+                "url": SITE_URL,
+                "alternateName": [
+                    "MCOC チャンピオン解説",
+                    "MCOC Japanese Champion Database",
+                ],
+                "description": seo_description,
+                "inLanguage": "ja",
+                "applicationCategory": "GameApplication",
+                "operatingSystem": "Any",
+                "isAccessibleForFree": True,
+                "about": {
+                    "@type": "VideoGame",
+                    "name": "Marvel Contest of Champions",
+                },
+                "offers": {
+                    "@type": "Offer",
+                    "price": "0",
+                    "priceCurrency": "JPY",
+                },
+            },
+            {
+                "@context": "https://schema.org",
+                "@type": "Dataset",
+                "name": "MCOC チャンピオン日本語データ",
+                "url": SITE_URL,
+                "description": seo_description,
+                "inLanguage": "ja",
+                "about": {
+                    "@type": "VideoGame",
+                    "name": "Marvel Contest of Champions",
+                },
+                "keywords": seo_keywords,
+            },
+        ],
+        ensure_ascii=False,
+        separators=(",", ":"),
+    )
 
     return f"""<!DOCTYPE html>
 <html lang="ja">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>MCOC チャンピオン解説（日本語）</title>
+<title>{html.escape(seo_title)}</title>
+<link rel="canonical" href="{html.escape(SITE_URL, quote=True)}">
+<meta name="description" content="{html.escape(seo_description, quote=True)}">
+<meta name="keywords" content="{html.escape(seo_keywords, quote=True)}">
+<meta name="robots" content="index,follow,max-image-preview:large">
+<meta name="googlebot" content="index,follow,max-image-preview:large">
+<meta name="application-name" content="MCOC チャンピオン解説">
+<meta name="theme-color" content="#5044d4">
+<meta name="format-detection" content="telephone=no">
+<meta property="og:type" content="website">
+<meta property="og:url" content="{html.escape(SITE_URL, quote=True)}">
+<meta property="og:locale" content="ja_JP">
+<meta property="og:site_name" content="MCOC チャンピオン解説">
+<meta property="og:title" content="{html.escape(seo_title, quote=True)}">
+<meta property="og:description" content="{html.escape(seo_description, quote=True)}">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="{html.escape(seo_title, quote=True)}">
+<meta name="twitter:description" content="{html.escape(seo_description, quote=True)}">
+<script type="application/ld+json">{html.escape(seo_json_ld, quote=False)}</script>
 <style>
 :root{{
   --bg:#f2f3f7;--bg2:#ffffff;--bg3:#eef0f6;
@@ -2997,10 +4677,15 @@ body{{background:var(--bg);color:var(--text);font-family:'Segoe UI','Hiragino Ka
 
 /* フィルターバー */
 .f-bar{{background:var(--bg2);border-bottom:1px solid var(--border);padding:9px 20px;overflow-x:auto}}
-.f-inner{{max-width:1400px;margin:0 auto;display:flex;gap:7px}}
+.f-inner{{max-width:1400px;margin:0 auto;display:flex;gap:7px;flex-wrap:nowrap}}
+.f-label{{font-size:12px;color:var(--text2);font-weight:700;align-self:center;white-space:nowrap;margin-right:3px}}
 .f-btn{{padding:5px 13px;border-radius:20px;border:1px solid var(--border);background:transparent;color:var(--text2);cursor:pointer;font-size:13px;white-space:nowrap;transition:.15s}}
 .f-btn:hover{{border-color:var(--cc,var(--accent));color:var(--text)}}
 .f-btn.active{{background:var(--cc,var(--accent));border-color:transparent;color:#fff;font-weight:600}}
+@media (min-width:900px){{
+  .f-bar{{overflow-x:visible}}
+  .f-inner{{flex-wrap:wrap;row-gap:7px}}
+}}
 
 /* グリッド */
 .main{{max-width:1400px;margin:0 auto;padding:20px}}
@@ -3021,9 +4706,12 @@ body{{background:var(--bg);color:var(--text);font-family:'Segoe UI','Hiragino Ka
 .release{{font-size:12px;color:var(--text2);margin-top:3px}}
 .card-body{{padding:13px 15px;display:flex;flex-direction:column;gap:11px}}
 
-/* アトリビュート */
-.attrs-row{{display:flex;flex-wrap:wrap;gap:5px}}
-.attr-badge{{font-size:11px;background:rgba(80,68,212,.07);border:1px solid rgba(80,68,212,.22);color:#5044d4;padding:2px 8px;border-radius:4px}}
+/* タグ */
+.tag-details{{font-size:13px}}
+.tag-details summary{{color:var(--text2);cursor:pointer;padding:3px 0;user-select:none}}
+.tag-details summary:hover{{color:var(--text)}}
+.tags-row{{display:flex;flex-wrap:wrap;gap:5px;margin-top:7px}}
+.tag-badge{{font-size:11px;background:rgba(80,68,212,.07);border:1px solid rgba(80,68,212,.22);color:#5044d4;padding:2px 8px;border-radius:4px;line-height:1.45}}
 
 /* シナジー */
 .syn-details{{font-size:13px}}
@@ -3038,6 +4726,7 @@ body{{background:var(--bg);color:var(--text);font-family:'Segoe UI','Hiragino Ka
 
 /* ゲームデータセクション（mcoc.gg形式） */
 .gd-sec{{border-top:1px solid var(--border);padding-top:10px;display:flex;flex-direction:column;gap:8px}}
+.card-body > .gd-sec:first-child{{border-top:0;padding-top:0}}
 .gd-sublabel{{font-size:10px;color:var(--text2);text-transform:uppercase;letter-spacing:.06em;display:block;margin-bottom:4px}}
 .gd-badges{{display:flex;flex-wrap:wrap;gap:4px}}
 .abi-badge{{display:inline-flex;align-items:center;padding:2px 8px;border-radius:4px;font-size:11px;font-weight:500;border:1px solid}}
@@ -3057,6 +4746,12 @@ body{{background:var(--bg);color:var(--text);font-family:'Segoe UI','Hiragino Ka
 .gd-ability-title{{font-size:12px;color:var(--text);font-weight:600}}
 .gd-texts{{list-style:none;margin-top:5px;display:flex;flex-direction:column;gap:4px;padding-left:2px}}
 .gd-texts li{{font-size:12px;color:var(--text2);line-height:1.65;padding-left:8px;border-left:2px solid var(--border)}}
+.glossary-term{{appearance:none;background:transparent;border:0;border-bottom:1px dotted var(--accent);color:var(--accent);font:inherit;line-height:inherit;padding:0 1px;cursor:pointer}}
+.glossary-term:hover,.glossary-term:focus-visible{{color:var(--text);border-bottom-color:var(--accent);outline:none}}
+.glossary-popover{{position:fixed;z-index:50;display:none;max-width:min(330px,calc(100vw - 24px));background:var(--bg2);border:1px solid var(--border);border-radius:8px;box-shadow:0 10px 28px rgba(0,0,0,.2);padding:10px 12px}}
+.glossary-popover.show{{display:block}}
+.glossary-pop-title{{font-size:13px;font-weight:700;color:var(--text);margin-bottom:5px}}
+.glossary-pop-desc{{font-size:12px;color:var(--text2);line-height:1.55}}
 
 </style>
 </head>
@@ -3064,7 +4759,7 @@ body{{background:var(--bg);color:var(--text);font-family:'Segoe UI','Hiragino Ka
 
 <header class="site-hd">
   <div class="hd-inner">
-    <div class="site-title">⚔️ MCOC チャンピオン解説</div>
+    <h1 class="site-title">MCOC チャンピオン解説</h1>
     <div class="search-wrap">
       <input type="text" id="q" placeholder="チャンピオン名・アビリティで検索…" oninput="run()">
     </div>
@@ -3077,6 +4772,29 @@ body{{background:var(--bg);color:var(--text);font-family:'Segoe UI','Hiragino Ka
     {filter_btns}
   </div>
 </div>
+<div class="f-bar year-bar">
+  <div class="f-inner">
+    {year_btns}
+  </div>
+</div>
+<div class="f-bar immunity-bar">
+  <div class="f-inner">
+    <span class="f-label">完全耐性</span>
+    {full_immunity_btns}
+  </div>
+</div>
+<div class="f-bar immunity-bar conditional-immunity-bar">
+  <div class="f-inner">
+    <span class="f-label">条件付き耐性</span>
+    {conditional_immunity_btns}
+  </div>
+</div>
+<div class="f-bar debuff-bar">
+  <div class="f-inner">
+    <span class="f-label">相手デバフ</span>
+    {opponent_debuff_btns}
+  </div>
+</div>
 
 <main class="main">
   <div class="grid" id="grid">
@@ -3086,23 +4804,109 @@ body{{background:var(--bg);color:var(--text);font-family:'Segoe UI','Hiragino Ka
 </main>
 
 <script>
-let cls='all',q='';
-document.querySelectorAll('.f-btn').forEach(b=>{{
+let cls='all',yr='all',q='';
+let selectedFullImmunities=[];
+let selectedConditionalImmunities=[];
+let selectedDebuffs=[];
+const glossaryPopover=document.createElement('div');
+glossaryPopover.className='glossary-popover';
+glossaryPopover.innerHTML='<div class="glossary-pop-title"></div><div class="glossary-pop-desc"></div>';
+document.body.appendChild(glossaryPopover);
+function hideGlossary(){{
+  glossaryPopover.classList.remove('show');
+}}
+function showGlossary(term){{
+  const title=term.dataset.glossaryTitle||term.textContent;
+  const desc=term.dataset.glossaryDesc||'';
+  glossaryPopover.querySelector('.glossary-pop-title').textContent=title;
+  glossaryPopover.querySelector('.glossary-pop-desc').textContent=desc;
+  glossaryPopover.classList.add('show');
+  const rect=term.getBoundingClientRect();
+  const popRect=glossaryPopover.getBoundingClientRect();
+  const margin=10;
+  let left=rect.left;
+  let top=rect.bottom+8;
+  if(left+popRect.width+margin>window.innerWidth)left=window.innerWidth-popRect.width-margin;
+  if(left<margin)left=margin;
+  if(top+popRect.height+margin>window.innerHeight)top=rect.top-popRect.height-8;
+  if(top<margin)top=margin;
+  glossaryPopover.style.left=left+'px';
+  glossaryPopover.style.top=top+'px';
+}}
+document.addEventListener('click',function(event){{
+  const term=event.target.closest('.glossary-term');
+  if(term){{
+    event.preventDefault();
+    event.stopPropagation();
+    if(glossaryPopover.classList.contains('show')&&glossaryPopover.dataset.key===term.dataset.glossaryKey){{
+      hideGlossary();
+      glossaryPopover.dataset.key='';
+    }}else{{
+      glossaryPopover.dataset.key=term.dataset.glossaryKey||'';
+      showGlossary(term);
+    }}
+    return;
+  }}
+  if(!event.target.closest('.glossary-popover'))hideGlossary();
+}});
+document.addEventListener('keydown',function(event){{
+  if(event.key==='Escape')hideGlossary();
+}});
+window.addEventListener('scroll',hideGlossary,{{passive:true}});
+window.addEventListener('resize',hideGlossary);
+document.querySelectorAll('.class-btn').forEach(b=>{{
   b.addEventListener('click',function(){{
-    document.querySelectorAll('.f-btn').forEach(x=>x.classList.remove('active'));
+    document.querySelectorAll('.class-btn').forEach(x=>x.classList.remove('active'));
     this.classList.add('active');
     cls=this.dataset.class;
     run();
   }});
 }});
+document.querySelectorAll('.year-btn').forEach(b=>{{
+  b.addEventListener('click',function(){{
+    document.querySelectorAll('.year-btn').forEach(x=>x.classList.remove('active'));
+    this.classList.add('active');
+    yr=this.dataset.year;
+    run();
+  }});
+}});
+function bindMultiFilter(selector,items,datasetKey){{
+  document.querySelectorAll(selector).forEach(b=>{{
+    b.addEventListener('click',function(){{
+    const value=this.dataset[datasetKey];
+    if(value==='all'){{
+      items.splice(0,items.length);
+    }}else if(items.includes(value)){{
+      items.splice(items.indexOf(value),1);
+    }}else{{
+      items.push(value);
+    }}
+    document.querySelectorAll(selector).forEach(x=>{{
+      const item=x.dataset[datasetKey];
+      x.classList.toggle('active',item==='all'?items.length===0:items.includes(item));
+    }});
+    run();
+  }});
+}});
+}}
+bindMultiFilter('.full-immunity-btn',selectedFullImmunities,'fullImmunity');
+bindMultiFilter('.conditional-immunity-btn',selectedConditionalImmunities,'conditionalImmunity');
+bindMultiFilter('.debuff-btn',selectedDebuffs,'debuff');
 function run(){{
   q=document.getElementById('q').value.toLowerCase();
   let vis=0;
   document.querySelectorAll('.card').forEach(card=>{{
     const mc=cls==='all'||card.dataset.class===cls;
+    const my=yr==='all'||(card.dataset.years||'').split(' ').includes(yr);
+    const fullImmunities=(card.dataset.immunitiesFull||'').split('|').filter(Boolean);
+    const conditionalImmunities=(card.dataset.immunitiesConditional||'').split('|').filter(Boolean);
+    const debuffs=(card.dataset.debuffs||'').split('|').filter(Boolean);
+    const mf=selectedFullImmunities.every(item=>fullImmunities.includes(item));
+    const mi=selectedConditionalImmunities.every(item=>conditionalImmunities.includes(item));
+    const md=selectedDebuffs.every(item=>debuffs.includes(item));
     const mq=!q||card.dataset.name.includes(q)||card.textContent.toLowerCase().includes(q);
-    card.style.display=(mc&&mq)?'':'none';
-    if(mc&&mq)vis++;
+    card.style.display=(mc&&my&&mf&&mi&&md&&mq)?'':'none';
+    if(mc&&my&&mf&&mi&&md&&mq)vis++;
   }});
   document.getElementById('cnt').textContent=vis+' 件表示中';
   document.getElementById('noRes').style.display=vis===0?'block':'none';
