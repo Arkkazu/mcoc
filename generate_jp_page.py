@@ -4678,8 +4678,12 @@ body{{background:var(--bg);color:var(--text);font-family:'Segoe UI','Hiragino Ka
 .search-wrap input{{width:100%;background:var(--bg3);border:1px solid var(--border);color:var(--text);padding:7px 13px;border-radius:8px;font-size:14px;outline:none}}
 .search-wrap input:focus{{border-color:var(--accent)}}
 .cnt{{font-size:13px;color:var(--text2);white-space:nowrap}}
-.ad-wrap{{max-width:1400px;margin:12px auto 0;padding:0 20px;min-height:90px}}
-.ad-wrap .adsbygoogle{{display:block}}
+.ad-wrap{{max-width:1400px;margin:14px auto 10px;padding:0 20px;min-height:124px}}
+.ad-wrap .adsbygoogle{{display:block;min-height:110px;width:100%}}
+@media (max-width:640px){{
+  .ad-wrap{{margin:10px auto 8px;padding:0 12px;min-height:96px}}
+  .ad-wrap .adsbygoogle{{min-height:90px}}
+}}
 
 /* フィルターバー */
 .f-bar{{background:var(--bg2);border-bottom:1px solid var(--border);padding:9px 20px;overflow-x:auto}}
@@ -4783,7 +4787,7 @@ body{{background:var(--bg);color:var(--text);font-family:'Segoe UI','Hiragino Ka
        style="display:block"
        data-ad-client="{html.escape(ADSENSE_CLIENT, quote=True)}"
        data-ad-slot="{html.escape(SEARCH_AD_SLOT, quote=True)}"
-       data-ad-format="auto"
+       data-ad-format="horizontal"
        data-full-width-responsive="true"></ins>
 </div>
 <script>
