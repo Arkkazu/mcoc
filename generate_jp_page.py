@@ -4678,11 +4678,13 @@ body{{background:var(--bg);color:var(--text);font-family:'Segoe UI','Hiragino Ka
 .search-wrap input{{width:100%;background:var(--bg3);border:1px solid var(--border);color:var(--text);padding:7px 13px;border-radius:8px;font-size:14px;outline:none}}
 .search-wrap input:focus{{border-color:var(--accent)}}
 .cnt{{font-size:13px;color:var(--text2);white-space:nowrap}}
-.ad-wrap{{max-width:1400px;margin:14px auto 10px;padding:0 20px;min-height:124px}}
-.ad-wrap .adsbygoogle{{display:block;min-height:110px;width:100%}}
-@media (max-width:640px){{
-  .ad-wrap{{margin:10px auto 8px;padding:0 12px;min-height:96px}}
-  .ad-wrap .adsbygoogle{{min-height:90px}}
+.ad-wrap{{max-width:1400px;margin:14px auto 10px;padding:0 20px;display:flex;justify-content:center}}
+.search-ad-slot{{display:block;width:320px;height:100px}}
+@media (min-width:500px){{
+  .search-ad-slot{{width:468px;height:60px}}
+}}
+@media (min-width:800px){{
+  .search-ad-slot{{width:728px;height:90px}}
 }}
 
 /* フィルターバー */
@@ -4783,12 +4785,9 @@ body{{background:var(--bg);color:var(--text);font-family:'Segoe UI','Hiragino Ka
 </header>
 
 <div class="ad-wrap" aria-label="広告">
-  <ins class="adsbygoogle"
-       style="display:block"
+  <ins class="adsbygoogle search-ad-slot"
        data-ad-client="{html.escape(ADSENSE_CLIENT, quote=True)}"
-       data-ad-slot="{html.escape(SEARCH_AD_SLOT, quote=True)}"
-       data-ad-format="horizontal"
-       data-full-width-responsive="true"></ins>
+       data-ad-slot="{html.escape(SEARCH_AD_SLOT, quote=True)}"></ins>
 </div>
 <script>
   (adsbygoogle = window.adsbygoogle || []).push({{}});
