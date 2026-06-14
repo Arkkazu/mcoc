@@ -4645,6 +4645,7 @@ def generate_html(champions: list[dict], cache: dict,
 <meta name="keywords" content="{html.escape(seo_keywords, quote=True)}">
 <meta name="robots" content="index,follow,max-image-preview:large">
 <meta name="googlebot" content="index,follow,max-image-preview:large">
+<meta name="google-adsense-account" content="{html.escape(ADSENSE_CLIENT, quote=True)}">
 <meta name="application-name" content="MCOC チャンピオン解説">
 <meta name="theme-color" content="#5044d4">
 <meta name="format-detection" content="telephone=no">
