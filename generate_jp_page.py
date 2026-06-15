@@ -1159,21 +1159,47 @@ def build_glossary_list_html(cards_html: str) -> str:
         r'data-glossary-title="([^"]+)" '
         r'data-glossary-desc="([^"]+)">(.*?)</button>'
     )
+
+    def attr_value(attrs: str, name: str) -> str:
+        match = _re.search(rf'{_re.escape(name)}="([^"]*)"', attrs)
+        return html.unescape(match.group(1)).strip() if match else ""
+
     terms: dict[str, dict] = {}
-    for match in pattern.finditer(cards_html):
-        key = html.unescape(match.group(1)).strip()
-        title = html.unescape(match.group(2)).strip()
-        desc = html.unescape(match.group(3)).strip()
-        label = html.unescape(_re.sub(r"<[^>]+>", "", match.group(4))).strip()
-        if not key or not title or not desc:
-            continue
-        entry = terms.setdefault(
-            key,
-            {"title": title, "desc": desc, "count": 0, "labels": {}},
-        )
-        entry["count"] += 1
-        if label:
-            entry["labels"][label] = entry["labels"].get(label, 0) + 1
+    card_matches = list(_re.finditer(r'<div class="card"(?=[\s>])([^>]*)>', cards_html))
+    for idx, card_match in enumerate(card_matches):
+        card_start = card_match.start()
+        card_end = card_matches[idx + 1].start() if idx + 1 < len(card_matches) else len(cards_html)
+        card_html = cards_html[card_start:card_end]
+        attrs = card_match.group(1)
+        slug = attr_value(attrs, "data-slug")
+        binary_id = attr_value(attrs, "data-binary-id")
+        name_match = _re.search(r'<h2 class="champ-name">(.*?)</h2>', card_html, _re.S)
+        en_match = _re.search(r'<span class="champ-en">(.*?)</span>', card_html, _re.S)
+        champion_name = html.unescape(_re.sub(r"<[^>]+>", "", name_match.group(1))).strip() if name_match else ""
+        champion_en = html.unescape(_re.sub(r"<[^>]+>", "", en_match.group(1))).strip() if en_match else ""
+        champion_label = champion_name or champion_en or binary_id or slug
+        champion_query = champion_name or champion_en or binary_id
+
+        for match in pattern.finditer(card_html):
+            key = html.unescape(match.group(1)).strip()
+            title = html.unescape(match.group(2)).strip()
+            desc = html.unescape(match.group(3)).strip()
+            label = html.unescape(_re.sub(r"<[^>]+>", "", match.group(4))).strip()
+            if not key or not title or not desc:
+                continue
+            entry = terms.setdefault(
+                key,
+                {"title": title, "desc": desc, "count": 0, "labels": {}, "champions": {}},
+            )
+            entry["count"] += 1
+            if label:
+                entry["labels"][label] = entry["labels"].get(label, 0) + 1
+            if champion_label:
+                champion_key = slug or binary_id or champion_label
+                entry["champions"].setdefault(
+                    champion_key,
+                    {"label": champion_label, "query": champion_query, "slug": slug},
+                )
 
     if not terms:
         return ""
@@ -1183,18 +1209,28 @@ def build_glossary_list_html(cards_html: str) -> str:
         title = entry["title"]
         desc = entry["desc"]
         count = entry["count"]
+        champion_items = sorted(entry.get("champions", {}).values(), key=lambda item: item["label"])
+        champion_buttons = "".join(
+            '<button type="button" class="glossary-champion-btn" '
+            f'data-champion-query="{html.escape(item["query"], quote=True)}" '
+            f'data-champion-slug="{html.escape(item["slug"], quote=True)}">'
+            f'{html.escape(item["label"])}</button>'
+            for item in champion_items
+        )
         items.append(
             '<article class="glossary-list-item">'
             '<div class="glossary-list-head">'
             '<button type="button" class="glossary-term glossary-list-term" '
             f'data-glossary-key="{html.escape(key, quote=True)}" '
             f'data-glossary-title="{html.escape(title, quote=True)}" '
-            f'data-glossary-desc="{html.escape(desc, quote=True)}">'
+            f'data-glossary-desc="{html.escape(desc, quote=True)}" '
+            'aria-expanded="false">'
             f'{html.escape(title)}</button>'
-            f'<span class="glossary-list-count">{count}</span>'
+            f'<span class="glossary-list-count" title="本文中の出現数">{count}</span>'
             '</div>'
             f'<div class="glossary-list-key">{html.escape(key)}</div>'
             f'<p class="glossary-list-desc">{html.escape(desc)}</p>'
+            f'<div class="glossary-champions" hidden><div class="glossary-champions-title">該当チャンピオン（{len(champion_items)}）</div><div class="glossary-champion-buttons">{champion_buttons}</div></div>'
             '</article>'
         )
 
@@ -4733,6 +4769,9 @@ def generate_html(champions: list[dict], cache: dict,
         ensure_ascii=False,
         separators=(",", ":"),
     )
+    last_updated_iso = "2026-06-15"
+    last_updated_label = "2026年6月15日"
+    update_summary = "用語リストから該当チャンピオンを表示・絞り込みできるようにし、検索リセットを追加しました。"
 
     return f"""<!DOCTYPE html>
 <html lang="ja">
@@ -4780,10 +4819,16 @@ body{{background:var(--bg);color:var(--text);font-family:'Segoe UI','Hiragino Ka
 .site-hd{{background:var(--bg2);border-bottom:1px solid var(--border);padding:14px 20px;position:sticky;top:0;z-index:100}}
 .hd-inner{{max-width:1400px;margin:0 auto;display:flex;align-items:center;gap:14px;flex-wrap:wrap}}
 .site-title{{font-size:1.3rem;font-weight:700;color:var(--accent);white-space:nowrap}}
-.search-wrap{{flex:1;min-width:180px}}
-.search-wrap input{{width:100%;background:var(--bg3);border:1px solid var(--border);color:var(--text);padding:7px 13px;border-radius:8px;font-size:14px;outline:none}}
+.search-wrap{{flex:1;min-width:180px;display:flex;align-items:center;gap:8px}}
+.search-wrap input{{min-width:0;flex:1;background:var(--bg3);border:1px solid var(--border);color:var(--text);padding:7px 13px;border-radius:8px;font-size:14px;outline:none}}
 .search-wrap input:focus{{border-color:var(--accent)}}
+.reset-btn{{appearance:none;border:1px solid var(--border);background:var(--bg3);color:var(--text2);border-radius:8px;padding:7px 11px;font-size:13px;line-height:1.2;cursor:pointer;white-space:nowrap}}
+.reset-btn:hover,.reset-btn:focus-visible{{border-color:var(--accent);color:var(--accent);outline:none}}
 .cnt{{font-size:13px;color:var(--text2);white-space:nowrap}}
+.update-info{{background:var(--bg2);border-bottom:1px solid var(--border)}}
+.update-info-inner{{max-width:1400px;margin:0 auto;padding:8px 20px;display:flex;align-items:center;gap:8px;color:var(--text2);font-size:12px;line-height:1.5;flex-wrap:wrap}}
+.update-info-label{{font-weight:700;color:var(--accent)}}
+.update-info time{{font-weight:700;color:var(--text)}}
 .ad-wrap{{max-width:1400px;margin:14px auto 10px;padding:0 20px;display:flex;justify-content:center}}
 .search-ad-slot{{display:block;width:320px;height:100px}}
 @media (max-width:560px){{
@@ -4834,6 +4879,11 @@ body{{background:var(--bg);color:var(--text);font-family:'Segoe UI','Hiragino Ka
 .glossary-list-count{{font-size:10px;color:#fff;background:var(--accent);border-radius:999px;padding:1px 7px;line-height:1.5;flex-shrink:0}}
 .glossary-list-key{{font-size:10px;color:var(--text2);margin-top:2px;overflow-wrap:anywhere}}
 .glossary-list-desc{{font-size:12px;color:var(--text2);line-height:1.55;margin-top:5px}}
+.glossary-champions{{margin-top:8px;border-top:1px solid var(--border);padding-top:8px;max-height:190px;overflow:auto}}
+.glossary-champions-title{{font-size:10px;color:var(--text2);font-weight:700;margin-bottom:6px}}
+.glossary-champion-buttons{{display:flex;flex-wrap:wrap;gap:5px}}
+.glossary-champion-btn{{appearance:none;border:1px solid var(--border);background:var(--bg2);color:var(--text);border-radius:6px;padding:4px 7px;font-size:11px;line-height:1.25;cursor:pointer}}
+.glossary-champion-btn:hover,.glossary-champion-btn:focus-visible{{border-color:var(--accent);color:var(--accent);outline:none}}
 @media (max-width:560px){{
   .glossary-list-inner{{padding:10px 12px 0}}
   .glossary-list-body{{grid-template-columns:1fr;max-height:360px;padding:10px}}
@@ -4929,11 +4979,20 @@ body{{background:var(--bg);color:var(--text);font-family:'Segoe UI','Hiragino Ka
   <div class="hd-inner">
     <h1 class="site-title">MCOC チャンピオン解説</h1>
     <div class="search-wrap">
-      <input type="text" id="q" placeholder="チャンピオン名・アビリティで検索…" oninput="run()">
+      <input type="text" id="q" placeholder="チャンピオン名・アビリティで検索…">
+      <button type="button" class="reset-btn" id="resetBtn">リセット</button>
     </div>
     <div class="cnt" id="cnt">{total} 件表示中</div>
   </div>
 </header>
+
+<section class="update-info" aria-label="更新情報">
+  <div class="update-info-inner">
+    <span class="update-info-label">最終更新</span>
+    <time datetime="{html.escape(last_updated_iso, quote=True)}">{html.escape(last_updated_label)}</time>
+    <span>{html.escape(update_summary)}</span>
+  </div>
+</section>
 
 <div class="ad-wrap" aria-label="広告">
   <ins class="adsbygoogle search-ad-slot"
@@ -4993,7 +5052,7 @@ body{{background:var(--bg);color:var(--text);font-family:'Segoe UI','Hiragino Ka
 </footer>
 
 <script>
-let cls='all',yr='all',q='';
+let cls='all',yr='all',q='',selectedChampionSlug='';
 let selectedFullImmunities=[];
 let selectedConditionalImmunities=[];
 let selectedBuffs=[];
@@ -5023,7 +5082,68 @@ function showGlossary(term){{
   glossaryPopover.style.left=left+'px';
   glossaryPopover.style.top=top+'px';
 }}
+function resetFiltersForChampionSearch(){{
+  cls='all';
+  yr='all';
+  selectedFullImmunities.splice(0,selectedFullImmunities.length);
+  selectedConditionalImmunities.splice(0,selectedConditionalImmunities.length);
+  selectedBuffs.splice(0,selectedBuffs.length);
+  selectedDebuffs.splice(0,selectedDebuffs.length);
+  document.querySelectorAll('.class-btn').forEach(b=>b.classList.toggle('active',b.dataset.class==='all'));
+  document.querySelectorAll('.year-btn').forEach(b=>b.classList.toggle('active',b.dataset.year==='all'));
+  document.querySelectorAll('.full-immunity-btn').forEach(b=>b.classList.toggle('active',b.dataset.fullImmunity==='all'));
+  document.querySelectorAll('.conditional-immunity-btn').forEach(b=>b.classList.toggle('active',b.dataset.conditionalImmunity==='all'));
+  document.querySelectorAll('.buff-btn').forEach(b=>b.classList.toggle('active',b.dataset.buff==='all'));
+  document.querySelectorAll('.debuff-btn').forEach(b=>b.classList.toggle('active',b.dataset.debuff==='all'));
+}}
+function resetAllFilters(){{
+  document.getElementById('q').value='';
+  q='';
+  selectedChampionSlug='';
+  resetFiltersForChampionSearch();
+  document.querySelectorAll('.glossary-list-term[aria-expanded="true"]').forEach(term=>{{
+    const panel=term.closest('.glossary-list-item')?.querySelector('.glossary-champions');
+    if(panel)panel.hidden=true;
+    term.setAttribute('aria-expanded','false');
+  }});
+  hideGlossary();
+  run();
+}}
+function toggleGlossaryChampions(term){{
+  const item=term.closest('.glossary-list-item');
+  const panel=item?item.querySelector('.glossary-champions'):null;
+  if(!panel)return;
+  const shouldOpen=panel.hidden;
+  document.querySelectorAll('.glossary-list-term[aria-expanded="true"]').forEach(openTerm=>{{
+    const openPanel=openTerm.closest('.glossary-list-item')?.querySelector('.glossary-champions');
+    if(openPanel)openPanel.hidden=true;
+    openTerm.setAttribute('aria-expanded','false');
+  }});
+  panel.hidden=!shouldOpen;
+  term.setAttribute('aria-expanded',shouldOpen?'true':'false');
+}}
 document.addEventListener('click',function(event){{
+  const championButton=event.target.closest('.glossary-champion-btn');
+  if(championButton){{
+    event.preventDefault();
+    event.stopPropagation();
+    hideGlossary();
+    const input=document.getElementById('q');
+    input.value=championButton.dataset.championQuery||championButton.textContent.trim();
+    selectedChampionSlug=championButton.dataset.championSlug||'';
+    resetFiltersForChampionSearch();
+    run();
+    document.querySelector('.main')?.scrollIntoView({{behavior:'smooth',block:'start'}});
+    return;
+  }}
+  const listTerm=event.target.closest('.glossary-list-term');
+  if(listTerm){{
+    event.preventDefault();
+    event.stopPropagation();
+    hideGlossary();
+    toggleGlossaryChampions(listTerm);
+    return;
+  }}
   const term=event.target.closest('.glossary-term');
   if(term){{
     event.preventDefault();
@@ -5083,14 +5203,17 @@ bindMultiFilter('.full-immunity-btn',selectedFullImmunities,'fullImmunity');
 bindMultiFilter('.conditional-immunity-btn',selectedConditionalImmunities,'conditionalImmunity');
 bindMultiFilter('.buff-btn',selectedBuffs,'buff');
 bindMultiFilter('.debuff-btn',selectedDebuffs,'debuff');
-const detailsMq=window.matchMedia('(min-width:900px)');
+document.getElementById('resetBtn').addEventListener('click',resetAllFilters);
+document.getElementById('q').addEventListener('input',function(){{
+  selectedChampionSlug='';
+  run();
+}});
 function syncFilterDetails(){{
   document.querySelectorAll('[data-filter-details]').forEach(detail=>{{
-    detail.open=detailsMq.matches;
+    detail.open=false;
   }});
 }}
 syncFilterDetails();
-detailsMq.addEventListener('change',syncFilterDetails);
 function run(){{
   q=document.getElementById('q').value.toLowerCase();
   let vis=0;
@@ -5105,7 +5228,9 @@ function run(){{
     const mi=selectedConditionalImmunities.every(item=>conditionalImmunities.includes(item));
     const mb=selectedBuffs.every(item=>buffs.includes(item));
     const md=selectedDebuffs.every(item=>debuffs.includes(item));
-    const mq=!q||card.dataset.name.includes(q)||card.textContent.toLowerCase().includes(q);
+    const mq=selectedChampionSlug
+      ? card.dataset.slug===selectedChampionSlug
+      : (!q||card.dataset.name.includes(q)||card.textContent.toLowerCase().includes(q));
     card.style.display=(mc&&my&&mf&&mi&&mb&&md&&mq)?'':'none';
     if(mc&&my&&mf&&mi&&mb&&md&&mq)vis++;
   }});
