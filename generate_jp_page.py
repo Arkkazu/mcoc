@@ -2489,7 +2489,11 @@ def _keep_entry_for_active_sections(cat: str, entry: dict, active_ids: set[str])
 
 def _is_signature_display_entry(cat: str, entry: dict) -> bool:
     ui_id = entry.get("f12", "")
-    if not ui_id or ui_id.endswith(("_hud", "_icon")):
+    if not ui_id:
+        return False
+    if cat == "signature":
+        return True
+    if ui_id.endswith(("_hud", "_icon")):
         return False
     return cat == "signature" or ui_id.startswith("sig_")
 
@@ -2600,6 +2604,108 @@ def _immune_badges_from_entry(entry: dict) -> list[str]:
 
 def _entry_targets_opponent(entry: dict) -> bool:
     return str(entry.get("f55", "")).lower() == "opponent"
+
+
+def _is_opponent_purify_skill_reduction(raw: str, title: str, texts: list[str]) -> bool:
+    """相手の浄化スキル発動率低下を、自分の浄化バフとして扱わない。"""
+    if raw not in {"purify", "cleanse"}:
+        return False
+    text = " ".join([title, *texts])
+    return bool(_re.search(r"(?:対戦相手|相手|敵)の(?:浄化|クレンジング)スキル", text))
+
+
+def _skill_accuracy_immunity_from_display(raw: str, title: str, texts: list[str]) -> str:
+    """purify型で入っているスキル精度保護を、浄化ではなく耐性へ正規化する。"""
+    if raw not in {"purify", "cleanse"}:
+        return ""
+    text = " ".join([title, *texts])
+    if "スキル精度" not in text and "能力の精度" not in text:
+        return ""
+    if any(marker in text for marker in (
+        "影響を受けない", "低下しない", "変更されない", "変更不可能",
+        "増減が不可能", "耐性",
+    )):
+        return "スキル精度変更耐性"
+    if "だけ" in text and "減少させる" in text:
+        return "スキル精度変更耐性"
+    return ""
+
+
+def _resistance_badges_from_display_text(title: str, texts: list[str],
+                                         allow_term_without_marker: bool = False) -> list[tuple[str, str]]:
+    """ゲーム内表示文から耐性バッジ候補を抽出する。"""
+    groups: dict[str, list[str]] = {"full": [], "conditional": [], "reduced": [], "duration": []}
+    seen: set[tuple[str, str]] = set()
+
+    title_label = _normalize_resistance_label(title)
+    if title_label.endswith("耐性") or title_label == "死への耐性":
+        kind = "full"
+        if texts:
+            kind = _resistance_kind(title, texts[0])
+        _add_resistance_label(groups, seen, title_label, kind)
+
+    for text in texts:
+        segments = _resistance_text_segments(text)
+        if allow_term_without_marker and not segments:
+            segments = [part.strip() for part in _re.split(r"(?<=。)|[；;]", text) if part.strip()]
+        for segment in segments:
+            has_resistance_marker = any(marker in segment for marker in _RESISTANCE_MARKERS)
+            has_resistance_term = any(raw in segment for raw, _ in _RESISTANCE_TERM_MAP) or any(
+                word in segment for word in ("バフ", "デバフ")
+            )
+            if not has_resistance_marker and not (allow_term_without_marker and has_resistance_term):
+                continue
+            if _looks_like_opponent_resistance_condition(segment):
+                continue
+            kind = _resistance_kind(title, segment)
+            for raw, canon in _RESISTANCE_TERM_MAP:
+                if raw not in segment:
+                    continue
+                if canon == "無効化" and _re.search(r"効果を無効化", segment):
+                    continue
+                if canon == "スキル精度変更" and _re.search(r"スキル精度(?!変更|低減|の影響)[^。、]{0,12}(得る|増加)", segment):
+                    continue
+                _add_resistance_label(groups, seen, _resistance_label(canon), kind)
+            if "スティール" in segment and "パワー" in segment:
+                _add_resistance_label(groups, seen, "パワースティール耐性", kind)
+            if "バーン" in segment and "パワー" in segment:
+                _add_resistance_label(groups, seen, "パワーバーン耐性", kind)
+            if "ドレイン" in segment and "パワー" in segment:
+                _add_resistance_label(groups, seen, "パワードレイン耐性", kind)
+            if _re.search(r"(バフ耐性|バフへの耐性|バフに対する耐性|バフの影響を受けず)", segment):
+                _add_resistance_label(groups, seen, "バフ耐性", kind)
+            if "バフ無効状態" in segment:
+                _add_resistance_label(groups, seen, "バフ耐性", kind)
+            if _re.search(r"(非ダメージデバフ耐性|非ダメージデバフへの耐性|非ダメージデバフに対する耐性)", segment):
+                _add_resistance_label(groups, seen, "非ダメージデバフ耐性", kind)
+            elif _re.search(r"(ダメージデバフ耐性|ダメージデバフへの耐性|ダメージデバフに対する耐性)", segment):
+                _add_resistance_label(groups, seen, "ダメージデバフ耐性", kind)
+            elif _re.search(r"(デバフ耐性|デバフへの耐性|デバフに対する耐性)", segment):
+                _add_resistance_label(groups, seen, "デバフ耐性", kind)
+
+    result: list[tuple[str, str]] = []
+    for kind in ("full", "conditional", "reduced", "duration"):
+        result.extend((label, kind) for label in groups[kind])
+    return result
+
+
+def _purify_resistance_badges_from_display(raw: str, title: str, texts: list[str],
+                                           entry_id: str = "") -> list[tuple[str, str]]:
+    """purify/cleanse型で表現される耐性を、浄化バフではなく耐性へ回す。"""
+    if raw not in {"purify", "cleanse"}:
+        return []
+    display = " ".join([title, *texts])
+    title_label = _normalize_resistance_label(title)
+    has_marker = (
+        title_label.endswith("耐性")
+        or title_label == "死への耐性"
+        or any(marker in display for marker in _RESISTANCE_MARKERS)
+    )
+    looks_like_immunity_entry = bool(_re.search(r"(?:^|_)(?:im+|imn|imm|immune|immunity)", entry_id.lower()))
+    allow_term_without_marker = looks_like_immunity_entry and not any(word in display for word in ("浄化", "クレンジング"))
+    if not (has_marker or allow_term_without_marker):
+        return []
+    return _resistance_badges_from_display_text(title, texts, allow_term_without_marker)
 
 
 OPPONENT_DEBUFF_TYPE_LABELS = {
@@ -3099,6 +3205,54 @@ def build_active_game_ability_sections(cats: dict, active_ids: set[str],
                     texts.append(line)
         add_section(title, texts)
 
+    compact_seen_texts = {
+        _re.sub(r"[\s　]+", "", strip_loc_tags(text))
+        for _, texts in sections
+        for text in texts
+        if text
+    }
+
+    def should_skip_supplemental_entry(entry: dict) -> bool:
+        entry_id = str(entry.get("id", "") or "").lower()
+        ui_id = str(entry.get("f12", "") or "")
+        raw = str(entry.get("f2", "") or "").lower()
+        ui_low = ui_id.lower()
+        if not ui_id or ui_id.startswith("sig_"):
+            return True
+        if raw in {"dummy_hud", "hud_call", "dummy_icon", "dummy_callout", "dummy_fx", "dummy_vfx", "dummy_fxtrigger"}:
+            return True
+        if entry_id.endswith(("_hud", "_icon", "_callout", "_fx")):
+            return True
+        if ui_low.endswith(("_hud", "_icon", "_callout", "_fx")):
+            return True
+        if any(token in ui_low for token in ("hud_", "_hud_", "icon_", "_icon_", "callout_", "_callout_", "fx_", "_fx_")):
+            return True
+        return False
+
+    for cat in ("ui", "remove"):
+        for entry in active_cats.get(cat, []):
+            if should_skip_supplemental_entry(entry):
+                continue
+            title, texts = _entry_display_text(entry, ui_index, kv)
+            clean_texts: list[str] = []
+            for text in texts:
+                compact_text = _re.sub(r"[\s　]+", "", strip_loc_tags(text))
+                if len(compact_text) < 14 or compact_text in compact_seen_texts:
+                    continue
+                compact_seen_texts.add(compact_text)
+                clean_texts.append(text)
+            if not clean_texts:
+                continue
+            section_title = (
+                _localized_group_section_title(entry, kv)
+                or _always_active_section_title(entry)
+                or _event_section_title(entry, kv)
+                or _trigger_section_title(entry)
+                or title
+                or "能力補足"
+            )
+            add_section(section_title, clean_texts)
+
     return sections
 
 
@@ -3411,6 +3565,76 @@ def build_antman_game_ability_sections(cats: dict) -> list[tuple[str, list[str]]
     return sections
 
 
+def build_peni_game_ability_sections(cats: dict, kv: dict) -> list[tuple[str, list[str]]]:
+    """Peni ParkerのUI補足行を含め、ゲーム内能力欄に近い構成へ整える。"""
+    ui_index = load_bcg_ui_stat_index()
+
+    def texts_for(entry_id: str, include_title: bool = False) -> list[str]:
+        entry = _entry_by_id(cats, entry_id)
+        if not entry:
+            return []
+        title, texts = _entry_display_text(entry, ui_index, kv)
+        if include_title and title:
+            return [f"{title}: {text}" for text in texts]
+        return texts
+
+    def add_section(sections: list[tuple[str, list[str]]], title: str, texts: list[str]) -> None:
+        clean_texts = [text for text in dict.fromkeys(texts) if text]
+        if clean_texts:
+            sections.append((title, clean_texts))
+
+    sig_entry = _entry_by_id(cats, "peni_sig_healblk_ui_99") or {}
+    sig_title = _signature_section_title(sig_entry.get("f12", ""), ui_index, kv) or "シグネチャー"
+
+    sections: list[tuple[str, list[str]]] = []
+    add_section(
+        sections,
+        sig_title,
+        texts_for("peni_sig_healblk_ui_99") + texts_for("peni_sig_healblk_dmg_99"),
+    )
+    add_section(
+        sections,
+        "常時発動",
+        texts_for("peni_imn") + texts_for("peni_ea_true") + texts_for("peni_sense_ui"),
+    )
+    add_section(
+        sections,
+        "同期シールド",
+        texts_for("peni_field_hp_tot_ui") +
+        texts_for("peni_field_reduc_init") +
+        texts_for("peni_field_cdwn"),
+    )
+    add_section(
+        sections,
+        "同期シールド - 発動中",
+        texts_for("peni_field_autoblk_ui") +
+        texts_for("peni_field_autoblk_pwrbrn") +
+        texts_for("peni_field_stun_imn") +
+        texts_for("peni_field_wtblk_pwr") +
+        texts_for("peni_field_autoblk_hvy_resist"),
+    )
+    add_section(
+        sections,
+        "必殺技1",
+        texts_for("peni_sp1_sense_ui") +
+        texts_for("peni_sp1_chg_ui") +
+        texts_for("peni_sp1_pwrbrn"),
+    )
+    add_section(
+        sections,
+        "必殺技2",
+        texts_for("peni_sp2_pause") +
+        texts_for("peni_sp2_dmg") +
+        texts_for("peni_sp2_sense_ui", include_title=True),
+    )
+    add_section(
+        sections,
+        "必殺技3",
+        texts_for("peni_sp3_pwrbrn") + texts_for("peni_sp3_field_dummy_ui"),
+    )
+    return sections
+
+
 def build_game_ability_sections_html(sections: list[tuple[str, list[str]]],
                                      glossary_defs: dict[str, dict[str, str]] | None = None) -> str:
     """能力説明を単一の「能力」アコーディオン内に平坦表示する"""
@@ -3480,9 +3704,10 @@ def build_game_data_html(slug: str, abilities: dict, slug_map: dict,
     sections: list[tuple[str, list[str]]] = []
     section_cats = active_cats
     manual_section_builder = {
+        "game-roster-peniparker": build_peni_game_ability_sections,
     }.get(slug)
     if manual_section_builder:
-        sections = manual_section_builder(cats)
+        sections = manual_section_builder(cats, kv)
         manual_badge_ids = {
             "game-roster-ant-man": {
                 "antu_sig_fat_5",
@@ -3537,6 +3762,21 @@ def build_game_data_html(slug: str, abilities: dict, slug_map: dict,
     immune_badges: list[tuple[str, str]] = []
     other_badges:  list[str] = []
     ui_index = load_bcg_ui_stat_index()
+    sections_plain_text = strip_loc_tags(
+        " ".join(
+            [title for title, _texts in sections] +
+            [text for _title, texts in sections for text in texts]
+        )
+    )
+
+    def has_visible_self_purify_text(raw: str, title: str, texts: list[str]) -> bool:
+        """内部purify/cleanseを、表示上の浄化・クレンジング能力と区別する。"""
+        if raw not in {"purify", "cleanse"}:
+            return True
+        display = strip_loc_tags(" ".join([title, *texts]))
+        return any(word in display for word in ("浄化", "クレンジング")) or any(
+            word in sections_plain_text for word in ("浄化", "クレンジング")
+        )
 
     self_immune_entries: list[dict] = []
     for cat in ("signature", "passive", "other", "heavy", "special1", "special2", "special3"):
@@ -3574,6 +3814,24 @@ def build_game_data_html(slug: str, abilities: dict, slug_map: dict,
         display_texts: list[str] = []
         if kv:
             display_title, display_texts = _entry_display_text(e, ui_index, kv)
+        skill_accuracy_immunity = _skill_accuracy_immunity_from_display(raw, display_title, display_texts)
+        if skill_accuracy_immunity:
+            if not _entry_targets_opponent(e) and skill_accuracy_immunity not in seen_set:
+                seen_set.add(skill_accuracy_immunity)
+                immune_badges.append((skill_accuracy_immunity, _immunity_kind_from_entry(e)))
+            continue
+        purify_resistance_badges = _purify_resistance_badges_from_display(raw, display_title, display_texts, e.get("id", ""))
+        if purify_resistance_badges:
+            if not _entry_targets_opponent(e):
+                for label, kind in purify_resistance_badges:
+                    if label not in seen_set:
+                        seen_set.add(label)
+                        immune_badges.append((label, kind))
+            continue
+        if _is_opponent_purify_skill_reduction(raw, display_title, display_texts):
+            continue
+        if not _entry_targets_opponent(e) and not has_visible_self_purify_text(raw, display_title, display_texts):
+            continue
         if display_title in BUFF_LABELS_JP or display_title in DEBUFF_LABELS_JP:
             jp = display_title
         if jp is None:
@@ -3641,11 +3899,15 @@ def build_game_data_html(slug: str, abilities: dict, slug_map: dict,
             if item not in full_items
         ]
         reduced_items = list(dict.fromkeys(resistance_items["reduced"]))
+        duration_items = list(dict.fromkeys(resistance_items["duration"]))
 
         def resistance_group_html(label: str, items: list[str]) -> str:
             if not items:
                 return ""
-            kind = "reduced" if label == "効果低下" else ("conditional" if label == "条件付き耐性" else "full")
+            kind = (
+                "duration" if label == "時間短縮"
+                else ("reduced" if label == "効果低下" else ("conditional" if label == "条件付き耐性" else "full"))
+            )
             return (
                 '<div class="gd-immune">'
                 f'<span class="gd-sublabel">{label}</span>'
@@ -3656,7 +3918,8 @@ def build_game_data_html(slug: str, abilities: dict, slug_map: dict,
         classified_immune_html = (
             resistance_group_html("完全耐性", full_items) +
             resistance_group_html("条件付き耐性", conditional_items) +
-            resistance_group_html("効果低下", reduced_items)
+            resistance_group_html("効果低下", reduced_items) +
+            resistance_group_html("時間短縮", duration_items)
         )
         if classified_immune_html:
             immune_html = classified_immune_html
@@ -3730,8 +3993,11 @@ _RESISTANCE_TERM_MAP = [
     ("激昂", "激昂"),
     ("ひるみ", "ひるみ"),
     ("怪異", "怪異"),
+    ("錯乱状態", "錯乱状態"),
     ("疲労", "疲労"),
     ("極度の疲労", "極度の疲労"),
+    ("脳震デバフ", "脳震盪"),
+    ("脳震", "脳震盪"),
     ("脳震とう", "脳震盪"),
     ("脳震盪", "脳震盪"),
     ("衰え", "衰え"),
@@ -3759,9 +4025,10 @@ _RESISTANCE_MARKERS = (
     "抵抗する", "抵抗力を持つ", "完全に身を守る", "完全に防ぐ",
     "効果を無効化", "効果を無効に", "デバフによるダメージ",
     "変更不可能", "変動せず", "変更されない", "低下させることができない",
+    "増減が不可能", "無効状態",
 )
 _REDUCED_EFFECT_MARKERS = (
-    "有効性", "ダメージ", "持続時間", "効力", "スキル精度",
+    "有効性", "ダメージ", "効力", "スキル精度",
 )
 _REDUCED_EFFECT_WORDS = (
     "減少", "低下", "軽減", "短縮",
@@ -3788,6 +4055,12 @@ _REDUCED_OFFENSE_MARKERS = (
 )
 _RECOVERY_REDUCTION_MARKERS = (
     "体力回復", "体力の回復", "体力リカバリー", "回復効果", "再生効果", "再生率",
+)
+_DURATION_REDUCTION_MARKERS = ("持続時間", "継続時間")
+_DURATION_REDUCTION_WORDS = ("減少", "短縮")
+_DURATION_OFFENSE_MARKERS = (
+    "この攻撃で付与", "この攻撃によって付与", "相手に対する", "対戦相手に対する",
+    "この気絶が発動",
 )
 _RESISTANCE_SKIP_LABELS = {"耐性低下"}
 _FULL_RESISTANCE_TITLE_MARKERS = ("常時発動", "常に発動", "常時稼働", "常時")
@@ -3850,7 +4123,7 @@ def _add_resistance_label(groups: dict[str, list[str]], seen: set[tuple[str, str
         return
     if not (label.endswith("耐性") or label == "死への耐性"):
         return
-    kind = kind if kind in {"full", "conditional", "reduced"} else "full"
+    kind = kind if kind in {"full", "conditional", "reduced", "duration"} else "full"
     key = (kind, label)
     if key not in seen:
         seen.add(key)
@@ -3934,38 +4207,98 @@ def _looks_like_reduced_self_effect(title: str, segment: str) -> bool:
     return False
 
 
-def _add_reduced_effect_labels(groups: dict[str, list[str]], seen: set[tuple[str, str]],
-                               segment: str) -> None:
+def _looks_like_duration_self_effect(title: str, segment: str) -> bool:
+    if any(marker in segment for marker in _REDUCED_NEGATION_MARKERS):
+        return False
+    if any(marker in segment for marker in _REDUCED_TRIGGER_MARKERS):
+        return False
+    if not any(marker in segment for marker in _DURATION_REDUCTION_MARKERS):
+        return False
+    if not any(word in segment for word in _DURATION_REDUCTION_WORDS):
+        return False
+    if not any(raw in segment for raw, _ in _RESISTANCE_TERM_MAP) and not any(
+        word in segment for word in ("バフ", "デバフ", "ダメージデバフ", "非ダメージデバフ")
+    ):
+        return False
+
+    source_context = any(marker in segment for marker in (
+        "受ける", "受けた", "これから受ける", "相手による", "敵による",
+        "ヒーローから受ける", "クエストバフから受ける", "から受ける",
+        "繰り出される",
+    ))
+    if any(marker in segment for marker in _DURATION_OFFENSE_MARKERS) and not source_context:
+        return False
+    if any(marker in segment for marker in _REDUCED_OPPONENT_CONTEXT_MARKERS) and not source_context:
+        return False
+    if any(marker in segment for marker in _REDUCED_OFFENSE_MARKERS) and not source_context:
+        return False
+    if source_context:
+        return True
+    if "彼の" in segment or "自身の" in segment or "個人的な" in segment:
+        return False
+    return True
+
+
+def _add_effect_labels(groups: dict[str, list[str]], seen: set[tuple[str, str]],
+                       segment: str, kind: str) -> None:
     matched = False
     for raw, canon in _RESISTANCE_TERM_MAP:
         if raw in segment:
+            if canon == "固定" and "固定で" in segment and "固定デバフ" not in segment:
+                continue
             if canon == "無効化" and _re.search(r"効果を無効化", segment):
                 continue
-            _add_resistance_label(groups, seen, _resistance_label(canon), "reduced")
+            _add_resistance_label(groups, seen, _resistance_label(canon), kind)
             matched = True
     if "パワースティール" in segment or ("スティール" in segment and "パワー" in segment):
-        _add_resistance_label(groups, seen, "パワースティール耐性", "reduced")
+        _add_resistance_label(groups, seen, "パワースティール耐性", kind)
         matched = True
     if "パワーバーン" in segment or ("バーン" in segment and "パワー" in segment):
-        _add_resistance_label(groups, seen, "パワーバーン耐性", "reduced")
+        _add_resistance_label(groups, seen, "パワーバーン耐性", kind)
         matched = True
     if "パワードレイン" in segment or ("ドレイン" in segment and "パワー" in segment):
-        _add_resistance_label(groups, seen, "パワードレイン耐性", "reduced")
+        _add_resistance_label(groups, seen, "パワードレイン耐性", kind)
         matched = True
     if "非ダメージデバフ" in segment:
-        _add_resistance_label(groups, seen, "非ダメージデバフ耐性", "reduced")
+        _add_resistance_label(groups, seen, "非ダメージデバフ耐性", kind)
         matched = True
     elif "ダメージデバフ" in segment:
-        _add_resistance_label(groups, seen, "ダメージデバフ耐性", "reduced")
+        _add_resistance_label(groups, seen, "ダメージデバフ耐性", kind)
         matched = True
     elif "デバフ" in segment and not matched:
-        _add_resistance_label(groups, seen, "デバフ耐性", "reduced")
+        _add_resistance_label(groups, seen, "デバフ耐性", kind)
     buff_reduction = (
         _re.search(r"(?<!デ)バフ[^。]{0,30}(有効性|持続時間|スキル精度)[^。]{0,30}(減少|低下|短縮)", segment)
         or _re.search(r"(有効性|持続時間|スキル精度)[^。]{0,30}(減少|低下|短縮)[^。]{0,30}(?<!デ)バフ", segment)
     )
     if buff_reduction:
-        _add_resistance_label(groups, seen, "バフ耐性", "reduced")
+        _add_resistance_label(groups, seen, "バフ耐性", kind)
+
+
+def _add_reduced_effect_labels(groups: dict[str, list[str]], seen: set[tuple[str, str]],
+                               segment: str) -> None:
+    _add_effect_labels(groups, seen, segment, "reduced")
+
+
+def _add_duration_effect_labels(groups: dict[str, list[str]], seen: set[tuple[str, str]],
+                                segment: str) -> None:
+    duration_positions = [
+        segment.find(marker) for marker in _DURATION_REDUCTION_MARKERS
+        if segment.find(marker) >= 0
+    ]
+    duration_pos = min(duration_positions) if duration_positions else len(segment)
+    context_markers = (
+        "これから受ける", "これ以降受ける", "受ける", "受けた", "から受ける",
+        "相手が付与する", "敵が付与する", "繰り出される",
+    )
+    context_starts = [
+        segment.rfind(marker, 0, duration_pos)
+        for marker in context_markers
+        if segment.rfind(marker, 0, duration_pos) >= 0
+    ]
+    if context_starts:
+        segment = segment[max(context_starts):]
+    _add_effect_labels(groups, seen, segment, "duration")
 
 
 def _resistance_text_segments(text: str) -> list[str]:
@@ -3981,6 +4314,10 @@ def _resistance_text_segments(text: str) -> list[str]:
                     any(word in part for word in _REDUCED_EFFECT_WORDS)
                     and any(marker in part for marker in _REDUCED_EFFECT_MARKERS)
                 )
+                or (
+                    any(word in part for word in _DURATION_REDUCTION_WORDS)
+                    and any(marker in part for marker in _DURATION_REDUCTION_MARKERS)
+                )
             ):
                 result.append(part)
     return result
@@ -3988,14 +4325,14 @@ def _resistance_text_segments(text: str) -> list[str]:
 
 def extract_resistance_items_from_game_data_html(game_data_html: str) -> dict[str, list[str]]:
     """表示本文・バッジから、完全耐性/条件付き耐性/効果低下を正規化して抽出する。"""
-    groups: dict[str, list[str]] = {"full": [], "conditional": [], "reduced": []}
+    groups: dict[str, list[str]] = {"full": [], "conditional": [], "reduced": [], "duration": []}
     seen: set[tuple[str, str]] = set()
     badge_labels: list[tuple[str, str]] = []
 
     for badge in _re.finditer(r'<span class="abi-badge abi-immune"([^>]*)>([^<]+)</span>', game_data_html):
         attrs = badge.group(1)
         label = _normalize_resistance_label(badge.group(2))
-        kind_match = _re.search(r'data-resistance-kind="(full|conditional|reduced)"', attrs)
+        kind_match = _re.search(r'data-resistance-kind="(full|conditional|reduced|duration)"', attrs)
         explicit_kind = kind_match.group(1) if kind_match else ""
         if label.endswith("耐性") or label == "死への耐性":
             badge_labels.append((label, explicit_kind))
@@ -4014,9 +4351,15 @@ def extract_resistance_items_from_game_data_html(game_data_html: str) -> dict[st
                 any(word in text for word in _REDUCED_EFFECT_WORDS)
                 and any(marker in text for marker in _REDUCED_EFFECT_MARKERS)
             )
-            if not (has_resistance_text or has_reduced_text):
+            has_duration_text = (
+                any(word in text for word in _DURATION_REDUCTION_WORDS)
+                and any(marker in text for marker in _DURATION_REDUCTION_MARKERS)
+            )
+            if not (has_resistance_text or has_reduced_text or has_duration_text):
                 continue
             for segment in _resistance_text_segments(text):
+                if _looks_like_duration_self_effect(title, segment):
+                    _add_duration_effect_labels(groups, seen, segment)
                 if _looks_like_reduced_self_effect(title, segment):
                     _add_reduced_effect_labels(groups, seen, segment)
                 if not any(marker in segment for marker in _RESISTANCE_MARKERS):
@@ -4027,6 +4370,8 @@ def extract_resistance_items_from_game_data_html(game_data_html: str) -> dict[st
                 for raw, canon in _RESISTANCE_TERM_MAP:
                     if raw in segment:
                         if canon == "無効化" and _re.search(r"効果を無効化", segment):
+                            continue
+                        if canon == "スキル精度変更" and _re.search(r"スキル精度(?!変更|低減|の影響)[^。、]{0,12}(得る|増加)", segment):
                             continue
                         _add_resistance_label(groups, seen, _resistance_label(canon), kind)
                 if "スティール" in segment and "パワー" in segment:
@@ -4041,6 +4386,7 @@ def extract_resistance_items_from_game_data_html(game_data_html: str) -> dict[st
     text_full = set(groups["full"])
     text_conditional = set(groups["conditional"])
     text_reduced = set(groups["reduced"])
+    text_duration = set(groups["duration"])
     for label, explicit_kind in badge_labels:
         if (
             label == "防御不能耐性"
@@ -4054,11 +4400,13 @@ def extract_resistance_items_from_game_data_html(game_data_html: str) -> dict[st
             continue
         if label in text_conditional and label not in text_full:
             kind = "conditional"
+        elif label in text_duration and label not in text_full and label not in text_conditional:
+            kind = "duration"
         elif label in text_reduced and label not in text_full and label not in text_conditional:
             kind = "reduced"
         elif label in text_full:
             kind = "full"
-        elif explicit_kind in {"full", "conditional", "reduced"}:
+        elif explicit_kind in {"full", "conditional", "reduced", "duration"}:
             kind = explicit_kind
         elif label == "防御不能耐性":
             kind = "conditional"
@@ -4741,10 +5089,12 @@ def build_cards(champions: list[dict], cache: dict,
             if item not in full_immunity_items
         ]
         reduced_immunity_items = list(dict.fromkeys(resistance_items["reduced"]))
-        immunity_search = "|".join(dict.fromkeys(full_immunity_items + conditional_immunity_items + reduced_immunity_items))
+        duration_immunity_items = list(dict.fromkeys(resistance_items["duration"]))
+        immunity_search = "|".join(dict.fromkeys(full_immunity_items + conditional_immunity_items + reduced_immunity_items + duration_immunity_items))
         full_immunity_search = "|".join(full_immunity_items)
         conditional_immunity_search = "|".join(conditional_immunity_items)
         reduced_immunity_search = "|".join(reduced_immunity_items)
+        duration_immunity_search = "|".join(duration_immunity_items)
 
         portrait_html = (
             f'<img class="champ-portrait" src="{PORTRAIT_SRC_DIR}/{portrait_fname}" alt="{name_en}">'
@@ -4754,7 +5104,7 @@ def build_cards(champions: list[dict], cache: dict,
         en_sub = f'<span class="champ-en">{name_en}</span>' if name_jp else ""
         release_html = f'<div class="release">リリース: {release}</div>' if release else ""
         card = f"""
-<div class="card" data-slug="{slug}" data-binary-id="{html.escape(binary_id)}" data-class="{cls}" data-years="{year_search}" data-immunities="{html.escape(immunity_search)}" data-immunities-full="{html.escape(full_immunity_search)}" data-immunities-conditional="{html.escape(conditional_immunity_search)}" data-immunities-reduced="{html.escape(reduced_immunity_search)}" data-buffs="{html.escape(self_buff_search)}" data-debuffs="{html.escape(opponent_debuff_search)}" data-name="{html.escape((name_jp + ' ' + name_en + ' ' + tag_search + ' ' + self_buff_search.replace('|', ' ') + ' ' + opponent_debuff_search.replace('|', ' ')).lower())}">
+<div class="card" data-slug="{slug}" data-binary-id="{html.escape(binary_id)}" data-class="{cls}" data-years="{year_search}" data-immunities="{html.escape(immunity_search)}" data-immunities-full="{html.escape(full_immunity_search)}" data-immunities-conditional="{html.escape(conditional_immunity_search)}" data-immunities-reduced="{html.escape(reduced_immunity_search)}" data-immunities-duration="{html.escape(duration_immunity_search)}" data-buffs="{html.escape(self_buff_search)}" data-debuffs="{html.escape(opponent_debuff_search)}" data-name="{html.escape((name_jp + ' ' + name_en + ' ' + tag_search + ' ' + self_buff_search.replace('|', ' ') + ' ' + opponent_debuff_search.replace('|', ' ')).lower())}">
   <div class="card-header" style="border-left:4px solid {color}">
     <div class="title-row">
       {portrait_html}
@@ -4862,7 +5212,12 @@ def generate_html(champions: list[dict], cache: dict,
         for item in html.unescape(raw).split("|"):
             if item:
                 reduced_immunity_values.add(item)
-    immunity_values = full_immunity_values | conditional_immunity_values | reduced_immunity_values
+    duration_immunity_values: set[str] = set()
+    for raw in _re.findall(r'data-immunities-duration="([^"]*)"', cards_html):
+        for item in html.unescape(raw).split("|"):
+            if item:
+                duration_immunity_values.add(item)
+    immunity_values = full_immunity_values | conditional_immunity_values | reduced_immunity_values | duration_immunity_values
     immunity_btns = '<button class="f-btn immunity-btn immunity-option-btn active" data-immunity="all">指定なし</button>\n'
     for item in sorted(immunity_values):
         safe_item = html.escape(item)
@@ -5195,6 +5550,7 @@ body{{background:var(--bg);color:var(--text);font-family:'Segoe UI','Hiragino Ka
         <button type="button" class="filter-mode-btn immunity-mode-btn active" data-immunity-mode="full" aria-pressed="true">完全耐性</button>
         <button type="button" class="filter-mode-btn immunity-mode-btn" data-immunity-mode="conditional" aria-pressed="false">条件付き耐性</button>
         <button type="button" class="filter-mode-btn immunity-mode-btn" data-immunity-mode="reduced" aria-pressed="false">効果低下</button>
+        <button type="button" class="filter-mode-btn immunity-mode-btn" data-immunity-mode="duration" aria-pressed="false">時間短縮</button>
       </div>
       <div class="f-inner immunity-options">{immunity_btns}</div>
     </details>
@@ -5430,7 +5786,8 @@ function run(){{
     const fullImmunities=(card.dataset.immunitiesFull||'').split('|').filter(Boolean);
     const conditionalImmunities=(card.dataset.immunitiesConditional||'').split('|').filter(Boolean);
     const reducedImmunities=(card.dataset.immunitiesReduced||'').split('|').filter(Boolean);
-    const immunities=immunityMode==='reduced'?reducedImmunities:(immunityMode==='conditional'?conditionalImmunities:fullImmunities);
+    const durationImmunities=(card.dataset.immunitiesDuration||'').split('|').filter(Boolean);
+    const immunities=immunityMode==='duration'?durationImmunities:(immunityMode==='reduced'?reducedImmunities:(immunityMode==='conditional'?conditionalImmunities:fullImmunities));
     const buffs=(card.dataset.buffs||'').split('|').filter(Boolean);
     const debuffs=(card.dataset.debuffs||'').split('|').filter(Boolean);
     const mi=selectedImmunities.every(item=>immunities.includes(item));
