@@ -21,6 +21,7 @@ SITE_URL = "https://marvel-allstar-battle.tokyo/"
 ADSENSE_CLIENT = "ca-pub-1334543920393100"
 SEARCH_AD_SLOT = "7024310594"
 GOOGLE_ANALYTICS_ID = "G-MY5GWMQ4GQ"
+UPDATE_HISTORY_PATH = BASE / "data" / "update_history.json"
 ABILITIES_PATH  = BASE / "data" / "abilities_all.json"
 SLUG_MAP_PATH   = BASE / "data" / "slug_to_prefix.json"
 NAME_JP_PATH    = BASE / "data" / "slug_to_jp.json"
@@ -3639,11 +3640,12 @@ def build_game_data_html(slug: str, abilities: dict, slug_map: dict,
             for item in dict.fromkeys(resistance_items["conditional"])
             if item not in full_items
         ]
+        reduced_items = list(dict.fromkeys(resistance_items["reduced"]))
 
         def resistance_group_html(label: str, items: list[str]) -> str:
             if not items:
                 return ""
-            kind = "conditional" if label == "条件付き耐性" else "full"
+            kind = "reduced" if label == "効果低下" else ("conditional" if label == "条件付き耐性" else "full")
             return (
                 '<div class="gd-immune">'
                 f'<span class="gd-sublabel">{label}</span>'
@@ -3653,7 +3655,8 @@ def build_game_data_html(slug: str, abilities: dict, slug_map: dict,
 
         classified_immune_html = (
             resistance_group_html("完全耐性", full_items) +
-            resistance_group_html("条件付き耐性", conditional_items)
+            resistance_group_html("条件付き耐性", conditional_items) +
+            resistance_group_html("効果低下", reduced_items)
         )
         if classified_immune_html:
             immune_html = classified_immune_html
@@ -3757,6 +3760,35 @@ _RESISTANCE_MARKERS = (
     "効果を無効化", "効果を無効に", "デバフによるダメージ",
     "変更不可能", "変動せず", "変更されない", "低下させることができない",
 )
+_REDUCED_EFFECT_MARKERS = (
+    "有効性", "ダメージ", "持続時間", "効力", "スキル精度",
+)
+_REDUCED_EFFECT_WORDS = (
+    "減少", "低下", "軽減", "短縮",
+)
+_REDUCED_NEGATION_MARKERS = (
+    "短縮できない", "短縮されない", "減少しない", "減少されない",
+    "低下しない", "低下することはない", "軽減しない", "軽減できない",
+)
+_REDUCED_TRIGGER_MARKERS = (
+    "短縮されると", "短縮された場合", "減少すると", "減少した場合",
+    "低下すると", "低下した場合", "軽減されると", "軽減された場合",
+)
+_REDUCED_SELF_CONTEXT_MARKERS = (
+    "受ける", "受けた", "受けている", "これから受ける", "から受ける",
+    "相手による", "敵による", "ヒーローから受ける", "クエストバフから受ける",
+    "繰り出される", "付与される", "発動されている",
+)
+_REDUCED_OPPONENT_CONTEXT_MARKERS = (
+    "対戦相手に", "対戦相手へ", "対戦相手の", "相手に", "相手へ", "相手の",
+    "敵に", "敵へ", "敵の",
+)
+_REDUCED_OFFENSE_MARKERS = (
+    "付与し", "付与する", "与え", "食らわせ", "発生させ",
+)
+_RECOVERY_REDUCTION_MARKERS = (
+    "体力回復", "体力の回復", "体力リカバリー", "回復効果", "再生効果", "再生率",
+)
 _RESISTANCE_SKIP_LABELS = {"耐性低下"}
 _FULL_RESISTANCE_TITLE_MARKERS = ("常時発動", "常に発動", "常時稼働", "常時")
 _CONDITIONAL_RESISTANCE_TITLE_MARKERS = (
@@ -3818,7 +3850,7 @@ def _add_resistance_label(groups: dict[str, list[str]], seen: set[tuple[str, str
         return
     if not (label.endswith("耐性") or label == "死への耐性"):
         return
-    kind = "conditional" if kind == "conditional" else "full"
+    kind = kind if kind in {"full", "conditional", "reduced"} else "full"
     key = (kind, label)
     if key not in seen:
         seen.add(key)
@@ -3869,6 +3901,73 @@ def _looks_like_opponent_resistance_condition(segment: str) -> bool:
     return False
 
 
+def _looks_like_reduced_self_effect(title: str, segment: str) -> bool:
+    if any(marker in segment for marker in _REDUCED_NEGATION_MARKERS):
+        return False
+    if any(marker in segment for marker in _REDUCED_TRIGGER_MARKERS):
+        return False
+    if not any(word in segment for word in _REDUCED_EFFECT_WORDS):
+        return False
+    if not any(marker in segment for marker in _REDUCED_EFFECT_MARKERS):
+        return False
+    if not any(raw in segment for raw, _ in _RESISTANCE_TERM_MAP) and not any(
+        word in segment for word in ("バフ", "デバフ", "ダメージデバフ", "非ダメージデバフ")
+    ):
+        return False
+    if any(marker in segment for marker in _RECOVERY_REDUCTION_MARKERS) and "受ける" not in segment and "から受ける" not in segment:
+        return False
+
+    source_context = any(marker in segment for marker in (
+        "相手による", "敵による", "ヒーローから受ける", "クエストバフから受ける", "から受ける",
+    ))
+    if any(marker in segment for marker in _REDUCED_OPPONENT_CONTEXT_MARKERS) and not source_context:
+        return False
+    if any(marker in segment for marker in _REDUCED_OFFENSE_MARKERS):
+        return False
+    has_self_context = any(marker in segment for marker in _REDUCED_SELF_CONTEXT_MARKERS)
+    if has_self_context:
+        return True
+    if "防御能力" in segment or "攻撃力" in segment or "攻撃レーティング" in segment:
+        return False
+    if any(marker in title for marker in _FULL_RESISTANCE_TITLE_MARKERS):
+        return True
+    return False
+
+
+def _add_reduced_effect_labels(groups: dict[str, list[str]], seen: set[tuple[str, str]],
+                               segment: str) -> None:
+    matched = False
+    for raw, canon in _RESISTANCE_TERM_MAP:
+        if raw in segment:
+            if canon == "無効化" and _re.search(r"効果を無効化", segment):
+                continue
+            _add_resistance_label(groups, seen, _resistance_label(canon), "reduced")
+            matched = True
+    if "パワースティール" in segment or ("スティール" in segment and "パワー" in segment):
+        _add_resistance_label(groups, seen, "パワースティール耐性", "reduced")
+        matched = True
+    if "パワーバーン" in segment or ("バーン" in segment and "パワー" in segment):
+        _add_resistance_label(groups, seen, "パワーバーン耐性", "reduced")
+        matched = True
+    if "パワードレイン" in segment or ("ドレイン" in segment and "パワー" in segment):
+        _add_resistance_label(groups, seen, "パワードレイン耐性", "reduced")
+        matched = True
+    if "非ダメージデバフ" in segment:
+        _add_resistance_label(groups, seen, "非ダメージデバフ耐性", "reduced")
+        matched = True
+    elif "ダメージデバフ" in segment:
+        _add_resistance_label(groups, seen, "ダメージデバフ耐性", "reduced")
+        matched = True
+    elif "デバフ" in segment and not matched:
+        _add_resistance_label(groups, seen, "デバフ耐性", "reduced")
+    buff_reduction = (
+        _re.search(r"(?<!デ)バフ[^。]{0,30}(有効性|持続時間|スキル精度)[^。]{0,30}(減少|低下|短縮)", segment)
+        or _re.search(r"(有効性|持続時間|スキル精度)[^。]{0,30}(減少|低下|短縮)[^。]{0,30}(?<!デ)バフ", segment)
+    )
+    if buff_reduction:
+        _add_resistance_label(groups, seen, "バフ耐性", "reduced")
+
+
 def _resistance_text_segments(text: str) -> list[str]:
     chunks = _re.split(r"(?<=。)|[；;]", text)
     result: list[str] = []
@@ -3876,21 +3975,27 @@ def _resistance_text_segments(text: str) -> list[str]:
         parts = _re.split(r"(?:さらに、|また、|加え、|、?非接触攻撃に対して)", chunk)
         for part in parts:
             part = part.strip()
-            if part and any(marker in part for marker in _RESISTANCE_MARKERS):
+            if part and (
+                any(marker in part for marker in _RESISTANCE_MARKERS)
+                or (
+                    any(word in part for word in _REDUCED_EFFECT_WORDS)
+                    and any(marker in part for marker in _REDUCED_EFFECT_MARKERS)
+                )
+            ):
                 result.append(part)
     return result
 
 
 def extract_resistance_items_from_game_data_html(game_data_html: str) -> dict[str, list[str]]:
-    """表示本文・バッジから、完全耐性/条件付き耐性を正規化して抽出する。"""
-    groups: dict[str, list[str]] = {"full": [], "conditional": []}
+    """表示本文・バッジから、完全耐性/条件付き耐性/効果低下を正規化して抽出する。"""
+    groups: dict[str, list[str]] = {"full": [], "conditional": [], "reduced": []}
     seen: set[tuple[str, str]] = set()
     badge_labels: list[tuple[str, str]] = []
 
     for badge in _re.finditer(r'<span class="abi-badge abi-immune"([^>]*)>([^<]+)</span>', game_data_html):
         attrs = badge.group(1)
         label = _normalize_resistance_label(badge.group(2))
-        kind_match = _re.search(r'data-resistance-kind="(full|conditional)"', attrs)
+        kind_match = _re.search(r'data-resistance-kind="(full|conditional|reduced)"', attrs)
         explicit_kind = kind_match.group(1) if kind_match else ""
         if label.endswith("耐性") or label == "死への耐性":
             badge_labels.append((label, explicit_kind))
@@ -3904,9 +4009,18 @@ def extract_resistance_items_from_game_data_html(game_data_html: str) -> dict[st
         title = html.unescape(_re.sub(r"<.*?>", "", group.group(1))).strip()
         for li in _re.finditer(r"<li>(.*?)</li>", group.group(2), _re.S):
             text = html.unescape(_re.sub(r"<.*?>", "", li.group(1))).strip()
-            if not any(marker in text for marker in _RESISTANCE_MARKERS):
+            has_resistance_text = any(marker in text for marker in _RESISTANCE_MARKERS)
+            has_reduced_text = (
+                any(word in text for word in _REDUCED_EFFECT_WORDS)
+                and any(marker in text for marker in _REDUCED_EFFECT_MARKERS)
+            )
+            if not (has_resistance_text or has_reduced_text):
                 continue
             for segment in _resistance_text_segments(text):
+                if _looks_like_reduced_self_effect(title, segment):
+                    _add_reduced_effect_labels(groups, seen, segment)
+                if not any(marker in segment for marker in _RESISTANCE_MARKERS):
+                    continue
                 if _looks_like_opponent_resistance_condition(segment):
                     continue
                 kind = _resistance_kind(title, segment)
@@ -3926,6 +4040,7 @@ def extract_resistance_items_from_game_data_html(game_data_html: str) -> dict[st
 
     text_full = set(groups["full"])
     text_conditional = set(groups["conditional"])
+    text_reduced = set(groups["reduced"])
     for label, explicit_kind in badge_labels:
         if (
             label == "防御不能耐性"
@@ -3939,9 +4054,11 @@ def extract_resistance_items_from_game_data_html(game_data_html: str) -> dict[st
             continue
         if label in text_conditional and label not in text_full:
             kind = "conditional"
+        elif label in text_reduced and label not in text_full and label not in text_conditional:
+            kind = "reduced"
         elif label in text_full:
             kind = "full"
-        elif explicit_kind in {"full", "conditional"}:
+        elif explicit_kind in {"full", "conditional", "reduced"}:
             kind = explicit_kind
         elif label == "防御不能耐性":
             kind = "conditional"
@@ -4623,9 +4740,11 @@ def build_cards(champions: list[dict], cache: dict,
             for item in dict.fromkeys(resistance_items["conditional"])
             if item not in full_immunity_items
         ]
-        immunity_search = "|".join(dict.fromkeys(full_immunity_items + conditional_immunity_items))
+        reduced_immunity_items = list(dict.fromkeys(resistance_items["reduced"]))
+        immunity_search = "|".join(dict.fromkeys(full_immunity_items + conditional_immunity_items + reduced_immunity_items))
         full_immunity_search = "|".join(full_immunity_items)
         conditional_immunity_search = "|".join(conditional_immunity_items)
+        reduced_immunity_search = "|".join(reduced_immunity_items)
 
         portrait_html = (
             f'<img class="champ-portrait" src="{PORTRAIT_SRC_DIR}/{portrait_fname}" alt="{name_en}">'
@@ -4635,7 +4754,7 @@ def build_cards(champions: list[dict], cache: dict,
         en_sub = f'<span class="champ-en">{name_en}</span>' if name_jp else ""
         release_html = f'<div class="release">リリース: {release}</div>' if release else ""
         card = f"""
-<div class="card" data-slug="{slug}" data-binary-id="{html.escape(binary_id)}" data-class="{cls}" data-years="{year_search}" data-immunities="{html.escape(immunity_search)}" data-immunities-full="{html.escape(full_immunity_search)}" data-immunities-conditional="{html.escape(conditional_immunity_search)}" data-buffs="{html.escape(self_buff_search)}" data-debuffs="{html.escape(opponent_debuff_search)}" data-name="{html.escape((name_jp + ' ' + name_en + ' ' + tag_search + ' ' + self_buff_search.replace('|', ' ') + ' ' + opponent_debuff_search.replace('|', ' ')).lower())}">
+<div class="card" data-slug="{slug}" data-binary-id="{html.escape(binary_id)}" data-class="{cls}" data-years="{year_search}" data-immunities="{html.escape(immunity_search)}" data-immunities-full="{html.escape(full_immunity_search)}" data-immunities-conditional="{html.escape(conditional_immunity_search)}" data-immunities-reduced="{html.escape(reduced_immunity_search)}" data-buffs="{html.escape(self_buff_search)}" data-debuffs="{html.escape(opponent_debuff_search)}" data-name="{html.escape((name_jp + ' ' + name_en + ' ' + tag_search + ' ' + self_buff_search.replace('|', ' ') + ' ' + opponent_debuff_search.replace('|', ' ')).lower())}">
   <div class="card-header" style="border-left:4px solid {color}">
     <div class="title-row">
       {portrait_html}
@@ -4653,6 +4772,55 @@ def build_cards(champions: list[dict], cache: dict,
         html_parts.append(card)
 
     return "\n".join(html_parts)
+
+
+def format_update_date(date_value: str) -> str:
+    parts = str(date_value).split("-")
+    if len(parts) == 3 and all(part.isdigit() for part in parts):
+        year, month, day = parts
+        return f"{int(year)}年{int(month)}月{int(day)}日"
+    return str(date_value)
+
+
+def load_latest_update() -> dict[str, str]:
+    fallback = {
+        "date": "2026-06-15",
+        "label": "2026年6月15日",
+        "summary": "耐性絞り込みを1つにまとめ、完全耐性と条件付き耐性を切り替えられるようにしました。",
+    }
+    if not UPDATE_HISTORY_PATH.exists():
+        return fallback
+    try:
+        payload = json.loads(UPDATE_HISTORY_PATH.read_text(encoding="utf-8"))
+    except (OSError, json.JSONDecodeError):
+        return fallback
+
+    updates = payload.get("updates", payload) if isinstance(payload, dict) else payload
+    if not isinstance(updates, list):
+        return fallback
+
+    valid_updates = [
+        item for item in updates
+        if isinstance(item, dict) and str(item.get("date", "")).strip() and str(item.get("summary", "")).strip()
+    ]
+    if not valid_updates:
+        return fallback
+
+    latest = max(
+        valid_updates,
+        key=lambda item: str(item.get("updated_at") or item.get("date") or ""),
+    )
+    date_value = str(latest.get("date", "")).strip()
+    return {
+        "date": date_value,
+        "label": str(latest.get("label") or format_update_date(date_value)).strip(),
+        "summary": str(latest.get("summary", "")).strip(),
+    }
+
+
+def immunity_filter_label(value: str) -> str:
+    value = str(value)
+    return value[:-2] if value.endswith("耐性") else value
 
 
 def generate_html(champions: list[dict], cache: dict,
@@ -4689,14 +4857,17 @@ def generate_html(champions: list[dict], cache: dict,
         for item in html.unescape(raw).split("|"):
             if item:
                 conditional_immunity_values.add(item)
-    full_immunity_btns = '<button class="f-btn immunity-btn full-immunity-btn active" data-full-immunity="all">指定なし</button>\n'
-    for item in sorted(full_immunity_values):
+    reduced_immunity_values: set[str] = set()
+    for raw in _re.findall(r'data-immunities-reduced="([^"]*)"', cards_html):
+        for item in html.unescape(raw).split("|"):
+            if item:
+                reduced_immunity_values.add(item)
+    immunity_values = full_immunity_values | conditional_immunity_values | reduced_immunity_values
+    immunity_btns = '<button class="f-btn immunity-btn immunity-option-btn active" data-immunity="all">指定なし</button>\n'
+    for item in sorted(immunity_values):
         safe_item = html.escape(item)
-        full_immunity_btns += f'<button class="f-btn immunity-btn full-immunity-btn" data-full-immunity="{safe_item}">{safe_item}</button>\n'
-    conditional_immunity_btns = '<button class="f-btn immunity-btn conditional-immunity-btn active" data-conditional-immunity="all">指定なし</button>\n'
-    for item in sorted(conditional_immunity_values):
-        safe_item = html.escape(item)
-        conditional_immunity_btns += f'<button class="f-btn immunity-btn conditional-immunity-btn" data-conditional-immunity="{safe_item}">{safe_item}</button>\n'
+        safe_label = html.escape(immunity_filter_label(item))
+        immunity_btns += f'<button class="f-btn immunity-btn immunity-option-btn" data-immunity="{safe_item}" title="{safe_item}">{safe_label}</button>\n'
     self_buff_values: set[str] = set()
     for raw in _re.findall(r'data-buffs="([^"]*)"', cards_html):
         for item in html.unescape(raw).split("|"):
@@ -4720,7 +4891,7 @@ def generate_html(champions: list[dict], cache: dict,
     seo_title = f"MCOC チャンピオン一覧・能力検索（日本語）｜{total}体対応"
     seo_description = (
         f"Marvel Contest of Champions（MCOC）のチャンピオン{total}体を日本語で検索・絞り込みできる一覧。"
-        "クラス、リリース年、完全耐性、条件付き耐性、自分が発動するバフ、相手に付与するデバフ、用語リスト、タグ、能力説明、シナジーを確認できます。"
+        "クラス、リリース年、耐性、バフ、デバフ、用語リスト、タグ、能力説明、シナジーを確認できます。"
     )
     seo_keywords = (
         "MCOC,Marvel Contest of Champions,マーベルコンテストオブチャンピオンズ,"
@@ -4769,9 +4940,10 @@ def generate_html(champions: list[dict], cache: dict,
         ensure_ascii=False,
         separators=(",", ":"),
     )
-    last_updated_iso = "2026-06-15"
-    last_updated_label = "2026年6月15日"
-    update_summary = "用語リストから該当チャンピオンを表示・絞り込みできるようにし、検索リセットを追加しました。"
+    latest_update = load_latest_update()
+    last_updated_iso = latest_update["date"]
+    last_updated_label = latest_update["label"]
+    update_summary = latest_update["summary"]
 
     return f"""<!DOCTYPE html>
 <html lang="ja">
@@ -4854,6 +5026,10 @@ body{{background:var(--bg);color:var(--text);font-family:'Segoe UI','Hiragino Ka
 .filter-details summary::-webkit-details-marker{{display:none}}
 .filter-details summary::after{{content:"＋";color:var(--text2);font-size:15px;line-height:1}}
 .filter-details[open] summary::after{{content:"－"}}
+.filter-mode{{display:inline-flex;align-items:center;gap:2px;margin:0 0 9px;padding:3px;background:var(--bg3);border:1px solid var(--border);border-radius:8px}}
+.filter-mode-btn{{appearance:none;border:0;background:transparent;color:var(--text2);border-radius:6px;padding:5px 10px;font-size:12px;font-weight:700;cursor:pointer;line-height:1.2}}
+.filter-mode-btn.active{{background:var(--accent);color:#fff}}
+.filter-mode-btn:focus-visible{{outline:2px solid var(--accent);outline-offset:2px}}
 .f-inner{{display:flex;gap:7px;flex-wrap:wrap;padding:0 0 10px}}
 .f-btn{{padding:5px 13px;border-radius:20px;border:1px solid var(--border);background:transparent;color:var(--text2);cursor:pointer;font-size:13px;line-height:1.35;white-space:normal;overflow-wrap:anywhere;max-width:100%;text-align:left;transition:.15s}}
 .f-btn:hover{{border-color:var(--cc,var(--accent));color:var(--text)}}
@@ -5014,12 +5190,13 @@ body{{background:var(--bg);color:var(--text);font-family:'Segoe UI','Hiragino Ka
       <div class="f-inner">{year_btns}</div>
     </details>
     <details class="filter-details" data-filter-details>
-      <summary>完全耐性</summary>
-      <div class="f-inner">{full_immunity_btns}</div>
-    </details>
-    <details class="filter-details" data-filter-details>
-      <summary>条件付き耐性</summary>
-      <div class="f-inner">{conditional_immunity_btns}</div>
+      <summary>耐性</summary>
+      <div class="filter-mode" role="group" aria-label="耐性の種類">
+        <button type="button" class="filter-mode-btn immunity-mode-btn active" data-immunity-mode="full" aria-pressed="true">完全耐性</button>
+        <button type="button" class="filter-mode-btn immunity-mode-btn" data-immunity-mode="conditional" aria-pressed="false">条件付き耐性</button>
+        <button type="button" class="filter-mode-btn immunity-mode-btn" data-immunity-mode="reduced" aria-pressed="false">効果低下</button>
+      </div>
+      <div class="f-inner immunity-options">{immunity_btns}</div>
     </details>
     <details class="filter-details" data-filter-details>
       <summary>自分バフ</summary>
@@ -5053,8 +5230,8 @@ body{{background:var(--bg);color:var(--text);font-family:'Segoe UI','Hiragino Ka
 
 <script>
 let cls='all',yr='all',q='',selectedChampionSlug='';
-let selectedFullImmunities=[];
-let selectedConditionalImmunities=[];
+let immunityMode='full';
+let selectedImmunities=[];
 let selectedBuffs=[];
 let selectedDebuffs=[];
 const glossaryPopover=document.createElement('div');
@@ -5085,14 +5262,13 @@ function showGlossary(term){{
 function resetFiltersForChampionSearch(){{
   cls='all';
   yr='all';
-  selectedFullImmunities.splice(0,selectedFullImmunities.length);
-  selectedConditionalImmunities.splice(0,selectedConditionalImmunities.length);
+  immunityMode='full';
+  selectedImmunities.splice(0,selectedImmunities.length);
   selectedBuffs.splice(0,selectedBuffs.length);
   selectedDebuffs.splice(0,selectedDebuffs.length);
   document.querySelectorAll('.class-btn').forEach(b=>b.classList.toggle('active',b.dataset.class==='all'));
   document.querySelectorAll('.year-btn').forEach(b=>b.classList.toggle('active',b.dataset.year==='all'));
-  document.querySelectorAll('.full-immunity-btn').forEach(b=>b.classList.toggle('active',b.dataset.fullImmunity==='all'));
-  document.querySelectorAll('.conditional-immunity-btn').forEach(b=>b.classList.toggle('active',b.dataset.conditionalImmunity==='all'));
+  syncImmunityControls();
   document.querySelectorAll('.buff-btn').forEach(b=>b.classList.toggle('active',b.dataset.buff==='all'));
   document.querySelectorAll('.debuff-btn').forEach(b=>b.classList.toggle('active',b.dataset.debuff==='all'));
 }}
@@ -5199,8 +5375,39 @@ function bindMultiFilter(selector,items,datasetKey){{
   }});
 }});
 }}
-bindMultiFilter('.full-immunity-btn',selectedFullImmunities,'fullImmunity');
-bindMultiFilter('.conditional-immunity-btn',selectedConditionalImmunities,'conditionalImmunity');
+function syncImmunityControls(){{
+  document.querySelectorAll('.immunity-mode-btn').forEach(b=>{{
+    const active=b.dataset.immunityMode===immunityMode;
+    b.classList.toggle('active',active);
+    b.setAttribute('aria-pressed',active?'true':'false');
+  }});
+  document.querySelectorAll('.immunity-option-btn').forEach(b=>{{
+    const item=b.dataset.immunity;
+    b.classList.toggle('active',item==='all'?selectedImmunities.length===0:selectedImmunities.includes(item));
+  }});
+}}
+document.querySelectorAll('.immunity-mode-btn').forEach(b=>{{
+  b.addEventListener('click',function(){{
+    immunityMode=this.dataset.immunityMode||'full';
+    syncImmunityControls();
+    run();
+  }});
+}});
+document.querySelectorAll('.immunity-option-btn').forEach(b=>{{
+  b.addEventListener('click',function(){{
+    const value=this.dataset.immunity;
+    if(value==='all'){{
+      selectedImmunities.splice(0,selectedImmunities.length);
+    }}else if(selectedImmunities.includes(value)){{
+      selectedImmunities.splice(selectedImmunities.indexOf(value),1);
+    }}else{{
+      selectedImmunities.push(value);
+    }}
+    syncImmunityControls();
+    run();
+  }});
+}});
+syncImmunityControls();
 bindMultiFilter('.buff-btn',selectedBuffs,'buff');
 bindMultiFilter('.debuff-btn',selectedDebuffs,'debuff');
 document.getElementById('resetBtn').addEventListener('click',resetAllFilters);
@@ -5222,17 +5429,18 @@ function run(){{
     const my=yr==='all'||(card.dataset.years||'').split(' ').includes(yr);
     const fullImmunities=(card.dataset.immunitiesFull||'').split('|').filter(Boolean);
     const conditionalImmunities=(card.dataset.immunitiesConditional||'').split('|').filter(Boolean);
+    const reducedImmunities=(card.dataset.immunitiesReduced||'').split('|').filter(Boolean);
+    const immunities=immunityMode==='reduced'?reducedImmunities:(immunityMode==='conditional'?conditionalImmunities:fullImmunities);
     const buffs=(card.dataset.buffs||'').split('|').filter(Boolean);
     const debuffs=(card.dataset.debuffs||'').split('|').filter(Boolean);
-    const mf=selectedFullImmunities.every(item=>fullImmunities.includes(item));
-    const mi=selectedConditionalImmunities.every(item=>conditionalImmunities.includes(item));
+    const mi=selectedImmunities.every(item=>immunities.includes(item));
     const mb=selectedBuffs.every(item=>buffs.includes(item));
     const md=selectedDebuffs.every(item=>debuffs.includes(item));
     const mq=selectedChampionSlug
       ? card.dataset.slug===selectedChampionSlug
       : (!q||card.dataset.name.includes(q)||card.textContent.toLowerCase().includes(q));
-    card.style.display=(mc&&my&&mf&&mi&&mb&&md&&mq)?'':'none';
-    if(mc&&my&&mf&&mi&&mb&&md&&mq)vis++;
+    card.style.display=(mc&&my&&mi&&mb&&md&&mq)?'':'none';
+    if(mc&&my&&mi&&mb&&md&&mq)vis++;
   }});
   document.getElementById('cnt').textContent=vis+' 件表示中';
   document.getElementById('noRes').style.display=vis===0?'block':'none';
