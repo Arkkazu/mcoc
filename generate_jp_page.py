@@ -4687,16 +4687,23 @@ body{{background:var(--bg);color:var(--text);font-family:'Segoe UI','Hiragino Ka
   .search-ad-slot{{width:728px;height:90px}}
 }}
 
-/* フィルターバー */
-.f-bar{{background:var(--bg2);border-bottom:1px solid var(--border);padding:9px 20px;overflow-x:auto}}
-.f-inner{{max-width:1400px;margin:0 auto;display:flex;gap:7px;flex-wrap:nowrap}}
-.f-label{{font-size:12px;color:var(--text2);font-weight:700;align-self:center;white-space:nowrap;margin-right:3px}}
-.f-btn{{padding:5px 13px;border-radius:20px;border:1px solid var(--border);background:transparent;color:var(--text2);cursor:pointer;font-size:13px;white-space:nowrap;transition:.15s}}
+/* フィルター */
+.filters{{background:var(--bg2);border-top:1px solid var(--border);border-bottom:1px solid var(--border)}}
+.filters-inner{{max-width:1400px;margin:0 auto;padding:8px 20px;display:flex;flex-direction:column;gap:6px}}
+.filter-details{{border-bottom:1px solid var(--border)}}
+.filter-details:last-child{{border-bottom:0}}
+.filter-details summary{{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:9px 0;color:var(--text);font-size:13px;font-weight:700;cursor:pointer;list-style:none;user-select:none}}
+.filter-details summary::-webkit-details-marker{{display:none}}
+.filter-details summary::after{{content:"＋";color:var(--text2);font-size:15px;line-height:1}}
+.filter-details[open] summary::after{{content:"－"}}
+.f-inner{{display:flex;gap:7px;flex-wrap:wrap;padding:0 0 10px}}
+.f-btn{{padding:5px 13px;border-radius:20px;border:1px solid var(--border);background:transparent;color:var(--text2);cursor:pointer;font-size:13px;line-height:1.35;white-space:normal;overflow-wrap:anywhere;max-width:100%;text-align:left;transition:.15s}}
 .f-btn:hover{{border-color:var(--cc,var(--accent));color:var(--text)}}
 .f-btn.active{{background:var(--cc,var(--accent));border-color:transparent;color:#fff;font-weight:600}}
 @media (min-width:900px){{
-  .f-bar{{overflow-x:visible}}
-  .f-inner{{flex-wrap:wrap;row-gap:7px}}
+  .filters-inner{{padding:9px 20px;gap:3px}}
+  .filter-details summary{{padding:8px 0}}
+  .f-inner{{padding-bottom:9px;row-gap:7px}}
 }}
 
 /* グリッド */
@@ -4793,34 +4800,30 @@ body{{background:var(--bg);color:var(--text);font-family:'Segoe UI','Hiragino Ka
   (adsbygoogle = window.adsbygoogle || []).push({{}});
 </script>
 
-<div class="f-bar">
-  <div class="f-inner">
-    {filter_btns}
+<section class="filters" aria-label="絞り込み">
+  <div class="filters-inner">
+    <details class="filter-details" data-filter-details>
+      <summary>クラス</summary>
+      <div class="f-inner">{filter_btns}</div>
+    </details>
+    <details class="filter-details" data-filter-details>
+      <summary>リリース年</summary>
+      <div class="f-inner">{year_btns}</div>
+    </details>
+    <details class="filter-details" data-filter-details>
+      <summary>完全耐性</summary>
+      <div class="f-inner">{full_immunity_btns}</div>
+    </details>
+    <details class="filter-details" data-filter-details>
+      <summary>条件付き耐性</summary>
+      <div class="f-inner">{conditional_immunity_btns}</div>
+    </details>
+    <details class="filter-details" data-filter-details>
+      <summary>相手デバフ</summary>
+      <div class="f-inner">{opponent_debuff_btns}</div>
+    </details>
   </div>
-</div>
-<div class="f-bar year-bar">
-  <div class="f-inner">
-    {year_btns}
-  </div>
-</div>
-<div class="f-bar immunity-bar">
-  <div class="f-inner">
-    <span class="f-label">完全耐性</span>
-    {full_immunity_btns}
-  </div>
-</div>
-<div class="f-bar immunity-bar conditional-immunity-bar">
-  <div class="f-inner">
-    <span class="f-label">条件付き耐性</span>
-    {conditional_immunity_btns}
-  </div>
-</div>
-<div class="f-bar debuff-bar">
-  <div class="f-inner">
-    <span class="f-label">相手デバフ</span>
-    {opponent_debuff_btns}
-  </div>
-</div>
+</section>
 
 <main class="main">
   <div class="grid" id="grid">
@@ -4928,6 +4931,14 @@ function bindMultiFilter(selector,items,datasetKey){{
 bindMultiFilter('.full-immunity-btn',selectedFullImmunities,'fullImmunity');
 bindMultiFilter('.conditional-immunity-btn',selectedConditionalImmunities,'conditionalImmunity');
 bindMultiFilter('.debuff-btn',selectedDebuffs,'debuff');
+const detailsMq=window.matchMedia('(min-width:900px)');
+function syncFilterDetails(){{
+  document.querySelectorAll('[data-filter-details]').forEach(detail=>{{
+    detail.open=detailsMq.matches;
+  }});
+}}
+syncFilterDetails();
+detailsMq.addEventListener('change',syncFilterDetails);
 function run(){{
   q=document.getElementById('q').value.toLowerCase();
   let vis=0;
