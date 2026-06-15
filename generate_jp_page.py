@@ -3434,6 +3434,8 @@ def build_game_data_html(slug: str, abilities: dict, slug_map: dict,
     # 重複なしでf2タイプを収集（buff/debuff/immune に分類）
     seen_set: set[str] = set()
     buff_badges:   list[str] = []
+    self_buff_badges: list[str] = []
+    self_buff_seen: set[str] = set()
     debuff_badges: list[str] = []
     opponent_debuff_badges: list[str] = []
     opponent_debuff_seen: set[str] = set()
@@ -3479,6 +3481,14 @@ def build_game_data_html(slug: str, abilities: dict, slug_map: dict,
                 immune_badges.append((jp, _immunity_kind_from_entry(e)))
         elif jp in BUFF_LABELS_JP or raw in BUFF_TYPES:
             buff_badges.append(jp)
+            if (
+                not _entry_targets_opponent(e) and
+                jp not in DEBUFF_LABELS_JP and
+                not jp.endswith("耐性") and
+                jp not in self_buff_seen
+            ):
+                self_buff_seen.add(jp)
+                self_buff_badges.append(jp)
         elif jp in DEBUFF_LABELS_JP or raw in DEBUFF_TYPES:
             debuff_badges.append(jp)
         else:
@@ -3553,8 +3563,9 @@ def build_game_data_html(slug: str, abilities: dict, slug_map: dict,
         return ""
 
     opponent_debuff_search = html.escape("|".join(opponent_debuff_badges))
+    self_buff_search = html.escape("|".join(self_buff_badges))
     return f"""<div class="gd-sec">
-<div class="gd-meta" hidden data-opponent-debuffs="{opponent_debuff_search}"></div>
+<div class="gd-meta" hidden data-self-buffs="{self_buff_search}" data-opponent-debuffs="{opponent_debuff_search}"></div>
   {abilities_html}
   {immune_html}
   {sections_html}
@@ -4492,6 +4503,11 @@ def build_cards(champions: list[dict], cache: dict,
             html.unescape(opponent_debuff_match.group(1))
             if opponent_debuff_match else ""
         )
+        self_buff_match = _re.search(r'data-self-buffs="([^"]*)"', game_data_html)
+        self_buff_search = (
+            html.unescape(self_buff_match.group(1))
+            if self_buff_match else ""
+        )
         resistance_items = extract_resistance_items_from_game_data_html(game_data_html)
         full_immunity_items = list(dict.fromkeys(resistance_items["full"]))
         conditional_immunity_items = [
@@ -4511,7 +4527,7 @@ def build_cards(champions: list[dict], cache: dict,
         en_sub = f'<span class="champ-en">{name_en}</span>' if name_jp else ""
         release_html = f'<div class="release">リリース: {release}</div>' if release else ""
         card = f"""
-<div class="card" data-slug="{slug}" data-binary-id="{html.escape(binary_id)}" data-class="{cls}" data-years="{year_search}" data-immunities="{html.escape(immunity_search)}" data-immunities-full="{html.escape(full_immunity_search)}" data-immunities-conditional="{html.escape(conditional_immunity_search)}" data-debuffs="{html.escape(opponent_debuff_search)}" data-name="{html.escape((name_jp + ' ' + name_en + ' ' + tag_search + ' ' + opponent_debuff_search.replace('|', ' ')).lower())}">
+<div class="card" data-slug="{slug}" data-binary-id="{html.escape(binary_id)}" data-class="{cls}" data-years="{year_search}" data-immunities="{html.escape(immunity_search)}" data-immunities-full="{html.escape(full_immunity_search)}" data-immunities-conditional="{html.escape(conditional_immunity_search)}" data-buffs="{html.escape(self_buff_search)}" data-debuffs="{html.escape(opponent_debuff_search)}" data-name="{html.escape((name_jp + ' ' + name_en + ' ' + tag_search + ' ' + self_buff_search.replace('|', ' ') + ' ' + opponent_debuff_search.replace('|', ' ')).lower())}">
   <div class="card-header" style="border-left:4px solid {color}">
     <div class="title-row">
       {portrait_html}
@@ -4573,6 +4589,15 @@ def generate_html(champions: list[dict], cache: dict,
     for item in sorted(conditional_immunity_values):
         safe_item = html.escape(item)
         conditional_immunity_btns += f'<button class="f-btn immunity-btn conditional-immunity-btn" data-conditional-immunity="{safe_item}">{safe_item}</button>\n'
+    self_buff_values: set[str] = set()
+    for raw in _re.findall(r'data-buffs="([^"]*)"', cards_html):
+        for item in html.unescape(raw).split("|"):
+            if item:
+                self_buff_values.add(item)
+    self_buff_btns = '<button class="f-btn buff-btn active" data-buff="all">指定なし</button>\n'
+    for item in sorted(self_buff_values):
+        safe_item = html.escape(item)
+        self_buff_btns += f'<button class="f-btn buff-btn" data-buff="{safe_item}">{safe_item}</button>\n'
     opponent_debuff_values: set[str] = set()
     for raw in _re.findall(r'data-debuffs="([^"]*)"', cards_html):
         for item in html.unescape(raw).split("|"):
@@ -4586,11 +4611,11 @@ def generate_html(champions: list[dict], cache: dict,
     seo_title = f"MCOC チャンピオン一覧・能力検索（日本語）｜{total}体対応"
     seo_description = (
         f"Marvel Contest of Champions（MCOC）のチャンピオン{total}体を日本語で検索・絞り込みできる一覧。"
-        "クラス、リリース年、完全耐性、条件付き耐性、相手に付与するデバフ、タグ、能力説明、シナジーを確認できます。"
+        "クラス、リリース年、完全耐性、条件付き耐性、自分が発動するバフ、相手に付与するデバフ、タグ、能力説明、シナジーを確認できます。"
     )
     seo_keywords = (
         "MCOC,Marvel Contest of Champions,マーベルコンテストオブチャンピオンズ,"
-        "チャンピオン一覧,チャンピオン能力,日本語,耐性,デバフ,シナジー,攻略"
+        "チャンピオン一覧,チャンピオン能力,日本語,耐性,バフ,デバフ,シナジー,攻略"
     )
     seo_json_ld = json.dumps(
         [
@@ -4827,6 +4852,10 @@ body{{background:var(--bg);color:var(--text);font-family:'Segoe UI','Hiragino Ka
       <div class="f-inner">{conditional_immunity_btns}</div>
     </details>
     <details class="filter-details" data-filter-details>
+      <summary>自分バフ</summary>
+      <div class="f-inner">{self_buff_btns}</div>
+    </details>
+    <details class="filter-details" data-filter-details>
       <summary>相手デバフ</summary>
       <div class="f-inner">{opponent_debuff_btns}</div>
     </details>
@@ -4854,6 +4883,7 @@ body{{background:var(--bg);color:var(--text);font-family:'Segoe UI','Hiragino Ka
 let cls='all',yr='all',q='';
 let selectedFullImmunities=[];
 let selectedConditionalImmunities=[];
+let selectedBuffs=[];
 let selectedDebuffs=[];
 const glossaryPopover=document.createElement('div');
 glossaryPopover.className='glossary-popover';
@@ -4938,6 +4968,7 @@ function bindMultiFilter(selector,items,datasetKey){{
 }}
 bindMultiFilter('.full-immunity-btn',selectedFullImmunities,'fullImmunity');
 bindMultiFilter('.conditional-immunity-btn',selectedConditionalImmunities,'conditionalImmunity');
+bindMultiFilter('.buff-btn',selectedBuffs,'buff');
 bindMultiFilter('.debuff-btn',selectedDebuffs,'debuff');
 const detailsMq=window.matchMedia('(min-width:900px)');
 function syncFilterDetails(){{
@@ -4955,13 +4986,15 @@ function run(){{
     const my=yr==='all'||(card.dataset.years||'').split(' ').includes(yr);
     const fullImmunities=(card.dataset.immunitiesFull||'').split('|').filter(Boolean);
     const conditionalImmunities=(card.dataset.immunitiesConditional||'').split('|').filter(Boolean);
+    const buffs=(card.dataset.buffs||'').split('|').filter(Boolean);
     const debuffs=(card.dataset.debuffs||'').split('|').filter(Boolean);
     const mf=selectedFullImmunities.every(item=>fullImmunities.includes(item));
     const mi=selectedConditionalImmunities.every(item=>conditionalImmunities.includes(item));
+    const mb=selectedBuffs.every(item=>buffs.includes(item));
     const md=selectedDebuffs.every(item=>debuffs.includes(item));
     const mq=!q||card.dataset.name.includes(q)||card.textContent.toLowerCase().includes(q);
-    card.style.display=(mc&&my&&mf&&mi&&md&&mq)?'':'none';
-    if(mc&&my&&mf&&mi&&md&&mq)vis++;
+    card.style.display=(mc&&my&&mf&&mi&&mb&&md&&mq)?'':'none';
+    if(mc&&my&&mf&&mi&&mb&&md&&mq)vis++;
   }});
   document.getElementById('cnt').textContent=vis+' 件表示中';
   document.getElementById('noRes').style.display=vis===0?'block':'none';
