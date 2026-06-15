@@ -20,6 +20,7 @@ PORTRAIT_SRC_DIR = "data/portraits"
 SITE_URL = "https://marvel-allstar-battle.tokyo/"
 ADSENSE_CLIENT = "ca-pub-1334543920393100"
 SEARCH_AD_SLOT = "7024310594"
+GOOGLE_ANALYTICS_ID = "G-MY5GWMQ4GQ"
 ABILITIES_PATH  = BASE / "data" / "abilities_all.json"
 SLUG_MAP_PATH   = BASE / "data" / "slug_to_prefix.json"
 NAME_JP_PATH    = BASE / "data" / "slug_to_jp.json"
@@ -4661,6 +4662,13 @@ def generate_html(champions: list[dict], cache: dict,
 <meta name="twitter:description" content="{html.escape(seo_description, quote=True)}">
 <script type="application/ld+json">{html.escape(seo_json_ld, quote=False)}</script>
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client={html.escape(ADSENSE_CLIENT, quote=True)}" crossorigin="anonymous"></script>
+<script async src="https://www.googletagmanager.com/gtag/js?id={html.escape(GOOGLE_ANALYTICS_ID, quote=True)}"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){{dataLayer.push(arguments);}}
+  gtag('js', new Date());
+  gtag('config', '{html.escape(GOOGLE_ANALYTICS_ID, quote=True)}');
+</script>
 <style>
 :root{{
   --bg:#f2f3f7;--bg2:#ffffff;--bg3:#eef0f6;
