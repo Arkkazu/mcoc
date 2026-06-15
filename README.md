@@ -40,6 +40,7 @@ index.html
 
 ```text
 index.html
+.htaccess
 privacy.html
 disclaimer.html
 ads.txt
