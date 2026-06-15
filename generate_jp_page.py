@@ -194,12 +194,14 @@ ABILITY_TYPE_JP = {
     "incinerate_immune":    "焼却耐性",
     "coldsnap_immune":      "コールドスナップ耐性",
     "shock_immune":         "ショック耐性",
+    "neuroshock_immune":    "ニューロショック耐性",
     "stun_immune":          "気絶耐性",
     "unblockable_immune":   "防御不能耐性",
     "unstoppable_immune":   "無敵耐性",
     "buff_immunity":        "バフ耐性",
     "radiation_immune":     "放射線耐性",
     "magnetism_immune":     "磁力耐性",
+    "invert_controls_swipe_immune": "リバース・コントロール耐性",
     # ─ 特殊
     "refresh_id":           "バフ更新",
     "refresh":              "更新",
@@ -1148,6 +1150,66 @@ def render_ability_text_html(text: str, glossary_defs: dict[str, dict[str, str]]
     if pos < len(text):
         parts.append(render_plain_text_with_glossary_links(text[pos:], glossary_defs))
     return "".join(parts)
+
+
+def build_glossary_list_html(cards_html: str) -> str:
+    pattern = _re.compile(
+        r'<button type="button" class="glossary-term" '
+        r'data-glossary-key="([^"]+)" '
+        r'data-glossary-title="([^"]+)" '
+        r'data-glossary-desc="([^"]+)">(.*?)</button>'
+    )
+    terms: dict[str, dict] = {}
+    for match in pattern.finditer(cards_html):
+        key = html.unescape(match.group(1)).strip()
+        title = html.unescape(match.group(2)).strip()
+        desc = html.unescape(match.group(3)).strip()
+        label = html.unescape(_re.sub(r"<[^>]+>", "", match.group(4))).strip()
+        if not key or not title or not desc:
+            continue
+        entry = terms.setdefault(
+            key,
+            {"title": title, "desc": desc, "count": 0, "labels": {}},
+        )
+        entry["count"] += 1
+        if label:
+            entry["labels"][label] = entry["labels"].get(label, 0) + 1
+
+    if not terms:
+        return ""
+
+    items = []
+    for key, entry in sorted(terms.items(), key=lambda item: (item[1]["title"], item[0])):
+        title = entry["title"]
+        desc = entry["desc"]
+        count = entry["count"]
+        items.append(
+            '<article class="glossary-list-item">'
+            '<div class="glossary-list-head">'
+            '<button type="button" class="glossary-term glossary-list-term" '
+            f'data-glossary-key="{html.escape(key, quote=True)}" '
+            f'data-glossary-title="{html.escape(title, quote=True)}" '
+            f'data-glossary-desc="{html.escape(desc, quote=True)}">'
+            f'{html.escape(title)}</button>'
+            f'<span class="glossary-list-count">{count}</span>'
+            '</div>'
+            f'<div class="glossary-list-key">{html.escape(key)}</div>'
+            f'<p class="glossary-list-desc">{html.escape(desc)}</p>'
+            '</article>'
+        )
+
+    return (
+        '<section class="glossary-list" aria-label="用語リスト">'
+        '<div class="glossary-list-inner">'
+        '<details class="glossary-list-details">'
+        f'<summary>用語リスト（{len(items)}語）</summary>'
+        '<div class="glossary-list-body">'
+        + "".join(items) +
+        '</div>'
+        '</details>'
+        '</div>'
+        '</section>'
+    )
 
 
 _SYNERGY_GENERIC_JP = {
@@ -2555,10 +2617,10 @@ def _opponent_debuff_label_from_entry(entry: dict,
 def _immunity_kind_from_entry(entry: dict) -> str:
     trigger = str(entry.get("f4", "")).lower()
     condition = str(entry.get("f11", "") or "").strip()
-    state_gate = str(entry.get("f5", "") or "").strip()
-    if condition or state_gate:
+    state_gate = str(entry.get("f5", "") or "").strip().upper()
+    if condition or (state_gate and state_gate != "ALWAYS"):
         return "conditional"
-    if trigger in {"onstart", "always"}:
+    if trigger in {"onstart", "onprestart", "onentermatch", "always"}:
         return "full"
     return "conditional"
 
@@ -3414,15 +3476,11 @@ def build_game_data_html(slug: str, abilities: dict, slug_map: dict,
             }
     elif kv and loc_prefix_map:
         sections = build_active_game_ability_sections(active_cats, active_ids, kv, loc_prefixes)
-        if (
-            not sections or
-            (active_ids and (len(active_ids) < 4 or not _has_non_special_section(sections)))
-        ):
-            fallback_cats = _prefer_rank_variant_categories(_core_game_categories(cats, binary_id))
-            fallback_sections = build_active_game_ability_sections(fallback_cats, set(), kv, loc_prefixes)
-            if _section_text_count(fallback_sections) > _section_text_count(sections):
-                section_cats = fallback_cats
-                sections = fallback_sections
+        fallback_cats = _prefer_rank_variant_categories(_core_game_categories(cats, binary_id))
+        fallback_sections = build_active_game_ability_sections(fallback_cats, set(), kv, loc_prefixes)
+        if _section_text_count(fallback_sections) > _section_text_count(sections):
+            section_cats = fallback_cats
+            sections = fallback_sections
         if not sections and (loc_prefix or legacy_loc_prefixes):
             sections = get_champion_sections(loc_prefix, kv, legacy_loc_prefixes)
 
@@ -3442,6 +3500,19 @@ def build_game_data_html(slug: str, abilities: dict, slug_map: dict,
     immune_badges: list[tuple[str, str]] = []
     other_badges:  list[str] = []
     ui_index = load_bcg_ui_stat_index()
+
+    self_immune_entries: list[dict] = []
+    for cat in ("signature", "passive", "other", "heavy", "special1", "special2", "special3"):
+        self_immune_entries.extend(
+            entry for entry in cats.get(cat, [])
+            if not _entry_targets_opponent(entry) and _immune_badges_from_entry(entry)
+        )
+
+    for e in self_immune_entries:
+        for immune_jp in _immune_badges_from_entry(e):
+            if immune_jp not in seen_set:
+                seen_set.add(immune_jp)
+                immune_badges.append((immune_jp, _immunity_kind_from_entry(e)))
 
     for e in all_entries:
         opponent_debuff_jp = _opponent_debuff_label_from_entry(e, ui_index, kv or {})
@@ -3637,6 +3708,7 @@ _RESISTANCE_TERM_MAP = [
     ("毒", "毒"),
     ("焼却", "焼却"),
     ("放火", "焼却"),
+    ("ニューロショック", "ニューロショック"),
     ("ショック", "ショック"),
     ("衝撃", "ショック"),
     ("凍傷", "フロストバイト"),
@@ -4607,11 +4679,12 @@ def generate_html(champions: list[dict], cache: dict,
     for item in sorted(opponent_debuff_values):
         safe_item = html.escape(item)
         opponent_debuff_btns += f'<button class="f-btn debuff-btn" data-debuff="{safe_item}">{safe_item}</button>\n'
+    glossary_list_html = build_glossary_list_html(cards_html)
     total      = len(champions)
     seo_title = f"MCOC チャンピオン一覧・能力検索（日本語）｜{total}体対応"
     seo_description = (
         f"Marvel Contest of Champions（MCOC）のチャンピオン{total}体を日本語で検索・絞り込みできる一覧。"
-        "クラス、リリース年、完全耐性、条件付き耐性、自分が発動するバフ、相手に付与するデバフ、タグ、能力説明、シナジーを確認できます。"
+        "クラス、リリース年、完全耐性、条件付き耐性、自分が発動するバフ、相手に付与するデバフ、用語リスト、タグ、能力説明、シナジーを確認できます。"
     )
     seo_keywords = (
         "MCOC,Marvel Contest of Champions,マーベルコンテストオブチャンピオンズ,"
@@ -4713,6 +4786,13 @@ body{{background:var(--bg);color:var(--text);font-family:'Segoe UI','Hiragino Ka
 .cnt{{font-size:13px;color:var(--text2);white-space:nowrap}}
 .ad-wrap{{max-width:1400px;margin:14px auto 10px;padding:0 20px;display:flex;justify-content:center}}
 .search-ad-slot{{display:block;width:320px;height:100px}}
+@media (max-width:560px){{
+  .site-hd{{padding:12px}}
+  .hd-inner{{gap:8px}}
+  .site-title{{width:100%;font-size:1.15rem;white-space:normal}}
+  .search-wrap{{flex:1 1 100%;min-width:0}}
+  .cnt{{width:100%}}
+}}
 @media (min-width:500px){{
   .search-ad-slot{{width:468px;height:60px}}
 }}
@@ -4739,10 +4819,34 @@ body{{background:var(--bg);color:var(--text);font-family:'Segoe UI','Hiragino Ka
   .f-inner{{padding-bottom:9px;row-gap:7px}}
 }}
 
+/* 用語リスト */
+.glossary-list{{background:var(--bg);border-bottom:1px solid var(--border)}}
+.glossary-list-inner{{max-width:1400px;margin:0 auto;padding:12px 20px 0}}
+.glossary-list-details{{background:var(--bg2);border:1px solid var(--border);border-radius:8px;overflow:hidden}}
+.glossary-list-details summary{{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:11px 13px;color:var(--text);font-size:13px;font-weight:700;cursor:pointer;list-style:none;user-select:none}}
+.glossary-list-details summary::-webkit-details-marker{{display:none}}
+.glossary-list-details summary::after{{content:"＋";color:var(--text2);font-size:15px;line-height:1}}
+.glossary-list-details[open] summary::after{{content:"－"}}
+.glossary-list-body{{border-top:1px solid var(--border);padding:12px;display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:8px;max-height:430px;overflow:auto}}
+.glossary-list-item{{min-width:0;background:var(--bg3);border:1px solid var(--border);border-radius:6px;padding:9px 10px}}
+.glossary-list-head{{display:flex;align-items:center;gap:7px;min-width:0}}
+.glossary-list .glossary-list-term{{font-weight:700;text-align:left;overflow-wrap:anywhere}}
+.glossary-list-count{{font-size:10px;color:#fff;background:var(--accent);border-radius:999px;padding:1px 7px;line-height:1.5;flex-shrink:0}}
+.glossary-list-key{{font-size:10px;color:var(--text2);margin-top:2px;overflow-wrap:anywhere}}
+.glossary-list-desc{{font-size:12px;color:var(--text2);line-height:1.55;margin-top:5px}}
+@media (max-width:560px){{
+  .glossary-list-inner{{padding:10px 12px 0}}
+  .glossary-list-body{{grid-template-columns:1fr;max-height:360px;padding:10px}}
+}}
+
 /* グリッド */
 .main{{max-width:1400px;margin:0 auto;padding:20px}}
 .grid{{display:grid;grid-template-columns:repeat(auto-fill,minmax(350px,1fr));gap:18px}}
 .no-res{{text-align:center;color:var(--text2);padding:60px 20px;font-size:1rem;display:none}}
+@media (max-width:560px){{
+  .main{{padding:12px}}
+  .grid{{grid-template-columns:minmax(0,1fr);gap:12px}}
+}}
 
 /* カード */
 .card{{background:var(--bg2);border:1px solid var(--border);border-radius:12px;overflow:hidden;transition:.15s;box-shadow:0 1px 4px rgba(0,0,0,.06)}}
@@ -4757,6 +4861,13 @@ body{{background:var(--bg);color:var(--text);font-family:'Segoe UI','Hiragino Ka
 .cls-badge{{font-size:11px;font-weight:600;padding:3px 10px;border-radius:12px;color:#fff;white-space:nowrap}}
 .release{{font-size:12px;color:var(--text2);margin-top:3px}}
 .card-body{{padding:13px 15px;display:flex;flex-direction:column;gap:11px}}
+@media (max-width:560px){{
+  .title-row{{display:grid;grid-template-columns:64px minmax(0,1fr);align-items:start;justify-content:start}}
+  .champ-portrait,.champ-portrait-none{{grid-row:1 / span 2}}
+  .champ-title{{grid-column:2}}
+  .champ-name{{font-size:1rem;line-height:1.25}}
+  .cls-badge{{grid-column:2;justify-self:start;max-width:100%;white-space:normal;text-align:center;line-height:1.2;padding:3px 8px;overflow-wrap:anywhere}}
+}}
 
 /* タグ */
 .tag-details{{font-size:13px}}
@@ -4861,6 +4972,8 @@ body{{background:var(--bg);color:var(--text);font-family:'Segoe UI','Hiragino Ka
     </details>
   </div>
 </section>
+
+{glossary_list_html}
 
 <main class="main">
   <div class="grid" id="grid">
