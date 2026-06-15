@@ -110,12 +110,10 @@ jobs:
         run: |
           set -euo pipefail
           XSERVER_PORT="${XSERVER_PORT:-10022}"
-          scp -i ~/.ssh/xserver_key -P "$XSERVER_PORT" index.html \
-            "$XSERVER_USER@$XSERVER_HOST:$XSERVER_DEPLOY_PATH/index.html"
-          scp -i ~/.ssh/xserver_key -P "$XSERVER_PORT" .htaccess privacy.html disclaimer.html ads.txt robots.txt sitemap.xml \
-            "$XSERVER_USER@$XSERVER_HOST:$XSERVER_DEPLOY_PATH/"
-          scp -i ~/.ssh/xserver_key -P "$XSERVER_PORT" -r data/portraits \
-            "$XSERVER_USER@$XSERVER_HOST:$XSERVER_DEPLOY_PATH/data/"
+          REMOTE_DEPLOY_PATH="$(printf '%q' "$XSERVER_DEPLOY_PATH")"
+          tar -czf - index.html .htaccess privacy.html disclaimer.html ads.txt robots.txt sitemap.xml data/portraits | \
+            ssh -i ~/.ssh/xserver_key -p "$XSERVER_PORT" -o BatchMode=yes -o ConnectTimeout=20 \
+              "$XSERVER_USER@$XSERVER_HOST" "cd $REMOTE_DEPLOY_PATH && tar -xzf -"
 
       - name: Verify remote files
         env:
