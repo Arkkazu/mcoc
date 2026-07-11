@@ -197,6 +197,10 @@
     "ru": "ЧЕРНАЯ КОШКА",
     "ko": "블랙 캣"
   },
+  "blacktarantula": {
+    "jp": "ブラック・タランチュラ",
+    "en": "BLACK TARANTULA"
+  },
   "blackpanther": {
     "jp": "ブラックパンサー",
     "en": "BLACK PANTHER",
@@ -922,6 +926,10 @@
     "en": "THE HOOD",
     "ru": "КАПЮШОН",
     "ko": "후드"
+  },
+  "hobgoblin_philurich": {
+    "jp": "ホブゴブリン（フィル・ユーリック）",
+    "en": "HOBGOBLIN (PHIL URICH)"
   },
   "howardmech": {
     "jp": "ハワード・ザ・ダック",

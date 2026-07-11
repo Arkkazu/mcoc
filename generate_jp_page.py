@@ -11,6 +11,7 @@ MCOC チャンピオン日本語解説ページ生成スクリプト
 
 import html
 import json
+import unicodedata
 from pathlib import Path
 
 # ─── パス設定 ───────────────────────────────────────────────
@@ -354,6 +355,7 @@ AUTO_BINARY_TO_PREFIX = {
     "attuma": "atma",
     "beast": "bst",
     "bishop": "bishn",
+    "blacktarantula": "blktrnt",
     "blackpanther": "bpu",
     "blackpanther_cw": "blkpanther",
     "blackpanther_realm": "jabpantu",
@@ -393,6 +395,7 @@ AUTO_BINARY_TO_PREFIX = {
     "guillotine_2099": "glt29",
     "guillotine_nameless": "gltn",
     "hawkeye": "hawko",
+    "hobgoblin_philurich": "hgob",
     "howardfrontend": "htdu",
     "howardmech": "htdu",
     "hulk": "hulku",
@@ -490,6 +493,7 @@ SUPPLEMENTAL_ABILITY_PREFIXES = {
 PORTRAIT_BINARY_ID_ALIASES = {
     # ゲーム内binary idとportraitファイル名が一致しないもの。
     "beast": "portrait_Beast_Allnew.png",
+    "blacktarantula": "portrait_black_tarantula.png",
     "captainamerica_movie": "portrait_captainamerica_infinitywar.png",
     "captainamerica_ww2": "portrait_capamerica_wwii.png",
     "drstrange": "portrait_doctor_strange.png",
@@ -526,8 +530,10 @@ ROSTER_BINARY_ID_ALIASES = {
 
 LOC_PREFIX_ALIASES = {
     # binary_idから機械生成したprefixと、実際の日本語ローカライズprefixが違うもの。
+    "blacktarantula": ("BLKTRNT",),
     "cassandranova": ("CASSANDRA",),
     "hulk_red": ("REDHULK",),
+    "hobgoblin_philurich": ("HGOB",),
     "madelynepryor": ("MADELYNE",),
     "thanos_deathless_trophy": ("THANOS_DEATHLESS_TROPHY",),
     "thor_janefoster": ("JANEF",),
@@ -758,6 +764,8 @@ def is_game_playable_roster_record(binary_id: str, record: dict | None) -> bool:
         return False
     if binary_id.endswith("_legacy"):
         return False
+    if binary_id in NON_PLAYABLE_BINARY_IDS:
+        return False
     if any(binary_id.startswith(prefix) for prefix in NON_PLAYABLE_BINARY_PREFIXES):
         return False
     if record.get("champion_class") not in CLASS_JP:
@@ -860,7 +868,11 @@ def _clean_loc_text(value: str, preserve_glossary: bool = False) -> str:
         value = strip_loc_tags(value)
     value = _re.sub(r'\{\d+\}', '〔数値〕', value)
     value = _re.sub(r'\s+', ' ', value)
-    return value.strip()
+    value = value.strip()
+    # ゲーム側ローカライズに残る未解決プレースホルダーは本文に出さない。
+    if value == '#ERROR!':
+        return ''
+    return value
 
 
 GLOSSARY_DEFINITION_KEYS = {
@@ -929,6 +941,11 @@ GLOSSARY_DEFINITION_KEYS = {
     "slow": ("ID_UI_STAT_SLOW_DEBUFF", "ID_UI_STAT_SLOW_DEBUFF_LONG_V2"),
 }
 
+MANUAL_GLOSSARY_DEFINITIONS = {
+    # ゲーム内の汎用説明キーが見つからない用語だけ補完する。
+    "purify": {"title": "浄化", "desc": "付与されているデバフを取り除く。"},
+}
+
 _GLOSSARY_DEFS_CACHE: dict[str, dict[str, str]] | None = None
 
 # ゲーム本文には glossary タグが付かず、平文だけで出る用語がある。
@@ -976,6 +993,7 @@ PLAINTEXT_GLOSSARY_TERMS = {
     "power_steal",
     "power_sting",
     "prowess",
+    "purify",
     "reckless",
     "shock",
     "slow",
@@ -1089,6 +1107,8 @@ def get_glossary_definitions(kv: dict) -> dict[str, dict[str, str]]:
             defs[term.lower()] = {"title": title, "desc": desc}
     term_labels = _collect_glossary_term_labels(kv)
     defs.update(_safe_exact_glossary_definitions(term_labels, kv, set(defs)))
+    for term, definition in MANUAL_GLOSSARY_DEFINITIONS.items():
+        defs.setdefault(term.lower(), definition)
     _GLOSSARY_DEFS_CACHE = defs
     return defs
 
@@ -4601,6 +4621,81 @@ def _portrait_key(value: str) -> str:
     return _re.sub(r'[^a-z0-9]', '', value.lower())
 
 
+# ゲーム抽出の en フィールドに混入したノルウェー語表記を正しい英語へ寄せる。
+# jp（日本語名）は常に正しいため、英語サブラベルの汚染だけを補正する。
+_EN_NORWEGIAN_FIX = {
+    "UFORGJENGELIGE": "DEATHLESS",
+    "KLASSISK": "CLASSIC",
+    "UDØDELIG": "IMMORTAL",
+    "STJERNESKAPT": "STELLAR",
+    "2. VERDENSKRIG": "WWII",
+    "BLÅTT LAG": "BLUE TEAM",
+    "EKS. ÆGON": "EX. AEGON",
+    "NAVNLØS COLLECTOR": "NAMELESS COLLECTOR",
+    "NAVNLØS STORMESTER": "NAMELESS GRANDMASTER",
+    "AVSLØRES SNART": "COMING SOON",
+    "NAVNLØS": "NAMELESS",
+    "ELDRE": "LEGACY",
+    "ÆGON": "AEGON",
+}
+
+
+def _normalize_en_name(value: str) -> str:
+    """en フィールドのノルウェー語トークンを英語へ置換する（長い語から優先）。"""
+    if not value:
+        return value
+    for src in sorted(_EN_NORWEGIAN_FIX, key=len, reverse=True):
+        if src in value:
+            value = value.replace(src, _EN_NORWEGIAN_FIX[src])
+    return value
+
+
+_JP_SORT_READING_OVERRIDES = {
+    "隊長": "たいちょう",
+    "監督者": "かんとくしゃ",
+    "Mr. ネガティブ": "みすたーねがてぃぶ",
+}
+
+_JP_SORT_SMALL_KANA = str.maketrans({
+    "ぁ": "あ", "ぃ": "い", "ぅ": "う", "ぇ": "え", "ぉ": "お",
+    "っ": "つ", "ゃ": "や", "ゅ": "ゆ", "ょ": "よ", "ゎ": "わ",
+    "ゕ": "か", "ゖ": "け", "ァ": "ア", "ィ": "イ", "ゥ": "ウ",
+    "ェ": "エ", "ォ": "オ", "ッ": "ツ", "ャ": "ヤ", "ュ": "ユ",
+    "ョ": "ヨ", "ヮ": "ワ", "ヵ": "カ", "ヶ": "ケ",
+})
+
+_JP_SORT_LONG_VOWEL_BY_KANA = {
+    **dict.fromkeys("あかさたなはまやらわがざだばぱぁゃゎ", "あ"),
+    **dict.fromkeys("いきしちにひみりぎじぢびぴぃ", "い"),
+    **dict.fromkeys("うくすつぬふむゆるぐずづぶぷゔぅゅ", "う"),
+    **dict.fromkeys("えけせてねへめれげぜでべぺぇ", "え"),
+    **dict.fromkeys("おこそとのほもよろをごぞどぼぽぉょを", "お"),
+}
+
+
+def _japanese_sort_key(value: str) -> tuple[str, str]:
+    """日本語表示名を五十音順に並べるための安定したキーを返す。"""
+    normalized = unicodedata.normalize("NFKC", value or "").strip()
+    reading = _JP_SORT_READING_OVERRIDES.get(normalized, normalized)
+    reading = reading.translate(_JP_SORT_SMALL_KANA)
+    chars: list[str] = []
+    for char in reading:
+        code = ord(char)
+        if 0x30A1 <= code <= 0x30F6:
+            char = chr(code - 0x60)
+        if char == "ゔ":
+            char = "う"
+        if char == "ー":
+            if chars:
+                vowel = _JP_SORT_LONG_VOWEL_BY_KANA.get(chars[-1], "")
+                if vowel:
+                    chars.append(vowel)
+            continue
+        if char.isspace() or char in "・-‐‑–—―()[]{}「」『』":
+            continue
+        chars.append(char)
+    return "".join(chars), normalized
+
 def _name_from_binary_id(binary_id: str) -> str:
     if binary_id == "phylavell":
         return "Phyla-Vell"
@@ -4677,7 +4772,7 @@ def load_game_only_champions(abilities: dict, kv: dict, name_jp_map: dict) -> tu
 
         name_info = champion_name_data.get(binary_id, {})
         name_jp = name_info.get("jp", "") or infer_jp_name_from_bio(binary_id, kv)
-        name_en = name_info.get("en", "") or _name_from_binary_id(binary_id)
+        name_en = _normalize_en_name(name_info.get("en", "")) or _name_from_binary_id(binary_id)
         dedupe_name = (name_jp or name_en).lower()
         if dedupe_name in used_names:
             continue
@@ -4712,6 +4807,12 @@ def load_game_only_champions(abilities: dict, kv: dict, name_jp_map: dict) -> tu
             portrait_map[slug] = portrait
         name_jp_map[slug] = {"jp": name_jp, "en": name_en, "binary_id": binary_id}
 
+    champions.sort(
+        key=lambda champion: (
+            _japanese_sort_key(champion.get("name_jp") or champion.get("name", "")),
+            champion["binary_id"],
+        )
+    )
     print(f"ゲーム内チャンピオン一覧: {len(champions)} 件")
     return champions, slug_map, portrait_map
 
