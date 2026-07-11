@@ -1,2 +1,3 @@
 RewriteEngine On
 RewriteRule ^hero/?$ / [R=301,L]
+RewriteRule ^event/?$ / [R=301,L]
