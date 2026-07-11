@@ -1010,6 +1010,34 @@ PLAINTEXT_GLOSSARY_TERMS = {
     "wither",
 }
 
+_CHAMPION_NAME_FRAGMENTS_CACHE: tuple[str, ...] | None = None
+
+
+def _champion_name_fragments_for_link_guard() -> tuple[str, ...]:
+    """平文用語リンクから保護するチャンピオン名・短縮名を返す。"""
+    global _CHAMPION_NAME_FRAGMENTS_CACHE
+    if _CHAMPION_NAME_FRAGMENTS_CACHE is not None:
+        return _CHAMPION_NAME_FRAGMENTS_CACHE
+
+    fragments: set[str] = set()
+    try:
+        names_data = json.loads(CHAMP_NAMES_PATH.read_text(encoding="utf-8"))
+    except (OSError, json.JSONDecodeError):
+        names_data = {}
+    for info in names_data.values() if isinstance(names_data, dict) else ():
+        if not isinstance(info, dict):
+            continue
+        name = str(info.get("jp", "")).strip()
+        if not name:
+            continue
+        fragments.add(name)
+        base_name = name.split("（", 1)[0].split("(", 1)[0].strip()
+        if len(base_name) >= 2:
+            fragments.add(base_name)
+
+    _CHAMPION_NAME_FRAGMENTS_CACHE = tuple(sorted(fragments, key=len, reverse=True))
+    return _CHAMPION_NAME_FRAGMENTS_CACHE
+
 
 def _collect_glossary_term_labels(kv: dict) -> dict[str, dict[str, int]]:
     labels: dict[str, dict[str, int]] = {}
@@ -1140,15 +1168,31 @@ def render_plain_text_with_glossary_links(text: str,
     if not link_terms:
         return html.escape(clean)
     link_terms.sort(key=lambda item: len(item[1]), reverse=True)
+    candidate_labels = {label for _, label in link_terms}
+    protected_ranges: list[tuple[int, int]] = []
+    for name in _champion_name_fragments_for_link_guard():
+        if not any(label in name for label in candidate_labels):
+            continue
+        start = 0
+        while True:
+            start = clean.find(name, start)
+            if start < 0:
+                break
+            protected_ranges.append((start, start + len(name)))
+            start += len(name)
 
     parts: list[str] = []
     pos = 0
     while pos < len(clean):
         matched: tuple[str, str] | None = None
         for term, label in link_terms:
-            if clean.startswith(label, pos):
-                matched = (term, label)
-                break
+            if not clean.startswith(label, pos):
+                continue
+            match_end = pos + len(label)
+            if any(range_start <= pos and match_end <= range_end for range_start, range_end in protected_ranges):
+                continue
+            matched = (term, label)
+            break
         if not matched:
             parts.append(html.escape(clean[pos]))
             pos += 1
