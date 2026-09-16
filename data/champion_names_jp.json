@@ -1,4 +1,28 @@
 {
+  "agathaharkness": {
+    "jp": "アガサ・ハークネス",
+    "en": "AGATHA HARKNESS",
+    "ru": "АГАТА ХАРКНЕСС",
+    "ko": "애거사 하크니스"
+  },
+  "green_goblin_stellar": {
+    "jp": "グリーン・ゴブリン（ステラフォージド）",
+    "en": "GREEN GOBLIN (STELLAR-FORGED)",
+    "ru": "ЗЕЛЕНОГО ГОБЛИНА (ЗВЕЗДНАЯ КУЗНИЦА)",
+    "ko": "그린 고블린(스텔라 포지드)"
+  },
+  "gwenom": {
+    "jp": "グウェノム",
+    "en": "GWENOM",
+    "ru": "ГВЕНОМ",
+    "ko": "궤놈"
+  },
+  "spiderman_noir": {
+    "jp": "スパイダーマン・ノワール",
+    "en": "SPIDER-MAN NOIR",
+    "ru": "ПАУК-НУАР",
+    "ko": "스파이더맨 느와르"
+  },
   "abomination": {
     "jp": "アボミネーション",
     "en": "ABOMINATION",

@@ -1,4 +1,29 @@
 {
+  "game-roster-skrull-super": {
+    "jp": "スーパースクラル",
+    "en": "SUPER-SKRULL",
+    "binary_id": "skrull_super"
+  },
+  "game-roster-agathaharkness": {
+    "jp": "アガサ・ハークネス",
+    "en": "AGATHA HARKNESS",
+    "binary_id": "agathaharkness"
+  },
+  "game-roster-green-goblin-stellar": {
+    "jp": "グリーン・ゴブリン（ステラフォージド）",
+    "en": "GREEN GOBLIN (STELLAR-FORGED)",
+    "binary_id": "green_goblin_stellar"
+  },
+  "game-roster-gwenom": {
+    "jp": "グウェノム",
+    "en": "GWENOM",
+    "binary_id": "gwenom"
+  },
+  "game-roster-spiderman-noir": {
+    "jp": "スパイダーマン・ノワール",
+    "en": "SPIDER-MAN NOIR",
+    "binary_id": "spiderman_noir"
+  },
   "champion-spotlight-wave": {
     "jp": "ウェイブ",
     "en": "WAVE",
